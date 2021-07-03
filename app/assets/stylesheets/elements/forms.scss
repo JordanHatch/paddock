@@ -1,0 +1,112 @@
+@import 'buttons';
+
+@mixin text-field {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-family: $font-stack;
+  border: 1px solid #ccc;
+  border-radius: .5rem;
+  font-size: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: .9rem;
+
+  .optional {
+    font-weight: normal;
+    // display: inline-;
+    padding-left: .5rem;
+    color: #888;
+    font-size: 1rem;
+  }
+}
+
+textarea {
+  @include text-field;
+  width: 100%;
+}
+
+.input {
+  margin-bottom: 2rem;
+}
+
+.field_with_errors {
+  input[type=text], textarea {
+    border-color: $red;
+    border-width: 2px;
+  }
+}
+
+input[type=text] {
+  @include text-field;
+}
+
+input[type=submit], button {
+  @include button-primary;
+  font-size: 1.1rem;
+}
+
+.input.radio_buttons {
+  display: flex;
+  gap: .5rem;
+
+  .radio {
+    flex: 1;
+    display: block;
+    display: flex;
+  }
+
+  label {
+    border-radius: .5rem;
+    background: $white;
+    border: 1px solid #ddd;
+    box-shadow: #eee 0px 2px 2px;
+    padding: 1rem;
+    flex: 1;
+    text-align: center;
+
+    input[type=radio] {
+      display: block;
+      margin: 0 auto .75rem;
+    }
+
+    span {
+      display: block;
+      padding-top: .3rem;
+      font-weight: normal;
+      font-size: 1rem;
+    }
+  }
+}
+
+input[type=radio] {
+  -webkit-appearance:button;
+  -moz-appearance:button;
+  appearance:button;
+  border:4px solid #ccc;
+  border-top-color:#bbb;
+  border-left-color:#bbb;
+  background:#fff;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+}
+
+input[type=radio]:checked{
+  border:20px solid $green;
+}
+
+span.error {
+  color: $red;
+  font-weight: bold;
+  display: block;
+}
+
+form .actions {
+  background: $light-grey;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,6 @@
+.update-status.draft
+  %h3 This update is currently in draft
+  %p When you've finished making changes, you can submit the update.
+  .actions
+    = link_to 'Make changes', edit_update_path(sprint, team), class: 'button'
+    = link_to 'Finalise and submit', submit_update_path(sprint, team), class: 'button'

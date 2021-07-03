@@ -1,0 +1,23 @@
+%li.nested-form-wrapper{ data: { controller: 'update-single-issue',
+                                 new_record: (f.object.blank? || f.object.id.blank?),
+                                 update_single_issue_closed_class: 'closed' } }
+  %h2{ data: { update_single_issue_target: 'header',
+               action: 'click->update-single-issue#toggle' } }
+    .title{ data: { update_single_issue_target: 'title' } }
+      - if f.object.description.present?
+        = f.object.description
+      - else
+        Issue
+    .toggle{ data: { update_single_issue_target: 'toggle' } }
+      %i
+  .content{ data: { update_single_issue_target: 'content' } }
+    = f.input :description, as: :string,
+                            required: true,
+                            input_html: { data: { update_single_issue_target: 'description',
+                                                  action: 'keyup->update-single-issue#updateHeader' } }
+    = f.input :treatment, as: :string, required: false
+    = f.input :help, as: :string, required: false
+    = f.input :identifier, as: :string, required: false
+    %button.remove{ type: 'button', data: { action: 'update-issues#remove' } }
+      Delete issue
+    = f.input :_destroy, as: :hidden

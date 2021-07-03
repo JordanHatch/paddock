@@ -1,0 +1,32 @@
+!!! 5
+%html
+  %head
+    %title
+      Paddock
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application'
+  %body
+    %header.app
+      %h1
+        = link_to 'Paddock', root_path
+      - if signed_in?
+        .sprint
+          = render partial: 'layouts/partials/sprint_selector'
+        .user-org
+
+    %main.app
+      - if flash.any?
+        - flash.each do |key, message|
+          %div{class: "flash flash-#{key}"}= message
+      = yield
+
+    %footer
+      - if signed_in?
+        .signed-in-user
+          Signed in as
+          %span= signed_in_user.email
+          = link_to 'Sign out', sign_out_path, data: { method: :post }
+    = render partial: 'layouts/partials/paddock_environment'

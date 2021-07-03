@@ -1,0 +1,20 @@
+%section.sprints-show
+  .summary
+    %ul.delivery-status
+      - Update.delivery_status.values.each do |status|
+        %li{'class' => "status-#{status}"}
+          %span.value= sprint.delivery_status_summary[status] || 0
+          %span.label= status.capitalize
+
+  %ul.groups
+    - groups.each do |group|
+      %li.group
+        %h2= group.name
+        %ul.teams
+          - group.teams.each do |team|
+            %li
+              = link_to update_path(sprint, team) do
+                %h3=team.name
+                = render partial: 'update_preview', locals: { team: team, update: team.update_for_sprint(sprint) }
+
+  = button_to 'Download as PDF', export_sprint_path(sprint), class: 'button'

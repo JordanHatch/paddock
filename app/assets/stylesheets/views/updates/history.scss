@@ -1,0 +1,55 @@
+.update-history {
+
+  ul.history {
+    li {
+      padding: 1.5rem;
+      background: $silver;
+      margin-bottom: 1rem;
+      border-radius: .5rem;
+
+      .metadata {
+        display: flex;
+      }
+
+      .timestamp {
+        flex: 1;
+        margin-bottom: .5rem;
+        text-align: right;
+      }
+
+      .user {
+        flex: 1;
+        font-weight: bold;
+      }
+
+      dt {
+        margin-top: .75rem;
+        margin-bottom: .5rem;
+        font-weight: bold;
+      }
+
+      dd {
+        .previous, .current {
+          background: $white;
+          padding: .5rem;
+          border-radius: .25rem;
+          display: inline-block;
+        }
+
+        .previous {
+          color: $red;
+        }
+        .current {
+          color: $green;
+        }
+
+        .arrow {
+          @extend .fas;
+          @extend .fa-arrow-right;
+          padding: 0 .5rem;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,55 @@
+.columns
+  .key-indicators
+    .indicator.delivery-status
+      %h3 Delivery status
+      .value{:class => "status-#{sprint_update.delivery_status}"}
+        %span.delivery-indicator
+        = delivery_status_text(sprint_update)
+    .indicator.delivery-status
+      %h3 OKR progress
+      .value{:class => "status-#{sprint_update.okr_status}"}
+        %span.delivery-indicator
+        = okr_status_text(sprint_update)
+    .indicator.team-health
+      %h3 Team health
+      .value
+        = "#{sprint_update.team_health} / 5"
+    .indicator.headcount
+      %h3 Headcount
+      .value
+        = "#{sprint_update.current_headcount} / #{sprint_update.total_headcount}"
+  .primary-col
+    - if sprint_update.content.present?
+      .summary
+        = render_markdown(sprint_update.content).html_safe
+    .update-section.sprint-goals
+      %h3 Sprint goals
+      %ul
+        - sprint_update.sprint_goals.each do |goal|
+          %li= goal
+    .update-section.issues
+      %h3 Issues
+      - if sprint_update.issues.any?
+        %ul
+          - sprint_update.issues.each do |issue|
+            %li
+              .description= issue.description
+              .treatment
+                %span.label How we're solving it:
+                = issue.treatment
+              .help
+                %span.label What we need help with:
+                = issue.help
+              - if issue.identifier.present?
+                .identifier
+                  %span.label Identifier for this issue:
+                  = issue.identifier
+      - else
+        %p.no-issues No issues have been reported for this sprint.
+    .update-section.sprint-goals
+      %h3 Goals for next sprint
+      %ul
+        - sprint_update.next_sprint_goals.each do |goal|
+          %li= goal
+    .history-link
+      = link_to 'View edit history', history_update_path(sprint, team)

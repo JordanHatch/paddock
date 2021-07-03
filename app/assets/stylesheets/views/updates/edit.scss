@@ -1,0 +1,227 @@
+.update-edit {
+  min-height: 40rem;
+
+  .columns {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav, .main-col {
+    flex: 1;
+  }
+
+  nav {
+    max-width: 12rem;
+
+    li {
+      margin-bottom: .1rem;
+
+      a {
+        display: block;
+        border-radius: .25rem;
+        padding: .6rem .7rem;
+        text-decoration: none;
+        color: $black;
+
+        &:hover {
+          background: #eee;
+        }
+
+        .validation-status {
+          float: right;
+
+          i {
+            @extend .fas;
+          }
+
+          &.valid i {
+            @extend .fa-check-circle;
+            color: $green;
+          }
+
+          &.invalid i {
+            @extend .fa-exclamation-circle;
+            color: $amber;
+          }
+
+          &.not-started i {
+            @extend .far;
+            @extend .fa-circle;
+            color: #ddd;
+          }
+
+          .label {
+            display: none;
+          }
+        }
+      }
+
+      &.selected a {
+        background: $light-blue;
+        font-weight: bold;
+
+        .validation-status.not-started i {
+          color: #91C9DE;
+        }
+      }
+
+      &.preview {
+        padding-top: .4rem;
+        border-top: 1px solid #ddd;
+        margin-top: .4rem;
+      }
+    }
+  }
+
+  .main-col {
+    h2 {
+      font-size: 1.8rem;
+      margin: 0 0 1.5rem;
+    }
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  .question-detail {
+    ul {
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    li {
+      list-style: disc;
+      padding-bottom: .2rem;
+    }
+  }
+
+  textarea#update_content {
+    min-height: 14rem;
+    max-height: 28rem;
+    max-width: 32rem;
+    min-width: 80%;
+  }
+
+  .actions {
+    margin-top: 1rem;
+  }
+
+  .sprint-goals {
+    ol {
+      list-style: decimal;
+      padding-left: 1.5rem;
+    }
+    li {
+      padding-left: 1rem;
+    }
+    input {
+      width: 80%;
+    }
+  }
+
+  .headcount input {
+    width: 6rem;
+  }
+
+  .issues {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+
+    li {
+      background: $light-grey;
+      margin-bottom: 1rem;
+
+      h2 {
+        background: $light-blue;
+        color: $black;
+        padding: .7rem 1rem;
+        font-size: 1.3rem;
+        margin-bottom: .5rem;
+        display: flex;
+        cursor: pointer;
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+
+        &:hover {
+          background: darken($light-blue, 5%);
+        }
+
+        .title {
+          flex: auto;
+        }
+        .toggle {
+          min-width: 3rem;
+          text-align: right;
+          display: block;
+
+          i {
+            @extend .fas;
+            @extend .fa-chevron-down;
+          }
+        }
+      }
+
+      .content {
+        padding: 1rem;
+      }
+
+      &.closed {
+        .content {
+          display: none;
+        }
+
+        h2 {
+          border-radius: .25rem;
+
+          .toggle i {
+            @extend .fa-chevron-right;
+          }
+        }
+      }
+    }
+
+    label {
+      font-size: 1.1rem;
+      margin-bottom: .6rem;
+    }
+
+    .input {
+      margin-bottom: .5rem;
+    }
+
+    button.remove {
+      @include button-danger;
+      font-size: .85rem;
+    }
+
+    .action {
+      margin-bottom: 2rem;
+    }
+
+    button.add {
+      font-size: .9rem;
+    }
+
+    input[type=text] {
+      width: 100%;
+    }
+  }
+
+  .invalid-submit-message {
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: .5rem;
+    box-shadow: #eee 0px 2px 2px;
+    text-align: center;
+
+    i {
+      @extend .fas;
+      @extend .fa-exclamation-circle;
+
+      font-size: 4rem;
+      display: block;
+      padding-bottom: 1.5rem;
+    }
+  }
+}

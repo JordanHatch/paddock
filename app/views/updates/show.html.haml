@@ -1,0 +1,9 @@
+%section.update-show
+  = render partial: 'header', locals: { team: team }
+
+  - if sprint_update.not_started?
+    = render partial: 'not_started', locals: { sprint: sprint, team: team }
+  - else
+    - if sprint_update.draft?
+      = render partial: 'draft', locals: { sprint: sprint, team: team }
+    = render partial: 'update', locals: { sprint_update: sprint_update }

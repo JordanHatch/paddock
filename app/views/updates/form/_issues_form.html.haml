@@ -1,0 +1,18 @@
+%h2 What's not right?
+
+%p List the issues and challenges the team are dealing with now or in upcoming sprints.
+
+.issues{ data: { controller: 'update-issues', nested_form_wrapper_selector_value: '.nested-form-wrapper' }}
+  .action
+    %button.add{ type: 'button', data: { action: 'update-issues#add' } }
+      Add issue
+
+  %ol
+    %template{ data: { update_issues_target: 'template' } }
+      = f.fields_for :issues, Issue.new, child_index: 'NEW_RECORD' do |issue_fields|
+        = render partial: 'updates/form/issue_form', locals: { f: issue_fields }
+
+    = f.fields_for :issues do |issue_fields|
+      = render partial: 'updates/form/issue_form', locals: { f: issue_fields }
+
+    %div{ data: { update_issues_target: 'target' } }

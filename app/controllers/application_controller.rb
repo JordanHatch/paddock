@@ -1,0 +1,26 @@
+class ApplicationController < ActionController::Base
+  before_action :authenticate!
+  before_action :set_paper_trail_whodunnit
+
+  private
+
+  helper_method :signed_in?, :signed_in_user
+
+  def signed_in?
+    session[:user_id].present?
+  end
+
+  def signed_in_user
+    @signed_in_user ||= User.find(session[:user_id]) if session[:user_id].present?
+  end
+
+  def current_user
+    signed_in_user
+  end
+
+  def authenticate!
+    unless signed_in?
+      redirect_to new_invitation_path
+    end
+  end
+end

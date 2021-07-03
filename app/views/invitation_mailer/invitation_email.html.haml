@@ -1,0 +1,18 @@
+%table{width: '100%'}
+  %tr{height: '20px'}
+  %tr
+    %td{valign: 'top'}
+    %td.wrapper{width: '280px'}
+      %h1 Your magic link to sign into Paddock
+      %p
+        Hi
+        %strong= @email
+      %p
+        Here's a magic link that will sign you into Paddock.
+        It will work for the next 30 minutes.
+
+      %table{width: '100%'}
+        %tr
+          %td.action{height: '40px'}
+            = link_to 'Sign in to Paddock', redeem_invitation_url(@token)
+    %td

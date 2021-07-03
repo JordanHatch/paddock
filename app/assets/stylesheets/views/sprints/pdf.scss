@@ -1,0 +1,314 @@
+body.pdf {
+  .outline-anchor {
+    float: left;
+    margin: 0 0 0 0;
+    padding: 0;
+    font-size: .1rem;
+    color: transparent;
+  }
+}
+
+body.pdf .page {
+  $pdf-margin: 2.5rem;
+  position: relative;
+  font-weight: normal;
+
+  header {
+    background: $dark-grey;
+    color: $white;
+    padding: 1.5rem $pdf-margin;
+
+    .title {
+      @include pdfBoldFontStack;
+      font-size: 1.8rem;
+      margin-bottom: 0;
+    }
+  }
+
+  section {
+    padding: 1.5rem $pdf-margin;
+  }
+
+  section.overview {
+    .summary {
+      @include pdfBoldFontStack;
+      padding: 1rem;
+      border-radius: .5rem;
+      background: $light-grey;
+      margin-bottom: 2rem;
+
+      ul.delivery-status {
+        overflow: auto;
+
+        li {
+          float: left;
+          width: 33%;
+          padding-right: .5rem;
+
+          &:last-of-type {
+            padding-right: 0;
+          }
+
+          .inner {
+            padding: 1rem;
+            min-height: 8rem;
+            border-radius: .5rem;
+            display: block;
+            color: $white;
+            text-align: center;
+          }
+
+          &.status-green .inner { background: $green; }
+          &.status-amber .inner { background: $amber; }
+          &.status-red .inner { background: $red; }
+
+          .value {
+            display: block;
+            font-size: 3.5rem;
+            font-weight: bold;
+          }
+          .label {
+            font-weight: bold;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+
+    li.group {
+      margin: 2rem 0;
+
+      .group-name {
+        display: block;
+        @include pdfBoldFontStack;
+
+        font-size: .9rem;
+        text-transform: uppercase;
+        margin-bottom: .7rem;
+        color: #555;
+      }
+    }
+
+    li.team {
+      display: block;
+      background: $light-grey;
+      border-radius: .3rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      overflow: auto;
+
+      .team-name {
+        @include pdfBoldFontStack;
+        float: left;
+        width: 40%;
+        padding-top: .5rem;
+      }
+
+      .key-indicators {
+        float: right;
+        width: 60%;
+        overflow: auto;
+
+        .indicator {
+          float: left;
+          background: $white;
+          padding: .5rem;
+          border-radius: .3rem;
+          width: 32%;
+          overflow: auto;
+          margin-left: 1%;
+
+          &.delivery-status {
+            @include delivery-indicator;
+
+            .label {
+              float: left;
+              width: 40%;
+              color: #000;
+              padding-right: .4rem;
+              font-weight: bold;
+              text-transform: uppercase;
+              font-size: .65rem;
+              margin-top: .35rem;
+              color: #888;
+            }
+
+            .value {
+              float: right;
+              width: 60%;
+              text-align: right;
+            }
+
+
+            .delivery-indicator {
+              margin-left: .2rem;
+              margin-bottom: -.2rem;
+            }
+          }
+
+          &.completion-status {
+            display: block;
+            float: none;
+            width: auto;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+
+  &.update {
+    position: relative;
+
+    header {
+      .group {
+        font-family: $pdfRegularFontStack;
+        font-weight: normal;
+        display: block;
+        font-size: 1.1rem;
+      }
+
+      .team-name {
+        @include pdfBoldFontStack;
+        font-size: 1.8rem;
+        margin: 0;
+      }
+    }
+
+    section.inner {
+      padding: $pdf-margin;
+      position: relative;
+
+      .key-indicators {
+        display: block;
+        background: $white;
+        padding: .75rem;
+        border-radius: .5rem;
+        margin-bottom: 0.5rem;
+        overflow: auto;
+
+        .indicator {
+          width: 25%;
+          float: left;
+          padding-right: .5rem;
+
+          &:last-of-type {
+            padding-right: 0;
+          }
+
+          .inner {
+            background: $light-brown;
+            border-radius: .5rem;
+            padding: .8rem;
+            text-align: center;
+          }
+
+          .label {
+            @include pdfBoldFontStack;
+            font-size: 1rem;
+            margin: 0 0 .5rem;
+          }
+
+          .value {
+            display: block;
+            border-radius: .5rem;
+            background: $white;
+            padding: .6rem;
+            font-size: 1.3rem;
+
+            @include delivery-indicator;
+          }
+        }
+      }
+
+      .update-section {
+        padding: 1.5rem 0 0;
+        page-break-inside: avoid;
+
+        > .inner {
+          background: $white;
+          border-radius: .5rem;
+          padding: 1.5rem;
+        }
+
+        .title {
+          @include pdfBoldFontStack;
+          font-size: 1.4rem;
+
+          width: 35%;
+          float: left;
+        }
+        .content {
+          margin-left: 35%;
+          width: 65%;
+          font-size: .95rem;
+        }
+        .clear {
+          clear: both;
+        }
+      }
+
+      .summary {
+        padding-right: 2rem;
+        @include content-block;
+        font-size: 1em;
+      }
+
+      .sprint-goals ol {
+        list-style: decimal;
+        padding-left: 1rem;
+
+        li {
+          padding-left: .25rem;
+          margin-bottom: .2rem;
+        }
+      }
+
+      .issues ul {
+        display: block;
+      }
+
+      .issues li {
+        position: relative;
+        display: block;
+        padding: .75rem 0 .25rem;
+        page-break-inside: avoid;
+
+        &:first-of-type {
+          padding-top: 0;
+        }
+
+        > .inner {
+          padding: 1rem;
+          background: $silver;
+          border-radius: .3rem;
+          overflow: auto;
+        }
+
+        .description {
+          @include pdfBoldFontStack;
+        }
+
+        .treatment, .help {
+          margin-top: .85rem;
+        }
+
+        .label {
+          @include pdfBoldFontStack;
+          display: block;
+        }
+
+        .identifier {
+          float: right;
+          font-size: .85rem;
+          margin-top: 1rem;
+
+          .label {
+            @include pdfRegularFontStack;
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+}

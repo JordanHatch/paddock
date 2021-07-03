@@ -1,0 +1,7 @@
+%section.sprints
+  %h1 Sprints
+
+  %ul
+    - sprints.each do |sprint|
+      %li
+        = link_to sprint.name, sprint_path(sprint)

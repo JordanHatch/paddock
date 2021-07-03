@@ -1,0 +1,29 @@
+@import 'container';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-stack;
+  background: $base-color;
+  font-size: 100%;
+  line-height: 1.25;
+  color: $black;
+}
+
+main.app {
+  @include container;
+
+  box-shadow: darken($base-color, 1%) 0px -3px 3px;
+  min-height: 90vh;
+  background: $white;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  border-radius: .5rem;
+
+  h1.page-title {
+    text-align: center;
+    margin: 0 0 1.5rem;
+  }
+}

@@ -1,0 +1,13 @@
+%nav
+  %ul
+    - flow.form_keys.each do |form|
+      %li{ class: (form == flow.current_form_id ? 'selected' : '') }
+        = link_to edit_update_form_path(sprint, team, form) do
+          = t(form, scope: [:updates, :forms])
+          .validation-status{ class: flow.completion_status_for_form(form).to_s.dasherize }
+            %i
+            %span.label= flow.completion_status_for_form(form)
+    %li.preview
+      = link_to 'Preview update', update_path(sprint, team), data: { 'turbo-frame' => '_top' }
+    %li{ class: (flow.current_form_id == :submit ? 'selected' : '') }
+      = link_to 'Submit update', submit_update_path(sprint, team)

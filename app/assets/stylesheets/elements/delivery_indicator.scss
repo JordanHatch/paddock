@@ -1,0 +1,33 @@
+@mixin delivery-indicator {
+  .delivery-indicator {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    margin-right: .2rem;
+    margin-bottom: -.1rem;
+    background-color: $dark-grey;
+  }
+
+  &.status-green {
+    color: $green;
+
+    .delivery-indicator {
+      background-color: $green;
+    }
+  }
+  &.status-amber {
+    color: $amber;
+
+    .delivery-indicator {
+      background-color: $amber;
+    }
+  }
+  &.status-red {
+    color: $red;
+
+    .delivery-indicator {
+      background-color: $red;
+    }
+  }
+}

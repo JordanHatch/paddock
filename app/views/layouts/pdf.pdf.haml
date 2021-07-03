@@ -1,0 +1,8 @@
+!!! 5
+%html
+  %head
+    = PdfExporter.stylesheet
+    = yield(:head)
+    %meta{'charset': 'utf-8'}
+  %body.pdf{'onload': yield(:body_onload)}
+    = yield

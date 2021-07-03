@@ -1,0 +1,20 @@
+%section.update-edit
+  = render partial: 'header', locals: { team: service.team }
+
+  .columns
+    = render partial: 'edit_navigation', locals: { flow: flow, sprint: service.sprint, team: service.team }
+
+    .main-col
+      %h2 Submit the team update
+
+      - if service.success?
+        %p When you've finished making changes, you can submit the update.
+        %p Once you've submitted the update, you won't be able to make further changes to it.
+
+        .actions
+          = button_to 'Submit update', submit_update_path(service.sprint, service.team), class: 'button', data: { method: 'post' }
+      - else
+        .invalid-submit-message
+          %i
+          You need to complete all steps before submitting the update.
+

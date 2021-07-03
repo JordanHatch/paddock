@@ -1,0 +1,21 @@
+!!! 5
+%html
+  %head
+    %title
+      Paddock
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application'
+  %body
+    .unauthenticated
+      %header.app
+        %h1= link_to 'Paddock', root_path
+
+      .box
+        - if flash.any?
+          - flash.each do |key, message|
+            %div{class: "flash flash-#{key}"}= message
+        = yield
+    = render partial: 'layouts/partials/paddock_environment'

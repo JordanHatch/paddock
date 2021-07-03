@@ -1,0 +1,59 @@
+@use "@fontsource/public-sans/scss/mixins" as PublicSans;
+
+$publicSansName: 'Public Sans';
+$publicSansDir: "~@fontsource/public-sans/files";
+
+@include PublicSans.fontFace(
+  $fontName: $publicSansName,
+  $weight: 400,
+  $style: 'italic',
+  $fontDir: $publicSansDir,
+);
+
+@include PublicSans.fontFace(
+  $fontName: $publicSansName,
+  $weight: 400,
+  $style: 'normal',
+  $fontDir: $publicSansDir,
+);
+
+@include PublicSans.fontFace(
+  $fontName: $publicSansName,
+  $weight: 700,
+  $style: 'italic',
+  $fontDir: $publicSansDir
+);
+
+@include PublicSans.fontFace(
+  $fontName: $publicSansName,
+  $weight: 700,
+  $style: 'normal',
+  $fontDir: $publicSansDir
+);
+
+
+h1, h2, h3, h4 {
+  font-weight: bold;
+  margin-top: .25em;
+  margin-bottom: 1em;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: .85rem;
+}
+
+a {
+  color: $dark-blue;
+}

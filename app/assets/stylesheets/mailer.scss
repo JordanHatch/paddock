@@ -1,0 +1,41 @@
+@import 'colours';
+@import 'elements/buttons';
+
+body {
+  background: $base-color;
+  font-family: sans-serif;
+  line-height: 1.3;
+}
+
+td.wrapper {
+  border-radius: .5rem;
+  background: $white;
+  padding: 1.5rem 1.5rem;
+  box-shadow: darken($base-color, 1%) 0px -3px 3px;
+}
+
+td.action {
+  background: $primary-button-color;
+  border-bottom: .2em solid darken($primary-button-color, 20%);
+
+  a {
+    display: block;
+    color: $white;
+    text-align: center;
+    font-weight: bold;
+    padding: 9px;
+    text-decoration: none;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+

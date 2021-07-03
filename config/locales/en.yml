@@ -1,0 +1,46 @@
+en:
+  simple_form:
+    labels:
+      update:
+        vacant_roles: How many roles in the team are vacant?
+        current_headcount: How many people are currently in the team?
+        issues:
+          description: What's the issue?
+          treatment: How will we solve it?
+          help: What do you need help with?
+          identifier: If this issue has been raised elsewhere (eg. in DevOps), what's the identifier?
+  updates:
+    delivery_status:
+      green:
+        label: Green
+        hint_text: Everything's on track
+      amber:
+        label: Amber
+        hint_text: Off track, but under control
+      red:
+        label: Red
+        hint_text: Action is required
+    okr_status:
+      green:
+        label: Green
+        hint_text: Everything's on track
+      amber:
+        label: Amber
+        hint_text: Things are off track and need attention
+      red:
+        label: Red
+        hint_text: We're not going to hit the results for the quarter
+    team_health:
+      '1':
+        hint_text: Not great
+      '5':
+        hint_text: Great
+    forms:
+      summary: Summary
+      sprint_goals: Sprint goals
+      headcount: Team count
+      team_health: Team health
+      issues: Issues
+      next_sprint: Next sprint
+      delivery_status: Delivery status
+      okr_status: OKR progress

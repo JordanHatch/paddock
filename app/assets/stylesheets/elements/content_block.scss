@@ -1,0 +1,25 @@
+@mixin content-block {
+  p, h1, h2, h3, h4, h5, ul, ol {
+    margin-bottom: .9em;
+    font-size: 1em;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: bold;
+  }
+
+  ul, ol {
+    padding-left: 1em;
+  }
+
+  li {
+    margin-bottom: .15em;
+  }
+
+  ul li {
+    list-style: disc;
+  }
+  ol li {
+    list-style: decimal;
+  }
+}

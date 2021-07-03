@@ -1,0 +1,29 @@
+footer {
+  @include container;
+
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+
+  .signed-in-user {
+    span {
+      font-weight: bold;
+    }
+
+    a {
+      display: inline-block;
+      margin-left: 1rem;
+    }
+  }
+}
+
+.paddock-environment {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: .5rem .8rem;
+  font-weight: bold;
+  color: $white;
+  background: $amethyst;
+  border-radius: .5rem;
+}

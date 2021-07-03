@@ -1,0 +1,36 @@
+@import '../elements/pdf_typefaces';
+
+body.pdf {
+  @include pdfRegularFontStack;
+
+  h1, h2, h3, strong {
+    @include pdfBoldFontStack;
+  }
+
+  em, i {
+    @include pdfItalicFontStack;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}
+
+footer.pdf {
+  background: $silver;
+  padding-top: 1rem;
+
+  .inner {
+    background: $dark-grey;
+    color: $white;
+    padding: 1.25rem 1.5rem;
+    height: 5rem;
+    font-size: .75rem;
+    text-align: right;
+    font-weight: bold;
+
+    .generated {
+      margin-bottom: .25rem;
+    }
+  }
+}

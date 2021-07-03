@@ -1,0 +1,13 @@
+.flash {
+  padding: 1rem;
+  background: $light-grey;
+  margin-bottom: 1.5rem;
+  border-radius: .25rem;
+}
+
+.flash-alert {
+  background: $light-red;
+}
+.flash-notice {
+  background: $light-green;
+}

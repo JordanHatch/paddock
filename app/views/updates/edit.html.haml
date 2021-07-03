@@ -1,0 +1,15 @@
+%section.update-edit
+  = render partial: 'header', locals: { team: service.team }
+
+  .columns
+    = render partial: 'edit_navigation', locals: { flow: flow, sprint: sprint, team: team }
+
+    .main-col
+      = simple_form_for service.form, url: update_path(sprint, team), as: :update, method: :patch do |f|
+        = render partial: "updates/form/#{service.form.template_name}", locals: { f: f }
+
+        = hidden_field_tag 'form', flow.current_form_id
+
+        .actions
+          = f.button :submit, (flow.last_form? ? 'Save and preview' : 'Save and next')
+

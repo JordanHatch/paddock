@@ -1,0 +1,3 @@
+- if ENV['PADDOCK_ENV'].present? && ENV['PADDOCK_ENV'] != 'production'
+  .paddock-environment
+    = ENV['PADDOCK_ENV']

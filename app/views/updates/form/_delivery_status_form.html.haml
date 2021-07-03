@@ -1,0 +1,4 @@
+%h2 How is delivery going overall?
+
+.delivery-status
+  = f.input :delivery_status, collection: StatusPresenter.new(:delivery_status).all, as: :radio_buttons, label: false

@@ -1,0 +1,8 @@
+%section.sign-in
+  %h2 Check your email
+  %p We've sent you a link to sign into Paddock.
+  %p The link is valid for the next 30 minutes.
+  %p
+    Didn't receive an email?
+    %br
+    = link_to 'Request a new link', new_invitation_path(email: params[:email])

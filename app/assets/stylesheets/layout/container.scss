@@ -1,0 +1,13 @@
+@mixin container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 600px) {
+    max-width: 540px;
+  }
+
+  @media (min-width: 1040px) {
+    max-width: 1020px;
+  }
+}
