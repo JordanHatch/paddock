@@ -1,9 +1,12 @@
-FROM ruby:3.0.1-alpine
+FROM ruby:3.0.1
 
-RUN apk add --no-cache --update build-base \
-    linux-headers \
-    git \
-    postgresql-dev \
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
+RUN apt-get update -qq && \
+    apt-get install -y \
+    build-essential \
+    libpq-dev \
     nodejs \
     yarn \
     tzdata
@@ -25,8 +28,6 @@ ADD yarn.lock $APP_HOME/
 RUN gem install foreman && \
     bundle config set without development test && \
     bundle install
-
-RUN yarn install
 
 ADD . $APP_HOME
 
