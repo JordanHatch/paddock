@@ -3,7 +3,8 @@ class Invitation < ApplicationRecord
 
   scope :active, -> { where('expires_at > ?', Time.now) }
 
-  validates :email, format: { with: /\@(awe\.gov\.au)\z/ }
+  validates :email, presence: true
+  validate :email_has_permitted_domain
 
   def redeem
     return false if expires_at <= Time.now
@@ -16,5 +17,19 @@ class Invitation < ApplicationRecord
 
   def set_expires_at
     self.expires_at = 30.minutes.from_now
+  end
+
+  def email_has_permitted_domain
+    return if email.blank?
+
+    domain = email.match(/@([A-Za-z0-9\-\.]+)\Z/) {|matches|
+      matches[1]
+    }
+
+    domain_list = Paddock.permitted_domains.split(';')
+
+    unless domain_list.include?(domain)
+      errors.add(:email, "must be a permitted email")
+    end
   end
 end

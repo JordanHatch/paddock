@@ -1,7 +1,10 @@
 FactoryBot.define do
 
   factory :user do
-    sequence(:email) {|n| "user.#{n}@awe.gov.au" }
+    sequence(:email) {|n|
+      domain = Paddock.permitted_domains
+      "user.#{n}@#{domain}"
+    }
   end
 
 end
