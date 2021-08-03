@@ -9,8 +9,47 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Setup
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost/paddock
+          RAILS_ENV: test
+        run: |
+          bin/rails db:setup
+
+      - name: Run tests
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost/paddock
+          RAILS_ENV: test
+        run: bundle exec rake
+
   build-and-push-image:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       packages: write
