@@ -24,8 +24,7 @@ ADD yarn.lock $APP_HOME/
 
 RUN gem install foreman && \
     bundle config set without development test && \
-    bundle install && \
-    bundle clean --force
+    bundle install
 
 RUN yarn install
 
