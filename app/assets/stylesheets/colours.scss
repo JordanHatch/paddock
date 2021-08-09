@@ -1,15 +1,60 @@
 $font-stack: 'Public Sans', sans-serif;
 
-$silver: #ecf0f1;
-$light-brown: #FCEBE1;
 $white: #fdfdfd;
 $black: #020202;
 
-$amethyst: #9b59b6;
-$blue: #2980b9;
+$silver-50: #EFF3F5;
+$silver-100: #d7e2e5;
+$silver-200: #beced4;
+$silver-300: #a3bac2;
+$silver-400: #8da8b3;
+$silver-500: #7798a4;
+$silver-600: #6a8892;
+$silver-700: #5a727b;
+$silver-800: #4c5f66;
+$silver-900: #3a484e;
 
+$purple-50: #ebedfc;
+$purple-100: #cdd1f4;
+$purple-200: #adb3ea;
+$purple-300: #8d95df;
+$purple-400: #757bd6;
+$purple-500: #5f62cd;
+$purple-600: #585ac2;
+$purple-700: #4f4fb6;
+$purple-800: #4844a9;
+$purple-900: #3c3193;
+
+$blue-50: #ebf5fc;
+$blue-100: #c9e7fe;
+$blue-200: #a4dbff;
+$blue-300: #7eccff;
+$blue-400: #63bfff;
+$blue-500: #4eb4ff;
+$blue-600: #47a5fd;
+$blue-700: #3f92ea;
+$blue-800: #3980d8;
+$blue-900: #2e61b9;
+
+$orange-50: #fdf3e0;
+$orange-100: #fbdfb2;
+$orange-200: #f8cb80;
+$orange-300: #f6b54e;
+$orange-400: #f4a529;
+$orange-500: #f39708;
+$orange-600: #ef8b06;
+$orange-700: #e97c03;
+$orange-800: #e36c02;
+$orange-900: #d95400;
+
+$blue: $blue-800;
+$light-blue: $blue-100;
+$silver: $silver-50;
+
+$amethyst: #9b59b6;
 $dark-blue: #006BA4;
 $dark-grey: #878787;
+$light-brown: #FCEBE1;
 
 $green: #2FA800;
 $amber: #FB7300;
@@ -18,12 +63,10 @@ $red: #FF0516;
 $light-red: #F5CBD1;
 $light-green: #CFF4C4;
 $light-amber: #FFF3E0;
-$light-blue: #B9E6F1;
 $light-grey: #f7f7f7;
 
 $focus-color: transparent;
-
-$base-color: $silver;
+$base-color: $silver-50;
 
 $primary-button-color: $blue;
 $primary-button-text-color: $white;
