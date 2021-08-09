@@ -1,6 +1,6 @@
 FactoryBot.define do
 
-  BASE_START_ON = 4.weeks.ago
+  BASE_START_ON ||= 4.weeks.ago
 
   factory :sprint do
     sequence(:name) {|n| "Sprint #{n}"}
