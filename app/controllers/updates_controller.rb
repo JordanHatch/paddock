@@ -1,4 +1,6 @@
 class UpdatesController < ApplicationController
+  layout 'updates'
+
   before_action :prevent_editing_when_published, only: [:edit, :update, :submit, :do_submit]
 
   def show; end

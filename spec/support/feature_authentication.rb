@@ -19,7 +19,10 @@ RSpec.configure do |config|
     @first_sprint = create(:sprint)
 
     unless example.metadata[:skip_login]
-      @user = create(:user)
+      @user = example.metadata[:admin_user] ?
+        create(:admin_user) :
+        create(:user)
+
       sign_in(@user, js: example.metadata[:js])
     end
   end

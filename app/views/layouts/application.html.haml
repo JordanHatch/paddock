@@ -13,15 +13,13 @@
       %h1
         = link_to 'Paddock', root_path
       - if signed_in?
-        .sprint
-          = render partial: 'layouts/partials/sprint_selector'
-        .user-org
+        = render partial: 'layouts/partials/navigation'
 
     %main.app
       - if flash.any?
         - flash.each do |key, message|
           %div{class: "flash flash-#{key}"}= message
-      = yield
+      = content_for?(:content) ? yield(:content) : yield
 
     %footer
       - if signed_in?

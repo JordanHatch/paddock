@@ -20,4 +20,16 @@ module ApplicationHelper
     end
   end
 
+  def nav_link(label, link, identifier)
+    selected_section = content_for(:selected_section)
+    selected = selected_section.to_s == identifier.to_s
+
+    styles = ["section-#{identifier}"]
+    styles << 'selected' if selected
+
+    content_tag :li, { class: styles.join(' ') } do
+      link_to label, link
+    end
+  end
+
 end

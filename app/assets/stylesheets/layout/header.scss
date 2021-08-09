@@ -3,8 +3,9 @@
 header.app {
   @include container;
 
-  padding: 1rem 0;
+  padding: .9rem 0;
   display: flex;
+  position: relative;
 
   h1 {
     text-align: left;
@@ -28,33 +29,126 @@ header.app {
     flex: 1;
   }
 
-  .sprint-selector {
-    text-align: center;
-    padding-top: .1rem;
-    font-weight: bold;
-    min-width: 22rem;
-    text-align: center;
+  nav {
+    flex: 1;
+
+    ul {
+      position: absolute;
+      bottom: 0;
+      right: 1.5rem;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+      margin-left: .2rem;
+
+      &.selected {
+        &.section-manage a {
+          background: $section--manage;
+        }
+        &.section-updates a {
+          background: $section--updates;
+        }
+      }
+    }
 
     a {
+      display: inline-block;
+      background: rgba(255, 255, 255, 1);
+      border-top-right-radius: .5rem;
+      border-top-left-radius: .5rem;
+      padding: 1rem 1.3rem;
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .selected a {
+      background: $light-blue;
+      color: $white;
+    }
+  }
+}
+
+header.section {
+  background: $light-blue;
+  color: $white;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+  padding: .5rem 1.5rem;
+  margin: 0 0 0;
+  display: flex;
+
+  &.section-updates {
+    background: $section--updates;
+  }
+  &.section-manage {
+    background: $section--manage;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: .9rem 2rem .9rem 0;
+    width: auto;
+  }
+
+  nav {
+    flex: 1;
+    margin-top: .6rem;
+
+    li {
+      display: inline-block;
+      margin-right: .2rem;
+    }
+
+    a {
+      color: $white;
+      display: inline-block;
+      text-decoration: none;
+      font-size: .95rem;
+      padding: .5rem .8rem;
+      border-radius: .25rem;
+
+      &:hover {
+        background: rgba(255,255,255,0.8);
+        color: $black;
+      }
+    }
+  }
+
+  .sprint-selector {
+    text-align: right;
+    font-weight: bold;
+    min-width: 16rem;
+    flex: 1;
+    margin: .7rem 0;
+    line-height: 1rem;
+
+    a {
+      background: $white;
       color: $black;
       text-decoration: none;
       display: inline-block;
-      border: 1px solid darken($silver, 15%);
+      box-shadow: rgba(0,0,0,0.1) 0px 2px 1px;
       border-radius: .25rem;
       padding: .5rem 3rem;
       font-size: 1rem;
-      min-width: 20rem;
+      min-width: 10rem;
+      text-align: center;
+      height: 2.1rem;
 
       &.previous-sprint, &.next-sprint {
         padding: .5rem .6rem;
-        margin-left: .5rem;
-        margin-right: .5rem;
+        margin-left: .35rem;
+        margin-right: .35rem;
         min-width: 0;
       }
 
       &:hover, &:active {
         background: #f9f9f9;
-        box-shadow: darken($silver, 2%) 0px 1px 1px;
       }
     }
 
@@ -65,11 +159,5 @@ header.app {
       color: #666;
       font-size: .8rem;
     }
-  }
-
-  .user-org {
-    text-align: right;
-    padding-top: .35rem;
-    font-size: .85rem;
   }
 }

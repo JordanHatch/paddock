@@ -4,7 +4,6 @@
       = link_to sprint_navigation_link(sprint.previous_sprint), class: 'previous-sprint' do
         ᐊ
     = link_to sprint_path(sprint) do
-      = sprint.name
       .dates
         = sprint.start_on.strftime('%b %e')
         to

@@ -1,4 +1,6 @@
 class SprintsController < ApplicationController
+  layout 'updates'
+
   def index
     most_recent_sprint = Sprint.recent.first || Sprint.first
     redirect_to sprint_path(most_recent_sprint)

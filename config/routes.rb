@@ -22,5 +22,8 @@ Rails.application.routes.draw do
   get '/sprints/:sprint_id/:team_id/edit', to: 'updates#edit', as: :edit_update
   get '/sprints/:sprint_id/:team_id/:form', to: 'updates#edit', as: :edit_update_form
 
+  namespace :manage do
+    root to: 'root#index'
+  end
   root to: redirect('/sprints')
 end

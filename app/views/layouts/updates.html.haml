@@ -1,0 +1,13 @@
+- content_for :selected_section, :updates
+
+- content_for :content do
+  %header.section.section-updates
+    %h1= sprint.name
+    %nav
+      %ul
+        %li= link_to 'Overview', sprint_path(sprint)
+    = render partial: 'layouts/partials/sprint_selector'
+  .inner
+    = yield
+
+= render template: 'layouts/application'

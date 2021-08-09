@@ -19,8 +19,11 @@ main.app {
   min-height: 90vh;
   background: $white;
   margin: 0 auto 2rem;
-  padding: 1.5rem;
   border-radius: .5rem;
+
+  .inner {
+    padding: 1.5rem;
+  }
 
   h1.page-title {
     text-align: center;

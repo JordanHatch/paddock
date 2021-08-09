@@ -1,0 +1,12 @@
+- content_for :selected_section, :manage
+
+- content_for :content do
+  %header.section.section-manage
+    %h1 Manage
+    %nav
+      %ul
+        %li= link_to 'Dashboard', manage_root_path
+  .inner
+    = yield
+
+= render template: 'layouts/application'
