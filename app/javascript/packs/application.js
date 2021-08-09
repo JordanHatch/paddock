@@ -21,3 +21,12 @@ application.register('nested-form', NestedForm)
 
 const context = require.context("../controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
+
+import TomSelect from "tom-select"
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('select').forEach((el) => {
+    console.dir(el)
+    new TomSelect(el)
+  })
+})
