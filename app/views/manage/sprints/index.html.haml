@@ -1,0 +1,20 @@
+.manage--sprints
+  %h1 Sprints
+
+  .sprints-list
+    .current-sprint
+      - if current_sprint.present?
+        .sprint
+          %h2 Current sprint
+          .sprint-details
+            .sprint-name=current_sprint.name
+            .sprint-date
+              = current_sprint.start_on.strftime('%b %e %Y')
+              to
+              = current_sprint.end_on.strftime('%b %e %Y')
+          .sprint-actions
+            = link_to 'Edit', edit_manage_sprint_path(current_sprint), class: 'button'
+
+    %ul.all-sprints
+      - sprints.each do |sprint|
+        = render partial: 'sprint', locals: { sprint: sprint }

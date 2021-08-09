@@ -1,0 +1,9 @@
+%li.sprint
+  .sprint-details
+    .sprint-name=sprint.name
+    .sprint-date
+      = sprint.start_on.strftime('%b %e %Y')
+      to
+      = sprint.end_on.strftime('%b %e %Y')
+  .sprint-actions
+    = link_to 'Edit', edit_manage_sprint_path(sprint), class: 'button'

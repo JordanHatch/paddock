@@ -1,6 +1,10 @@
 en:
   simple_form:
     labels:
+      sprint:
+        name: Sprint name
+        start_on: Starts on
+        end_on: Ends on
       update:
         vacant_roles: How many roles in the team are vacant?
         current_headcount: How many people are currently in the team?

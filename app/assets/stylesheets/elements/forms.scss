@@ -17,7 +17,6 @@ label {
 
   .optional {
     font-weight: normal;
-    // display: inline-;
     padding-left: .5rem;
     color: #888;
     font-size: 1rem;
@@ -99,6 +98,10 @@ input[type=radio]:checked{
   border:20px solid $green;
 }
 
+select {
+  margin-bottom: 1rem;
+}
+
 span.error {
   color: $red;
   font-weight: bold;
@@ -109,4 +112,17 @@ form .actions {
   background: $light-grey;
   padding: 1rem;
   margin-bottom: 2rem;
+
+  .cancel {
+    display: inline-block;
+    padding-left: .75rem;
+  }
+}
+
+.ts-wrapper {
+  margin-bottom: 1rem;
+  &.date {
+    display: inline-block;
+    width: 12rem;
+  }
 }

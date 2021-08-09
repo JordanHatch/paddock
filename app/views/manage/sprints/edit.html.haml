@@ -1,0 +1,13 @@
+.manage--sprints.form
+  %h1 Edit sprint
+
+  = simple_form_for [:manage, sprint] do |f|
+    = f.input :name, required: true
+    = f.input :start_on, required: true
+    = f.input :end_on, required: true
+
+    .actions
+      = f.submit 'Save'
+      .cancel
+        or
+        = link_to 'cancel', manage_sprints_path

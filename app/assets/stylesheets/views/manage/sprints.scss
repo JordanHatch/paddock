@@ -1,0 +1,65 @@
+.manage--sprints {
+  .sprints-list {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .all-sprints {
+    flex: auto;
+  }
+
+  .current-sprint {
+    width: 30%;
+
+    .sprint {
+      background: $silver-100;
+      display: block;
+    }
+
+    .sprint-actions {
+      margin-top: 1rem;
+      text-align: left;
+    }
+  }
+
+  .sprint {
+    list-style: none;
+    background: $silver-50;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin-bottom: .5rem;
+    display: flex;
+  }
+
+  .sprint-details {
+    flex: auto;
+  }
+
+  .sprint-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: .15rem;
+  }
+
+  .sprint-date {
+    font-size: .9rem;
+    color: $dark-grey;
+  }
+
+  .sprint-actions {
+    flex: 1;
+    text-align: right;
+  }
+
+  &.form {
+    display: flex;
+
+    h1 {
+      width: 30%;
+    }
+    form {
+      margin-top: .5rem;
+      flex: 1;
+    }
+  }
+}
