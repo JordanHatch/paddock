@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate!
   before_action :set_paper_trail_whodunnit
 
+  rescue_from ActionController::RoutingError, with: :render_404
+
   private
 
   helper_method :signed_in?, :signed_in_user
@@ -22,5 +24,9 @@ class ApplicationController < ActionController::Base
     unless signed_in?
       redirect_to new_invitation_path
     end
+  end
+
+  def render_404
+    render file: "#{Rails.root}/public/404.html", status: :not_found, layout: false
   end
 end
