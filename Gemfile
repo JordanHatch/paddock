@@ -38,7 +38,7 @@ group :development, :test do
   gem 'mocha'
   gem 'capybara'
   gem 'simplecov', require: false
-  gem 'apparition', github: 'twalpole/apparition'
+  gem 'cuprite'
 end
 
 group :development do

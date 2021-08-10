@@ -1,10 +1,8 @@
-require 'capybara/apparition'
+require "capybara/cuprite"
 
-Capybara.register_driver :apparition do |app|
-  Capybara::Apparition::Driver.new(app, {
-    headless: true,
-  })
+Capybara.javascript_driver = :cuprite
+Capybara.register_driver(:cuprite) do |app|
+  Capybara::Cuprite::Driver.new(app, headless: true)
 end
 
-Capybara.javascript_driver = :apparition
 Capybara.default_max_wait_time = 5
