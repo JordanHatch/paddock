@@ -7,9 +7,12 @@ RSpec.describe 'managing sprints', type: :feature, admin_user: true do
       sprint = create(:sprint)
       visit manage_sprints_path
 
-      sprint_el = page.find('.sprint-name', text: sprint.name).ancestor('.sprint')
-      within sprint_el do
-        click_on 'Edit'
+      within '.all-sprints' do
+        sprint_el = page.find('.sprint-name', text: sprint.name).ancestor('.sprint')
+
+        within sprint_el do
+          click_on 'Edit'
+        end
       end
 
       new_value = 'A new sprint name'
