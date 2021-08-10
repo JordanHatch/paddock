@@ -8,6 +8,7 @@ env:
 
 jobs:
   test:
+    name: Run tests
     runs-on: ubuntu-latest
 
     services:
@@ -54,6 +55,7 @@ jobs:
         run: bundle exec rake
 
   build-and-push-image:
+    name: Build and push image
     runs-on: ubuntu-latest
     needs: test
 
