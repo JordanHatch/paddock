@@ -16,10 +16,7 @@ class PdfExporter
         right: 0,
       },
       footer: {
-        content: renderer.render(
-          template: 'sprints/pdf/_footer',
-          layout: 'pdf',
-        ),
+        content: footer,
         line: false,
         spacing: 0,
       },
@@ -35,6 +32,13 @@ class PdfExporter
         sprint: sprint,
         groups: groups,
       }
+    )
+  end
+
+  def footer
+    renderer.render(
+      template: 'sprints/pdf/_footer',
+      layout: 'pdf',
     )
   end
 
@@ -63,10 +67,6 @@ class PdfExporter
   private
 
   attr_reader :sprint, :debug, :output_file, :doc
-
-  def updates
-    @updates ||= sprint.updates
-  end
 
   def groups
     @groups ||= Group.in_order.with_teams.all
