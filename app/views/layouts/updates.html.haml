@@ -6,7 +6,7 @@
     %nav
       %ul
         %li= link_to 'Overview', sprint_path(sprint)
-    = render partial: 'layouts/partials/sprint_selector'
+    = render partial: 'layouts/partials/sprint_navigation', locals: { sprint: sprint, team: (team if self.respond_to?(:team)) }
   .inner
     = yield
 

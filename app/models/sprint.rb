@@ -1,5 +1,6 @@
 class Sprint < ApplicationRecord
   has_many :updates
+
   has_paper_trail skip: [:created_at, :updated_at]
 
   scope :in_date_order, ->{ order('start_on asc') }
@@ -10,6 +11,10 @@ class Sprint < ApplicationRecord
   scope :next_sprints, ->(sprint) { where('start_on > ?', sprint.start_on).order('start_on ASC') }
 
   validates :name, :start_on, :end_on, presence: true
+
+  def teams
+    Team.for_sprint(self)
+  end
 
   def previous_sprint
     Sprint.previous_sprints(self).first

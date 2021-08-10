@@ -6,16 +6,20 @@ class SprintUpdates::BuildUpdateService < BaseService
   end
 
   def call
-    if update.present? && form.present?
-      prevalidate_form
-      self.state = :success
-    else
+    begin
+      if update.present? && form.present?
+        prevalidate_form
+        self.state = :success
+      else
+        self.state = :failure
+      end
+    rescue ActiveRecord::RecordNotFound
       self.state = :failure
     end
   end
 
   def team
-    @team ||= Team.friendly.find(team_id)
+    @team ||= Team.friendly.for_sprint(sprint).find(team_id)
   end
 
   def sprint

@@ -80,7 +80,7 @@ class UpdatesController < ApplicationController
   end
 
   def team
-    @team ||= Team.friendly.find(params[:team_id])
+    @team ||= sprint.teams.friendly.find(params[:team_id])
   end
 
   def sprint_update

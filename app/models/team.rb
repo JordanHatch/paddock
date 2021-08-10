@@ -13,4 +13,9 @@ class Team < ApplicationRecord
   def update_for_sprint(sprint)
     updates.find {|update| update.sprint_id == sprint.id } || updates.build
   end
+
+  def active_in_sprint?(sprint)
+    self.start_on.blank? ||
+      self.start_on <= sprint.end_on
+  end
 end
