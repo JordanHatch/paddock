@@ -28,6 +28,28 @@ RSpec.describe PdfExporter do
       expect(pdf).to have_content('Sprint report')
       expect(pdf).to have_content(example_stylesheet)
     end
+
+    it 'only displays teams for the current sprint' do
+      current_sprint = create(:sprint, end_on: Date.today)
+      included_teams = create_list(:team, 3, start_on: 2.days.ago)
+      excluded_teams = create_list(:team, 3, start_on: 2.days.from_now)
+
+      exporter = described_class.new(
+        sprint_id: current_sprint.id,
+        debug: true,
+      )
+      pdf = Capybara.string(exporter.body)
+
+      groups = pdf.find('ul.groups')
+
+      included_teams.each do |team|
+        expect(groups).to have_content(team.name)
+      end
+
+      excluded_teams.each do |team|
+        expect(groups).to_not have_content(team.name)
+      end
+    end
   end
 
   describe '#render' do

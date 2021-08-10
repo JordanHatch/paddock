@@ -33,7 +33,7 @@ class SprintsController < ApplicationController
   end
 
   def groups
-    @groups ||= Group.in_order.with_teams.all
+    @groups ||= Group.in_order.with_teams
   end
 
   def delivery_status_summary

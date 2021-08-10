@@ -11,7 +11,7 @@
       %li.group
         %h2= group.name
         %ul.teams
-          - group.teams.each do |team|
+          - group.teams_for_sprint(sprint).each do |team|
             %li
               = link_to update_path(sprint, team) do
                 %h3=team.name

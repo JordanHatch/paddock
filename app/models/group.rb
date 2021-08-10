@@ -4,4 +4,8 @@ class Group < ApplicationRecord
 
   scope :with_teams, ->{ includes(:teams, :updates) }
   scope :in_order, ->{ order('groups.order ASC') }
+
+  def teams_for_sprint(sprint)
+    teams.for_sprint(sprint)
+  end
 end

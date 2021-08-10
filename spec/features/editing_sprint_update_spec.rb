@@ -9,6 +9,24 @@ RSpec.describe 'editing sprint updates', type: :feature do
     click_on 'Save and next'
   end
 
+  it 'displays only the teams for the current sprint' do
+    current_sprint = create(:sprint, end_on: Date.today)
+    included_teams = create_list(:team, 3, start_on: 2.days.ago)
+    excluded_teams = create_list(:team, 3, start_on: 2.days.from_now)
+
+    visit sprint_path(current_sprint)
+
+    within '.groups' do
+      included_teams.each do |team|
+        expect(page).to have_content(team.name)
+      end
+
+      excluded_teams.each do |team|
+        expect(page).to_not have_content(team.name)
+      end
+    end
+  end
+
   it 'can edit a sprint update', js: true do
     visit sprint_path(sprint)
 
