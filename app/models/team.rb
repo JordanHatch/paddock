@@ -7,7 +7,7 @@ class Team < ApplicationRecord
   friendly_id :name, use: :slugged
 
   scope :for_sprint, ->(sprint) {
-    where('start_on <= ?', sprint.end_on)
+    where('start_on IS NULL OR start_on <= ?', sprint.end_on)
   }
 
   def update_for_sprint(sprint)

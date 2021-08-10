@@ -20,5 +20,14 @@ RSpec.describe Team do
 
       expect(Team.for_sprint(sprint)).to contain_exactly(*included_teams)
     end
+
+    it 'returns teams where start_on is empty' do
+      sprint = create(:sprint, end_on: Date.parse('2021-02-01'))
+
+      included_teams = create_list(:team, 3, start_on: nil)
+      excluded_teams = create_list(:team, 3, start_on: Date.parse('2021-02-05'))
+
+      expect(Team.for_sprint(sprint)).to contain_exactly(*included_teams)
+    end
   end
 end
