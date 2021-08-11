@@ -1,15 +1,7 @@
 module ApplicationHelper
 
   def render_markdown(string)
-    Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML.new(
-        escape_html: true,
-        hard_wrap: true,
-      ),
-      autolink: true,
-      tables: true,
-      lax_spacing: true,
-    ).render(string || '')
+    MarkdownParser.render(string)
   end
 
   def sprint_navigation_link(target_sprint)
