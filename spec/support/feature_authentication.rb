@@ -14,10 +14,6 @@ RSpec.configure do |config|
   config.include FeatureAuthentication, type: :feature
 
   config.before(:each, type: :feature) do |example|
-    # At present, when no sprints exist, we can't render
-    # anything
-    @first_sprint = create(:sprint)
-
     unless example.metadata[:skip_login]
       @user = example.metadata[:admin_user] ?
         create(:admin_user) :

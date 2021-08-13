@@ -2,11 +2,12 @@
 
 - content_for :content do
   %header.section.section-updates
-    %h1= sprint.name
-    %nav
-      %ul
-        %li= link_to 'Overview', sprint_path(sprint)
-    = render partial: 'layouts/partials/sprint_navigation', locals: { sprint: sprint, team: (team if self.respond_to?(:team)) }
+    - if sprint.present?
+      %h1= sprint.name
+      %nav
+        %ul
+          %li= link_to 'Overview', sprint_path(sprint)
+      = render partial: 'layouts/partials/sprint_navigation', locals: { sprint: sprint, team: (team if self.respond_to?(:team)) }
   .inner
     = yield
 

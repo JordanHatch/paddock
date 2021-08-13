@@ -1,0 +1,10 @@
+.sprints--index {
+  .no-sprints-message {
+    @include box;
+
+    i {
+      @extend .fas;
+      @extend .fa-wrench;
+    }
+  }
+}

@@ -1,7 +1,5 @@
-%section.sprints
-  %h1 Sprints
-
-  %ul
-    - sprints.each do |sprint|
-      %li
-        = link_to sprint.name, sprint_path(sprint)
+%section.sprints--index
+  .no-sprints-message
+    %i
+    %h2 No sprints have been set up yet
+    %p A user with access to manage Paddock needs to create a sprint first.

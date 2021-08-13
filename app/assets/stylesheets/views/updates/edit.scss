@@ -209,19 +209,11 @@
   }
 
   .invalid-submit-message {
-    padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: .5rem;
-    box-shadow: #eee 0px 2px 2px;
-    text-align: center;
+    @include box;
 
     i {
       @extend .fas;
       @extend .fa-exclamation-circle;
-
-      font-size: 4rem;
-      display: block;
-      padding-bottom: 1.5rem;
     }
   }
 }
