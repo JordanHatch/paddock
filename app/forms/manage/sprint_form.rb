@@ -3,6 +3,20 @@ class Manage::SprintForm < BaseForm
   attribute :start_on, Types::Nominal::Date
   attribute :end_on, Types::Nominal::Date
 
+  preprocess do |form|
+    if form.start_on.blank?
+      last_sprint = Sprint.in_reverse_date_order.first
+
+      if last_sprint.present?
+        form.attributes[:start_on] = last_sprint.end_on + 1.day
+
+        if form.end_on.blank?
+          form.attributes[:end_on] = form.start_on + 13.days
+        end
+      end
+    end
+  end
+
   validation do
     params do
       required(:name).filled(:string)

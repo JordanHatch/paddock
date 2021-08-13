@@ -2,6 +2,72 @@ require 'rails_helper'
 
 RSpec.describe Manage::SprintForm do
 
+  describe 'on initialize' do
+    context 'when the start and end dates are blank' do
+      let(:params) {
+        {
+          name: 'Sprint X',
+          start_on: nil,
+          end_on: nil,
+        }
+      }
+
+      subject { described_class.from_form(params) }
+
+      context 'when the most recent sprint exists' do
+        let!(:sprints) {
+          create_list(:sprint, 3)
+        }
+
+        it 'sets the start date to the day after the last sprint' do
+          expected_date = sprints.last.end_on + 1.day
+          expect(subject.start_on).to eq(expected_date)
+        end
+
+        it 'sets the end date to 13 days after the start date' do
+          expected_date = sprints.last.end_on + 1.day + 13.days
+          expect(subject.end_on).to eq(expected_date)
+        end
+      end
+
+      context 'when no recent sprint exists' do
+        it 'remains nil' do
+          expect(subject.start_on).to eq(nil)
+          expect(subject.end_on).to eq(nil)
+        end
+      end
+
+      context 'when a start_on value is already present' do
+        let(:params) {
+          {
+            name: 'Sprint X',
+            start_on: Date.today,
+            end_on: nil,
+          }
+        }
+
+        it 'retains the existing value' do
+          expect(subject.start_on).to eq(params[:start_on])
+          expect(subject.end_on).to eq(nil)
+        end
+      end
+
+      context 'when an end_on value is already present' do
+        let(:params) {
+          {
+            name: 'Sprint X',
+            start_on: nil,
+            end_on: Date.today,
+          }
+        }
+
+        it 'retains the existing value' do
+          expect(subject.end_on).to eq(params[:end_on])
+        end
+      end
+    end
+  end
+
   describe '#valid?' do
     let(:valid_params) {
       {
