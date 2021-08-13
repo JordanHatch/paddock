@@ -5,7 +5,7 @@ module BaseForm::Validation
     attr_reader :schema_block
 
     def validation(&block)
-      @schema_block = Dry::Schema.Params(&block)
+      @schema_block = Class.new(Dry::Validation::Contract, &block)
     end
   end
 
@@ -17,10 +17,10 @@ module BaseForm::Validation
     self.class.trigger_hook(:before_validate, self, atts)
     skip_validation_for_removed_nested_rows(self, atts)
 
-    schema = self.class.schema_block.call(atts)
-    @errors = schema.errors.to_hash
+    contract = self.class.schema_block.new
+    @errors = contract.call(atts).errors.to_hash
 
-    schema.errors.empty?
+    @errors.empty?
   end
 
   def valid?

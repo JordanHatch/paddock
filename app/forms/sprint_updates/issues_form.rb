@@ -32,9 +32,11 @@ class SprintUpdates::IssuesForm < BaseForm
   end
 
   validation do
-    optional(:issues_attributes).value(:array, size?: 0..5).each do
-      schema do
-        required(:description).filled(:string)
+    params do
+      optional(:issues_attributes).value(:array, size?: 0..5).each do
+        schema do
+          required(:description).filled(:string)
+        end
       end
     end
   end

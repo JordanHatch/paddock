@@ -3,7 +3,9 @@ class SprintUpdates::HeadcountForm < BaseForm
   attribute :vacant_roles, Types::Nominal::Integer
 
   validation do
-    required(:current_headcount).filled(:integer)
-    required(:vacant_roles).filled(:integer)
+    params do
+      required(:current_headcount).filled(:integer)
+      required(:vacant_roles).filled(:integer)
+    end
   end
 end
