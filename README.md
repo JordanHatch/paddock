@@ -5,8 +5,11 @@ A prototype app for sprint reporting.
 ## Quick start
 
 ```
-bin/rake db:setup
 bundle install
+yarn
+
+bin/rake db:setup
+
 foreman start
 ```
 
