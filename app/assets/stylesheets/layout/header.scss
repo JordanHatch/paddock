@@ -118,46 +118,4 @@ header.section {
       }
     }
   }
-
-  .sprint-selector {
-    text-align: right;
-    font-weight: bold;
-    min-width: 16rem;
-    flex: 1;
-    margin: .7rem 0;
-    line-height: 1rem;
-
-    a {
-      background: $white;
-      color: $black;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: rgba(0,0,0,0.1) 0px 2px 1px;
-      border-radius: .25rem;
-      padding: .5rem 3rem;
-      font-size: 1rem;
-      min-width: 10rem;
-      text-align: center;
-      height: 2.1rem;
-
-      &.previous-sprint, &.next-sprint {
-        padding: .5rem .6rem;
-        margin-left: .35rem;
-        margin-right: .35rem;
-        min-width: 0;
-      }
-
-      &:hover, &:active {
-        background: #f9f9f9;
-      }
-    }
-
-    .dates {
-      display: inline-block;
-      font-weight: normal;
-      padding-left: .5rem;
-      color: #666;
-      font-size: .8rem;
-    }
-  }
 }

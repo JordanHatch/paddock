@@ -1,14 +1,21 @@
 - presenter = SprintNavigationPresenter.new(self, **local_assigns.slice(:sprint, :team))
 
-.sprint-selector
+.updates--sprint-selector
+  .sprint-dates
+    = presenter.sprint_start_on
+    to
+    = presenter.sprint_end_on
   - if presenter.link_to_previous_sprint?
-    = link_to presenter.previous_sprint_link, class: 'previous-sprint' do
-      ᐊ
-  = link_to sprint_path(sprint) do
-    .dates
-      = presenter.sprint_start_on
-      to
-      = presenter.sprint_end_on
+    = link_to presenter.previous_sprint_link, class: 'previous-sprint', title: 'Previous sprint' do
+      %i
+      %span Previous sprint
+  - else
+    .disabled-sprint-button.previous-sprint
+      %i
   - if presenter.link_to_next_sprint?
-    = link_to presenter.next_sprint_link, class: 'next-sprint' do
-      ᐅ
+    = link_to presenter.next_sprint_link, class: 'next-sprint', title: 'Next sprint' do
+      %i
+      %span Next sprint
+  - else
+    .disabled-sprint-button.next-sprint
+      %i

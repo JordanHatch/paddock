@@ -12,5 +12,65 @@
       }
     }
   }
+}
 
+.updates--sprint-selector {
+  text-align: right;
+  font-weight: bold;
+  min-width: 16rem;
+  flex: 1;
+  margin: .7rem 0;
+  line-height: 1rem;
+  display: flex;
+
+  .sprint-dates {
+    flex: auto;
+    font-weight: normal;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  a, .disabled-sprint-button {
+    display: block;
+    flex: 0 1 2rem;
+    height: 2.1rem;
+    margin-left: .3rem;
+    margin-right: .3rem;
+    background: $white;
+    color: $black;
+    box-shadow: rgba(0,0,0,0.1) 0px 2px 1px;
+    border-radius: .25rem;
+    padding: .5rem .6rem;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+
+    &a {
+      &:hover, &:active {
+        background: #f9f9f9;
+      }
+    }
+
+    &.disabled-sprint-button {
+      background: rgba(255,255,255,0.4);
+    }
+
+    span {
+      position: absolute;
+      left: -9999px;
+    }
+
+    i {
+      @extend .fas;
+    }
+
+    &.previous-sprint i {
+      @extend .fa-chevron-left;
+    }
+
+    &.next-sprint i {
+      @extend .fa-chevron-right;
+    }
+  }
 }
