@@ -1,5 +1,8 @@
 .manage--sprints
-  %h1 Sprints
+  %header.with-actions
+    %h1 Sprints
+    .actions
+      = link_to 'Add a new sprint', new_manage_sprint_path
 
   .sprints-list
     .current-sprint
@@ -13,7 +16,7 @@
               to
               = current_sprint.end_on.strftime('%b %e %Y')
           .sprint-actions
-            = link_to 'Edit', edit_manage_sprint_path(current_sprint), class: 'button'
+            = link_to 'Edit', edit_manage_sprint_path(current_sprint)
 
     %ul.all-sprints
       - sprints.each do |sprint|

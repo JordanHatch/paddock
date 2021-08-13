@@ -1,0 +1,10 @@
+= simple_form_for [:manage, form] do |f|
+  = f.input :name, required: true
+  = f.input :start_on, as: :date, required: true
+  = f.input :end_on, as: :date, required: true
+
+  .actions
+    = f.submit 'Save'
+    .cancel
+      or
+      = link_to 'cancel', manage_sprints_path

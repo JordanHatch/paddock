@@ -1,4 +1,20 @@
 .manage--sprints {
+  header.with-actions {
+    display: flex;
+
+    h1 {
+      flex: 1;
+    }
+
+    .actions {
+      text-align: right;
+
+      a {
+        @include button-primary;
+      }
+    }
+  }
+
   .sprints-list {
     display: flex;
     gap: 1rem;
@@ -49,6 +65,10 @@
   .sprint-actions {
     flex: 1;
     text-align: right;
+
+    a {
+      @include button-inverted;
+    }
   }
 
   &.form {

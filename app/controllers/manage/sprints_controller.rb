@@ -1,21 +1,37 @@
 class Manage::SprintsController < Manage::BaseController
 
   def index; end
+  def new; end
   def edit; end
 
-  def update
-    sprint.assign_attributes(sprint_params)
+  def create
+    if form.valid?
+      sprint.assign_attributes(form.to_model_hash)
 
-    if sprint.save
-      flash.notice = 'Sprint updated'
-      redirect_to manage_sprints_path
-    else
-      render action: :edit
+      if sprint.save
+        flash.notice = 'Sprint created'
+        return redirect_to manage_sprints_path
+      end
     end
+
+    render action: :new
+  end
+
+  def update
+    if form.valid?
+      sprint.assign_attributes(form.to_model_hash)
+
+      if sprint.save
+        flash.notice = 'Sprint updated'
+        return redirect_to manage_sprints_path
+      end
+    end
+
+    render action: :edit
   end
 
   private
-  helper_method :sprints, :sprint, :current_sprint
+  helper_method :sprints, :sprint, :form, :current_sprint
 
   def sprints
     @sprint ||= Sprint.in_reverse_date_order
@@ -25,6 +41,12 @@ class Manage::SprintsController < Manage::BaseController
     @sprint ||= params.key?(:id) ?
       Sprint.find(params[:id]) :
       Sprint.new
+  end
+
+  def form
+    @form ||= params.key?(:sprint) ?
+      Manage::SprintForm.from_form(params[:sprint], model: sprint) :
+      Manage::SprintForm.from_model(sprint)
   end
 
   def current_sprint

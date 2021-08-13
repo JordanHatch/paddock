@@ -24,4 +24,27 @@ RSpec.describe 'managing sprints', type: :feature, admin_user: true do
     end
   end
 
+  it 'can add a new sprint' do
+    sprint = build(:sprint)
+    visit manage_sprints_path
+
+    click_on 'Add a new sprint'
+
+    fill_in 'Sprint name', with: sprint.name
+
+    select sprint.start_on.year, from: 'sprint[start_on(1i)]'
+    select sprint.start_on.strftime('%B'), from: 'sprint[start_on(2i)]'
+    select sprint.start_on.day, from: 'sprint[start_on(3i)]'
+
+    select sprint.end_on.year, from: 'sprint[end_on(1i)]'
+    select sprint.end_on.strftime('%B'), from: 'sprint[end_on(2i)]'
+    select sprint.end_on.day, from: 'sprint[end_on(3i)]'
+
+    click_on 'Save'
+
+    within '.all-sprints' do
+      expect(page).to have_content(sprint.name)
+    end
+  end
+
 end
