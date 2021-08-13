@@ -1,4 +1,7 @@
 @mixin button($base-button-color, $base-button-text-colour) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
   background: $base-button-color;
   display: inline-block;
   padding: .6em .9em;
