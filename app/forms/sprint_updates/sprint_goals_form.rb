@@ -7,7 +7,7 @@ class SprintUpdates::SprintGoalsForm < BaseForm
     end
   end
 
-  before_validate do |form|
-    form[:sprint_goals].reject!(&:blank?)
+  before_validate do |form, atts|
+    atts[:sprint_goals].reject!(&:blank?)
   end
 end

@@ -39,7 +39,7 @@ RSpec.describe BaseForm do
     )
   end
 
-  subject { ExampleForm }
+  let(:form_class) { ExampleForm }
 
   describe '#from_form' do
     context 'with parameters' do
@@ -48,7 +48,7 @@ RSpec.describe BaseForm do
       }
 
       it 'parses the parameters into a form object' do
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
         expect(form.name).to eq('Example')
       end
     end
@@ -59,13 +59,13 @@ RSpec.describe BaseForm do
       }
 
       it 'parses the parameters into a form object' do
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
         expect(form.name).to eq('Example')
       end
     end
 
     context 'with nested parameters' do
-      subject { ExampleNestedForm }
+      let(:form_class) { ExampleNestedForm }
 
       let(:params) {
         {
@@ -81,7 +81,7 @@ RSpec.describe BaseForm do
       }
 
       it 'parses the nested parameters into an array' do
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
 
         expect(form.items_attributes).to contain_exactly(
           ExampleNestedForm::Item.new({ name: 'Item 1' }),
@@ -95,14 +95,15 @@ RSpec.describe BaseForm do
     context 'with a model' do
       let(:model) { build_mock_model(name: 'Example') }
 
+      subject { form_class.from_model(model)  }
+
       it 'parses the model attributes into a form object' do
-        form = subject.from_model(model)
-        expect(form.name).to eq('Example')
+        expect(subject.name).to eq('Example')
       end
     end
 
     context 'with a model with nested children' do
-      subject { ExampleNestedForm }
+      let(:form_class) { ExampleNestedForm }
 
       let(:model) {
         build_mock_model(
@@ -114,7 +115,7 @@ RSpec.describe BaseForm do
       }
 
       it 'parses the children into nested form objects' do
-        form = subject.from_model(model)
+        form = form_class.from_model(model)
 
         expect(form.items_attributes).to contain_exactly(
           ExampleNestedForm::Item.new({ name: 'Item 1' }),
@@ -129,7 +130,7 @@ RSpec.describe BaseForm do
       let(:params) { { name: 'Example' } }
 
       it 'returns true' do
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
 
         expect(form.validate).to be_truthy
         expect(form).to be_valid
@@ -140,14 +141,14 @@ RSpec.describe BaseForm do
       let(:params) { { name: '' } }
 
       it 'returns false' do
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
 
         expect(form.validate).to be_falsey
         expect(form).to_not be_valid
       end
 
       it 'assigns errors' do
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
         form.validate
 
         expect(form.errors).to contain_exactly(
@@ -157,7 +158,7 @@ RSpec.describe BaseForm do
     end
 
     context 'with nested attributes' do
-      subject { ExampleNestedForm }
+      let(:form_class) { ExampleNestedForm }
 
       it 'is true when valid' do
         params = {
@@ -167,7 +168,7 @@ RSpec.describe BaseForm do
             },
           }
         }
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
 
         expect(form.validate).to be_truthy
         expect(form).to be_valid
@@ -181,7 +182,7 @@ RSpec.describe BaseForm do
             },
           }
         }
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
 
         expect(form.validate).to be_falsey
         expect(form).to_not be_valid
@@ -204,7 +205,7 @@ RSpec.describe BaseForm do
             },
           }
         }
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
 
         expect(form.validate).to be_truthy
         expect(form).to be_valid
@@ -215,7 +216,7 @@ RSpec.describe BaseForm do
   describe '#to_model_hash' do
     it 'returns an indifferent hash of all attributes' do
       params = { 'name' => 'Example' }
-      form = subject.from_form(params)
+      form = form_class.from_form(params)
       hash = form.to_model_hash
 
       expect(hash['name']).to eq(params['name'])
@@ -223,7 +224,7 @@ RSpec.describe BaseForm do
     end
 
     context 'with nested fields' do
-      subject { ExampleNestedForm }
+      let(:form_class) { ExampleNestedForm }
 
       let(:params) {
         {
@@ -241,7 +242,7 @@ RSpec.describe BaseForm do
       }
 
       it 'returns a hash of all nested fields' do
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
         hash = form.to_model_hash
 
         expect(hash).to eq(params)
@@ -256,7 +257,7 @@ RSpec.describe BaseForm do
       }
 
       it 'is false' do
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
 
         expect(form).to_not be_started
       end
@@ -271,7 +272,7 @@ RSpec.describe BaseForm do
       }
 
       it 'is true' do
-        form = subject.from_form(params)
+        form = form_class.from_form(params)
 
         expect(form).to be_started
       end
@@ -288,7 +289,7 @@ RSpec.describe BaseForm do
         }
 
         it 'is false' do
-          form = subject.from_form(params)
+          form = form_class.from_form(params)
 
           expect(form).to_not be_started
         end
@@ -304,7 +305,7 @@ RSpec.describe BaseForm do
         }
 
         it 'is true' do
-          form = subject.from_form(params)
+          form = form_class.from_form(params)
 
           expect(form).to be_started
         end

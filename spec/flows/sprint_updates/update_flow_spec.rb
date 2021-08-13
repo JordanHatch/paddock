@@ -87,8 +87,8 @@ RSpec.describe SprintUpdates::UpdateFlow do
     context 'when all forms are valid' do
       before(:each) do
         forms.values.each do |form_class|
-          mock_form = stub(status: { validation: :valid })
-          form_class.expects(:new).returns(mock_form)
+          mock_form = stub(status: { validation: :valid },)
+          form_class.expects(:from_model).returns(mock_form)
         end
       end
 
@@ -105,11 +105,11 @@ RSpec.describe SprintUpdates::UpdateFlow do
     context 'when one form is invalid' do
       before(:each) do
         invalid_form = stub(status: { validation: :invalid })
-        forms.values[0].expects(:new).returns(invalid_form)
+        forms.values[0].expects(:from_model).returns(invalid_form)
 
         forms.values[1..-1].each do |form_class|
           mock_form = stub(status: { validation: :valid })
-          form_class.expects(:new).returns(mock_form)
+          form_class.expects(:from_model).returns(mock_form)
         end
       end
 
@@ -126,11 +126,11 @@ RSpec.describe SprintUpdates::UpdateFlow do
     context 'when one form is not_started' do
       before(:each) do
         not_started_form = stub(status: { validation: :not_started })
-        forms.values[0].expects(:new).returns(not_started_form)
+        forms.values[0].expects(:from_model).returns(not_started_form)
 
         forms.values[1..-1].each do |form_class|
           mock_form = stub(status: { validation: :valid })
-          form_class.expects(:new).returns(mock_form)
+          form_class.expects(:from_model).returns(mock_form)
         end
       end
 
@@ -150,7 +150,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
       form_id = forms.keys.first
 
       mock_form = stub(status: { completion: :valid })
-      forms[form_id].expects(:new).returns(mock_form)
+      forms[form_id].expects(:from_model).returns(mock_form)
 
       flow = described_class.new(
         current_form_id: forms.keys.first,
