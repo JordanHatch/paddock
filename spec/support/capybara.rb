@@ -1,4 +1,4 @@
-require "capybara/cuprite"
+require 'capybara/cuprite'
 
 Capybara.javascript_driver = :cuprite
 Capybara.register_driver(:cuprite) do |app|

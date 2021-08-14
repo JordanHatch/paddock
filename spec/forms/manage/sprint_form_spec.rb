@@ -1,23 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Manage::SprintForm do
-
   describe 'on initialize' do
     context 'when the start and end dates are blank' do
-      let(:params) {
+      let(:params) do
         {
           name: 'Sprint X',
           start_on: nil,
-          end_on: nil,
+          end_on: nil
         }
-      }
+      end
 
       subject { described_class.from_form(params) }
 
       context 'when the most recent sprint exists' do
-        let!(:sprints) {
+        let!(:sprints) do
           create_list(:sprint, 3)
-        }
+        end
 
         it 'sets the start date to the day after the last sprint' do
           expected_date = sprints.last.end_on + 1.day
@@ -38,13 +37,13 @@ RSpec.describe Manage::SprintForm do
       end
 
       context 'when a start_on value is already present' do
-        let(:params) {
+        let(:params) do
           {
             name: 'Sprint X',
             start_on: Date.today,
-            end_on: nil,
+            end_on: nil
           }
-        }
+        end
 
         it 'retains the existing value' do
           expect(subject.start_on).to eq(params[:start_on])
@@ -53,13 +52,13 @@ RSpec.describe Manage::SprintForm do
       end
 
       context 'when an end_on value is already present' do
-        let(:params) {
+        let(:params) do
           {
             name: 'Sprint X',
             start_on: nil,
-            end_on: Date.today,
+            end_on: Date.today
           }
-        }
+        end
 
         it 'retains the existing value' do
           expect(subject.end_on).to eq(params[:end_on])
@@ -69,17 +68,17 @@ RSpec.describe Manage::SprintForm do
   end
 
   describe '#valid?' do
-    let(:valid_params) {
+    let(:valid_params) do
       {
         name: 'Example',
         start_on: Date.today,
-        end_on: Date.today + 2.weeks,
+        end_on: Date.today + 2.weeks
       }
-    }
+    end
 
-    subject {
+    subject do
       described_class.from_form(params)
-    }
+    end
 
     context 'when given valid data' do
       let(:params) { valid_params }
@@ -91,9 +90,9 @@ RSpec.describe Manage::SprintForm do
 
     context 'when given invalid data' do
       context 'with a blank name' do
-        let(:params) {
+        let(:params) do
           valid_params.merge(name: nil)
-        }
+        end
 
         it 'is not valid' do
           expect(subject).to_not be_valid
@@ -102,9 +101,9 @@ RSpec.describe Manage::SprintForm do
       end
 
       context 'with a blank start_on date' do
-        let(:params) {
+        let(:params) do
           valid_params.merge(start_on: nil)
-        }
+        end
 
         it 'is not valid' do
           expect(subject).to_not be_valid
@@ -113,9 +112,9 @@ RSpec.describe Manage::SprintForm do
       end
 
       context 'with a blank end_on date' do
-        let(:params) {
+        let(:params) do
           valid_params.merge(end_on: nil)
-        }
+        end
 
         it 'is not valid' do
           expect(subject).to_not be_valid
@@ -124,9 +123,9 @@ RSpec.describe Manage::SprintForm do
       end
 
       context 'with an invalid start_on date' do
-        let(:params) {
+        let(:params) do
           valid_params.merge(start_on: 'not a date')
-        }
+        end
 
         it 'is not valid' do
           expect(subject).to_not be_valid
@@ -135,9 +134,9 @@ RSpec.describe Manage::SprintForm do
       end
 
       context 'with an invalid end_on date' do
-        let(:params) {
+        let(:params) do
           valid_params.merge(end_on: 'not a date')
-        }
+        end
 
         it 'is not valid' do
           expect(subject).to_not be_valid
@@ -146,9 +145,9 @@ RSpec.describe Manage::SprintForm do
       end
 
       context 'when end_on is before start_on' do
-        let(:params) {
+        let(:params) do
           valid_params.merge(start_on: Date.today + 2.weeks, end_on: Date.today)
-        }
+        end
 
         it 'is not valid' do
           expect(subject).to_not be_valid
@@ -157,5 +156,4 @@ RSpec.describe Manage::SprintForm do
       end
     end
   end
-
 end

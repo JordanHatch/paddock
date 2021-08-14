@@ -9,9 +9,11 @@ RSpec.configure do |config|
 
   config.before(:each, type: :controller) do |example|
     unless example.metadata[:skip_login]
-      @user = example.metadata[:admin_user] ?
-        create(:admin_user) :
-        create(:user)
+      @user = if example.metadata[:admin_user]
+                create(:admin_user)
+              else
+                create(:user)
+              end
 
       sign_in(@user)
     end

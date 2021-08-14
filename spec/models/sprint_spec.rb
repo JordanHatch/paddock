@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Sprint do
-
   describe '.teams' do
     it 'returns the teams with a start_on value before the current sprint end date' do
       sprint = create(:sprint, end_on: Date.parse('2021-02-01'))
@@ -12,5 +11,4 @@ RSpec.describe Sprint do
       expect(sprint.teams).to contain_exactly(*included_teams)
     end
   end
-
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe BaseForm do
-
   class ExampleForm < BaseForm
     attribute? :name, Types::Nominal::String
     attribute? :lastname, Types::Nominal::String
@@ -38,8 +37,8 @@ RSpec.describe BaseForm do
   def build_mock_model(attributes)
     OpenStruct.new(
       attributes.merge({
-        attributes: attributes
-      })
+                         attributes: attributes
+                       })
     )
   end
 
@@ -47,9 +46,9 @@ RSpec.describe BaseForm do
 
   describe '#from_form' do
     context 'with parameters' do
-      let(:params) {
+      let(:params) do
         { name: 'Example' }
-      }
+      end
 
       it 'parses the parameters into a form object' do
         form = form_class.from_form(params)
@@ -58,9 +57,9 @@ RSpec.describe BaseForm do
     end
 
     context 'with strong parameters' do
-      let(:params) {
+      let(:params) do
         ActionController::Parameters.new({ name: 'Example' })
-      }
+      end
 
       it 'parses the parameters into a form object' do
         form = form_class.from_form(params)
@@ -71,25 +70,25 @@ RSpec.describe BaseForm do
     context 'with nested parameters' do
       let(:form_class) { ExampleNestedForm }
 
-      let(:params) {
+      let(:params) do
         {
           'items_attributes' => {
             '1' => {
-              'name' => 'Item 1',
+              'name' => 'Item 1'
             },
             '2' => {
-              'name' => 'Item 2',
+              'name' => 'Item 2'
             }
           }
         }
-      }
+      end
 
       it 'parses the nested parameters into an array' do
         form = form_class.from_form(params)
 
         expect(form.items_attributes).to contain_exactly(
           ExampleNestedForm::Item.new({ name: 'Item 1' }),
-          ExampleNestedForm::Item.new({ name: 'Item 2' }),
+          ExampleNestedForm::Item.new({ name: 'Item 2' })
         )
       end
     end
@@ -99,7 +98,7 @@ RSpec.describe BaseForm do
     context 'with a model' do
       let(:model) { build_mock_model(name: 'Example') }
 
-      subject { form_class.from_model(model)  }
+      subject { form_class.from_model(model) }
 
       it 'parses the model attributes into a form object' do
         expect(subject.name).to eq('Example')
@@ -109,21 +108,21 @@ RSpec.describe BaseForm do
     context 'with a model with nested children' do
       let(:form_class) { ExampleNestedForm }
 
-      let(:model) {
+      let(:model) do
         build_mock_model(
           items: [
             build_mock_model(name: 'Item 1'),
-            build_mock_model(name: 'Item 2'),
-          ],
+            build_mock_model(name: 'Item 2')
+          ]
         )
-      }
+      end
 
       it 'parses the children into nested form objects' do
         form = form_class.from_model(model)
 
         expect(form.items_attributes).to contain_exactly(
           ExampleNestedForm::Item.new({ name: 'Item 1' }),
-          ExampleNestedForm::Item.new({ name: 'Item 2' }),
+          ExampleNestedForm::Item.new({ name: 'Item 2' })
         )
       end
     end
@@ -156,7 +155,7 @@ RSpec.describe BaseForm do
         form.validate
 
         expect(form.errors).to contain_exactly(
-          [ :name, ['must be filled'] ]
+          [:name, ['must be filled']]
         )
       end
     end
@@ -168,8 +167,8 @@ RSpec.describe BaseForm do
         params = {
           'items_attributes' => {
             '0' => {
-              'name' => 'Example',
-            },
+              'name' => 'Example'
+            }
           }
         }
         form = form_class.from_form(params)
@@ -182,8 +181,8 @@ RSpec.describe BaseForm do
         params = {
           'items_attributes' => {
             '0' => {
-              'name' => '',
-            },
+              'name' => ''
+            }
           }
         }
         form = form_class.from_form(params)
@@ -192,12 +191,12 @@ RSpec.describe BaseForm do
         expect(form).to_not be_valid
 
         expect(form.errors).to eq({
-          items_attributes: {
-            0 => {
-              name: ['must be filled'],
-            }
-          }
-        })
+                                    items_attributes: {
+                                      0 => {
+                                        name: ['must be filled']
+                                      }
+                                    }
+                                  })
       end
 
       it 'ignores objects with the "_destroy" key set' do
@@ -205,8 +204,8 @@ RSpec.describe BaseForm do
           'items_attributes' => {
             '1' => {
               'name' => '',
-              '_destroy' => 1,
-            },
+              '_destroy' => 1
+            }
           }
         }
         form = form_class.from_form(params)
@@ -230,20 +229,20 @@ RSpec.describe BaseForm do
     context 'with nested fields' do
       let(:form_class) { ExampleNestedForm }
 
-      let(:params) {
+      let(:params) do
         {
           'items_attributes' => {
             0 => {
               '_destroy' => nil,
-              'name' => 'Item 1',
+              'name' => 'Item 1'
             },
             1 => {
               '_destroy' => nil,
-              'name' => 'Item 2',
-            },
+              'name' => 'Item 2'
+            }
           }
         }
-      }
+      end
 
       it 'returns a hash of all nested fields' do
         form = form_class.from_form(params)
@@ -256,9 +255,9 @@ RSpec.describe BaseForm do
 
   describe '#started?' do
     context 'when all fields are empty' do
-      let(:params) {
+      let(:params) do
         { name: '' }
-      }
+      end
 
       it 'is false' do
         form = form_class.from_form(params)
@@ -268,12 +267,12 @@ RSpec.describe BaseForm do
     end
 
     context 'when a field is present' do
-      let(:params) {
+      let(:params) do
         {
           name: '',
-          lastname: 'Example',
+          lastname: 'Example'
         }
-      }
+      end
 
       it 'is true' do
         form = form_class.from_form(params)
@@ -284,13 +283,13 @@ RSpec.describe BaseForm do
 
     context 'with array fields' do
       context 'when an array is empty' do
-        let(:params) {
+        let(:params) do
           {
             name: '',
             lastname: '',
-            array: [],
+            array: []
           }
-        }
+        end
 
         it 'is false' do
           form = form_class.from_form(params)
@@ -300,13 +299,13 @@ RSpec.describe BaseForm do
       end
 
       context 'when an array has at least one value' do
-        let(:params) {
+        let(:params) do
           {
             name: '',
             lastname: '',
-            array: ['item'],
+            array: ['item']
           }
-        }
+        end
 
         it 'is true' do
           form = form_class.from_form(params)
@@ -332,5 +331,4 @@ RSpec.describe BaseForm do
       expect(ExampleNestedForm::Item.new.template_name).to eq('item')
     end
   end
-
 end

@@ -1,5 +1,6 @@
 class StatusPresenter
   attr_reader :key
+
   include ActionView::Helpers::TagHelper
 
   def initialize(key)
@@ -7,9 +8,9 @@ class StatusPresenter
   end
 
   def all
-    values.map {|v|
+    values.map do |v|
       [format_label(v), v]
-    }
+    end
   end
 
   def format_label(label)
@@ -25,5 +26,4 @@ class StatusPresenter
   def values
     Update.send(key).values
   end
-
 end

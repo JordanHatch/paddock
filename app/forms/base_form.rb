@@ -17,18 +17,20 @@ class BaseForm < Dry::Struct
 
       deserialize_nested_attributes_from_model(self, attributes, model)
 
-      self.new(attributes).set_model(model)
+      new(attributes).set_model(model)
     end
 
     def from_form(params, model: nil)
-      attributes = params.is_a?(ActionController::Parameters) ?
-        params.dup.permit!.to_hash :
-        params.with_indifferent_access
+      attributes = if params.is_a?(ActionController::Parameters)
+                     params.dup.permit!.to_hash
+                   else
+                     params.with_indifferent_access
+                   end
 
       deserialize_nested_attributes_from_form(self, attributes)
       deserialize_date_fields_from_form(self, attributes)
 
-      self.new(attributes).set_model(model)
+      new(attributes).set_model(model)
     end
   end
 
@@ -49,7 +51,7 @@ class BaseForm < Dry::Struct
   end
 
   def set_model(model)
-    self.tap {|f| f.send("model=", model) }
+    tap { |f| f.send('model=', model) }
   end
 
   def to_model
@@ -57,10 +59,10 @@ class BaseForm < Dry::Struct
   end
 
   def to_model_hash
-    self.attributes.with_indifferent_access.tap {|atts|
+    attributes.with_indifferent_access.tap do |atts|
       self.class.trigger_hook(:before_validate, self, atts)
       serialize_nested_attributes_to_model_hash(self, atts)
-    }
+    end
   end
 
   def form_id

@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'signing in', type: :feature do
-
-  before(:each) {
+  before(:each) do
     create(:sprint)
-  }
+  end
 
   describe 'when a user is signed out' do
     it 'can sign in and out', :skip_login do

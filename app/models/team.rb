@@ -6,16 +6,16 @@ class Team < ApplicationRecord
 
   friendly_id :name, use: :slugged
 
-  scope :for_sprint, ->(sprint) {
+  scope :for_sprint, lambda { |sprint|
     where('start_on IS NULL OR start_on <= ?', sprint.end_on)
   }
 
   def update_for_sprint(sprint)
-    updates.find {|update| update.sprint_id == sprint.id } || updates.build
+    updates.find { |update| update.sprint_id == sprint.id } || updates.build
   end
 
   def active_in_sprint?(sprint)
-    self.start_on.blank? ||
-      self.start_on <= sprint.end_on
+    start_on.blank? ||
+      start_on <= sprint.end_on
   end
 end

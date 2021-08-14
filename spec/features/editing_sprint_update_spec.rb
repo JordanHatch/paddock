@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'editing sprint updates', type: :feature do
-
   let!(:sprint) { create(:sprint) }
   let!(:team) { create(:team) }
 
@@ -79,7 +78,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
     # Issues
     within '.issues ol li:nth-of-type(1)' do
       fill_in "What's the issue?", with: 'Example description'
-      fill_in "How will we solve it?", with: 'Example treatment'
+      fill_in 'How will we solve it?', with: 'Example treatment'
       fill_in 'What do you need help with?', with: 'Help required'
       fill_in 'If this issue has been raised elsewhere', with: '12345'
     end
@@ -88,7 +87,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
 
     within '.issues ol li:nth-of-type(2)' do
       fill_in "What's the issue?", with: 'A second issue'
-      fill_in "How will we solve it?", with: 'Another treatment'
+      fill_in 'How will we solve it?', with: 'Another treatment'
       fill_in 'What do you need help with?', with: 'More help required'
       fill_in 'If this issue has been raised elsewhere', with: '67890'
     end

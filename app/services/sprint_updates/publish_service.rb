@@ -14,24 +14,20 @@ class SprintUpdates::PublishService < BaseService
   end
 
   def build
-    begin
-      check_update_can_be_published
+    check_update_can_be_published
 
-      set_state(:success)
-    rescue Failure
-      set_state(:failure)
-    end
+    set_state(:success)
+  rescue Failure
+    set_state(:failure)
   end
 
   def publish
-    begin
-      check_update_can_be_published
-      publish_update
+    check_update_can_be_published
+    publish_update
 
-      set_state(:success)
-    rescue Failure
-      set_state(:failure)
-    end
+    set_state(:success)
+  rescue Failure
+    set_state(:failure)
   end
 
   def team
@@ -46,7 +42,8 @@ class SprintUpdates::PublishService < BaseService
     @update ||= Update.find_or_initialize_by(sprint: sprint, team: team)
   end
 
-private
+  private
+
   attr_reader :team_id, :sprint_id, :flow
 
   def publish_update
@@ -54,11 +51,8 @@ private
   end
 
   def check_update_can_be_published
-    begin
-      raise Failure unless update.present? && update.may_publish? && flow.valid?
-    rescue ActiveRecord::RecordNotFound
-      raise Failure
-    end
+    raise Failure unless update.present? && update.may_publish? && flow.valid?
+  rescue ActiveRecord::RecordNotFound
+    raise Failure
   end
-
 end

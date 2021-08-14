@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'managing sprints', type: :feature, admin_user: true do
-
   describe 'editing sprints' do
     it 'can edit an existing sprint' do
       sprint = create(:sprint)
@@ -46,5 +45,4 @@ RSpec.describe 'managing sprints', type: :feature, admin_user: true do
       expect(page).to have_content(sprint.name)
     end
   end
-
 end

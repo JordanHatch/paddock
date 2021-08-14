@@ -6,7 +6,7 @@ module BaseForm::NestedAttributes
 
     def nested_attributes(*atts)
       @nested_attributes ||= []
-      @nested_attributes = @nested_attributes + atts
+      @nested_attributes += atts
     end
 
     def nested_attributes_key(key)
@@ -17,9 +17,9 @@ module BaseForm::NestedAttributes
       form.nested_attributes.each do |key|
         nested_key = nested_attributes_key(key)
 
-        attributes[nested_key] = model.send(key).map {|model|
+        attributes[nested_key] = model.send(key).map do |model|
           model.attributes.merge(persisted: true)
-        }
+        end
       end
     end
 
@@ -32,7 +32,7 @@ module BaseForm::NestedAttributes
         nested_atts = attributes[nested_key]
 
         new_array = []
-        nested_atts.to_hash.map do |id, atts|
+        nested_atts.to_hash.map do |_id, atts|
           new_array << atts
         end
 
@@ -54,15 +54,15 @@ module BaseForm::NestedAttributes
     form.class.nested_attributes.each do |key|
       nested_key = form.class.nested_attributes_key(key)
 
-      if attributes.key?(nested_key)
-        nested_atts = Hash[
-          attributes[nested_key].map.with_index {|form, i|
-            [ i, form.to_hash ]
-          }
-        ]
+      next unless attributes.key?(nested_key)
 
-        attributes[nested_key] = nested_atts
-      end
+      nested_atts = Hash[
+        attributes[nested_key].map.with_index do |form, i|
+          [i, form.to_hash]
+        end
+      ]
+
+      attributes[nested_key] = nested_atts
     end
   end
 
@@ -72,9 +72,7 @@ module BaseForm::NestedAttributes
   def skip_validation_for_removed_nested_rows(form, attributes)
     form.class.nested_attributes.each do |key|
       nested_key = form.class.nested_attributes_key(key)
-      if attributes.key?(nested_key)
-        attributes[nested_key].reject! {|o| o[:_destroy].present? }
-      end
+      attributes[nested_key].reject! { |o| o[:_destroy].present? } if attributes.key?(nested_key)
     end
   end
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Group do
-
   describe '#teams_for_sprint' do
     let(:sprint) { create(:sprint, end_on: Date.parse('2021-02-01')) }
     let(:group) { create(:group) }
@@ -13,5 +12,4 @@ RSpec.describe Group do
       expect(group.teams_for_sprint(sprint)).to contain_exactly(*included_teams)
     end
   end
-
 end

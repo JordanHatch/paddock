@@ -22,9 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    unless signed_in?
-      redirect_to new_invitation_path
-    end
+    redirect_to new_invitation_path unless signed_in?
   end
 
   def render_404

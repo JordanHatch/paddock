@@ -1,5 +1,4 @@
 class SprintNavigationPresenter
-
   def initialize(context, sprint:, team:)
     @context = context
     @sprint = sprint
@@ -47,6 +46,7 @@ class SprintNavigationPresenter
   end
 
   private
+
   attr_reader :context, :sprint, :team
 
   def previous_sprint_exists?

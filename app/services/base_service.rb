@@ -3,10 +3,10 @@ class BaseService
 
   class Failure < StandardError; end
 
-  enumerize :state, in: [:success, :failure], predicates: true
+  enumerize :state, in: %i[success failure], predicates: true
 
   def self.call(**args)
-    self.new(**args).tap(&:call)
+    new(**args).tap(&:call)
   end
 
   def set_state(state)

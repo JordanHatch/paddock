@@ -1,7 +1,6 @@
 class MarkdownParser
-
   def self.render(string)
-    self.new.render(string)
+    new.render(string)
   end
 
   def render(string)
@@ -10,16 +9,17 @@ class MarkdownParser
   end
 
   private
+
   def renderer
     @renderer ||= Redcarpet::Markdown.new(
-                    Redcarpet::Render::HTML.new(
-                      escape_html: true,
-                      hard_wrap: true,
-                    ),
-                    autolink: true,
-                    tables: true,
-                    lax_spacing: true,
-                  )
+      Redcarpet::Render::HTML.new(
+        escape_html: true,
+        hard_wrap: true
+      ),
+      autolink: true,
+      tables: true,
+      lax_spacing: true
+    )
   end
 
   def render_markdown(string)
@@ -30,9 +30,8 @@ class MarkdownParser
   # break the structure of the page (and PDF)
   #
   def pad_headings(string)
-    string.gsub(/^(\#{1,3}) /) {|_|
-      "#{$1}### "
-    }
+    string.gsub(/^(\#{1,3}) /) do |_|
+      "#{Regexp.last_match(1)}### "
+    end
   end
-
 end

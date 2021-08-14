@@ -9,18 +9,17 @@ class PdfExporter
     return body if debug
 
     WickedPdf.new.pdf_from_string(body,
-      margin: {
-        top: 0,
-        bottom: 20,
-        left: 0,
-        right: 0,
-      },
-      footer: {
-        content: footer,
-        line: false,
-        spacing: 0,
-      },
-    )
+                                  margin: {
+                                    top: 0,
+                                    bottom: 20,
+                                    left: 0,
+                                    right: 0
+                                  },
+                                  footer: {
+                                    content: footer,
+                                    line: false,
+                                    spacing: 0
+                                  })
   end
 
   def body
@@ -30,7 +29,7 @@ class PdfExporter
       formats: [:pdf],
       locals: {
         sprint: sprint,
-        groups: groups,
+        groups: groups
       }
     )
   end
@@ -38,7 +37,7 @@ class PdfExporter
   def footer
     renderer.render(
       template: 'sprints/pdf/_footer',
-      layout: 'pdf',
+      layout: 'pdf'
     )
   end
 
@@ -50,7 +49,7 @@ class PdfExporter
 
   def self.stylesheet
     manifest_url = "http://#{asset_host}/packs/manifest.json"
-    stylesheet_file = "pdf.css"
+    stylesheet_file = 'pdf.css'
 
     manifest = JSON.parse(
       URI.parse(manifest_url).read
@@ -84,6 +83,4 @@ class PdfExporter
       Rails.application.config.action_controller.asset_host
     end
   end
-
 end
-

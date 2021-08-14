@@ -11,7 +11,7 @@ class SprintUpdates::UpdateFlow
     headcount: SprintUpdates::HeadcountForm,
     team_health: SprintUpdates::TeamHealthForm,
     issues: SprintUpdates::IssuesForm,
-    next_sprint: SprintUpdates::NextSprintForm,
+    next_sprint: SprintUpdates::NextSprintForm
   }
 
   def initialize(current_form_id:, sprint_update:)
@@ -26,13 +26,16 @@ class SprintUpdates::UpdateFlow
   end
 
   def form_class
-    FORMS.key?(current_form_id) ?
-      FORMS[current_form_id] :
-      (raise FormNotFound.new("Form \"#{current_form_id}\" not found"))
+    if FORMS.key?(current_form_id)
+      FORMS[current_form_id]
+    else
+      (raise FormNotFound, "Form \"#{current_form_id}\" not found")
+    end
   end
 
   def next_form_id
     return nil if last_form?
+
     keys = FORMS.keys
     i = keys.index(current_form_id) + 1
 
@@ -48,7 +51,7 @@ class SprintUpdates::UpdateFlow
   end
 
   def valid?
-    form_status.all? {|_, status| status[:validation] == :valid }
+    form_status.all? { |_, status| status[:validation] == :valid }
   end
 
   private
@@ -57,12 +60,12 @@ class SprintUpdates::UpdateFlow
 
   def form_status
     @form_status ||= Hash[
-      FORMS.map {|id, klass|
+      FORMS.map do |id, klass|
         [
           id,
-          klass.from_model(sprint_update).status,
+          klass.from_model(sprint_update).status
         ]
-      }
+      end
     ]
   end
 
@@ -73,5 +76,4 @@ class SprintUpdates::UpdateFlow
   def format_form_id(id)
     id.to_sym
   end
-
 end

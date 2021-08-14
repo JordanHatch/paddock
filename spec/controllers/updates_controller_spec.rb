@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe UpdatesController, type: :controller do
-
   let(:sprint) { create(:sprint) }
 
   describe 'GET show' do
@@ -28,5 +27,4 @@ RSpec.describe UpdatesController, type: :controller do
       end
     end
   end
-
 end

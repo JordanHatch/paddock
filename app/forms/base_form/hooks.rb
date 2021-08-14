@@ -1,9 +1,9 @@
 module BaseForm::Hooks
   extend ActiveSupport::Concern
 
-  HOOKS = [
-    :preprocess,
-    :before_validate,
+  HOOKS = %i[
+    preprocess
+    before_validate
   ]
 
   module ClassMethods

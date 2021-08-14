@@ -1,16 +1,16 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails"
+require 'rails'
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "active_storage/engine"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_mailbox/engine"
-require "action_text/engine"
-require "action_view/railtie"
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'active_storage/engine'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_mailbox/engine'
+require 'action_text/engine'
+require 'action_view/railtie'
 # require "action_cable/engine"
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
@@ -38,7 +38,7 @@ module Paddock
     config.action_mailer.default_url_options = {
       host: ENV['EMAIL_URL_HOST'],
       port: ENV.fetch('EMAIL_URL_PORT', 80),
-      protocol: ENV['EMAIL_URL_HOST_SSL'] == 'true' ? :https : :http,
+      protocol: ENV['EMAIL_URL_HOST_SSL'] == 'true' ? :https : :http
     }
     config.action_mailer.smtp_settings = {
       user_name: ENV['SMTP_USERNAME'],
@@ -47,12 +47,10 @@ module Paddock
       address: ENV['SMTP_HOST'],
       port: ENV.fetch('SMTP_PORT', '587'),
       authentication: :plain,
-      enable_starttls_auto: true,
+      enable_starttls_auto: true
     }
 
-    if ENV['ASSET_HOST'].present?
-      config.action_controller.asset_host = ENV['ASSET_HOST']
-    end
+    config.action_controller.asset_host = ENV['ASSET_HOST'] if ENV['ASSET_HOST'].present?
 
     config.active_job.queue_adapter = :good_job
 

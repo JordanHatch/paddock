@@ -10,9 +10,7 @@ class Manage::SprintForm < BaseForm
       if last_sprint.present?
         form.attributes[:start_on] = last_sprint.end_on + 1.day
 
-        if form.end_on.blank?
-          form.attributes[:end_on] = form.start_on + 13.days
-        end
+        form.attributes[:end_on] = form.start_on + 13.days if form.end_on.blank?
       end
     end
   end

@@ -12,7 +12,7 @@ module BaseForm::Validation
   def validate
     return true unless self.class.schema_block
 
-    atts = self.to_hash.with_indifferent_access
+    atts = to_hash.with_indifferent_access
 
     self.class.trigger_hook(:before_validate, self, atts)
     skip_validation_for_removed_nested_rows(self, atts)
@@ -24,6 +24,6 @@ module BaseForm::Validation
   end
 
   def valid?
-    self.validate
+    validate
   end
 end

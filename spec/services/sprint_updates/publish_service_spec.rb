@@ -1,23 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe SprintUpdates::PublishService do
-
   let(:update) { create(:draft_sprint_update) }
   let(:flow) { stub }
 
   describe '#build' do
-    subject {
+    subject do
       described_class.build(
         team_id: update.team.id,
         sprint_id: update.sprint.id,
-        flow: flow,
+        flow: flow
       )
-    }
+    end
 
     context 'when the flow is valid' do
-      before(:each) {
+      before(:each) do
         flow.expects(:valid?).returns(true)
-      }
+      end
 
       it 'is successful' do
         expect(subject).to be_success
@@ -25,9 +24,9 @@ RSpec.describe SprintUpdates::PublishService do
     end
 
     context 'when the flow is not valid' do
-      before(:each) {
+      before(:each) do
         flow.expects(:valid?).returns(false)
-      }
+      end
 
       it 'is not successful' do
         expect(subject).to be_failure
@@ -44,18 +43,18 @@ RSpec.describe SprintUpdates::PublishService do
   end
 
   describe '#publish' do
-    subject {
+    subject do
       described_class.publish(
         team_id: update.team.id,
         sprint_id: update.sprint.id,
-        flow: flow,
+        flow: flow
       )
-    }
+    end
 
     context 'when the flow is valid' do
-      before(:each) {
+      before(:each) do
         flow.expects(:valid?).returns(true)
-      }
+      end
 
       it 'is successful' do
         expect(subject).to be_success
@@ -68,9 +67,9 @@ RSpec.describe SprintUpdates::PublishService do
     end
 
     context 'when the flow is not valid' do
-      before(:each) {
+      before(:each) do
         flow.expects(:valid?).returns(false)
-      }
+      end
 
       it 'is not successful' do
         expect(subject).to be_failure

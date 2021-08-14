@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get '/sign-in', to: 'invitations#new', as: :new_invitation
   post '/sign-in', to: 'invitations#create', as: :invitation
   get '/sign-in/sent', to: 'invitations#sent', as: :sent_invitation

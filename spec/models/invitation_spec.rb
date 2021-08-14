@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Invitation do
-
   describe '#valid?', skip_permitted_domains: true do
-    before(:each) {
+    before(:each) do
       Paddock.permitted_domains = 'example.org;example.com'
-    }
+    end
 
     context 'with a permitted domain' do
       let(:email) { 'foo@example.org' }
@@ -28,5 +27,4 @@ RSpec.describe Invitation do
       end
     end
   end
-
 end

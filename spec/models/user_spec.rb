@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User do
-
   describe '#admin?' do
     context 'when an admin user' do
       subject { create(:admin_user) }
@@ -17,5 +16,4 @@ RSpec.describe User do
       end
     end
   end
-
 end

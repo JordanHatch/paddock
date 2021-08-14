@@ -1,13 +1,12 @@
 require 'optparse'
 
 namespace :users do
-
-  task :make_admin => :environment do |t|
+  task make_admin: :environment do |_t|
     options = {}
     parser = OptionParser.new do |opts|
-      opts.banner = "Usage: rake users:make_admin -- [options]"
+      opts.banner = 'Usage: rake users:make_admin -- [options]'
 
-      opts.on("--email=EMAIL", "Email address of the target user", String) do |email|
+      opts.on('--email=EMAIL', 'Email address of the target user', String) do |email|
         options[:email] = email
       end
     end
@@ -25,7 +24,6 @@ namespace :users do
     user.role = :admin
     user.save!
 
-    puts "       Completed"
+    puts '       Completed'
   end
-
 end

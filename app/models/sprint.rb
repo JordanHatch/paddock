@@ -1,9 +1,9 @@
 class Sprint < ApplicationRecord
   has_many :updates
 
-  has_paper_trail skip: [:created_at, :updated_at]
+  has_paper_trail skip: %i[created_at updated_at]
 
-  scope :in_date_order, ->{ order('start_on asc') }
+  scope :in_date_order, -> { order('start_on asc') }
   scope :in_reverse_date_order, -> { order('start_on desc') }
   scope :recent, -> { where('start_on < ?', Date.today).order('start_on desc') }
 
@@ -27,5 +27,4 @@ class Sprint < ApplicationRecord
   def delivery_status_summary
     updates.published.group(:delivery_status).count
   end
-
 end

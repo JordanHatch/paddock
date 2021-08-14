@@ -1,20 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe SprintUpdates::UpdateService do
-
   let(:sprint) { create(:sprint) }
   let(:team) { create(:team) }
   let!(:update) { create(:draft_sprint_update, team: team, sprint: sprint) }
   let(:form_class) { SprintUpdates::DeliveryStatusForm }
 
   describe '#build' do
-    subject {
+    subject do
       described_class.build(
         team_id: team.id,
         sprint_id: sprint.id,
-        form_class: form_class,
+        form_class: form_class
       )
-    }
+    end
 
     context 'when the team is active for the sprint' do
       let(:team) { create(:team, start_on: sprint.start_on) }

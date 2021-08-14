@@ -6,12 +6,12 @@ class Update < ApplicationRecord
   belongs_to :sprint
 
   has_many :issues, inverse_of: :sprint_update
-  has_paper_trail skip: [:created_at, :updated_at]
+  has_paper_trail skip: %i[created_at updated_at]
 
   accepts_nested_attributes_for :issues, allow_destroy: true, reject_if: :all_blank
 
-  enumerize :delivery_status, in: [:green, :amber, :red]
-  enumerize :okr_status, in: [:green, :amber, :red]
+  enumerize :delivery_status, in: %i[green amber red]
+  enumerize :okr_status, in: %i[green amber red]
   enumerize :team_health, in: [1, 2, 3, 4, 5]
 
   scope :recent_first, -> { order('created_at DESC') }

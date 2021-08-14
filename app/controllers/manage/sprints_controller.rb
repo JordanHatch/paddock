@@ -1,7 +1,8 @@
 class Manage::SprintsController < Manage::BaseController
-
   def index; end
+
   def new; end
+
   def edit; end
 
   def create
@@ -31,6 +32,7 @@ class Manage::SprintsController < Manage::BaseController
   end
 
   private
+
   helper_method :sprints, :sprint, :form, :current_sprint
 
   def sprints
@@ -38,15 +40,19 @@ class Manage::SprintsController < Manage::BaseController
   end
 
   def sprint
-    @sprint ||= params.key?(:id) ?
-      Sprint.find(params[:id]) :
-      Sprint.new
+    @sprint ||= if params.key?(:id)
+                  Sprint.find(params[:id])
+                else
+                  Sprint.new
+                end
   end
 
   def form
-    @form ||= params.key?(:sprint) ?
-      Manage::SprintForm.from_form(params[:sprint], model: sprint) :
-      Manage::SprintForm.from_model(sprint)
+    @form ||= if params.key?(:sprint)
+                Manage::SprintForm.from_form(params[:sprint], model: sprint)
+              else
+                Manage::SprintForm.from_model(sprint)
+              end
   end
 
   def current_sprint
@@ -56,5 +62,4 @@ class Manage::SprintsController < Manage::BaseController
   def sprint_params
     params.require(:sprint).permit(:name, :start_on, :end_on)
   end
-
 end

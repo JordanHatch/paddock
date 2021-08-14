@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Team do
-
   describe '.for_sprint' do
     it 'returns the teams with a start_on value before the current sprint end date' do
       sprint = create(:sprint, end_on: Date.parse('2021-02-01'))
@@ -60,7 +59,7 @@ RSpec.describe Team do
     end
 
     context 'the start_on date is empty' do
-      let(:sprint) { mock() }
+      let(:sprint) { mock }
       let(:team) { build(:team, start_on: nil) }
 
       it 'is true' do

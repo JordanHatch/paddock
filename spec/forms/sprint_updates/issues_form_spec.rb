@@ -1,21 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe SprintUpdates::IssuesForm do
-
   let(:klass) { subject.class }
 
   describe '#valid?' do
     context 'when given valid data' do
-      let(:params) {
+      let(:params) do
         {
-          "issues_attributes" => {
-            "1" => {
-              "description" => "Issue description",
-              "help" => "Help wanted",
+          'issues_attributes' => {
+            '1' => {
+              'description' => 'Issue description',
+              'help' => 'Help wanted'
             }
           }
         }
-      }
+      end
 
       it 'is valid' do
         form = klass.from_form(params)
@@ -24,11 +23,11 @@ RSpec.describe SprintUpdates::IssuesForm do
     end
 
     context 'when empty' do
-      let(:params) {
+      let(:params) do
         {
-          "issues_attributes" => {}
+          'issues_attributes' => {}
         }
-      }
+      end
 
       it 'is valid' do
         form = klass.from_form(params)
@@ -38,16 +37,16 @@ RSpec.describe SprintUpdates::IssuesForm do
 
     context 'when given invalid data' do
       context 'with a missing description' do
-        let(:params) {
+        let(:params) do
           {
-            "issues_attributes" => {
-              "1" => {
-                "description" => "",
-                "help" => "Help wanted",
-              },
+            'issues_attributes' => {
+              '1' => {
+                'description' => '',
+                'help' => 'Help wanted'
+              }
             }
           }
-        }
+        end
 
         it 'is not valid' do
           form = klass.from_form(params)
@@ -59,20 +58,20 @@ RSpec.describe SprintUpdates::IssuesForm do
       end
 
       context 'with one valid and one invalid issue' do
-        let(:params) {
+        let(:params) do
           {
-            "issues_attributes" => {
-              "1" => {
-                "description" => "Valid description",
-                "help" => "Help wanted",
+            'issues_attributes' => {
+              '1' => {
+                'description' => 'Valid description',
+                'help' => 'Help wanted'
               },
-              "2" => {
-                "description" => "",
-                "help" => "Help wanted",
-              },
+              '2' => {
+                'description' => '',
+                'help' => 'Help wanted'
+              }
             }
           }
-        }
+        end
 
         it 'is not valid' do
           form = klass.from_form(params)
@@ -87,11 +86,11 @@ RSpec.describe SprintUpdates::IssuesForm do
 
   describe '#started?' do
     context 'when empty' do
-      let(:params) {
+      let(:params) do
         {
-          "issues_attributes" => {}
+          'issues_attributes' => {}
         }
-      }
+      end
 
       it 'is false' do
         form = klass.from_form(params)
@@ -100,16 +99,16 @@ RSpec.describe SprintUpdates::IssuesForm do
     end
 
     context 'when not empty' do
-      let(:params) {
+      let(:params) do
         {
-          "issues_attributes" => {
-            "1" => {
-              "description" => "Valid description",
-              "help" => "Help wanted",
-            },
+          'issues_attributes' => {
+            '1' => {
+              'description' => 'Valid description',
+              'help' => 'Help wanted'
+            }
           }
         }
-      }
+      end
 
       it 'is true' do
         form = klass.from_form(params)
@@ -120,20 +119,20 @@ RSpec.describe SprintUpdates::IssuesForm do
 
   describe 'callback:before_validate' do
     context 'with all blank issues' do
-      let(:params) {
+      let(:params) do
         {
-          "issues_attributes" => {
-            "0" => {
-              "description" => "",
-              "help" => "",
+          'issues_attributes' => {
+            '0' => {
+              'description' => '',
+              'help' => ''
             },
-            "1" => {
-              "description" => "",
-              "help" => "",
-            },
+            '1' => {
+              'description' => '',
+              'help' => ''
+            }
           }
         }
-      }
+      end
 
       it 'removes the issues' do
         form = klass.from_form(params)
@@ -143,5 +142,4 @@ RSpec.describe SprintUpdates::IssuesForm do
       end
     end
   end
-
 end

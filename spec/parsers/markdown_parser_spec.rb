@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe MarkdownParser do
-
   describe '#render' do
     it 'renders markdown' do
       input = <<~MD
@@ -104,5 +103,4 @@ RSpec.describe MarkdownParser do
       expect(output).to eq(expected)
     end
   end
-
 end

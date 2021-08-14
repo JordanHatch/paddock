@@ -1,19 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe SprintUpdates::UpdateFlow do
-
   let(:sprint_update) { create(:draft_sprint_update) }
 
-  let(:forms) {
+  let(:forms) do
     SprintUpdates::UpdateFlow::FORMS
-  }
+  end
 
   describe '#initialize' do
     context 'when the current_form_id is nil' do
       it 'returns the default (delivery_status) form' do
         flow = described_class.new(
           current_form_id: nil,
-          sprint_update: sprint_update,
+          sprint_update: sprint_update
         )
         expect(flow.current_form_id).to eq(:delivery_status)
       end
@@ -28,7 +27,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
 
       flow = described_class.new(
         current_form_id: form_id,
-        sprint_update: sprint_update,
+        sprint_update: sprint_update
       )
       expect(flow.form_class).to eq(expected_class)
     end
@@ -41,7 +40,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
 
       flow = described_class.new(
         current_form_id: form_id,
-        sprint_update: sprint_update,
+        sprint_update: sprint_update
       )
       expect(flow.next_form_id).to eq(next_form_id)
     end
@@ -51,7 +50,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
 
       flow = described_class.new(
         current_form_id: form_id,
-        sprint_update: sprint_update,
+        sprint_update: sprint_update
       )
       expect(flow.next_form_id).to be_nil
     end
@@ -64,7 +63,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
 
         flow = described_class.new(
           current_form_id: form_id,
-          sprint_update: sprint_update,
+          sprint_update: sprint_update
         )
         expect(flow).to be_last_form
       end
@@ -76,7 +75,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
 
         flow = described_class.new(
           current_form_id: form_id,
-          sprint_update: sprint_update,
+          sprint_update: sprint_update
         )
         expect(flow).to_not be_last_form
       end
@@ -87,7 +86,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
     context 'when all forms are valid' do
       before(:each) do
         forms.values.each do |form_class|
-          mock_form = stub(status: { validation: :valid },)
+          mock_form = stub(status: { validation: :valid })
           form_class.expects(:from_model).returns(mock_form)
         end
       end
@@ -95,7 +94,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
       it 'returns true' do
         flow = described_class.new(
           current_form_id: forms.keys.first,
-          sprint_update: sprint_update,
+          sprint_update: sprint_update
         )
 
         expect(flow).to be_valid
@@ -116,7 +115,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
       it 'returns false' do
         flow = described_class.new(
           current_form_id: forms.keys.first,
-          sprint_update: sprint_update,
+          sprint_update: sprint_update
         )
 
         expect(flow).to_not be_valid
@@ -137,7 +136,7 @@ RSpec.describe SprintUpdates::UpdateFlow do
       it 'returns false' do
         flow = described_class.new(
           current_form_id: forms.keys.first,
-          sprint_update: sprint_update,
+          sprint_update: sprint_update
         )
 
         expect(flow).to_not be_valid
@@ -154,11 +153,10 @@ RSpec.describe SprintUpdates::UpdateFlow do
 
       flow = described_class.new(
         current_form_id: forms.keys.first,
-        sprint_update: sprint_update,
+        sprint_update: sprint_update
       )
 
       expect(flow.completion_status_for_form(form_id)).to eq(:valid)
     end
   end
-
 end

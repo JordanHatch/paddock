@@ -54,5 +54,4 @@ class InvitationsController < ApplicationController
     flash.alert = 'Sorry, this token is not valid'
     redirect_to new_invitation_path
   end
-
 end

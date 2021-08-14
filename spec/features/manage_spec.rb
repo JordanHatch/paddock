@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'the manage section', type: :feature do
-
   describe 'accessing the section' do
     context 'as an admin user', admin_user: true do
       it "displays a 'Manage' tag" do
@@ -31,5 +30,4 @@ RSpec.describe 'the manage section', type: :feature do
       end
     end
   end
-
 end

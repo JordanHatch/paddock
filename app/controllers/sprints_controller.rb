@@ -30,9 +30,7 @@ class SprintsController < ApplicationController
   end
 
   def sprint
-    if params.key?(:id)
-      @sprint ||= Sprint.find(params[:id])
-    end
+    @sprint ||= Sprint.find(params[:id]) if params.key?(:id)
   end
 
   def groups
@@ -42,5 +40,4 @@ class SprintsController < ApplicationController
   def delivery_status_summary
     sprint.delivery_status_summary_counts
   end
-
 end

@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :sprint_update, class: Update do
     sprint
     team
@@ -12,5 +11,4 @@ FactoryBot.define do
       state { :published }
     end
   end
-
 end

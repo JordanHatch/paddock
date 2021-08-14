@@ -1,5 +1,3 @@
 class Manage::RootController < Manage::BaseController
-
-  def index;end
-
+  def index; end
 end

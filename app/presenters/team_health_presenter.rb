@@ -3,9 +3,9 @@ class TeamHealthPresenter
   extend ActionView::Helpers::TagHelper
 
   def self.all
-    VALUES.map {|v|
-      [self.format_label(v), v]
-    }
+    VALUES.map do |v|
+      [format_label(v), v]
+    end
   end
 
   def self.format_label(label)
@@ -17,5 +17,4 @@ class TeamHealthPresenter
       )
     ].join.html_safe
   end
-
 end

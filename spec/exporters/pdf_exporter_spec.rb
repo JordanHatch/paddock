@@ -1,16 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe PdfExporter do
-
   let!(:sprint) { create(:sprint) }
   let!(:teams) { create_list(:team, 3, start_on: sprint.start_on) }
-  let!(:updates) {
+  let!(:updates) do
     [
       create(:draft_sprint_update, sprint: sprint, team: teams[0]),
       create(:published_sprint_update, sprint: sprint, team: teams[1]),
-      create(:published_sprint_update, sprint: sprint, team: teams[2]),
+      create(:published_sprint_update, sprint: sprint, team: teams[2])
     ]
-  }
+  end
 
   let(:example_stylesheet) { '<!-- example stylesheet -->' }
 
@@ -36,7 +35,7 @@ RSpec.describe PdfExporter do
 
       exporter = described_class.new(
         sprint_id: current_sprint.id,
-        debug: true,
+        debug: true
       )
       pdf = Capybara.string(exporter.body)
 
@@ -55,15 +54,15 @@ RSpec.describe PdfExporter do
   describe '#render' do
     let(:body) { 'example content' }
 
-    before(:each) {
+    before(:each) do
       stub_stylesheet
       subject.stubs(:body).returns(body)
-    }
+    end
 
     context 'when debug is true' do
-      subject {
+      subject do
         described_class.new(sprint_id: sprint.id, debug: true)
-      }
+      end
 
       it 'returns the body as rendered HTML' do
         expect(subject.render).to eq(body)
@@ -71,18 +70,18 @@ RSpec.describe PdfExporter do
     end
 
     context 'when debug is not true' do
-      subject {
+      subject do
         described_class.new(sprint_id: sprint.id)
-      }
+      end
 
       it 'renders the PDF using WickedPdf' do
-        mock_wicked_pdf = mock()
-        mock_pdf_output = mock()
+        mock_wicked_pdf = mock
+        mock_pdf_output = mock
 
         WickedPdf.expects(:new).returns(mock_wicked_pdf)
-        mock_wicked_pdf.expects(:pdf_from_string).
-          with(body, has_keys(:margin, :footer)).
-          returns(mock_pdf_output)
+        mock_wicked_pdf.expects(:pdf_from_string)
+                       .with(body, has_keys(:margin, :footer))
+                       .returns(mock_pdf_output)
 
         expect(subject.render).to eq(mock_pdf_output)
       end
@@ -105,17 +104,17 @@ RSpec.describe PdfExporter do
     it 'makes a HTTP request to the stylesheet and returns it inline' do
       asset_host = 'localhost'
       manifest_url = "http://#{asset_host}/packs/manifest.json"
-      stylesheet_path = "/example"
+      stylesheet_path = '/example'
       stylesheet_url = "http://#{asset_host}#{stylesheet_path}"
 
-      manifest = { "pdf.css" => stylesheet_path }.to_json
-      stylesheet = "body { color: red; }"
+      manifest = { 'pdf.css' => stylesheet_path }.to_json
+      stylesheet = 'body { color: red; }'
 
       PdfExporter.stubs(:asset_host).returns(asset_host)
       URI.expects(:parse).with(manifest_url).returns(mock(read: manifest))
       URI.expects(:parse).with(stylesheet_url).returns(mock(read: stylesheet))
 
-      expected = "<style type=\"text/css\">body { color: red; }</style>"
+      expected = '<style type="text/css">body { color: red; }</style>'
 
       expect(described_class.stylesheet).to eq(expected)
     end
@@ -123,9 +122,9 @@ RSpec.describe PdfExporter do
 
   describe '.asset_host' do
     context 'in development' do
-      before(:each) {
+      before(:each) do
         Rails.env.stubs(:development?).returns(true)
-      }
+      end
 
       it 'returns the webpacker dev server details' do
         Webpacker.stubs(:dev_server).returns(mock(host: 'localhost', port: 1234))
@@ -135,9 +134,9 @@ RSpec.describe PdfExporter do
     end
 
     context 'in other environments' do
-      before(:each) {
+      before(:each) do
         Rails.env.stubs(:development?).returns(false)
-      }
+      end
 
       it 'returns the asset host' do
         Rails.application.config.action_controller.stubs(:asset_host).returns('example')
@@ -145,5 +144,4 @@ RSpec.describe PdfExporter do
       end
     end
   end
-
 end

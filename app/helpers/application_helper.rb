@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def render_markdown(string)
     MarkdownParser.render(string)
   end
@@ -23,5 +22,4 @@ module ApplicationHelper
       link_to label, link
     end
   end
-
 end

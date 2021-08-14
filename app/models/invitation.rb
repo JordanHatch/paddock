@@ -8,7 +8,8 @@ class Invitation < ApplicationRecord
 
   def redeem
     return false if expires_at <= Time.now
-    self.destroy
+
+    destroy
   end
 
   def set_token
@@ -22,14 +23,12 @@ class Invitation < ApplicationRecord
   def email_has_permitted_domain
     return if email.blank?
 
-    domain = email.match(/@([A-Za-z0-9\-\.]+)\Z/) {|matches|
+    domain = email.match(/@([A-Za-z0-9\-.]+)\Z/) do |matches|
       matches[1]
-    }
+    end
 
     domain_list = Paddock.permitted_domains.split(';')
 
-    unless domain_list.include?(domain)
-      errors.add(:email, "must be a permitted email")
-    end
+    errors.add(:email, 'must be a permitted email') unless domain_list.include?(domain)
   end
 end

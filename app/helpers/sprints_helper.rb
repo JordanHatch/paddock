@@ -3,7 +3,7 @@ module SprintsHelper
     if update.delivery_status.present?
       update.delivery_status_text
     else
-      "&mdash;".html_safe
+      '&mdash;'.html_safe
     end
   end
 
@@ -11,7 +11,7 @@ module SprintsHelper
     if update.okr_status.present?
       update.okr_status_text
     else
-      "&mdash;".html_safe
+      '&mdash;'.html_safe
     end
   end
 end
