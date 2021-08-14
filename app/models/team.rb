@@ -8,6 +8,7 @@ class Team < ApplicationRecord
 
   friendly_id :name, use: :slugged
 
+  scope :in_name_order, -> { order('name ASC') }
   scope :for_sprint, lambda { |sprint|
     where('start_on IS NULL OR start_on <= ?', sprint.end_on)
   }
