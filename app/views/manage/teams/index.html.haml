@@ -1,0 +1,20 @@
+.manage--teams
+  %header.with-actions
+    %h1 Teams
+
+  .teams-list
+    %ul.groups
+      - groups.each do |group|
+        %li.group
+          .group-details
+            %h3= group.name
+            .actions
+              / = link_to 'Edit group', '#'
+              = link_to 'Add a new team', new_manage_team_path(team, group: group.id)
+          %ul.teams
+            - group.teams.each do |team|
+              %li.team
+                .team-name
+                  %span= team.name
+                .actions
+                  = link_to 'Edit', edit_manage_team_path(team)

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   namespace :manage do
     resources :sprints
+    resources :teams
+
     root to: 'root#index'
   end
 

@@ -1,0 +1,29 @@
+.manage--common {
+  header.with-actions {
+    display: flex;
+
+    h1 {
+      flex: 1;
+    }
+
+    .actions {
+      text-align: right;
+
+      a {
+        @include button-primary;
+      }
+    }
+  }
+
+  &.form {
+    display: flex;
+
+    h1 {
+      width: 30%;
+    }
+    form {
+      margin-top: .5rem;
+      flex: 1;
+    }
+  }
+}

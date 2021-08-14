@@ -1,0 +1,12 @@
+= simple_form_for [:manage, form] do |f|
+  = f.input :group_id, as: :select, collection: Group.all, required: true, include_blank: true
+  = f.input :name, required: true, input_html: { style: 'width: 20rem' }
+  = f.input :start_on, { as: :date,
+                         required: false,
+                         include_blank: true }
+
+  .actions
+    = f.submit 'Save'
+    .cancel
+      or
+      = link_to 'cancel', manage_teams_path

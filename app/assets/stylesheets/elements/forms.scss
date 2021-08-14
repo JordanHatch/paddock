@@ -7,6 +7,7 @@
   border: 1px solid #ccc;
   border-radius: .5rem;
   font-size: 1rem;
+  margin-bottom: .5rem;
 }
 
 label {
@@ -33,7 +34,7 @@ textarea {
 }
 
 .field_with_errors {
-  input[type=text], textarea {
+  input[type=text], textarea, .ts-wrapper .ts-control {
     border-color: $red;
     border-width: 2px;
   }
@@ -99,6 +100,7 @@ input[type=radio]:checked{
 }
 
 select {
+  width: auto;
   margin-bottom: 1rem;
 }
 
@@ -106,6 +108,13 @@ span.error {
   color: $red;
   font-weight: bold;
   display: block;
+  padding-top: .25rem;
+}
+
+form .hint {
+  display: block;
+  font-size: .9rem;
+  color: $dark-grey;
 }
 
 form .actions {
@@ -120,9 +129,11 @@ form .actions {
 }
 
 .ts-wrapper {
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
+  display: inline-block;
+  width: 20rem;
+
   &.date {
-    display: inline-block;
     width: 12rem;
   }
 }

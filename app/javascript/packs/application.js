@@ -26,7 +26,9 @@ import TomSelect from "tom-select"
 
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('select').forEach((el) => {
-    console.dir(el)
-    new TomSelect(el)
+    new TomSelect(el, {
+      selectOnTab: true,
+      closeAfterSelect: true
+    })
   })
 })
