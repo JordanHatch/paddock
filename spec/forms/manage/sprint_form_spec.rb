@@ -7,7 +7,7 @@ RSpec.describe Manage::SprintForm do
         {
           name: 'Sprint X',
           start_on: nil,
-          end_on: nil
+          end_on: nil,
         }
       end
 
@@ -41,7 +41,7 @@ RSpec.describe Manage::SprintForm do
           {
             name: 'Sprint X',
             start_on: Date.today,
-            end_on: nil
+            end_on: nil,
           }
         end
 
@@ -56,7 +56,7 @@ RSpec.describe Manage::SprintForm do
           {
             name: 'Sprint X',
             start_on: nil,
-            end_on: Date.today
+            end_on: Date.today,
           }
         end
 
@@ -72,7 +72,7 @@ RSpec.describe Manage::SprintForm do
       {
         name: 'Example',
         start_on: Date.today,
-        end_on: Date.today + 2.weeks
+        end_on: Date.today + 2.weeks,
       }
     end
 

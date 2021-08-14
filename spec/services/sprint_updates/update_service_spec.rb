@@ -11,7 +11,7 @@ RSpec.describe SprintUpdates::UpdateService do
       described_class.build(
         team_id: team.id,
         sprint_id: sprint.id,
-        form_class: form_class
+        form_class: form_class,
       )
     end
 

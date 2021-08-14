@@ -2,7 +2,7 @@ module BaseForm::Status
   def status
     {
       completion: completion_status,
-      validation: validation_status
+      validation: validation_status,
     }
   end
 
@@ -14,9 +14,9 @@ module BaseForm::Status
   end
 
   def started?
-    attributes.map do |_, value|
+    attributes.map { |_, value|
       value.is_a?(Array) ? value.reject(&:blank?) : value
-    end.reject(&:blank?).any?
+    }.reject(&:blank?).any?
   end
 
   def validation_status

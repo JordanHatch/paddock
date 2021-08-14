@@ -13,12 +13,12 @@ class PdfExporter
                                     top: 0,
                                     bottom: 20,
                                     left: 0,
-                                    right: 0
+                                    right: 0,
                                   },
                                   footer: {
                                     content: footer,
                                     line: false,
-                                    spacing: 0
+                                    spacing: 0,
                                   })
   end
 
@@ -29,15 +29,15 @@ class PdfExporter
       formats: [:pdf],
       locals: {
         sprint: sprint,
-        groups: groups
-      }
+        groups: groups,
+      },
     )
   end
 
   def footer
     renderer.render(
       template: 'sprints/pdf/_footer',
-      layout: 'pdf'
+      layout: 'pdf',
     )
   end
 
@@ -52,7 +52,7 @@ class PdfExporter
     stylesheet_file = 'pdf.css'
 
     manifest = JSON.parse(
-      URI.parse(manifest_url).read
+      URI.parse(manifest_url).read,
     )
 
     stylesheet_path = manifest[stylesheet_file]

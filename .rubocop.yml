@@ -3,3 +3,111 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/**/*'
+  NewCops: enable
+
+# Disable some checks based on the GOV.UK Rubocop style guide
+#
+
+# https://github.com/alphagov/rubocop-govuk/blob/main/config/layout.yml
+#
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+
+
+# https://github.com/alphagov/rubocop-govuk/blob/main/config/naming.yml
+#
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+
+# https://github.com/alphagov/rubocop-govuk/blob/main/config/metrics.yml
+#
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+
+# https://github.com/alphagov/rubocop-govuk/blob/main/config/style.yml
+#
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/WordArray:
+  MinSize: 0
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/SafeNavigation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/DateTime:
+  Enabled: true

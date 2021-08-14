@@ -7,7 +7,7 @@ RSpec.describe PdfExporter do
     [
       create(:draft_sprint_update, sprint: sprint, team: teams[0]),
       create(:published_sprint_update, sprint: sprint, team: teams[1]),
-      create(:published_sprint_update, sprint: sprint, team: teams[2])
+      create(:published_sprint_update, sprint: sprint, team: teams[2]),
     ]
   end
 
@@ -35,7 +35,7 @@ RSpec.describe PdfExporter do
 
       exporter = described_class.new(
         sprint_id: current_sprint.id,
-        debug: true
+        debug: true,
       )
       pdf = Capybara.string(exporter.body)
 

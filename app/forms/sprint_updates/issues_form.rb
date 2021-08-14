@@ -42,8 +42,8 @@ class SprintUpdates::IssuesForm < BaseForm
   end
 
   def started?
-    issues_attributes.reject do |issue|
+    issues_attributes.reject { |issue|
       issue.attributes.compact.empty?
-    end.any?
+    }.any?
   end
 end

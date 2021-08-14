@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
 
   def create
     invitation = Invitation.new(
-      email: params[:email]
+      email: params[:email],
     )
 
     if invitation.save

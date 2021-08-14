@@ -13,8 +13,8 @@ class TeamHealthPresenter
       label,
       content_tag(
         :span,
-        I18n.t(:hint_text, scope: [:updates, :team_health, label], default: '')
-      )
+        I18n.t(:hint_text, scope: [:updates, :team_health, label], default: ''),
+      ),
     ].join.html_safe
   end
 end

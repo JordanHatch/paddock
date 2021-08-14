@@ -10,9 +10,9 @@ RSpec.describe SprintUpdates::IssuesForm do
           'issues_attributes' => {
             '1' => {
               'description' => 'Issue description',
-              'help' => 'Help wanted'
-            }
-          }
+              'help' => 'Help wanted',
+            },
+          },
         }
       end
 
@@ -25,7 +25,7 @@ RSpec.describe SprintUpdates::IssuesForm do
     context 'when empty' do
       let(:params) do
         {
-          'issues_attributes' => {}
+          'issues_attributes' => {},
         }
       end
 
@@ -42,9 +42,9 @@ RSpec.describe SprintUpdates::IssuesForm do
             'issues_attributes' => {
               '1' => {
                 'description' => '',
-                'help' => 'Help wanted'
-              }
-            }
+                'help' => 'Help wanted',
+              },
+            },
           }
         end
 
@@ -63,13 +63,13 @@ RSpec.describe SprintUpdates::IssuesForm do
             'issues_attributes' => {
               '1' => {
                 'description' => 'Valid description',
-                'help' => 'Help wanted'
+                'help' => 'Help wanted',
               },
               '2' => {
                 'description' => '',
-                'help' => 'Help wanted'
-              }
-            }
+                'help' => 'Help wanted',
+              },
+            },
           }
         end
 
@@ -88,7 +88,7 @@ RSpec.describe SprintUpdates::IssuesForm do
     context 'when empty' do
       let(:params) do
         {
-          'issues_attributes' => {}
+          'issues_attributes' => {},
         }
       end
 
@@ -104,9 +104,9 @@ RSpec.describe SprintUpdates::IssuesForm do
           'issues_attributes' => {
             '1' => {
               'description' => 'Valid description',
-              'help' => 'Help wanted'
-            }
-          }
+              'help' => 'Help wanted',
+            },
+          },
         }
       end
 
@@ -124,13 +124,13 @@ RSpec.describe SprintUpdates::IssuesForm do
           'issues_attributes' => {
             '0' => {
               'description' => '',
-              'help' => ''
+              'help' => '',
             },
             '1' => {
               'description' => '',
-              'help' => ''
-            }
-          }
+              'help' => '',
+            },
+          },
         }
       end
 

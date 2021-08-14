@@ -11,12 +11,12 @@ class SprintUpdates::UpdateFlow
     headcount: SprintUpdates::HeadcountForm,
     team_health: SprintUpdates::TeamHealthForm,
     issues: SprintUpdates::IssuesForm,
-    next_sprint: SprintUpdates::NextSprintForm
+    next_sprint: SprintUpdates::NextSprintForm,
   }
 
   def initialize(current_form_id:, sprint_update:)
     @current_form_id = format_form_id(
-      current_form_id || default_form_id
+      current_form_id || default_form_id,
     )
     @sprint_update = sprint_update
   end
@@ -59,14 +59,12 @@ class SprintUpdates::UpdateFlow
   attr_reader :sprint_update
 
   def form_status
-    @form_status ||= Hash[
-      FORMS.map do |id, klass|
-        [
-          id,
-          klass.from_model(sprint_update).status
-        ]
-      end
-    ]
+    @form_status ||= FORMS.map { |id, klass|
+      [
+        id,
+        klass.from_model(sprint_update).status,
+      ]
+    }.to_h
   end
 
   def default_form_id

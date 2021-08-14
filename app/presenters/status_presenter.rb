@@ -18,8 +18,8 @@ class StatusPresenter
       I18n.t(:label, scope: [:updates, key, label]),
       content_tag(
         :span,
-        I18n.t(:hint_text, scope: [:updates, key, label])
-      )
+        I18n.t(:hint_text, scope: [:updates, key, label]),
+      ),
     ].join.html_safe
   end
 

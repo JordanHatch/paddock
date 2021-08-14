@@ -56,11 +56,9 @@ module BaseForm::NestedAttributes
 
       next unless attributes.key?(nested_key)
 
-      nested_atts = Hash[
-        attributes[nested_key].map.with_index do |form, i|
-          [i, form.to_hash]
-        end
-      ]
+      nested_atts = attributes[nested_key].map.with_index { |form, i|
+        [i, form.to_hash]
+      }.to_h
 
       attributes[nested_key] = nested_atts
     end

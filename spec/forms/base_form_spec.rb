@@ -37,8 +37,8 @@ RSpec.describe BaseForm do
   def build_mock_model(attributes)
     OpenStruct.new(
       attributes.merge({
-                         attributes: attributes
-                       })
+        attributes: attributes,
+      }),
     )
   end
 
@@ -74,12 +74,12 @@ RSpec.describe BaseForm do
         {
           'items_attributes' => {
             '1' => {
-              'name' => 'Item 1'
+              'name' => 'Item 1',
             },
             '2' => {
-              'name' => 'Item 2'
-            }
-          }
+              'name' => 'Item 2',
+            },
+          },
         }
       end
 
@@ -88,7 +88,7 @@ RSpec.describe BaseForm do
 
         expect(form.items_attributes).to contain_exactly(
           ExampleNestedForm::Item.new({ name: 'Item 1' }),
-          ExampleNestedForm::Item.new({ name: 'Item 2' })
+          ExampleNestedForm::Item.new({ name: 'Item 2' }),
         )
       end
     end
@@ -112,8 +112,8 @@ RSpec.describe BaseForm do
         build_mock_model(
           items: [
             build_mock_model(name: 'Item 1'),
-            build_mock_model(name: 'Item 2')
-          ]
+            build_mock_model(name: 'Item 2'),
+          ],
         )
       end
 
@@ -122,7 +122,7 @@ RSpec.describe BaseForm do
 
         expect(form.items_attributes).to contain_exactly(
           ExampleNestedForm::Item.new({ name: 'Item 1' }),
-          ExampleNestedForm::Item.new({ name: 'Item 2' })
+          ExampleNestedForm::Item.new({ name: 'Item 2' }),
         )
       end
     end
@@ -155,7 +155,7 @@ RSpec.describe BaseForm do
         form.validate
 
         expect(form.errors).to contain_exactly(
-          [:name, ['must be filled']]
+          [:name, ['must be filled']],
         )
       end
     end
@@ -167,9 +167,9 @@ RSpec.describe BaseForm do
         params = {
           'items_attributes' => {
             '0' => {
-              'name' => 'Example'
-            }
-          }
+              'name' => 'Example',
+            },
+          },
         }
         form = form_class.from_form(params)
 
@@ -181,9 +181,9 @@ RSpec.describe BaseForm do
         params = {
           'items_attributes' => {
             '0' => {
-              'name' => ''
-            }
-          }
+              'name' => '',
+            },
+          },
         }
         form = form_class.from_form(params)
 
@@ -191,12 +191,12 @@ RSpec.describe BaseForm do
         expect(form).to_not be_valid
 
         expect(form.errors).to eq({
-                                    items_attributes: {
-                                      0 => {
-                                        name: ['must be filled']
-                                      }
-                                    }
-                                  })
+          items_attributes: {
+            0 => {
+              name: ['must be filled'],
+            },
+          },
+        })
       end
 
       it 'ignores objects with the "_destroy" key set' do
@@ -204,9 +204,9 @@ RSpec.describe BaseForm do
           'items_attributes' => {
             '1' => {
               'name' => '',
-              '_destroy' => 1
-            }
-          }
+              '_destroy' => 1,
+            },
+          },
         }
         form = form_class.from_form(params)
 
@@ -234,13 +234,13 @@ RSpec.describe BaseForm do
           'items_attributes' => {
             0 => {
               '_destroy' => nil,
-              'name' => 'Item 1'
+              'name' => 'Item 1',
             },
             1 => {
               '_destroy' => nil,
-              'name' => 'Item 2'
-            }
-          }
+              'name' => 'Item 2',
+            },
+          },
         }
       end
 
@@ -270,7 +270,7 @@ RSpec.describe BaseForm do
       let(:params) do
         {
           name: '',
-          lastname: 'Example'
+          lastname: 'Example',
         }
       end
 
@@ -287,7 +287,7 @@ RSpec.describe BaseForm do
           {
             name: '',
             lastname: '',
-            array: []
+            array: [],
           }
         end
 
@@ -303,7 +303,7 @@ RSpec.describe BaseForm do
           {
             name: '',
             lastname: '',
-            array: ['item']
+            array: %w[item],
           }
         end
 

@@ -21,7 +21,7 @@ class UpdatesController < ApplicationController
     @service = SprintUpdates::UpdateService.build(
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
-      form_class: flow.form_class
+      form_class: flow.form_class,
     )
   end
 
@@ -30,7 +30,7 @@ class UpdatesController < ApplicationController
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
       form_class: flow.form_class,
-      attributes: params[:update]
+      attributes: params[:update],
     )
 
     if @service.success?
@@ -50,7 +50,7 @@ class UpdatesController < ApplicationController
     @service = SprintUpdates::PublishService.build(
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
-      flow: flow
+      flow: flow,
     )
   end
 
@@ -60,7 +60,7 @@ class UpdatesController < ApplicationController
     @service = SprintUpdates::PublishService.publish(
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
-      flow: flow
+      flow: flow,
     )
 
     if @service.success?
@@ -91,7 +91,7 @@ class UpdatesController < ApplicationController
   def flow
     @flow ||= SprintUpdates::UpdateFlow.new(
       current_form_id: @form_id || params[:form],
-      sprint_update: sprint_update
+      sprint_update: sprint_update,
     )
   end
 

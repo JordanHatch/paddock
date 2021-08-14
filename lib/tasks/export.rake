@@ -19,7 +19,7 @@ namespace :export do
 
     exporter = PdfExporter.new(
       sprint_id: options[:sprint],
-      output_file: options[:file]
+      output_file: options[:file],
     )
     exporter.render_to_file
   end

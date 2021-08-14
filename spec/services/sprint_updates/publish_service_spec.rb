@@ -9,7 +9,7 @@ RSpec.describe SprintUpdates::PublishService do
       described_class.build(
         team_id: update.team.id,
         sprint_id: update.sprint.id,
-        flow: flow
+        flow: flow,
       )
     end
 
@@ -47,7 +47,7 @@ RSpec.describe SprintUpdates::PublishService do
       described_class.publish(
         team_id: update.team.id,
         sprint_id: update.sprint.id,
-        flow: flow
+        flow: flow,
       )
     end
 

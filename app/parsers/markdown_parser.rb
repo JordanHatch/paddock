@@ -14,11 +14,11 @@ class MarkdownParser
     @renderer ||= Redcarpet::Markdown.new(
       Redcarpet::Render::HTML.new(
         escape_html: true,
-        hard_wrap: true
+        hard_wrap: true,
       ),
       autolink: true,
       tables: true,
-      lax_spacing: true
+      lax_spacing: true,
     )
   end
 
