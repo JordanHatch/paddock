@@ -8,6 +8,9 @@ AllCops:
 Lint/MissingSuper:
   Enabled: false
 
+Style/NumericLiterals:
+  Enabled: false
+
 # Disable some checks based on the GOV.UK Rubocop style guide
 #
 
