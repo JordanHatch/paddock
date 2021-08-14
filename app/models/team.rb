@@ -4,6 +4,8 @@ class Team < ApplicationRecord
   belongs_to :group
   has_many :updates
 
+  has_paper_trail skip: %i[created_at updated_at]
+
   friendly_id :name, use: :slugged
 
   scope :for_sprint, lambda { |sprint|
