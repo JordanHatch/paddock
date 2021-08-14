@@ -17,7 +17,7 @@ class UpdatesController < ApplicationController
   end
 
   def edit
-    @service = SprintUpdates::BuildUpdateService.(
+    @service = SprintUpdates::UpdateService.build(
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
       form_class: flow.form_class,
@@ -25,7 +25,7 @@ class UpdatesController < ApplicationController
   end
 
   def update
-    @service = SprintUpdates::UpdateService.call(
+    @service = SprintUpdates::UpdateService.update(
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
       form_class: flow.form_class,
@@ -46,7 +46,7 @@ class UpdatesController < ApplicationController
   def submit
     @form_id = :submit
 
-    @service = SprintUpdates::BuildPublishService.call(
+    @service = SprintUpdates::PublishService.build(
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
       flow: flow,
@@ -56,7 +56,7 @@ class UpdatesController < ApplicationController
   def do_submit
     @form_id = :submit
 
-    @service = SprintUpdates::PublishService.call(
+    @service = SprintUpdates::PublishService.publish(
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
       flow: flow,

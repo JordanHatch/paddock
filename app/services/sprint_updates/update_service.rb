@@ -1,47 +1,73 @@
 class SprintUpdates::UpdateService < BaseService
-  extend Forwardable
+  attr_reader :form
 
-  def_delegators :build_service, :team, :sprint, :update
-
-  def initialize(team_id:, sprint_id:, form_class:, attributes:)
+  def initialize(team_id:, sprint_id:, form_class:)
     @team_id = team_id
     @sprint_id = sprint_id
     @form_class = form_class
-    @attributes = attributes.dup.permit!
   end
 
-  def call
+  def self.build(**args)
+    new(**args).tap(&:build_form)
+  end
+
+  def self.update(**args)
+    new(**args.slice(:team_id, :sprint_id, :form_class))
+      .tap {|s| s.persist_form(args[:attributes]) }
+  end
+
+  def build_form
     begin
-      raise Failure unless build_service.success?
+      check_update_can_be_edited
 
-      ActiveRecord::Base.transaction do
-        persist_form
-      end
+      @form = form_class.from_model(update)
+      prevalidate_form
 
-      self.state = :success
+      set_state(:success)
     rescue Failure
-      self.state = :failure
+      set_state(:failure)
     end
   end
 
-  def form
-    @form ||= form_class.from_form(attributes)
+  def persist_form(attributes)
+    begin
+      check_update_can_be_edited
+
+      @form = form_class.from_form(attributes)
+      update.assign_attributes(form.to_model_hash)
+
+      raise Failure unless update.save
+
+      set_state(:success)
+    rescue Failure
+      set_state(:failure)
+    end
+  end
+
+  def team
+    @team ||= Team.friendly.for_sprint(sprint).find(team_id)
+  end
+
+  def sprint
+    @sprint ||= Sprint.find(sprint_id)
+  end
+
+  def update
+    @update ||= Update.find_or_initialize_by(sprint: sprint, team: team)
   end
 
 private
-  attr_reader :team_id, :sprint_id, :form_class, :attributes
+  attr_reader :team_id, :sprint_id, :form_class
 
-  def build_service
-    @build_service ||= SprintUpdates::BuildUpdateService.call(
-      team_id: team_id,
-      sprint_id: sprint_id,
-      form_class: form_class,
-    )
+  def check_update_can_be_edited
+    begin
+      raise Failure unless update.present? && update.can_be_edited?
+    rescue ActiveRecord::RecordNotFound
+      raise Failure
+    end
   end
 
-  def persist_form
-    update.assign_attributes(form.to_model_hash)
-    raise Failure unless update.save
+  def prevalidate_form
+    form.validate if form.started?
   end
-
 end
