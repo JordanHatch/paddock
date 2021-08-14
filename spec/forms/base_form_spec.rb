@@ -1,39 +1,39 @@
 require 'rails_helper'
 
-RSpec.describe BaseForm do
-  class ExampleForm < BaseForm
-    attribute? :name, Types::Nominal::String
-    attribute? :lastname, Types::Nominal::String
-    attribute? :array, Types::Nominal::Array.default([], shared: true)
+class ExampleForm < BaseForm
+  attribute? :name, Types::Nominal::String
+  attribute? :lastname, Types::Nominal::String
+  attribute? :array, Types::Nominal::Array.default([], shared: true)
 
-    validation do
-      params do
-        required(:name).filled(:string)
-      end
+  validation do
+    params do
+      required(:name).filled(:string)
     end
   end
+end
 
-  class ExampleNestedForm < BaseForm
-    class Item < BaseForm
-      attribute? :name, Types::Nominal::String
-      attribute? :_destroy, Types::Nominal::Integer
-    end
+class ExampleNestedForm < BaseForm
+  class Item < BaseForm
+    attribute? :name, Types::Nominal::String
+    attribute? :_destroy, Types::Nominal::Integer
+  end
 
-    nested_attributes :items
+  nested_attributes :items
 
-    attribute? :items_attributes, Types::Array.of(Item).default([], shared: true)
+  attribute? :items_attributes, Types::Array.of(Item).default([], shared: true)
 
-    validation do
-      params do
-        optional(:items_attributes).value(:array).each do
-          schema do
-            required(:name).filled(:string)
-          end
+  validation do
+    params do
+      optional(:items_attributes).value(:array).each do
+        schema do
+          required(:name).filled(:string)
         end
       end
     end
   end
+end
 
+RSpec.describe BaseForm do
   def build_mock_model(attributes)
     OpenStruct.new(
       attributes.merge({

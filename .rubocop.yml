@@ -5,6 +5,9 @@ AllCops:
     - 'bin/**/*'
   NewCops: enable
 
+Lint/MissingSuper:
+  Enabled: false
+
 # Disable some checks based on the GOV.UK Rubocop style guide
 #
 

@@ -4,7 +4,7 @@ module BaseForm::Hooks
   HOOKS = %i[
     preprocess
     before_validate
-  ]
+  ].freeze
 
   module ClassMethods
     attr_reader :blocks

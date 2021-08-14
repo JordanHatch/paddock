@@ -63,6 +63,15 @@ class PdfExporter
     "<style type=\"text/css\">#{body}</style>".html_safe
   end
 
+  def self.asset_host
+    if Rails.env.development?
+      wds = Webpacker.dev_server
+      "#{wds.host}:#{wds.port}"
+    else
+      Rails.application.config.action_controller.asset_host
+    end
+  end
+
   private
 
   attr_reader :sprint, :debug, :output_file, :doc
@@ -73,14 +82,5 @@ class PdfExporter
 
   def renderer
     ApplicationController.renderer
-  end
-
-  def self.asset_host
-    if Rails.env.development?
-      wds = Webpacker.dev_server
-      "#{wds.host}:#{wds.port}"
-    else
-      Rails.application.config.action_controller.asset_host
-    end
   end
 end

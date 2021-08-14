@@ -12,7 +12,7 @@ class SprintUpdates::UpdateFlow
     team_health: SprintUpdates::TeamHealthForm,
     issues: SprintUpdates::IssuesForm,
     next_sprint: SprintUpdates::NextSprintForm,
-  }
+  }.freeze
 
   def initialize(current_form_id:, sprint_update:)
     @current_form_id = format_form_id(
@@ -59,12 +59,9 @@ class SprintUpdates::UpdateFlow
   attr_reader :sprint_update
 
   def form_status
-    @form_status ||= FORMS.map { |id, klass|
-      [
-        id,
-        klass.from_model(sprint_update).status,
-      ]
-    }.to_h
+    @form_status ||= FORMS.transform_values do |klass|
+      klass.from_model(sprint_update).status
+    end
   end
 
   def default_form_id

@@ -11,7 +11,9 @@ namespace :users do
       end
     end
 
+    # rubocop:disable Lint/EmptyBlock
     parser.parse!(parser.order!(ARGV) {})
+    # rubocop:enable Lint/EmptyBlock
 
     if options[:email].blank?
       puts parser.help

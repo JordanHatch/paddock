@@ -36,7 +36,7 @@ class Manage::SprintsController < Manage::BaseController
   helper_method :sprints, :sprint, :form, :current_sprint
 
   def sprints
-    @sprint ||= Sprint.in_reverse_date_order
+    @sprints ||= Sprint.in_reverse_date_order
   end
 
   def sprint

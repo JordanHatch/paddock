@@ -17,8 +17,8 @@ module BaseForm::NestedAttributes
       form.nested_attributes.each do |key|
         nested_key = nested_attributes_key(key)
 
-        attributes[nested_key] = model.send(key).map do |model|
-          model.attributes.merge(persisted: true)
+        attributes[nested_key] = model.send(key).map do |nested_model|
+          nested_model.attributes.merge(persisted: true)
         end
       end
     end
@@ -43,7 +43,9 @@ module BaseForm::NestedAttributes
 
   def define_stub_nested_attribute_writers(form)
     form.class.nested_attributes.each do |key|
+      # rubocop:disable Lint/EmptyBlock
       form.class.define_method("#{key}_attributes=") {}
+      # rubocop:enable Lint/EmptyBlock
     end
   end
 
@@ -56,8 +58,8 @@ module BaseForm::NestedAttributes
 
       next unless attributes.key?(nested_key)
 
-      nested_atts = attributes[nested_key].map.with_index { |form, i|
-        [i, form.to_hash]
+      nested_atts = attributes[nested_key].map.with_index { |nested_form, i|
+        [i, nested_form.to_hash]
       }.to_h
 
       attributes[nested_key] = nested_atts

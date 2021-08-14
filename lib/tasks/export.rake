@@ -15,7 +15,9 @@ namespace :export do
       end
     end
 
+    # rubocop:disable Lint/EmptyBlock
     parser.parse!(parser.order!(ARGV) {})
+    # rubocop:enable Lint/EmptyBlock
 
     exporter = PdfExporter.new(
       sprint_id: options[:sprint],
