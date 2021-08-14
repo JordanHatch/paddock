@@ -1,5 +1,5 @@
 %nav
   %ul
-    = nav_link 'Sprints', sprints_path, :updates
+    = section_nav_link 'Sprints', sprints_path, :updates
     - if signed_in_user.present? && signed_in_user.admin?
-      = nav_link 'Manage', manage_root_path, :manage
+      = section_nav_link 'Manage', manage_root_path, :manage
