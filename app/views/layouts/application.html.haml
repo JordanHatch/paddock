@@ -2,6 +2,8 @@
 %html
   %head
     %title
+      - if display_paddock_env?
+        = "(#{paddock_env})"
       Paddock
     = csrf_meta_tags
     = csp_meta_tag
