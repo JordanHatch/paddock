@@ -102,5 +102,41 @@ RSpec.describe MarkdownParser do
       output = MarkdownParser.render(input)
       expect(output).to eq(expected)
     end
+
+    it 'offsets headings where no whitespace follows the hash' do
+      input = <<~MD
+        #Heading 1
+        ##Heading 2
+        ###Heading 3
+      MD
+
+      expected = <<~HTML
+        <h4>Heading 1</h4>
+
+        <h5>Heading 2</h5>
+
+        <h6>Heading 3</h6>
+      HTML
+
+      output = MarkdownParser.render(input)
+      expect(output).to eq(expected)
+    end
+
+    it 'does not change hash characters mid-line' do
+      input = <<~MD
+        #Heading 1
+
+        This is a #hashtag
+      MD
+
+      expected = <<~HTML
+        <h4>Heading 1</h4>
+
+        <p>This is a #hashtag</p>
+      HTML
+
+      output = MarkdownParser.render(input)
+      expect(output).to eq(expected)
+    end
   end
 end

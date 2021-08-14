@@ -30,8 +30,8 @@ class MarkdownParser
   # break the structure of the page (and PDF)
   #
   def pad_headings(string)
-    string.gsub(/^(\#{1,3}) /) do |_|
-      "#{Regexp.last_match(1)}### "
+    string.gsub(/^(\#{1,3})( |\w)/) do |_|
+      "#{Regexp.last_match(1)}####{Regexp.last_match(2)}"
     end
   end
 end
