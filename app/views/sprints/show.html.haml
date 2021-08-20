@@ -14,7 +14,8 @@
           - group.teams_for_sprint(sprint).each do |team|
             %li
               = link_to update_path(sprint, team) do
-                %h3=team.name
+                %h3
+                  %span= team.name
                 = render partial: 'update_preview', locals: { team: team, update: team.update_for_sprint(sprint) }
 
   = button_to 'Download as PDF', export_sprint_path(sprint), class: 'button'

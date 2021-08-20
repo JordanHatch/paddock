@@ -72,8 +72,15 @@ section.sprints-show {
 
     h3 {
       font-size: 1.2rem;
-      margin: .5rem 0 0;
+      margin: 0;
       flex: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        flex: 1;
+      }
     }
 
     .key-indicators {
@@ -94,7 +101,6 @@ section.sprints-show {
 
       .label {
         flex: 1;
-        display: inline-block;
         color: #000;
         margin-right: .4rem;
         font-weight: bold;
@@ -107,6 +113,22 @@ section.sprints-show {
       .value {
         flex: auto;
         text-align: right;
+      }
+
+      .label, .value {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      &.issues {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .inner {
+        padding: 0;
+        width: 100%;
       }
     }
 

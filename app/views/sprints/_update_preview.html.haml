@@ -1,17 +1,22 @@
 .key-indicators
   - if update.published?
     .indicator.delivery-status{:class => "status-#{update.delivery_status}"}
-      .label Delivery
+      .label
+        .inner Delivery
       .value
-        = delivery_status_text(update)
-        %span.delivery-indicator
+        .inner
+          = delivery_status_text(update)
+          %span.delivery-indicator
     .indicator.delivery-status{:class => "status-#{update.okr_status}"}
-      .label OKRs
+      .label
+        .inner OKRs
       .value
-        = okr_status_text(update)
-        %span.delivery-indicator
-    .indicator
-      = pluralize update.issues.count, 'issue'
+        .inner
+          = okr_status_text(update)
+          %span.delivery-indicator
+    .indicator.issues
+      .inner
+        = pluralize update.issues.count, 'issue'
   - else
     .indicator.completion-status Awaiting submission
 
