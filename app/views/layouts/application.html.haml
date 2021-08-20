@@ -17,10 +17,11 @@
       - if signed_in?
         = render partial: 'layouts/partials/navigation'
 
+    - if flash.any?
+      - flash.each do |key, message|
+        %div{class: "flash global flash-#{key}"}= message
+
     %main.app
-      - if flash.any?
-        - flash.each do |key, message|
-          %div{class: "flash flash-#{key}"}= message
       = content_for?(:content) ? yield(:content) : yield
 
     %footer
