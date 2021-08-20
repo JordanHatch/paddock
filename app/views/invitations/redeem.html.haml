@@ -1,7 +1,9 @@
-%section.sign-in{'data-controller'=>'redeem-invitation'}
+%section.sign-in.invitations--redeem{'data-controller'=>'redeem-invitation'}
   .form{'data-redeem-invitation-target'=>'form'}
-    %h2 Welcome
-    %p
+    .user-initials
+      .user-initials-text
+        = invitation_user_initials(token.email)
+    .user-email
       = token.email
     = button_to 'Sign me in',
         redeem_invitation_path(token.token), method: 'post',

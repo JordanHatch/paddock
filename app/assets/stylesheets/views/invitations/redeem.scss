@@ -1,0 +1,28 @@
+.invitations--redeem {
+
+  .user-initials {
+    display: inline-block;
+    margin: 0 auto 1rem;
+    width: 8rem;
+    height: 8rem;
+    background: $green-600;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+
+    .user-initials-text {
+      font-size: 4rem;
+      font-weight: bold;
+      color: $white;
+      text-align: center;
+      flex: 1;
+    }
+  }
+
+  .user-email {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+}
