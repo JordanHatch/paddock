@@ -1,11 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ 'button', 'form', 'loading', 'loadingMessage' ]
-
-  connect() {
-    this.buttonTarget.click()
-  }
+  static targets = [ 'form', 'loading', 'loadingMessage' ]
 
   showLoadingMessage() {
     this.formTarget.style.display = 'none'

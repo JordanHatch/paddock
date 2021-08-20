@@ -1,10 +1,10 @@
 module FeatureAuthentication
-  def sign_in(_user, js_enabled: false)
+  def sign_in(_user)
     invitation = create(:invitation, email: @user.email)
 
     visit redeem_invitation_path(invitation.token)
 
-    click_on 'Sign me in' unless js_enabled
+    click_on 'Sign me in'
   end
 end
 
@@ -19,7 +19,7 @@ RSpec.configure do |config|
                 create(:user)
               end
 
-      sign_in(@user, js_enabled: example.metadata[:js])
+      sign_in(@user)
     end
   end
 end
