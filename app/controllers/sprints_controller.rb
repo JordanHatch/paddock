@@ -21,9 +21,11 @@ class SprintsController < ApplicationController
     end
   end
 
+  def issues; end
+
   private
 
-  helper_method :sprints, :sprint, :groups, :delivery_status_summary
+  helper_method :sprints, :sprint, :published_issues, :groups, :delivery_status_summary
 
   def sprints
     @sprints ||= Sprint.in_date_order.all
@@ -35,6 +37,10 @@ class SprintsController < ApplicationController
 
   def groups
     @groups ||= Group.in_order.with_teams
+  end
+
+  def published_issues
+    @published_issues ||= sprint.published_issues
   end
 
   def delivery_status_summary

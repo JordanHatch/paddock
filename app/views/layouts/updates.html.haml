@@ -7,6 +7,7 @@
       %nav
         %ul
           %li= nav_link 'Overview', sprint_path(sprint)
+          %li= nav_link 'Issues', sprint_issues_path(sprint)
       = render partial: 'layouts/partials/sprint_navigation', locals: { sprint: sprint, team: (team if self.respond_to?(:team)) }
   .inner
     = yield

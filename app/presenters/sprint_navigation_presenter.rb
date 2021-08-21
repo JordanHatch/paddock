@@ -68,6 +68,8 @@ class SprintNavigationPresenter
   def sprint_navigation_path(sprint)
     if context.controller_name == 'updates'
       context.update_path(sprint, team)
+    elsif context.controller_name == 'sprints' && context.action_name == 'issues'
+      context.sprint_issues_path(sprint)
     else
       context.sprint_path(sprint)
     end

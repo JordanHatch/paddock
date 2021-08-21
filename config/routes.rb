@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/sprints', to: 'sprints#index', as: :sprints
   get '/sprints/:id', to: 'sprints#show', as: :sprint
   post '/sprints/:id/export', to: 'sprints#export', as: :export_sprint
+  get '/sprints/:id/issues', to: 'sprints#issues', as: :sprint_issues
 
   get '/sprints/:sprint_id/:team_id', to: 'updates#show', as: :update
   patch '/sprints/:sprint_id/:team_id', to: 'updates#update'

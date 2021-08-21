@@ -1,0 +1,30 @@
+.sprints--issues
+  - if published_issues.any?
+    .issues__count
+      %h2= pluralize published_issues.count, 'issue'
+
+    %table.issues__list
+      %thead.issues__header
+        %tr
+          %th{ scope: 'col' } Team
+          %th{ scope: 'col' } The issue
+          %th{ scope: 'col' } How we'll solve it
+          %th{ scope: 'col' } What we need help with
+      %tbody
+        - published_issues.each do |issue|
+          %tr.issue
+            %td.issue__team-name= issue.team.name
+            %td.issue__description= issue.description
+            %td.issue__treatment= issue.treatment
+            %td.issue__help
+              - if issue.help.present?
+                .issue__help_text
+                  = issue.help
+              - if issue.identifier.present?
+                .issue__identifier
+                  Issue raised as:
+                  = issue.identifier
+  - else
+    .issues__empty-message
+      %i
+      No issues have been reported for this sprint.
