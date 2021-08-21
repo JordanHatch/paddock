@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe InvitationsHelper, type: :helper do
-
   describe '#invitation_user_initials' do
     subject { helper.invitation_user_initials(email) }
 
@@ -29,5 +28,4 @@ RSpec.describe InvitationsHelper, type: :helper do
       end
     end
   end
-
 end
