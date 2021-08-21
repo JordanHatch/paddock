@@ -17,7 +17,7 @@
                                                   action: 'keyup->update-single-issue#updateHeader' } }
     = f.input :treatment, as: :string, required: false
     = f.input :help, as: :string, required: false
-    = f.input :identifier, as: :string, required: false
+    = f.input :identifier, as: :string, required: false, input_html: { size: 8 }
     %button.remove{ type: 'button', data: { action: 'update-issues#remove' } }
       Delete issue
     = f.input :_destroy, as: :hidden

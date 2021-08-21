@@ -15,7 +15,7 @@ en:
           description: What's the issue?
           treatment: How will we solve it?
           help: What do you need help with?
-          identifier: If this issue has been raised elsewhere (eg. in DevOps), what's the identifier?
+          identifier: If this issue has been raised in DevOps, what's the identifier?
     hints:
       team:
         start_on: The date the team started sprint reporting. The team won't show up in sprints that ended before this date. If blank, the team will show up in all sprints.
