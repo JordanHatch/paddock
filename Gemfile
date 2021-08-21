@@ -33,6 +33,7 @@ group :development, :test do
   gem 'cuprite'
   gem 'database_cleaner-active_record'
   gem 'dotenv-rails'
+  gem 'faker'
   gem 'factory_bot_rails'
   gem 'foreman'
   gem 'mocha'
