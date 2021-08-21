@@ -1,6 +1,6 @@
 module FeatureAuthentication
-  def sign_in(_user)
-    invitation = create(:invitation, email: @user.email)
+  def sign_in(user)
+    invitation = create(:invitation, email: user.email)
 
     visit redeem_invitation_path(invitation.token)
 
