@@ -2,7 +2,7 @@ class Sprint < ApplicationRecord
   has_many :updates
 
   has_many :published_updates, -> { published }, class_name: 'Update'
-  has_many :published_issues, through: :published_updates, source: :issues
+  has_many :published_issues, -> { includes(:team) }, through: :published_updates, source: :issues
 
   has_paper_trail skip: %i[created_at updated_at]
 
