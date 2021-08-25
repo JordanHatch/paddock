@@ -1,22 +1,26 @@
 .columns
-  .key-indicators
-    .indicator.delivery-status
-      %h3 Delivery status
-      .value{:class => "status-#{sprint_update.delivery_status}"}
+  .indicator-list
+    .indicator-list__indicator.delivery-status
+      .indicator-list__label
+        Delivery status
+      .indicator-list__value{ class: "status-#{sprint_update.delivery_status}" }
         %span.delivery-indicator
         = delivery_status_text(sprint_update)
-    .indicator.delivery-status
-      %h3 OKR progress
-      .value{:class => "status-#{sprint_update.okr_status}"}
+    .indicator-list__indicator.delivery-status
+      .indicator-list__label
+        OKR progress
+      .indicator-list__value{ class: "status-#{sprint_update.okr_status}" }
         %span.delivery-indicator
         = okr_status_text(sprint_update)
-    .indicator.team-health
-      %h3 Team health
-      .value
+    .indicator-list__indicator.team-health
+      .indicator-list__label
+        Team health
+      .indicator-list__value
         = "#{sprint_update.team_health} / 5"
-    .indicator.headcount
-      %h3 Headcount
-      .value
+    .indicator-list__indicator.headcount
+      .indicator-list__label
+        Headcount
+      .indicator-list__value
         = "#{sprint_update.current_headcount} / #{sprint_update.total_headcount}"
   .primary-col
     - if sprint_update.content.present?

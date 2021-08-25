@@ -110,22 +110,24 @@ RSpec.describe 'editing sprint updates', type: :feature do
 
     expect(page).to have_content('currently in draft')
 
-    delivery_status = page.find('h3', text: 'Delivery status').sibling('.value')
+    indicator_class = '.indicator-list__indicator'
+
+    delivery_status = page.find(indicator_class, text: 'Delivery status')
     within delivery_status do
       expect(page).to have_content('Green')
     end
 
-    okr_status = page.find('h3', text: 'OKR progress').sibling('.value')
+    okr_status = page.find(indicator_class, text: 'OKR progress')
     within okr_status do
       expect(page).to have_content('Amber')
     end
 
-    team_health = page.find('h3', text: 'Team health').sibling('.value')
+    team_health = page.find(indicator_class, text: 'Team health')
     within team_health do
       expect(page).to have_content('5 / 5')
     end
 
-    headcount = page.find('h3', text: 'Headcount').sibling('.value')
+    headcount = page.find(indicator_class, text: 'Headcount')
     within headcount do
       expect(page).to have_content('5 / 7')
     end
