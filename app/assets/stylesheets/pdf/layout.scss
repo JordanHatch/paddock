@@ -1,4 +1,4 @@
-@import '../elements/pdf_typefaces';
+@import 'typefaces';
 
 body.pdf {
   @include pdfRegularFontStack;
