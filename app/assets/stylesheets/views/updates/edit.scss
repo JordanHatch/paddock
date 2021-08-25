@@ -209,9 +209,7 @@
   }
 
   .invalid-submit-message {
-    @include box;
-
-    i {
+    .info-box__icon {
       @extend .fas;
       @extend .fa-exclamation-circle;
     }

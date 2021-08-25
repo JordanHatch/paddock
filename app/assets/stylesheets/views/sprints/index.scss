@@ -1,8 +1,6 @@
 .view--sprints-index {
   .no-sprints-message {
-    @include box;
-
-    i {
+    .info-box__icon {
       @extend .fas;
       @extend .fa-wrench;
     }

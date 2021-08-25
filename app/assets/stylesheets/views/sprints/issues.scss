@@ -5,9 +5,7 @@
   }
 
   .issues__empty-message {
-    @include box;
-
-    i {
+    .info-box__icon {
       @extend .far;
       @extend .fa-folder-open;
     }

@@ -14,7 +14,7 @@
         .actions
           = button_to 'Submit update', submit_update_path(service.sprint, service.team), class: 'button', data: { method: 'post' }
       - else
-        .invalid-submit-message
-          %i
+        .info-box.invalid-submit-message
+          .info-box__icon
           You need to complete all steps before submitting the update.
 
