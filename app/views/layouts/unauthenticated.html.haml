@@ -16,6 +16,6 @@
       .box
         - if flash.any?
           - flash.each do |key, message|
-            %div{class: "flash flash-#{key}"}= message
+            %div{class: "flash-message flash-message--#{key}"}= message
         = yield
     = render partial: 'layouts/partials/paddock_environment'

@@ -1,0 +1,26 @@
+.flash-message {
+  padding: .7rem .5rem;
+  background: $light-grey;
+  margin-bottom: 1.5rem;
+  border-radius: .25rem;
+}
+
+.flash-message--global {
+  position: absolute;
+  top: .9rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 20rem;
+  box-shadow: darken($base-color, 2%) 0px -3px 3px;
+  text-align: center;
+}
+
+.flash-message--alert {
+  background: $light-red;
+}
+
+.flash-message--notice {
+  background: $green-800;
+  color: $white;
+}

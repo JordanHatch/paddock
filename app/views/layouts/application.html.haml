@@ -19,7 +19,7 @@
 
     - if flash.any?
       - flash.each do |key, message|
-        %div{class: "flash global flash-#{key}"}= message
+        %div{class: "flash-message flash-message--global flash-message--#{key}"}= message
 
     %main.app
       = content_for?(:content) ? yield(:content) : yield
