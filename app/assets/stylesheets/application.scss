@@ -8,13 +8,6 @@
 
 @import 'colours';
 
-@import 'elements/all';
-
-@import 'layout/body';
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/pdf';
-@import 'layout/typography';
-@import 'layout/unauthenticated';
-
-@import 'views/all';
+@import 'layout/**/*.scss';
+@import 'elements/**/*.scss';
+@import 'views/**/*.scss';
