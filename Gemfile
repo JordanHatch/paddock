@@ -23,7 +23,7 @@ gem 'premailer-rails'
 gem 'puma', '~> 5.0'
 gem 'redcarpet'
 gem 'simple_form'
-gem 'webpacker', '~> 5.0'
+gem 'webpacker', '~> 5.4.2'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
