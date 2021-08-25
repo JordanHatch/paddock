@@ -47,6 +47,11 @@
     }
   }
 
+  .indicator-list--inline-mini {
+    flex: 65%;
+    max-width: 65%;
+  }
+
   ul.teams {
     margin-bottom: 2rem;
 
@@ -82,64 +87,10 @@
       }
     }
 
-    .key-indicators {
-      flex: 65%;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      max-width: 65%;
+    .status-indicator__circle {
+      margin-left: .2rem;
+      margin-bottom: -.2rem;
     }
-    .indicator {
-      flex: 1;
-      background: $white;
-      border-radius: .5rem;
-      padding: .6rem;
-      min-width: 11rem;
-
-      display: flex;
-
-      .label {
-        flex: 1;
-        color: #000;
-        margin-right: .4rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: .75rem;
-        margin-top: .15rem;
-        color: #888;
-      }
-
-      .value {
-        flex: auto;
-        text-align: right;
-      }
-
-      .label, .value {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
-
-      &.issues {
-        flex-direction: row;
-        align-items: center;
-      }
-
-      .inner {
-        padding: 0;
-        width: 100%;
-      }
-    }
-
-    .delivery-status {
-      @include delivery-indicator;
-
-      .delivery-indicator {
-        margin-left: .2rem;
-        margin-bottom: -.2rem;
-      }
-    }
-
   }
 
 }

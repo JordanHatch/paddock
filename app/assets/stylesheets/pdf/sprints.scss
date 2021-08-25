@@ -119,8 +119,6 @@ body.pdf .page {
           margin-left: 1%;
 
           &.delivery-status {
-            @include delivery-indicator;
-
             .label {
               float: left;
               width: 40%;
@@ -140,7 +138,7 @@ body.pdf .page {
             }
 
 
-            .delivery-indicator {
+            .status-indicator__circle {
               margin-left: .2rem;
               margin-bottom: -.2rem;
             }
@@ -215,8 +213,6 @@ body.pdf .page {
             background: $white;
             padding: .6rem;
             font-size: 1.3rem;
-
-            @include delivery-indicator;
           }
         }
       }
@@ -250,7 +246,6 @@ body.pdf .page {
 
       .summary {
         padding-right: 2rem;
-        @include content-block;
         font-size: 1em;
       }
 

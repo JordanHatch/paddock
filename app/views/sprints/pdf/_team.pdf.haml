@@ -9,15 +9,17 @@
       .indicator.delivery-status
         .inner
           .label Delivery status
-          .value{:class => "status-#{update.delivery_status}"}
-            %span.delivery-indicator
-            = delivery_status_text(update)
+          .value
+            .status-indicator{ class: "status-indicator--#{update.delivery_status}"}
+              .status-indicator__circle
+              = delivery_status_text(update)
       .indicator.delivery-status
         .inner
           .label OKR progress
-          .value{:class => "status-#{update.okr_status}"}
-            %span.delivery-indicator
-            = okr_status_text(update)
+          .value{:class => "status-indicator--#{update.okr_status}"}
+            .status-indicator{ class: "status-#{update.okr_status}" }
+              .status-indicator__circle
+              = okr_status_text(update)
       .indicator.team-health
         .inner
           .label Team health
@@ -33,7 +35,7 @@
         .title Summary
         .content
           - if update.content.present?
-            .summary
+            .markdown-block.summary
               = render_markdown(update.content).html_safe
         .clear
     .update-section.sprint-goals

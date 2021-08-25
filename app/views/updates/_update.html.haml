@@ -3,15 +3,17 @@
     .indicator-list__indicator.delivery-status
       .indicator-list__label
         Delivery status
-      .indicator-list__value{ class: "status-#{sprint_update.delivery_status}" }
-        %span.delivery-indicator
-        = delivery_status_text(sprint_update)
+      .indicator-list__value
+        .status-indicator{ class: "status-indicator--#{sprint_update.delivery_status}" }
+          .status-indicator__circle
+          = delivery_status_text(sprint_update)
     .indicator-list__indicator.delivery-status
       .indicator-list__label
         OKR progress
-      .indicator-list__value{ class: "status-#{sprint_update.okr_status}" }
-        %span.delivery-indicator
-        = okr_status_text(sprint_update)
+      .indicator-list__value
+        .status-indicator{ class: "status-indicator--#{sprint_update.okr_status}" }
+          .status-indicator__circle
+          = okr_status_text(sprint_update)
     .indicator-list__indicator.team-health
       .indicator-list__label
         Team health
@@ -24,7 +26,7 @@
         = "#{sprint_update.current_headcount} / #{sprint_update.total_headcount}"
   .primary-col
     - if sprint_update.content.present?
-      .summary
+      .markdown-block.summary
         = render_markdown(sprint_update.content).html_safe
     .update-section.sprint-goals
       %h3 Sprint goals

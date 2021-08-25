@@ -1,22 +1,27 @@
-.key-indicators
+.indicator-list--inline-mini
   - if update.published?
-    .indicator.delivery-status{:class => "status-#{update.delivery_status}"}
-      .label
-        .inner Delivery
-      .value
-        .inner
-          = delivery_status_text(update)
-          %span.delivery-indicator
-    .indicator.delivery-status{:class => "status-#{update.okr_status}"}
-      .label
-        .inner OKRs
-      .value
-        .inner
-          = okr_status_text(update)
-          %span.delivery-indicator
-    .indicator.issues
-      .inner
+    .indicator-list__indicator
+      .indicator-list__label
+        .indicator-list__inner
+          Delivery
+      .indicator-list__value
+        .indicator-list__inner
+          .status-indicator{ class: "status-indicator--#{update.delivery_status}" }
+            = delivery_status_text(update)
+            .status-indicator__circle
+    .indicator-list__indicator
+      .indicator-list__label
+        .indicator-list__inner
+          OKRs
+      .indicator-list__value
+        .indicator-list__inner
+          .status-indicator{ class: "status-indicator--#{update.okr_status}" }
+            = okr_status_text(update)
+            .status-indicator__circle
+    .indicator-list__indicator.issues
+      .indicator-list__inner
         = pluralize update.issues.count, 'issue'
   - else
-    .indicator.completion-status Awaiting submission
+    .indicator-list__indicator.completion-status
+      Awaiting submission
 

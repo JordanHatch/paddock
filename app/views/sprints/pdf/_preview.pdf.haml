@@ -1,0 +1,27 @@
+.key-indicators
+  - if update.published?
+    .indicator.delivery-status
+      .label
+        .inner
+          Delivery
+      .value
+        .inner
+          .status-indicator{ class: "status-indicator--#{update.delivery_status}" }
+            = delivery_status_text(update)
+            .status-indicator__circle
+    .indicator.delivery-status
+      .label
+        .inner
+          OKRs
+      .value
+        .inner
+          .status-indicator{ class: "status-indicator--#{update.delivery_status}" }
+            = okr_status_text(update)
+            .status-indicator__circle
+    .indicator.issues
+      .inner
+        = pluralize update.issues.count, 'issue'
+  - else
+    .indicator.completion-status
+      Awaiting submission
+

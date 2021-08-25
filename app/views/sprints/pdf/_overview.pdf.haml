@@ -15,4 +15,4 @@
           - group.teams_for_sprint(sprint).each do |team|
             %li.team
               %span.team-name=team.name
-              = render partial: 'sprints/update_preview', locals: { team: team, update: team.update_for_sprint(sprint) }, formats: [:html]
+              = render partial: 'sprints/pdf/preview', locals: { team: team, update: team.update_for_sprint(sprint) }

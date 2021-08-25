@@ -1,0 +1,35 @@
+.status-indicator { }
+
+.status-indicator__circle {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  margin-right: .2rem;
+  margin-bottom: -.1rem;
+  background-color: $dark-grey;
+}
+
+.status-indicator--green {
+  color: $green;
+
+  .status-indicator__circle {
+    background-color: $green;
+  }
+}
+
+.status-indicator--amber {
+  color: $amber;
+
+  .status-indicator__circle {
+    background-color: $amber;
+  }
+}
+
+.status-indicator--red {
+  color: $red;
+
+  .status-indicator__circle {
+    background-color: $red;
+  }
+}
