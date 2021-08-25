@@ -7,7 +7,7 @@
       to
       = sprint.end_on.strftime('%b %e %Y')
 
-  = render partial: 'sprints/pdf/overview', locals: { sprint: sprint, groups: groups }
+  = render partial: "#{views_path}/overview", locals: { sprint: sprint, groups: groups, views_path: views_path }
 
 .page-break
 
@@ -15,4 +15,4 @@
   - if group.updates.published_for_sprint(sprint).any?
     %h1.outline-anchor= group.name
   - group.updates.published_for_sprint(sprint).each do |update|
-    = render partial: 'sprints/pdf/team', locals: { sprint: sprint, update: update }
+    = render partial: "#{views_path}/team", locals: { sprint: sprint, update: update }
