@@ -96,12 +96,12 @@ RSpec.describe TeamSummary do
     }
 
     it 'returns the teams in groups' do
-      expected_teams = teams.map {|teams| teams.map(&:id) }
+      expected_teams = teams.map {|teams| teams.map(&:id).sort }
 
       result = described_class.for_sprint(sprint).with_groups
       result_groups = result.map {|group, _teams| group }
       result_teams = result.map {|_group, teams|
-        teams.map(&:id)
+        teams.map(&:id).sort
       }
 
       expect(result_groups).to contain_exactly(*groups)
