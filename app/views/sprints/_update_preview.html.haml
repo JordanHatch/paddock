@@ -1,13 +1,13 @@
 .indicator-list--inline-mini
-  - if update.published?
+  - if team.published?
     .indicator-list__indicator
       .indicator-list__label
         .indicator-list__inner
           Delivery
       .indicator-list__value
         .indicator-list__inner
-          .status-indicator{ class: "status-indicator--#{update.delivery_status}" }
-            = delivery_status_text(update)
+          .status-indicator{ class: "status-indicator--#{team.delivery_status}" }
+            = delivery_status_text(team)
             .status-indicator__circle
     .indicator-list__indicator
       .indicator-list__label
@@ -15,12 +15,12 @@
           OKRs
       .indicator-list__value
         .indicator-list__inner
-          .status-indicator{ class: "status-indicator--#{update.okr_status}" }
-            = okr_status_text(update)
+          .status-indicator{ class: "status-indicator--#{team.okr_status}" }
+            = okr_status_text(team)
             .status-indicator__circle
     .indicator-list__indicator.issues
       .indicator-list__inner
-        = pluralize update.issues.count, 'issue'
+        = pluralize team.issue_count, 'issue'
   - else
     .indicator-list__indicator.completion-status
       Awaiting submission

@@ -25,7 +25,7 @@ class SprintsController < ApplicationController
 
   private
 
-  helper_method :sprints, :sprint, :published_issues, :groups, :delivery_status_summary
+  helper_method :sprints, :sprint, :published_issues, :team_summaries, :delivery_status_summary
 
   def sprints
     @sprints ||= Sprint.in_date_order.all
@@ -35,8 +35,8 @@ class SprintsController < ApplicationController
     @sprint ||= Sprint.find(params[:id]) if params.key?(:id)
   end
 
-  def groups
-    @groups ||= Group.in_order.with_teams
+  def team_summaries
+    @team_summaries ||= TeamSummary.for_sprint(sprint).with_groups
   end
 
   def published_issues

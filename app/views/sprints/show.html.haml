@@ -7,15 +7,15 @@
           %span.label= status.capitalize
 
   %ul.groups
-    - groups.each do |group|
+    - team_summaries.each do |group, teams|
       %li.group
         %h2= group.name
         %ul.teams
-          - group.teams_for_sprint(sprint).each do |team|
+          - teams.each do |team|
             %li
               = link_to update_path(sprint, team) do
                 %h3
                   %span= team.name
-                = render partial: 'update_preview', locals: { team: team, update: team.update_for_sprint(sprint) }
+                = render partial: 'update_preview', locals: { team: team }
 
   = button_to 'Download as PDF', export_sprint_path(sprint), class: 'button'
