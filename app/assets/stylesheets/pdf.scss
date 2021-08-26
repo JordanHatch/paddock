@@ -1,7 +1,7 @@
 @import 'pdf/reset';
 @import 'pdf/typefaces';
 
-@import 'colours';
+@import 'variables/**/*.scss';
 @import 'elements/**/*.scss';
 @import 'components/**/*.scss';
 

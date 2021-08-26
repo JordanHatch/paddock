@@ -6,8 +6,7 @@
 
 @import 'tom-select/dist/css/tom-select.default';
 
-@import 'colours';
-
+@import 'variables/**/*.scss';
 @import 'layout/**/*.scss';
 @import 'elements/**/*.scss';
 @import 'components/**/*.scss';
