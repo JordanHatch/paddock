@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_10_050732) do
+ActiveRecord::Schema.define(version: 2021_08_26_074901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_050732) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-  create_table "good_jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "good_jobs", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.text "queue_name"
     t.integer "priority"
     t.jsonb "serialized_params"
@@ -132,4 +132,24 @@ ActiveRecord::Schema.define(version: 2021_08_10_050732) do
   add_foreign_key "teams", "groups", on_delete: :restrict
   add_foreign_key "updates", "sprints", on_delete: :restrict
   add_foreign_key "updates", "teams"
+
+  create_view "team_summaries", sql_definition: <<-SQL
+      SELECT DISTINCT ON (t.id, s.id) t.id,
+      t.name,
+      t.slug,
+      t.group_id,
+      t.start_on,
+      u.delivery_status,
+      u.okr_status,
+      u.state,
+      u.id AS update_id,
+      s.id AS sprint_id,
+      ( SELECT count(*) AS count
+             FROM issues i
+            WHERE (i.update_id = u.id)) AS issue_count
+     FROM sprints s,
+      (teams t
+       LEFT JOIN updates u ON (((u.team_id = t.id) AND (u.sprint_id = u.sprint_id))))
+    WHERE ((t.start_on <= s.end_on) OR (t.start_on IS NULL));
+  SQL
 end
