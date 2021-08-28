@@ -17,6 +17,12 @@ RSpec.describe TeamSummary do
       end
 
       context 'when an update exists for the team and sprint' do
+        before(:each) {
+          teams.map {|team|
+            create_list(:sprint_update, 3, team: team)
+          }
+        }
+
         let!(:updates) {
           teams.map {|team|
             create(:sprint_update, team: team, sprint: sprint)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_074901) do
+ActiveRecord::Schema.define(version: 2021_08_28_015856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -134,22 +134,21 @@ ActiveRecord::Schema.define(version: 2021_08_26_074901) do
   add_foreign_key "updates", "teams"
 
   create_view "team_summaries", sql_definition: <<-SQL
-      SELECT DISTINCT ON (t.id, s.id) t.id,
+      SELECT t.id,
+      s.id AS sprint_id,
+      u.id AS update_id,
       t.name,
+      t.start_on,
       t.slug,
       t.group_id,
-      t.start_on,
+      u.state,
       u.delivery_status,
       u.okr_status,
-      u.state,
-      u.id AS update_id,
-      s.id AS sprint_id,
       ( SELECT count(*) AS count
              FROM issues i
             WHERE (i.update_id = u.id)) AS issue_count
-     FROM sprints s,
-      (teams t
-       LEFT JOIN updates u ON (((u.team_id = t.id) AND (u.sprint_id = u.sprint_id))))
-    WHERE ((t.start_on <= s.end_on) OR (t.start_on IS NULL));
+     FROM ((sprints s
+       JOIN teams t ON (((t.start_on <= s.end_on) OR (t.start_on IS NULL))))
+       LEFT JOIN updates u ON (((u.sprint_id = s.id) AND (u.team_id = t.id))));
   SQL
 end
