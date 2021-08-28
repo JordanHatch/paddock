@@ -73,13 +73,12 @@ jobs:
         with:
           github-token: ${{ github.token }}
           script: |
-            const { GITHUB_SHA } = process.env
-            const sha = GITHUB_SHA.substring(0,7)
+            const { GITHUB_RUN_NUMBER } = process.env
 
             github.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: `refs/tags/sha-${sha}`,
+              ref: `refs/tags/build-${GITHUB_RUN_NUMBER}`,
               sha: context.sha
             })
 
@@ -97,7 +96,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=sha
-            type=raw,value=latest
+            type=raw,value=build-${{ env.GITHUB_RUN_NUMBER }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
