@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TeamSummary do
 
-  describe '#for_sprint' do
+  describe '.for_sprint' do
     let(:sprint) { create(:sprint) }
 
     context 'the team is active for the sprint' do
@@ -92,7 +92,7 @@ RSpec.describe TeamSummary do
     end
   end
 
-  describe '#with_groups' do
+  describe '.with_groups' do
     let(:sprint) { create(:sprint) }
     let!(:groups) { create_list(:group, 3) }
     let!(:teams) {
@@ -122,6 +122,17 @@ RSpec.describe TeamSummary do
       result_groups = result.map {|group, _teams| group }
 
       expect(result_groups).to_not include(extra_group)
+    end
+  end
+
+  describe '#to_param' do
+    let(:sprint) { create(:sprint) }
+    let!(:team) { create(:team, start_on: sprint.start_on) }
+
+    it 'returns the slug for the team' do
+      summary = TeamSummary.first
+
+      expect(summary.to_param).to eq(team.slug)
     end
   end
 

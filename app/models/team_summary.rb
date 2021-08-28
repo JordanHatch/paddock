@@ -26,6 +26,10 @@ class TeamSummary < ApplicationRecord
     sprint_update.present? && sprint_update.published?
   end
 
+  def to_param
+    slug
+  end
+
   # Disables the default ActiveRecord save behaviour
   #
   def readonly?
