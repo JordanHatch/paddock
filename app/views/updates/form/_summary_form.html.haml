@@ -10,4 +10,27 @@
     %li what the team learned
     %li what's affecting the delivery status
 
-= f.input :content, as: :text, label: false
+.markdown-wrapper
+  = f.input :content, as: :text, label: false
+  .hint
+    %p
+      You can style your text with
+      = link_to 'Markdown', 'https://www.markdownguide.org/cheat-sheet'
+      \.
+    %p
+      For example:
+    %pre
+      \# Heading
+    %pre.italic
+      *italic*
+    %pre.bold
+      **bold**
+    %pre
+      \- Dot point A
+      \- Dot point B
+      \- Dot point C
+    %pre
+      1. Numbered item 1
+      2. Numbered item 2
+      3. Numbered item 3
+
