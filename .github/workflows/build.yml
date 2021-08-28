@@ -74,10 +74,12 @@ jobs:
           github-token: ${{ github.token }}
           script: |
             const { GITHUB_SHA } = process.env
+            const sha = GITHUB_SHA.substring(0,7)
+
             github.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: `refs/tags/sha-${GITHUB_SHA}`,
+              ref: `refs/tags/sha-${sha}`,
               sha: context.sha
             })
 
