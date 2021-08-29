@@ -1,0 +1,46 @@
+.issue {
+  background: $silver-50;
+  font-size: 1rem;
+  box-shadow: rgba(0,0,0,0.07) 0px 1px 1px;
+  border-radius: .25rem;
+  margin: 1em 0;
+}
+
+.issue__inner {
+  padding: .5em 1em;
+}
+
+.issue__team-name {
+  font-weight: normal;
+  font-size: .9em;
+  margin: .75em 0 0;
+}
+
+.issue__description {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: .5em 4em 1em 0;
+}
+
+.issue__team-name + .issue__description {
+  margin-top: .1em;
+}
+
+.issue__section {
+  margin: .85em 0;
+}
+
+.issue__section--actions {
+  background: $silver-200;
+  border-bottom-left-radius: .25rem;
+  border-bottom-right-radius: .25rem;
+  text-align: right;
+  padding: .85em 1em;
+  color: $silver-900;
+  font-size: .9em;
+}
+
+.issue__section-label {
+  margin-bottom: .2em;
+  font-weight: bold;
+}

@@ -51,34 +51,6 @@
     }
   }
 
-  .issues {
-    li {
-      background: #fff;
-      border-radius: .5rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      font-size: .9rem;
-
-      .description, .treatment {
-        margin-bottom: .6rem;
-      }
-
-      .description {
-        font-weight: bold;
-      }
-
-      .identifier {
-        margin-top: .6rem;
-      }
-
-      .label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: .2rem;
-      }
-    }
-  }
-
   .history-link {
     text-align: right;
     margin: 1.5rem 0 0;

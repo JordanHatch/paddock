@@ -1,0 +1,21 @@
+.issue
+  .issue__inner
+    - if local_assigns[:show_team_name].present?
+      .issue__team-name
+        = issue.team.name
+    .issue__description
+      = issue.description
+    .issue__section
+      .issue__section-label
+        How we're solving it
+      .issue__section-value
+        = issue.treatment
+    .issue__section
+      .issue__section-label
+        What we need help with:
+      .issue__section-value
+        = issue.help
+  - if issue.identifier?
+    .issue__section.issue__section--actions
+      DevOps issue:
+      = issue.identifier

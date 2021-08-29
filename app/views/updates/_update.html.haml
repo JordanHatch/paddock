@@ -33,23 +33,12 @@
       %ul
         - sprint_update.sprint_goals.each do |goal|
           %li= goal
-    .update-section.issues
+    .issues
       %h3 Issues
       - if sprint_update.issues.any?
         %ul
           - sprint_update.issues.each do |issue|
-            %li
-              .description= issue.description
-              .treatment
-                %span.label How we're solving it:
-                = issue.treatment
-              .help
-                %span.label What we need help with:
-                = issue.help
-              - if issue.identifier.present?
-                .identifier
-                  %span.label Identifier for this issue:
-                  = issue.identifier
+            %li= render partial: 'shared/components/issue', locals: { issue: issue, show_team_name: false }
       - else
         %p.no-issues No issues have been reported for this sprint.
     .update-section.sprint-goals
