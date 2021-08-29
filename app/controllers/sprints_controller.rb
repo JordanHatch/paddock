@@ -25,7 +25,7 @@ class SprintsController < ApplicationController
 
   private
 
-  helper_method :sprints, :sprint, :published_issues, :team_summaries, :delivery_status_summary
+  helper_method :sprints, :sprint, :issues_search, :team_summaries, :delivery_status_summary
 
   def sprints
     @sprints ||= Sprint.in_date_order.all
@@ -37,6 +37,12 @@ class SprintsController < ApplicationController
 
   def team_summaries
     @team_summaries ||= TeamSummary.for_sprint(sprint).with_groups
+  end
+
+  def issues_search
+    @issues_search ||= Search::Issue.new(params:
+      params.to_unsafe_h.symbolize_keys.merge(sprint_id: params[:id])
+    )
   end
 
   def published_issues

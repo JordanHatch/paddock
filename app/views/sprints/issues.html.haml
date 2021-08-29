@@ -1,30 +1,25 @@
 .view.view--sprints-issues
-  - if published_issues.any?
-    .issues__count
-      %h2= pluralize published_issues.count, 'issue'
+  .filterable-list
+    .filterable-list__filters
+      = form_tag sprint_issues_path(sprint), method: :get do
+        - issues_search.available_filters.slice(:group_id, :identifier).each do |id, filter|
+          .filterable-list__filter
+            - if filter.type == :list
+              = label_tag id, class: 'filterable-list__filter-name' do
+                = t(id, scope: %i{search issue filters})
+              .filterable-list__filter-options
+                = select_tag id, options_for_select(filter.options.(), issues_search.params[id]), include_blank: true
+            - elsif filter.type == :boolean
+              .filterable-list__filter-checkbox
+                = check_box_tag id, 'true', issues_search.params[id], class: 'filterable-list__filter-checkbox-control'
+                = label_tag id, class: 'filterable-list__filter-checkbox-label' do
+                  = t(id, scope: %i{search issue filters})
+        .filterable-list__actions
+          = submit_tag 'Apply filters', name: nil, class: 'button-primary'
+          = link_to 'Reset filters', sprint_issues_path(sprint), class: 'filterable-list__reset-filters-action'
 
-    %table.issues__list
-      %thead.issues__header
-        %tr
-          %th{ scope: 'col' } Team
-          %th{ scope: 'col' } The issue
-          %th{ scope: 'col' } How we'll solve it
-          %th{ scope: 'col' } What we need help with
-      %tbody
-        - published_issues.each do |issue|
-          %tr.issue
-            %td.issue__team-name= issue.team.name
-            %td.issue__description= issue.description
-            %td.issue__treatment= issue.treatment
-            %td.issue__help
-              - if issue.help.present?
-                .issue__help_text
-                  = issue.help
-              - if issue.identifier.present?
-                .issue__identifier
-                  Issue raised as:
-                  = issue.identifier
-  - else
-    .info-box.issues__empty-message
-      .info-box__icon
-      No issues have been reported for this sprint.
+    .filterable-list__results
+      .filterable-list__result-count
+        = pluralize issues_search.results_count, 'issue'
+      - issues_search.results.each do |issue|
+        = render partial: 'shared/components/issue', locals: { issue: issue, show_team_name: true }

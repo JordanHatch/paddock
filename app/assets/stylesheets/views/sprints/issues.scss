@@ -1,54 +1,8 @@
 .view--sprints-issues {
-  .issues__count {
-    margin-bottom: 1.5rem;
-    font-weight: bold;
-  }
-
   .issues__empty-message {
     .info-box__icon {
       @extend .far;
       @extend .fa-folder-open;
     }
-  }
-
-  .issues__list {
-    @include table;
-    font-size: .85rem;
-  }
-
-  .issues__header {
-    @include table-header;
-  }
-
-  .issue {
-    @include table-row;
-  }
-
-  .issue__team-name {
-    font-weight: bold;
-    width: 15%;
-  }
-
-  .issue__description {
-    width: 30%;
-  }
-
-  .issue__treatment {
-    width: 30%;
-  }
-
-  .issue__help {
-    width: 25%;
-  }
-
-  .issue__identifier {
-    display: inline-block;
-    background: $white;
-    padding: .3rem .5rem;
-    border-radius: .25rem;
-  }
-
-  .issue__help_text + .issue__identifier {
-    margin-top: .5rem;
   }
 }

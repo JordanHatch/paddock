@@ -1,0 +1,62 @@
+.filterable-list {
+  display: flex;
+  gap: 3em;
+  font-size: 1rem;
+}
+
+.filterable-list__filters {
+  width: 30%;
+}
+
+.filterable-list__filter {
+  margin: 1em 0;
+}
+
+.filterable-list__filter-name {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: .5em 0;
+}
+
+.filterable-list__filter-options {
+  .ts-wrapper {
+    width: 100%;
+  }
+}
+
+.filterable-list__filter-checkbox {
+  display: flex;
+  gap: .5em;
+}
+
+.filterable-list__filter-checkbox-control {
+  max-width: 2em;
+}
+
+.filterable-list__filter-checkbox-label {
+  flex: auto;
+  font-size: 1em;
+  margin: 0;
+}
+
+.filterable-list__actions {
+  margin-top: 1.5em;
+}
+
+.filterable-list__reset-filters-action {
+  font-size: .9em;
+  margin-left: 1em;
+  color: $silver-700;
+}
+
+.filterable-list__results {
+  width: 70%;
+}
+
+.filterable-list__result-count {
+  font-weight: bold;
+  font-size: 1.7em;
+  margin: .5em 0;
+  padding-bottom: .5em;
+  border-bottom: 1px solid $silver-100;
+}

@@ -54,3 +54,8 @@ en:
       next_sprint: Next sprint
       delivery_status: Delivery status
       okr_status: OKR progress
+  search:
+    issue:
+      filters:
+        group_id: Service line
+        identifier: Only show issues linked to DevOps
