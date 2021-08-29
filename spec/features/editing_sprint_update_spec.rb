@@ -149,14 +149,12 @@ RSpec.describe 'editing sprint updates', type: :feature do
         expect(page).to have_content('Example description')
         expect(page).to have_content('Example treatment')
         expect(page).to have_content('Help required')
-        expect(page).to have_content('12345')
       end
 
       within 'li:nth-of-type(2)' do
         expect(page).to have_content('A second issue')
         expect(page).to have_content('Another treatment')
         expect(page).to have_content('More help required')
-        expect(page).to have_content('67890')
       end
     end
 

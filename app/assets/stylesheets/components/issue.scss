@@ -6,6 +6,13 @@
   margin: 1em 0;
 }
 
+.issue__header {
+  padding: .5em 1em;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  background: $silver-100;
+}
+
 .issue__inner {
   padding: .5em 1em;
 }
@@ -19,7 +26,7 @@
 .issue__description {
   font-weight: bold;
   font-size: 1.2em;
-  margin: .5em 4em 1em 0;
+  margin: .5em 4em .5em 0;
 }
 
 .issue__team-name + .issue__description {

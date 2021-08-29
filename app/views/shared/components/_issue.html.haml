@@ -1,10 +1,11 @@
 .issue
-  .issue__inner
+  .issue__header
     - if local_assigns[:show_team_name].present?
       .issue__team-name
         = issue.team.name
     .issue__description
       = issue.description
+  .issue__inner
     .issue__section
       .issue__section-label
         How we're solving it
@@ -15,7 +16,9 @@
         What we need help with:
       .issue__section-value
         = issue.help
-  - if issue.identifier?
+  - if local_assigns[:link_to_update].present? or issue.identifier?
     .issue__section.issue__section--actions
-      DevOps issue:
-      = issue.identifier
+      - if local_assigns[:link_to_update].present?
+        = link_to 'View team update', update_path(issue.sprint, issue.team), class: 'button button--sm button--inverted'
+      - if issue.identifier?
+        = link_to 'View in DevOps', azure_devops_link(issue.identifier), class: 'button button--sm button--inverted'

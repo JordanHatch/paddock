@@ -59,7 +59,7 @@ module Search
     private
 
     def base_scope
-      ::Issue.published.includes(:team)
+      ::Issue.published.includes(:sprint_update, :team, :sprint)
     end
 
     def defined_filters

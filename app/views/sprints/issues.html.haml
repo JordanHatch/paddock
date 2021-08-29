@@ -22,4 +22,4 @@
       .filterable-list__result-count
         = pluralize issues_search.results_count, 'issue'
       - issues_search.results.each do |issue|
-        = render partial: 'shared/components/issue', locals: { issue: issue, show_team_name: true }
+        = render partial: 'shared/components/issue', locals: { issue: issue, show_team_name: true, link_to_update: true }
