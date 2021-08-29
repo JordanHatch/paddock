@@ -1,5 +1,3 @@
-@import 'buttons';
-
 @mixin text-field {
   padding: 1rem;
   margin-bottom: 1rem;
@@ -45,7 +43,9 @@ input[type=text] {
 }
 
 input[type=submit], button {
-  @include button-primary;
+  @extend .button;
+  @extend .button--primary;
+
   font-size: 1.1rem;
 }
 

@@ -10,7 +10,8 @@
       text-align: right;
 
       a {
-        @include button-primary;
+        @extend .button;
+        @extend .button--primary;
       }
     }
   }

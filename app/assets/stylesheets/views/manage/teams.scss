@@ -25,11 +25,13 @@
         font-size: .85rem;
 
         a {
-          @include button-primary;
+          @extend .button;
+          @extend .button--primary;
           margin: 0 .25rem .25rem 0;
 
           &.add {
-            @include button-success;
+            @extend .button;
+            @extend .button--success;
           }
         }
       }
@@ -63,7 +65,8 @@
       font-size: .9rem;
 
       a {
-        @include button-primary;
+        @extend .button;
+        @extend .button--primary;
       }
     }
   }

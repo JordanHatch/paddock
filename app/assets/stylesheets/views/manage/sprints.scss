@@ -53,7 +53,8 @@
     text-align: right;
 
     a {
-      @include button-inverted;
+      @extend .button;
+      @extend .button--inverted;
     }
   }
 }

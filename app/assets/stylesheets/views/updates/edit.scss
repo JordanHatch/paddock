@@ -184,7 +184,8 @@
     }
 
     button.remove {
-      @include button-danger;
+      @extend .button;
+      @extend .button--danger;
       font-size: .85rem;
     }
 

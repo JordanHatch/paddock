@@ -15,7 +15,7 @@
                 = label_tag id, class: 'filterable-list__filter-checkbox-label' do
                   = t(id, scope: %i{search issue filters})
         .filterable-list__actions
-          = submit_tag 'Apply filters', name: nil, class: 'button-primary'
+          = submit_tag 'Apply filters', name: nil, class: 'button button--primary'
           = link_to 'Reset filters', sprint_issues_path(sprint), class: 'filterable-list__reset-filters-action'
 
     .filterable-list__results

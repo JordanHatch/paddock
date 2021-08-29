@@ -79,12 +79,16 @@ $base-color: $silver-50;
 
 $primary-button-color: $blue;
 $primary-button-text-color: $white;
+$primary-button-border-color: darken($blue, 20%);
 
 $inverted-button-color: $white;
 $inverted-button-text-color: $black;
+$inverted-button-border-color: $silver-500;
 
 $success-button-color: $green;
 $success-button-text-color: $white;
+$success-button-border-color: darken($green, 20%);
 
 $danger-button-color: $red;
 $danger-button-text-color: $white;
+$danger-button-border-color: darken($red, 20%);

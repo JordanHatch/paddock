@@ -1,0 +1,75 @@
+@mixin button-colors($base-color, $text-color, $border-color) {
+  &, &:link, &:visited {
+    background: $base-color;
+    border-bottom-color: $border-color;
+    color: $text-color;
+  }
+
+  &:hover {
+    background: darken($base-color, 5%);
+  }
+}
+
+.button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  display: inline-block;
+  padding: .6em .9em;
+  border-radius: .2em;
+  border: none;
+  border-bottom: .2em transparent solid;
+  box-shadow: rgba(0,0,0,0.1) 0px 2px 3px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  vertical-align: middle;
+
+  &:active {
+    border-bottom-width: .1em;
+    margin-top: .1em;
+  }
+
+  @include button-colors(
+    $primary-button-color,
+    $primary-button-text-color,
+    $primary-button-border-color
+  );
+}
+
+.button--primary {
+  @include button-colors(
+    $primary-button-color,
+    $primary-button-text-color,
+    $primary-button-border-color
+  );
+}
+
+.button--inverted {
+  @include button-colors(
+    $inverted-button-color,
+    $inverted-button-text-color,
+    $inverted-button-border-color
+  );
+}
+
+.button--success {
+  @include button-colors(
+    $success-button-color,
+    $success-button-text-color,
+    $success-button-border-color
+  );
+}
+
+.button--danger {
+  @include button-colors(
+    $danger-button-color,
+    $danger-button-text-color,
+    $danger-button-border-color
+  );
+}
+
+.button--sm {
+  font-size: .85rem;
+}
