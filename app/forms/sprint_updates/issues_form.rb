@@ -24,11 +24,9 @@ class SprintUpdates::IssuesForm < BaseForm
     form.issues_attributes << Issue.new if form.issues_attributes.empty?
   end
 
-  before_validate do |_form, atts|
-    atts[:issues_attributes].reject! do |obj|
-      atts = obj.to_hash
-      atts.reject { |_key, value| value.blank? }.empty?
-    end
+  before_validate do |form, atts|
+    atts[:issues_attributes].reject! {|obj| if_all_blank?(obj) }
+    form.issues_attributes.reject! {|obj| if_all_blank?(obj) }
   end
 
   validation do
@@ -45,5 +43,12 @@ class SprintUpdates::IssuesForm < BaseForm
     issues_attributes.reject { |issue|
       issue.attributes.compact.empty?
     }.any?
+  end
+
+  private
+
+  def self.if_all_blank?(obj)
+    atts = obj.to_hash
+    atts.reject { |_key, value| value.blank? }.empty?
   end
 end

@@ -155,7 +155,7 @@ RSpec.describe BaseForm do
         form.validate
 
         expect(form.errors).to contain_exactly(
-          [:name, ['must be filled']],
+          ['name', ['must be filled']],
         )
       end
     end
@@ -191,9 +191,9 @@ RSpec.describe BaseForm do
         expect(form).to_not be_valid
 
         expect(form.errors).to eq({
-          items_attributes: {
+          'items_attributes' => {
             0 => {
-              name: ['must be filled'],
+              'name' => ['must be filled'],
             },
           },
         })
