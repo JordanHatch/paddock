@@ -4,11 +4,18 @@ class SprintUpdates::IssuesForm < BaseForm
     attribute? :description, Types::Nominal::String
     attribute? :treatment, Types::Nominal::String
     attribute? :help, Types::Nominal::String
-    attribute? :identifier, Types::Nominal::String
+    attribute? :identifier, Types::Nominal::Nil | Types::Nominal::Integer
     attribute? :_destroy, Types::Nominal::Integer
 
     def persisted?
       id.present?
+    end
+
+    validation do
+      params do
+        required(:description).filled(:string)
+        optional(:identifier).maybe(:integer)
+      end
     end
   end
 
@@ -31,11 +38,7 @@ class SprintUpdates::IssuesForm < BaseForm
 
   validation do
     params do
-      optional(:issues_attributes).value(:array).each do
-        schema do
-          required(:description).filled(:string)
-        end
-      end
+      optional(:issues_attributes).value(:array)
     end
   end
 

@@ -57,6 +57,28 @@ RSpec.describe SprintUpdates::IssuesForm do
         end
       end
 
+      context 'with a non-numeric identifier' do
+        let(:params) do
+          {
+            'issues_attributes' => {
+              '1' => {
+                'description' => 'Example',
+                'identifier' => 'abcdefg',
+                'help' => 'Help wanted',
+              },
+            },
+          }
+        end
+
+        it 'is not valid' do
+          form = klass.from_form(params)
+          expect(form).to_not be_valid
+
+          errors = form.errors[:issues_attributes][0]
+          expect(errors).to have_key(:identifier)
+        end
+      end
+
       context 'with one valid and one invalid issue' do
         let(:params) do
           {
@@ -139,6 +161,7 @@ RSpec.describe SprintUpdates::IssuesForm do
         output = form.to_model_hash
 
         expect(output[:issues_attributes].size).to eq(0)
+        expect(form.issues_attributes.size).to eq(0)
       end
     end
   end
