@@ -1,11 +1,16 @@
 module BaseForm::Validation
   extend ActiveSupport::Concern
 
+  class BaseContract < Dry::Validation::Contract
+    config.messages.default_locale = :en
+    config.messages.backend = :i18n
+  end
+
   module ClassMethods
     attr_reader :schema_block
 
     def validation(&block)
-      @schema_block = Class.new(Dry::Validation::Contract, &block)
+      @schema_block = Class.new(BaseContract, &block)
     end
   end
 

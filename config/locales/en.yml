@@ -59,3 +59,8 @@ en:
       filters:
         group_id: Service line
         identifier: Only show issues linked to DevOps
+  dry_validation:
+    errors:
+      rules:
+        identifier:
+          int?: 'must be a DevOps issue number'
