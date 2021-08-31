@@ -69,4 +69,10 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  if ENV['I18N_DEBUG'].present?
+    I18n::Debug.logger = Rails.logger
+  else
+    I18n::Debug.logger = Logger.new('/dev/null')
+  end
 end
