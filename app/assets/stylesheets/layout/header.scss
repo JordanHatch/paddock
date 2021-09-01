@@ -14,6 +14,7 @@ header.app {
     padding: .2rem 0;
     text-shadow: #fff 0px 1px 1px;
     margin: 0;
+    flex: 1;
 
     a {
       text-decoration: none;
@@ -23,10 +24,6 @@ header.app {
         color: $blue;
       }
     }
-  }
-
-  h1, .sprint-selector, .user-org {
-    flex: 1;
   }
 
   nav {
