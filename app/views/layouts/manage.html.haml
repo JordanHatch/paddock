@@ -1,13 +1,26 @@
 - content_for :selected_section, :manage
 
 - content_for :content do
-  %header.section.section-manage
-    %h1 Manage
-    %nav
+  .section-navigation.section-navigation--section-manage
+    .section-navigation__title Manage
+    .section-navigation__nav
       %ul
-        %li= nav_link 'Dashboard', manage_root_path
-        %li= nav_link 'Sprints', manage_sprints_path, match_prefix: true
-        %li= nav_link 'Teams', manage_teams_path, match_prefix: true
+        = nav_link 'Dashboard',
+                   manage_root_path,
+                   list_item_class: 'section-navigation__nav-item',
+                   link_class: 'section-navigation__nav-link'
+
+        = nav_link 'Sprints',
+                   manage_sprints_path,
+                   match_prefix: true,
+                   list_item_class: 'section-navigation__nav-item',
+                   link_class: 'section-navigation__nav-link'
+
+        = nav_link 'Teams',
+                   manage_teams_path,
+                   match_prefix: true,
+                   list_item_class: 'section-navigation__nav-item',
+                   link_class: 'section-navigation__nav-link'
   .inner
     = yield
 
