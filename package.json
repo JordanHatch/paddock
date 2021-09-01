@@ -8,6 +8,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.2",
+    "breakpoint-sass": "^2.7.1",
     "node-sass-glob-importer": "^5.3.2",
     "reset-css": "^5.0.1",
     "resolve-url-loader": "^3.1.1",
