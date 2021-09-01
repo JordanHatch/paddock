@@ -29,5 +29,9 @@ Rails.application.routes.draw do
     root to: 'root#index'
   end
 
+  if Rails.env.development?
+    get '/components', to: 'development/components#show'
+  end
+
   root to: redirect('/sprints')
 end
