@@ -1,0 +1,44 @@
+@use 'breakpoint-sass/stylesheets/_breakpoint';
+
+.update-content-block {
+  font-size: 1rem;
+  margin: .5rem -1.5rem;
+  padding: 1.5rem;
+
+  @include breakpoint.breakpoint($desktop) {
+    display: flex;
+    gap: 1em;
+  }
+
+  &:nth-of-type(even) {
+    background: lighten($silver-50, 2%);
+  }
+}
+
+.update-content-block__title {
+  font-weight: bold;
+  font-size: 1.3em;
+  margin: .5em 0 1em;
+
+  @include breakpoint.breakpoint($desktop) {
+    width: 32%;
+    padding-left: .3em;
+    font-size: 1.4em;
+    margin-top: .1em;
+  }
+}
+
+.update-content-block__content {
+  @include breakpoint.breakpoint($desktop) {
+    width: 68%;
+  }
+}
+
+.update-content-block__content--list {
+  padding-left: 1em;
+
+  li {
+    list-style: decimal;
+    padding: .3em 0;
+  }
+}

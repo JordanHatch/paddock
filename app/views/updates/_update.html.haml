@@ -1,50 +1,63 @@
-.columns
-  .indicator-list
-    .indicator-list__indicator.delivery-status
-      .indicator-list__label
-        Delivery status
-      .indicator-list__value
-        .status-indicator{ class: "status-indicator--#{sprint_update.delivery_status}" }
-          .status-indicator__circle
-          = delivery_status_text(sprint_update)
-    .indicator-list__indicator.delivery-status
-      .indicator-list__label
-        OKR progress
-      .indicator-list__value
-        .status-indicator{ class: "status-indicator--#{sprint_update.okr_status}" }
-          .status-indicator__circle
-          = okr_status_text(sprint_update)
-    .indicator-list__indicator.team-health
-      .indicator-list__label
-        Team health
-      .indicator-list__value
-        = "#{sprint_update.team_health} / 5"
-    .indicator-list__indicator.headcount
-      .indicator-list__label
-        Headcount
-      .indicator-list__value
-        = "#{sprint_update.current_headcount} / #{sprint_update.total_headcount}"
-  .primary-col
+.indicator-list.indicator-list--inline
+  .indicator-list__indicator.delivery-status
+    .indicator-list__label
+      Delivery status
+    .indicator-list__value
+      .status-indicator{ class: "status-indicator--#{sprint_update.delivery_status}" }
+        .status-indicator__circle
+        = delivery_status_text(sprint_update)
+  .indicator-list__indicator.delivery-status
+    .indicator-list__label
+      OKR progress
+    .indicator-list__value
+      .status-indicator{ class: "status-indicator--#{sprint_update.okr_status}" }
+        .status-indicator__circle
+        = okr_status_text(sprint_update)
+  .indicator-list__indicator.team-health
+    .indicator-list__label
+      Team health
+    .indicator-list__value
+      = "#{sprint_update.team_health} / 5"
+  .indicator-list__indicator.headcount
+    .indicator-list__label
+      Headcount
+    .indicator-list__value
+      = "#{sprint_update.current_headcount} / #{sprint_update.total_headcount}"
+
+.update-content-block
+  %h3.update-content-block__title
+    Sprint summary
+  .update-content-block__content
     - if sprint_update.content.present?
       .markdown-block.summary
         = render_markdown(sprint_update.content).html_safe
-    .update-section.sprint-goals
-      %h3 Sprint goals
+
+.update-content-block
+  %h3.update-content-block__title
+    Sprint goals
+  .update-content-block__content.update-content-block__content--list
+    %ol
+      - sprint_update.sprint_goals.each do |goal|
+        %li= goal
+
+.update-content-block
+  %h3.update-content-block__title
+    Goals for next sprint
+  .update-content-block__content.update-content-block__content--list
+    %ol
+      - sprint_update.next_sprint_goals.each do |goal|
+        %li= goal
+
+.update-content-block
+  %h3.update-content-block__title
+    Issues
+  .update-content-block__content
+    - if sprint_update.issues.any?
       %ul
-        - sprint_update.sprint_goals.each do |goal|
-          %li= goal
-    .issues
-      %h3 Issues
-      - if sprint_update.issues.any?
-        %ul
-          - sprint_update.issues.each do |issue|
-            %li= render partial: 'shared/components/issue', locals: { issue: issue, show_team_name: false }
-      - else
-        %p.no-issues No issues have been reported for this sprint.
-    .update-section.sprint-goals
-      %h3 Goals for next sprint
-      %ul
-        - sprint_update.next_sprint_goals.each do |goal|
-          %li= goal
-    .history-link
-      = link_to 'View edit history', history_update_path(sprint, team)
+        - sprint_update.issues.each do |issue|
+          %li= render partial: 'shared/components/issue', locals: { issue: issue, show_team_name: false }
+    - else
+      %p.no-issues No issues have been reported for this sprint.
+
+.history-link
+  = link_to 'View edit history', history_update_path(sprint, team)

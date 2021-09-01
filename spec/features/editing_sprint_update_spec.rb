@@ -8,6 +8,10 @@ RSpec.describe 'editing sprint updates', type: :feature do
     click_on 'Save and next'
   end
 
+  def find_content_block(title)
+    page.find('.update-content-block__title', text: title).ancestor('.update-content-block')
+  end
+
   it 'displays only the teams for the current sprint' do
     current_sprint = create(:sprint, end_on: Date.today)
     included_teams = create_list(:team, 3, start_on: 2.days.ago)
@@ -136,14 +140,14 @@ RSpec.describe 'editing sprint updates', type: :feature do
       expect(page).to have_content('Summary text')
     end
 
-    sprint_goals = page.find('h3', text: 'Sprint goals').sibling('ul')
+    sprint_goals = find_content_block('Sprint goals')
     within sprint_goals do
       expect(page).to have_selector('li', text: 'Goal 1')
       expect(page).to have_selector('li', text: 'Goal 2')
       expect(page).to have_selector('li', text: 'Goal 3')
     end
 
-    issues = page.find('h3', text: 'Issues').sibling('ul')
+    issues = find_content_block('Issues')
     within issues do
       within 'li:nth-of-type(1)' do
         expect(page).to have_content('Example description')
@@ -158,7 +162,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
       end
     end
 
-    next_sprint_goals = page.find('h3', text: 'Goals for next sprint').sibling('ul')
+    next_sprint_goals = find_content_block('Goals for next sprint')
     within next_sprint_goals do
       expect(page).to have_selector('li', text: 'Next goal 1')
       expect(page).to have_selector('li', text: 'Next goal 2')
