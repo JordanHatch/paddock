@@ -1,0 +1,65 @@
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+
+.sprint-navigation {
+  display: flex;
+  min-width: 16em;
+  margin: .7rem 0;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+.sprint-navigation__dates {
+  flex: auto;
+  padding: .5rem 1rem;
+
+  font-weight: normal;
+  font-size: .8rem;
+  text-align: right;
+  color: rgba(255,255,255,0.8);
+}
+
+.sprint-navigation__button {
+  display: block;
+  flex: 0 1 2rem;
+  height: 2.1rem;
+  margin-left: .3rem;
+  margin-right: .3rem;
+  padding: .5rem .6rem;
+
+  background: $white;
+  color: $black;
+  box-shadow: rgba(0,0,0,0.1) 0px 2px 1px;
+  border-radius: .25rem;
+
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover, &:active {
+    background: #f9f9f9;
+  }
+}
+
+.sprint-navigation__icon {
+  @extend .fas;
+}
+
+.sprint-navigation__button--disabled {
+  &, &:hover, &:active {
+    background: rgba(255,255,255,0.4);
+  }
+}
+
+.sprint-navigation__button--previous .sprint-navigation__icon {
+  @extend .fa-chevron-left;
+}
+
+.sprint-navigation__button--next .sprint-navigation__icon {
+  @extend .fa-chevron-right;
+}
+
+.sprint-navigation__hidden-label {
+  position: absolute;
+  left: -9999px;
+}
