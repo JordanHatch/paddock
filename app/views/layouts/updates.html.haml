@@ -1,13 +1,20 @@
 - content_for :selected_section, :updates
 
 - content_for :content do
-  %header.section.section-updates
+  .section-navigation.section-navigation--section-updates
     - if sprint.present?
-      %h1= sprint.name
-      %nav
+      .section-navigation__title= sprint.name
+      .section-navigation__nav
         %ul
-          %li= nav_link 'Overview', sprint_path(sprint)
-          %li= nav_link 'Issues', sprint_issues_path(sprint)
+          = nav_link 'Overview',
+              sprint_path(sprint),
+              list_item_class: 'section-navigation__nav-item',
+              link_class: 'section-navigation__nav-link'
+          = nav_link 'Issues',
+              sprint_issues_path(sprint),
+              list_item_class: 'section-navigation__nav-item',
+              link_class: 'section-navigation__nav-link'
+
       = render partial: 'shared/components/sprint_navigation', locals: { sprint: sprint, team: (team if self.respond_to?(:team)) }
   .inner
     = yield
