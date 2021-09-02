@@ -15,7 +15,8 @@ body {
 main.app {
   @include container;
 
-  box-shadow: darken($base-color, 1%) 0px -3px 3px;
+  box-shadow: darken($base-color, 3%) 0px -3px 5px,
+    darken($base-color, 3%) 0px 2px 2px;
   min-height: 90vh;
   background: $white;
   margin: 0 auto 2rem;
