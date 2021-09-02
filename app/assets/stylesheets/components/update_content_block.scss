@@ -2,16 +2,17 @@
 
 .update-content-block {
   font-size: 1rem;
-  margin: .5rem -1.5rem;
-  padding: 1.5rem;
+  margin: 0 -1.5rem;
+  padding: 1rem 1.5rem;
 
   @include breakpoint.breakpoint($desktop) {
     display: flex;
     gap: 1em;
+    padding: 2rem 1.5rem;
   }
 
   &:nth-of-type(even) {
-    background: lighten($silver-50, 2%);
+    background: $silver-25;
   }
 }
 
@@ -40,5 +41,11 @@
   li {
     list-style: decimal;
     padding: .3em 0;
+  }
+}
+
+.update-content-block__content--offset-list {
+  @include breakpoint.breakpoint($desktop) {
+    margin-top: -1em;
   }
 }

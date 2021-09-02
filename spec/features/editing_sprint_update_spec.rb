@@ -147,7 +147,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
       expect(page).to have_selector('li', text: 'Goal 3')
     end
 
-    issues = find_content_block('Issues')
+    issues = find_content_block('2 issues')
     within issues do
       within 'li:nth-of-type(1)' do
         expect(page).to have_content('Example description')

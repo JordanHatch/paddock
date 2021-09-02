@@ -24,7 +24,7 @@
     .indicator-list__value
       = "#{sprint_update.current_headcount} / #{sprint_update.total_headcount}"
 
-.update-content-block
+.update-content-block#summary
   %h3.update-content-block__title
     Sprint summary
   .update-content-block__content
@@ -32,7 +32,7 @@
       .markdown-block.summary
         = render_markdown(sprint_update.content).html_safe
 
-.update-content-block
+.update-content-block#sprint-goals
   %h3.update-content-block__title
     Sprint goals
   .update-content-block__content.update-content-block__content--list
@@ -40,7 +40,7 @@
       - sprint_update.sprint_goals.each do |goal|
         %li= goal
 
-.update-content-block
+.update-content-block#next-sprint-goals
   %h3.update-content-block__title
     Goals for next sprint
   .update-content-block__content.update-content-block__content--list
@@ -48,10 +48,10 @@
       - sprint_update.next_sprint_goals.each do |goal|
         %li= goal
 
-.update-content-block
+.update-content-block#issues
   %h3.update-content-block__title
-    Issues
-  .update-content-block__content
+    = pluralize(sprint_update.issues.size, 'issues')
+  .update-content-block__content.update-content-block__content--offset-list
     - if sprint_update.issues.any?
       %ul
         - sprint_update.issues.each do |issue|
@@ -59,5 +59,6 @@
     - else
       %p.no-issues No issues have been reported for this sprint.
 
-.history-link
-  = link_to 'View edit history', history_update_path(sprint, team)
+.update-content-block
+  .update-content-block__content
+    = link_to 'View edit history', history_update_path(sprint, team), class: 'button button--inverted'
