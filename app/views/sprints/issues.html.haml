@@ -1,24 +1,25 @@
 .view.view--sprints-issues
-  .filterable-list
-    .filterable-list__filters
-      = form_tag sprint_issues_path(sprint), method: :get do
-        - issues_search.available_filters.slice(:group_id, :identifier).each do |id, filter|
-          .filterable-list__filter
-            .filterable-list__filter-name
-              = t(id, scope: %i{search issue filters})
-            .filterable-list__filter-options
-              = render partial: 'shared/components/multiple_choice_filter',
-                  locals: { search: issues_search,
-                    id: id,
-                    options: filter.options.call,
-                    type: filter.type,
-                  }
-        .filterable-list__actions
-          = submit_tag 'Apply filters', name: nil, class: 'button button--primary'
-          = link_to 'Reset filters', sprint_issues_path(sprint), class: 'filterable-list__reset-filters-action'
+  %turbo-frame#issues-filterable-list
+    .filterable-list
+      .filterable-list__filters
+        = form_tag sprint_issues_path(sprint), method: :get do
+          - issues_search.available_filters.slice(:group_id, :identifier).each do |id, filter|
+            .filterable-list__filter
+              .filterable-list__filter-name
+                = t(id, scope: %i{search issue filters})
+              .filterable-list__filter-options
+                = render partial: 'shared/components/multiple_choice_filter',
+                    locals: { search: issues_search,
+                      id: id,
+                      options: filter.options.call,
+                      type: filter.type,
+                    }
+          .filterable-list__actions
+            = submit_tag 'Apply filters', name: nil, class: 'button button--primary'
+            = link_to 'Reset filters', sprint_issues_path(sprint), class: 'filterable-list__reset-filters-action'
 
-    .filterable-list__results
-      .filterable-list__result-count
-        = pluralize issues_search.results_count, 'issue'
-      - issues_search.results.each do |issue|
-        = render partial: 'shared/components/issue', locals: { issue: issue, show_team_name: true, link_to_update: true }
+      .filterable-list__results
+        .filterable-list__result-count
+          = pluralize issues_search.results_count, 'issue'
+        - issues_search.results.each do |issue|
+          = render partial: 'shared/components/issue', locals: { issue: issue, show_team_name: true, link_to_update: true }
