@@ -60,10 +60,10 @@ RSpec.describe 'viewing sprints', type: :feature do
 
       expect(page).to have_content('4 issues')
 
-      save_page
-
-      select group.name, from: 'Service line'
-      click_on 'Apply filters'
+      within '.filterable-list__filters' do
+        check group.name
+        click_on 'Apply filters'
+      end
 
       expect(page).to have_content('2 issues')
 

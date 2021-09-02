@@ -42,11 +42,36 @@ RSpec.describe Search::Issue do
     expect(search.results).to contain_exactly(*expected)
   end
 
+  it 'filters by multiple group IDs' do
+    create_list(:published_issue, 2) # non-matching rows
+
+    updates = create_list(:published_sprint_update, 2)
+    expected = updates.map {|update|
+      create(:issue, sprint_update: update)
+    }
+
+    groups = updates.map {|u| u.team.group }
+    search = described_class.new(params: { group_id: groups.map(&:id) })
+
+    expect(search.results).to contain_exactly(*expected)
+  end
+
   it 'filters by whether an identifier is present' do
     create_list(:published_issue, 2, identifier: nil) # non-matching rows
 
     expected = create_list(:published_issue, 3, identifier: '123456')
-    search = described_class.new(params: { identifier: true })
+    search = described_class.new(params: { identifier: 1 })
+
+    expect(search.results).to contain_exactly(*expected)
+  end
+
+  it 'filters by whether an identifier is not present' do
+    create_list(:published_issue, 2, identifier: '12345') # non-matching rows
+
+    expected = create_list(:published_issue, 2, identifier: nil) +
+      create_list(:published_issue, 2, identifier: '')
+
+    search = described_class.new(params: { identifier: 0 })
 
     expect(search.results).to contain_exactly(*expected)
   end

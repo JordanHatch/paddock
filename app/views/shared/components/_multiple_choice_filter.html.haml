@@ -1,0 +1,32 @@
+- search = local_assigns[:search]
+- id = local_assigns[:id]
+- options = local_assigns[:options]
+- type = local_assigns[:type]
+- multi_select = (type == :multi_select)
+
+.multiple-choice-filter
+  - unless multi_select
+    .multiple-choice-filter__option
+      = radio_button_tag id,
+          '',
+          search.params[id].blank?,
+          id: "#{id}__all",
+          class: 'multiple-choice-filter__control radio-button'
+      %label.multiple-choice-filter__label{ for: "#{id}__all" }
+        Show all
+  - options.each do |label, value|
+    .multiple-choice-filter__option
+      - if multi_select
+        = check_box_tag "#{id}[]",
+            value,
+            search.selected?(id, value),
+            id: "#{id}_#{value}",
+            class: 'multiple-choice-filter__control'
+      - else
+        = radio_button_tag id,
+            value,
+            search.selected?(id, value),
+            id: "#{id}_#{value}",
+            class: 'multiple-choice-filter__control radio-button'
+      %label.multiple-choice-filter__label{ for: "#{id}_#{value}" }
+        = label

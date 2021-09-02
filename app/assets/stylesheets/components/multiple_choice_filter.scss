@@ -1,0 +1,22 @@
+.multiple-choice-filter {
+  font-size: 1rem;
+  margin: 1em 0 2em;
+}
+
+.multiple-choice-filter__option {
+  display: flex;
+  gap: .3em;
+  margin: .5em 0;
+}
+
+.multiple-choice-filter__control {
+  flex: 0;
+}
+
+.multiple-choice-filter__label {
+  flex: 1;
+  margin: 0;
+
+  font-size: 1em;
+  font-weight: normal;
+}

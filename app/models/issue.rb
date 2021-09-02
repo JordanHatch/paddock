@@ -9,9 +9,11 @@ class Issue < ApplicationRecord
 
   scope :with_identifier, ->{ where("identifier <> ''") }
 
-  scope :for_group_id, ->(group_id) {
+  scope :without_identifier, -> { where("identifier IS NULL or identifier = ''") }
+
+  scope :for_group_ids, ->(group_ids) {
     joins(:sprint_update).joins(:team)
-      .where('teams.group_id = ?', group_id)
+      .where('teams.group_id = ANY(ARRAY[?]::int[])', group_ids)
   }
 
   scope :for_sprint_id, ->(sprint_id) {

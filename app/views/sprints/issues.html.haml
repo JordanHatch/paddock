@@ -4,16 +4,15 @@
       = form_tag sprint_issues_path(sprint), method: :get do
         - issues_search.available_filters.slice(:group_id, :identifier).each do |id, filter|
           .filterable-list__filter
-            - if filter.type == :list
-              = label_tag id, class: 'filterable-list__filter-name' do
-                = t(id, scope: %i{search issue filters})
-              .filterable-list__filter-options
-                = select_tag id, options_for_select(filter.options.(), issues_search.params[id]), include_blank: true
-            - elsif filter.type == :boolean
-              .filterable-list__filter-checkbox
-                = check_box_tag id, 'true', issues_search.params[id], class: 'filterable-list__filter-checkbox-control'
-                = label_tag id, class: 'filterable-list__filter-checkbox-label' do
-                  = t(id, scope: %i{search issue filters})
+            .filterable-list__filter-name
+              = t(id, scope: %i{search issue filters})
+            .filterable-list__filter-options
+              = render partial: 'shared/components/multiple_choice_filter',
+                  locals: { search: issues_search,
+                    id: id,
+                    options: filter.options.call,
+                    type: filter.type,
+                  }
         .filterable-list__actions
           = submit_tag 'Apply filters', name: nil, class: 'button button--primary'
           = link_to 'Reset filters', sprint_issues_path(sprint), class: 'filterable-list__reset-filters-action'

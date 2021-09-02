@@ -58,7 +58,7 @@ en:
     issue:
       filters:
         group_id: Service line
-        identifier: Only show issues linked to DevOps
+        identifier: Azure DevOps status
   dry_validation:
     errors:
       rules:

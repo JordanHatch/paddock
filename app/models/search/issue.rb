@@ -6,7 +6,7 @@ module Search
 
     FilterSprintID = Filter.new(
       :sprint_id,
-      :list,
+      :multi_select,
       ->(scope, params) {
         scope.for_sprint_id(params[:sprint_id])
       },
@@ -15,20 +15,30 @@ module Search
 
     FilterGroupID = Filter.new(
       :group_id,
-      :list,
+      :multi_select,
       ->(scope, params) {
-        scope.for_group_id(params[:group_id])
+        scope.for_group_ids([ params[:group_id] ].flatten)
       },
       -> { Group.in_order.map {|group| [ group.name, group.id ] }.to_h },
     )
 
     FilterIdentifier = Filter.new(
       :identifier,
-      :boolean,
-      ->(scope, _params) {
-        scope.with_identifier
+      :select,
+      ->(scope, params) {
+        case params[:identifier].to_i
+        when 1
+          scope.with_identifier
+        when 0
+          scope.without_identifier
+        end
       },
-      -> { %i{true false} },
+      -> {
+        {
+          'Linked to DevOps' => 1,
+          'Not linked to DevOps' => 0,
+        }
+      },
     )
 
     def initialize(params: {})
@@ -54,6 +64,12 @@ module Search
         params[filter.id].present? &&
           params[filter.id] != 'false'
       }
+    end
+
+    def selected?(filter_id, value)
+      params[filter_id].present? &&
+        (params[filter_id].is_a?(Array) && params[filter_id].include?(value.to_s)) ||
+        params[filter_id] == value.to_s
     end
 
     private
