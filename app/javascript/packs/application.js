@@ -24,7 +24,7 @@ application.register('nested-form', NestedForm)
 const context = require.context('../controllers', true, /\.js$/)
 application.load(definitionsFromContext(context))
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('turbo:render', function () {
   document.querySelectorAll('select').forEach((el) => {
     // eslint-disable-next-line no-new
     new TomSelect(el, {

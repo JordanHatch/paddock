@@ -15,7 +15,7 @@ class Manage::SprintsController < Manage::BaseController
       end
     end
 
-    render action: :new
+    render action: :new, status: :unprocessable_entity
   end
 
   def update
@@ -28,7 +28,7 @@ class Manage::SprintsController < Manage::BaseController
       end
     end
 
-    render action: :edit
+    render action: :edit, status: :unprocessable_entity
   end
 
   private
