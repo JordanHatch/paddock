@@ -2,13 +2,28 @@
   "name": "paddock",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.15.4",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+    "@babel/plugin-proposal-private-methods": "^7.14.5",
+    "@babel/plugin-proposal-private-property-in-object": "^7.15.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-destructuring": "^7.14.7",
+    "@babel/plugin-transform-regenerator": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.4",
     "@fontsource/public-sans": "^4.5.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@hotwired/turbo-rails": "^7.0.0-beta.8",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.2",
+    "babel-loader": "^8.2.2",
     "breakpoint-sass": "^2.7.1",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
     "node-sass-glob-importer": "^5.3.2",
     "reset-css": "^5.0.1",
     "resolve-url-loader": "^3.1.1",
@@ -20,6 +35,8 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.15.4",
+    "eslint": "^7.12.1",
     "webpack-dev-server": "^3.11.2"
   }
 }
