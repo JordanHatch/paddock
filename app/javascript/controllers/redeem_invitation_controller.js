@@ -1,12 +1,11 @@
-import { Controller } from "stimulus"
+import { Controller } from 'stimulus'
 
 export default class extends Controller {
-  static targets = [ 'form', 'loading', 'loadingMessage' ]
+  static targets = ['form', 'loading', 'loadingMessage']
 
-  showLoadingMessage() {
+  showLoadingMessage () {
     this.formTarget.style.display = 'none'
     this.loadingTarget.style.display = 'block'
     this.loadingMessageTarget.innerText = 'Signing you in...'
   }
-
 }

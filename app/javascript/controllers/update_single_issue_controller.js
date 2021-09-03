@@ -1,10 +1,10 @@
-import { Controller } from "stimulus"
+import { Controller } from 'stimulus'
 
 export default class extends Controller {
   static targets = ['title', 'toggle', 'content', 'description']
   static classes = ['closed']
 
-  connect() {
+  connect () {
     // New records get a non-null value for the 'data-new-record'
     // attribute as part of the stimulus-nested-form plugin.
     const isNewRecord = (this.element.getAttribute('data-new-record') === '')
@@ -16,13 +16,12 @@ export default class extends Controller {
     }
   }
 
-  toggle() {
+  toggle () {
     this.element.classList.toggle(this.closedClass)
   }
 
-  updateHeader() {
+  updateHeader () {
     const newDescription = this.descriptionTarget.value
     this.titleTarget.innerHTML = newDescription
   }
-
 }
