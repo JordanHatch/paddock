@@ -19,6 +19,6 @@
   - if local_assigns[:link_to_update].present? or issue.identifier?
     .issue__section.issue__section--actions
       - if local_assigns[:link_to_update].present?
-        = link_to 'View team update', update_path(issue.sprint, issue.team), class: 'button button--sm button--inverted'
+        = link_to 'View team update', update_path(issue.sprint, issue.team), class: 'button button--sm button--inverted', data: { turbo_frame: '_top' }
       - if issue.identifier?
         = link_to 'View in DevOps', azure_devops_link(issue.identifier), class: 'button button--sm button--inverted'

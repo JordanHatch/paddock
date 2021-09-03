@@ -1,6 +1,6 @@
 .view.view--sprints-issues
-  %turbo-frame#issues-filterable-list
-    .filterable-list
+  %turbo-frame.turbo-frame{ id: 'issues-filterable-list' }
+    .filterable-list{ data: { controller: 'filterable-list' } }
       .filterable-list__filters
         = form_tag sprint_issues_path(sprint), method: :get do
           - issues_search.available_filters.slice(:group_id, :identifier).each do |id, filter|
@@ -13,12 +13,13 @@
                       id: id,
                       options: filter.options.call,
                       type: filter.type,
-                    }
+                      control_data_action: 'change->filterable-list#update' }
           .filterable-list__actions
-            = submit_tag 'Apply filters', name: nil, class: 'button button--primary'
+            = submit_tag 'Apply filters', name: nil, class: 'button button--primary filterable-list__apply-action', data: { filterable_list_target: 'button' }
             = link_to 'Reset filters', sprint_issues_path(sprint), class: 'filterable-list__reset-filters-action'
 
-      .filterable-list__results
+      .filterable-list__results.turbo-frame__container
+        .turbo-frame__loading
         .filterable-list__result-count
           = pluralize issues_search.results_count, 'issue'
         - issues_search.results.each do |issue|

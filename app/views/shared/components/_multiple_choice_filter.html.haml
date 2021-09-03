@@ -2,6 +2,7 @@
 - id = local_assigns[:id]
 - options = local_assigns[:options]
 - type = local_assigns[:type]
+- control_data_action = local_assigns[:control_data_action]
 - multi_select = (type == :multi_select)
 
 .multiple-choice-filter
@@ -11,7 +12,8 @@
           '',
           search.params[id].blank?,
           id: "#{id}__all",
-          class: 'multiple-choice-filter__control radio-button'
+          class: 'multiple-choice-filter__control radio-button',
+          data: { action: control_data_action }
       %label.multiple-choice-filter__label{ for: "#{id}__all" }
         Show all
   - options.each do |label, value|
@@ -21,12 +23,14 @@
             value,
             search.selected?(id, value),
             id: "#{id}_#{value}",
-            class: 'multiple-choice-filter__control'
+            class: 'multiple-choice-filter__control',
+            data: { action: control_data_action }
       - else
         = radio_button_tag id,
             value,
             search.selected?(id, value),
             id: "#{id}_#{value}",
-            class: 'multiple-choice-filter__control radio-button'
+            class: 'multiple-choice-filter__control radio-button',
+            data: { action: control_data_action }
       %label.multiple-choice-filter__label{ for: "#{id}_#{value}" }
         = label
