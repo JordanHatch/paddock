@@ -6,6 +6,8 @@ $selected-color: colours.$blue-900;
 .checkbox {
   font-size: 1rem;
   position: relative;
+  margin: .4rem 0;
+  line-height: 1;
 }
 
 /* TODO: remove this once the base <label> css has been refactored */
@@ -16,7 +18,7 @@ $selected-color: colours.$blue-900;
 .checkbox--sm {
   .checkbox__label-text {
     font-size: 1rem;
-    padding: 0 0 0 1.7rem;
+    padding: 0.13rem 0 0.13rem 1.7rem;
   }
 
   .checkbox__label-text::before {
@@ -37,7 +39,7 @@ $selected-color: colours.$blue-900;
 .checkbox--lg {
   .checkbox__label-text {
     font-size: 1.4rem;
-    padding: .6rem 0 0 3.6rem;
+    padding: 0.73rem 0 0.73rem 3.6rem;
   }
 
   .checkbox__label-text::before {
