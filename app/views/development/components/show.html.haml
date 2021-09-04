@@ -132,6 +132,12 @@
         %p= text_field_tag 'text_field_2', 'Hello, world', class: 'text-input'
 
     .update-content-block
+      %h2.update-content-block__title Text area
+      .update-content-block__content
+        %p= text_area_tag 'text_area', 'Some content here', class: 'text-area-input'
+        %p= text_area_tag 'text_area', 'A full width text area', class: 'text-area-input text-area-input--full-width'
+
+    .update-content-block
       %h2.update-content-block__title Select boxes
       .update-content-block__content
         %p= select_tag 'select', options_for_select(['One', 'Two', 'Three']), class: 'select-box select-box--sm'

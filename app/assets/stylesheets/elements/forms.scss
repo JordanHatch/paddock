@@ -1,13 +1,3 @@
-@mixin text-field {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  font-family: $font-stack;
-  border: 1px solid #ccc;
-  border-radius: .5rem;
-  font-size: 1rem;
-  margin-bottom: .5rem;
-}
-
 label {
   display: block;
   font-size: 1.3rem;
@@ -20,11 +10,6 @@ label {
     color: #888;
     font-size: 1rem;
   }
-}
-
-textarea {
-  @include text-field;
-  width: 100%;
 }
 
 .input {
