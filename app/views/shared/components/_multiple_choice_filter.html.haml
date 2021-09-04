@@ -19,12 +19,16 @@
   - options.each do |label, value|
     .multiple-choice-filter__option
       - if multi_select
-        = check_box_tag "#{id}[]",
-            value,
-            search.selected?(id, value),
-            id: "#{id}_#{value}",
-            class: 'multiple-choice-filter__control',
-            data: { action: control_data_action }
+        .checkbox.checkbox--sm
+          %label{ for: "#{id}_#{value}" }
+            = check_box_tag "#{id}[]",
+                value,
+                search.selected?(id, value),
+                id: "#{id}_#{value}",
+                class: 'checkbox__control',
+                data: { action: control_data_action }
+            .checkbox__label-text
+              = label
       - else
         = radio_button_tag id,
             value,

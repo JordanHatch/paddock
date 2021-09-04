@@ -1,0 +1,92 @@
+@use '../variables/colours';
+
+$default-color: colours.$black;
+$selected-color: colours.$blue-900;
+
+.checkbox {
+  font-size: 1rem;
+  position: relative;
+}
+
+/* TODO: remove this once the base <label> css has been refactored */
+.checkbox label {
+  margin: 0;
+}
+
+.checkbox--sm {
+  .checkbox__label-text {
+    font-size: 1rem;
+    padding: 0 0 0 1.7rem;
+  }
+
+  .checkbox__label-text::before {
+    width: 1rem;
+    height: 1rem;
+    border-width: .15rem;
+  }
+
+  .checkbox__label-text::after {
+    top: 0.14rem;
+    left: 0.43rem;
+    width: 0.20rem;
+    height: 0.6rem;
+    border-width: 0.2rem;
+  }
+}
+
+.checkbox--lg {
+  .checkbox__label-text {
+    font-size: 1.4rem;
+    padding: .6rem 0 0 3.6rem;
+  }
+
+  .checkbox__label-text::before {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: .2rem;
+  }
+
+  .checkbox__label-text::after {
+    top: 0.25rem;
+    left: 0.96rem;
+    width: 0.5rem;
+    height: 1.5rem;
+    border-width: 0.45rem;
+  }
+}
+
+.checkbox__control {
+  display: none;
+}
+
+.checkbox__label-text {
+  margin: 0;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.checkbox__label-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  border: solid $default-color;
+}
+
+.checkbox__label-text::after {
+  content: '';
+  position: absolute;
+  border-right: solid transparent;
+  border-bottom: solid transparent;
+  transform: rotate(46deg);
+}
+
+.checkbox__control:checked + .checkbox__label-text::before,
+  .checkbox__control:checked + .checkbox__label-text::after {
+  border-color: $selected-color;
+}
+
+.checkbox__control:checked + .checkbox__label-text {
+  color: $selected-color;
+}

@@ -116,3 +116,15 @@
           .sprint-navigation__icon
           .sprint-navigation__hidden-label
             Hidden label - next
+
+    %h2 Checkboxes
+
+    .checkbox.checkbox--sm
+      %label.checkbox__label{for: 'test-1'}
+        = check_box_tag 'test', nil, true, id: 'test-1', class: 'checkbox__control'
+        .checkbox__label-text Label
+
+    .checkbox.checkbox--lg
+      %label.checkbox__label{for: 'test-2'}
+        = check_box_tag 'test', nil, true, id: 'test-2', class: 'checkbox__control'
+        .checkbox__label-text Label
