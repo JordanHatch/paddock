@@ -1,5 +1,5 @@
 .view.view--sprints-issues
-  %turbo-frame.turbo-frame{ id: 'issues-filterable-list' }
+  = turbo_frame_tag('issues-filterable-list', class: 'turbo-frame') do
     .filterable-list{ data: { controller: 'filterable-list' } }
       .filterable-list__filters
         = form_tag sprint_issues_path(sprint), method: :get do

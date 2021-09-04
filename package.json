@@ -14,7 +14,7 @@
     "@babel/preset-env": "^7.15.4",
     "@fontsource/public-sans": "^4.5.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "@hotwired/turbo-rails": "^7.0.0-beta.8",
+    "@hotwired/turbo-rails": "^7.0.0-rc.3",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.2",
