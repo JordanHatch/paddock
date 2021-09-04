@@ -4,10 +4,10 @@ $default-color: colours.$black;
 $selected-color: colours.$blue-900;
 
 .radio-button {
-  font-size: 2rem;
   position: relative;
-  margin: .4rem 0;
+  display: block;
   line-height: 1;
+  font-size: 2rem;
 }
 
 /* TODO: remove this once the base <label> css has been refactored */
@@ -16,6 +16,8 @@ $selected-color: colours.$blue-900;
 }
 
 .radio-button--sm {
+  margin: .4rem 0;
+
   .radio-button__label-text {
     font-size: 1rem;
     padding: 0.13rem 0 0.13rem 1.7rem;
@@ -36,6 +38,8 @@ $selected-color: colours.$blue-900;
 }
 
 .radio-button--lg {
+  margin: 1rem 0;
+
   .radio-button__label-text {
     font-size: 1.4rem;
     padding: 0.75rem 0 0.75rem 3.6rem;

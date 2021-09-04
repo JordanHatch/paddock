@@ -6,7 +6,6 @@ $selected-color: colours.$blue-900;
 .checkbox {
   font-size: 1rem;
   position: relative;
-  margin: .4rem 0;
   line-height: 1;
 }
 
@@ -16,6 +15,8 @@ $selected-color: colours.$blue-900;
 }
 
 .checkbox--sm {
+  margin: .4rem 0;
+
   .checkbox__label-text {
     font-size: 1rem;
     padding: 0.13rem 0 0.13rem 1.7rem;
@@ -37,6 +38,8 @@ $selected-color: colours.$blue-900;
 }
 
 .checkbox--lg {
+  margin: 1rem 0;
+
   .checkbox__label-text {
     font-size: 1.4rem;
     padding: 0.73rem 0 0.73rem 3.6rem;
