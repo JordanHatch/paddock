@@ -18,4 +18,4 @@
                   %span= team.name
                 = render partial: 'update_preview', locals: { team: team }
 
-  = button_to 'Download as PDF', export_sprint_path(sprint), class: 'button'
+  = button_to 'Download as PDF', export_sprint_path(sprint), class: 'button', form: { data: { turbo: 'false' } }
