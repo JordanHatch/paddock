@@ -1338,11 +1338,6 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@orchidjs/sifter@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@orchidjs/sifter/-/sifter-0.8.2.tgz#50f0a4ba8783f2bfbde1bcec9ed97e632940555d"
-  integrity sha512-aDemVMJL2cGo82EVHXMM2y6WoWlk00V2aibvNAl2djtZG1OquirMvnOTlb2L4tjcH5cT2q1/dyHepZcxnFW5zQ==
-
 "@rails/actioncable@^6.0.0":
   version "6.1.4"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.1.4.tgz#c3c5a9f8302c429af9722b6c50ab48049016d2a3"
@@ -7868,13 +7863,6 @@ toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
-
-tom-select@^2.0.0-Beta.2:
-  version "2.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/tom-select/-/tom-select-2.0.0-rc.2.tgz#01ef6c0b22167eabee2c53001c141cd199efe514"
-  integrity sha512-3br4WsOF+6ClV3T5MWrWF+hNZ1Smm0Wg2SS4/yPQmvGbtgaIWWeHfn4371xGx49vIFUeTtrsTlZyd5Anu5iywg==
-  dependencies:
-    "@orchidjs/sifter" "^0.8.2"
 
 ts-pnp@^1.1.6:
   version "1.2.0"

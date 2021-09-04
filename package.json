@@ -29,7 +29,6 @@
     "resolve-url-loader": "^3.1.1",
     "stimulus": "^2.0.0",
     "stimulus-rails-nested-form": "^3.0.0",
-    "tom-select": "^2.0.0-Beta.2",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
