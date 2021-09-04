@@ -5,38 +5,37 @@
 - control_data_action = local_assigns[:control_data_action]
 - multi_select = (type == :multi_select)
 
-.multiple-choice-filter
-  - unless multi_select
+- unless multi_select
+  .radio-button.radio-button--sm
+    = label_tag "#{id}__all" do
+      = radio_button_tag id,
+          '',
+          search.params[id].blank?,
+          id: "#{id}__all",
+          class: 'radio-button__control',
+          data: { action: control_data_action }
+      .radio-button__label-text
+        Show all
+- options.each do |label, value|
+  - if multi_select
+    .checkbox.checkbox--sm
+      = label_tag "#{id}_#{value}" do
+        = check_box_tag "#{id}[]",
+            value,
+            search.selected?(id, value),
+            id: "#{id}_#{value}",
+            class: 'checkbox__control',
+            data: { action: control_data_action }
+        .checkbox__label-text
+          = label
+  - else
     .radio-button.radio-button--sm
-      = label_tag "#{id}__all" do
+      = label_tag "#{id}_#{value}" do
         = radio_button_tag id,
-            '',
-            search.params[id].blank?,
-            id: "#{id}__all",
+            value,
+            search.selected?(id, value),
+            id: "#{id}_#{value}",
             class: 'radio-button__control',
             data: { action: control_data_action }
         .radio-button__label-text
-          Show all
-  - options.each do |label, value|
-    - if multi_select
-      .checkbox.checkbox--sm
-        = label_tag "#{id}_#{value}" do
-          = check_box_tag "#{id}[]",
-              value,
-              search.selected?(id, value),
-              id: "#{id}_#{value}",
-              class: 'checkbox__control',
-              data: { action: control_data_action }
-          .checkbox__label-text
-            = label
-    - else
-      .radio-button.radio-button--sm
-        = label_tag "#{id}_#{value}" do
-          = radio_button_tag id,
-              value,
-              search.selected?(id, value),
-              id: "#{id}_#{value}",
-              class: 'radio-button__control',
-              data: { action: control_data_action }
-          .radio-button__label-text
-            = label
+          = label
