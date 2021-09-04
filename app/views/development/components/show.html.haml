@@ -2,157 +2,183 @@
   .view
     %h1 Components
 
-    %h2 Buttons
-    .button.button--primary Primary button
-    .button.button--inverted Inverted button
-    .button.button--success Inverted button
-    .button.button--danger Inverted button
+    .update-content-block
+      %h2.update-content-block__title Buttons
+      .update-content-block__content
+        .button.button--primary Primary button
+        .button.button--inverted Inverted button
+        .button.button--success Inverted button
+        .button.button--danger Inverted button
 
-    %h2 Status indicators
+    .update-content-block
+      %h2.update-content-block__title Status indicators
+      .update-content-block__content
+        .status-indicator.status-indicator--red
+          .status-indicator__circle
+          Red
+        .status-indicator.status-indicator--amber
+          .status-indicator__circle
+          Amber
+        .status-indicator.status-indicator--green
+          .status-indicator__circle
+          Green
 
-    .status-indicator.status-indicator--red
-      .status-indicator__circle
-      Red
-    .status-indicator.status-indicator--amber
-      .status-indicator__circle
-      Amber
-    .status-indicator.status-indicator--green
-      .status-indicator__circle
-      Green
+    .update-content-block
+      %h2.update-content-block__title Indicator lists
+      .update-content-block__content
+        .indicator-list
+          .indicator-list__indicator
+            .indicator-list__label
+              Label
+            .indicator-list__value
+              Value
+          .indicator-list__indicator
+            .indicator-list__label
+              Label
+            .indicator-list__value
+              Value
+          .indicator-list__indicator
+            .indicator-list__label
+              Label
+            .indicator-list__value
+              Value
 
-    %h2 Indicator lists
+          .indicator-list.indicator-list--inline
+            .indicator-list__indicator
+              .indicator-list__label
+                Label
+              .indicator-list__value
+                Value
+            .indicator-list__indicator
+              .indicator-list__label
+                Label
+              .indicator-list__value
+                Value
+            .indicator-list__indicator
+              .indicator-list__label
+                Label
+              .indicator-list__value
+                Value
 
-    .indicator-list
-      .indicator-list__indicator
-        .indicator-list__label
-          Label
-        .indicator-list__value
-          Value
-      .indicator-list__indicator
-        .indicator-list__label
-          Label
-        .indicator-list__value
-          Value
-      .indicator-list__indicator
-        .indicator-list__label
-          Label
-        .indicator-list__value
-          Value
+          .indicator-list.indicator-list--inline-mini
+            .indicator-list__indicator
+              .indicator-list__label
+                Label
+              .indicator-list__value
+                Value
+            .indicator-list__indicator
+              .indicator-list__label
+                Label
+              .indicator-list__value
+                Value
+            .indicator-list__indicator
+              .indicator-list__label
+                Label
+              .indicator-list__value
+                Value
 
-    .indicator-list.indicator-list--inline
-      .indicator-list__indicator
-        .indicator-list__label
-          Label
-        .indicator-list__value
-          Value
-      .indicator-list__indicator
-        .indicator-list__label
-          Label
-        .indicator-list__value
-          Value
-      .indicator-list__indicator
-        .indicator-list__label
-          Label
-        .indicator-list__value
-          Value
+    .update-content-block
+      %h2.update-content-block__title Team header
+      .update-content-block__content
+        .team-header
+          .team-header__group
+            Group name
+          .team-header__name
+            Team name
 
-    .indicator-list.indicator-list--inline-mini
-      .indicator-list__indicator
-        .indicator-list__label
-          Label
-        .indicator-list__value
-          Value
-      .indicator-list__indicator
-        .indicator-list__label
-          Label
-        .indicator-list__value
-          Value
-      .indicator-list__indicator
-        .indicator-list__label
-          Label
-        .indicator-list__value
-          Value
+    .update-content-block
+      %h2.update-content-block__title Flash messages
+      .update-content-block__content
+        .flash-message.flash-message--notice
+          Notice
 
-    %h2 Team header
+        .flash-message.flash-message--alert
+          Alert
 
-    .team-header
-      .team-header__group
-        Group name
-      .team-header__name
-        Team name
+    .update-content-block
+      %h2.update-content-block__title Issues
+      .update-content-block__content
+        .issue
+          .issue__header
+            .issue__team-name Team name
+            .issue__description Description
+          .issue__inner
+            .issue__section
+              .issue__section-label Section label
+              .issue__section-value Section value
+          .issue__section.issue__section--actions
+            Actions
 
-    %h2 Flash messages
+    .update-content-block
+      %h2.update-content-block__title Sprint navigation
+      .update-content-block__content
+        %div{style: 'background: #666; padding: .25rem;'}
+          .sprint-navigation
+            .sprint-navigation__dates
+              Jan 1 to Dec 31
+            .sprint-navigation__button.sprint-navigation__button--previous
+              .sprint-navigation__icon
+              .sprint-navigation__hidden-label
+                Hidden label - previous
+            .sprint-navigation__button.sprint-navigation__button--next
+              .sprint-navigation__icon
+              .sprint-navigation__hidden-label
+                Hidden label - next
 
-    .flash-message.flash-message--notice
-      Notice
+    .update-content-block
+      %h2.update-content-block__title Checkboxes
+      .update-content-block__content
+        .checkbox.checkbox--sm
+          %label.checkbox__label{for: 'checkbox-1-1'}
+            = check_box_tag 'checkbox', nil, true, id: 'checkbox-1-1', class: 'checkbox__control'
+            .checkbox__label-text Checkbox 1
+        .checkbox.checkbox--sm
+          %label.checkbox__label{for: 'checkbox-1-2'}
+            = check_box_tag 'checkbox', nil, false, id: 'checkbox-1-2', class: 'checkbox__control'
+            .checkbox__label-text Checkbox 2
+        .checkbox.checkbox--sm
+          %label.checkbox__label{for: 'checkbox-1-3'}
+            = check_box_tag 'checkbox', nil, false, id: 'checkbox-1-3', class: 'checkbox__control'
+            .checkbox__label-text Checkbox 3
 
-    .flash-message.flash-message--alert
-      Alert
+        .checkbox.checkbox--lg
+          %label.checkbox__label{for: 'checkbox-2-1'}
+            = check_box_tag 'checkbox', nil, true, id: 'checkbox-2-1', class: 'checkbox__control'
+            .checkbox__label-text Big checkbox 1
+        .checkbox.checkbox--lg
+          %label.checkbox__label{for: 'checkbox-2-2'}
+            = check_box_tag 'checkbox', nil, false, id: 'checkbox-2-2', class: 'checkbox__control'
+            .checkbox__label-text Big checkbox 2
+        .checkbox.checkbox--lg
+          %label.checkbox__label{for: 'checkbox-2-3'}
+            = check_box_tag 'checkbox', nil, false, id: 'checkbox-2-3', class: 'checkbox__control'
+            .checkbox__label-text Big checkbox 3
 
-    %h2 Issues
+    .update-content-block
+      %h2.update-content-block__title Radio buttons
+      .update-content-block__content
+        .radio-button.radio-button--sm
+          %label.radio-button__label{for: 'radio-1-1'}
+            = radio_button_tag 'radio-1', nil, true, id: 'radio-1-1', class: 'radio-button__control'
+            .radio-button__label-text Option 1
+        .radio-button.radio-button--sm
+          %label.radio-button__label{for: 'radio-1-2'}
+            = radio_button_tag 'radio-1', nil, false, id: 'radio-1-2', class: 'radio-button__control'
+            .radio-button__label-text Option 2
+        .radio-button.radio-button--sm
+          %label.radio-button__label{for: 'radio-1-3'}
+            = radio_button_tag 'radio-1', nil, false, id: 'radio-1-3', class: 'radio-button__control'
+            .radio-button__label-text Option 3
 
-    .issue
-      .issue__header
-        .issue__team-name Team name
-        .issue__description Description
-      .issue__inner
-        .issue__section
-          .issue__section-label Section label
-          .issue__section-value Section value
-      .issue__section.issue__section--actions
-        Actions
-
-    %h2 Sprint navigation
-
-    %div{style: 'background: #666; padding: .25rem;'}
-      .sprint-navigation
-        .sprint-navigation__dates
-          Jan 1 to Dec 31
-        .sprint-navigation__button.sprint-navigation__button--previous
-          .sprint-navigation__icon
-          .sprint-navigation__hidden-label
-            Hidden label - previous
-        .sprint-navigation__button.sprint-navigation__button--next
-          .sprint-navigation__icon
-          .sprint-navigation__hidden-label
-            Hidden label - next
-
-    %h2 Checkboxes
-
-    .checkbox.checkbox--sm
-      %label.checkbox__label{for: 'checkbox-1'}
-        = check_box_tag 'checkbox', nil, true, id: 'checkbox-1', class: 'checkbox__control'
-        .checkbox__label-text Label
-
-    .checkbox.checkbox--lg
-      %label.checkbox__label{for: 'checkbox-2'}
-        = check_box_tag 'checkbox', nil, true, id: 'checkbox-2', class: 'checkbox__control'
-        .checkbox__label-text Label
-
-    %h2 Radio buttons
-
-    .radio-button.radio-button--sm
-      %label.radio-button__label{for: 'radio-1-1'}
-        = radio_button_tag 'radio-1', nil, true, id: 'radio-1-1', class: 'radio-button__control'
-        .radio-button__label-text Option 1
-    .radio-button.radio-button--sm
-      %label.radio-button__label{for: 'radio-1-2'}
-        = radio_button_tag 'radio-1', nil, true, id: 'radio-1-2', class: 'radio-button__control'
-        .radio-button__label-text Option 2
-    .radio-button.radio-button--sm
-      %label.radio-button__label{for: 'radio-1-3'}
-        = radio_button_tag 'radio-1', nil, true, id: 'radio-1-3', class: 'radio-button__control'
-        .radio-button__label-text Option 3
-
-    .radio-button.radio-button--lg
-      %label.radio-button__label{for: 'radio-2-1'}
-        = radio_button_tag 'radio-2', nil, true, id: 'radio-2-1', class: 'radio-button__control'
-        .radio-button__label-text Option 1
-    .radio-button.radio-button--lg
-      %label.radio-button__label{for: 'radio-2-2'}
-        = radio_button_tag 'radio-2', nil, true, id: 'radio-2-2', class: 'radio-button__control'
-        .radio-button__label-text Option 2
-    .radio-button.radio-button--lg
-      %label.radio-button__label{for: 'radio-2-3'}
-        = radio_button_tag 'radio-2', nil, true, id: 'radio-2-3', class: 'radio-button__control'
-        .radio-button__label-text Option 3
+        .radio-button.radio-button--lg
+          %label.radio-button__label{for: 'radio-2-1'}
+            = radio_button_tag 'radio-2', nil, true, id: 'radio-2-1', class: 'radio-button__control'
+            .radio-button__label-text Big option 1
+        .radio-button.radio-button--lg
+          %label.radio-button__label{for: 'radio-2-2'}
+            = radio_button_tag 'radio-2', nil, false, id: 'radio-2-2', class: 'radio-button__control'
+            .radio-button__label-text Big option 2
+        .radio-button.radio-button--lg
+          %label.radio-button__label{for: 'radio-2-3'}
+            = radio_button_tag 'radio-2', nil, false, id: 'radio-2-3', class: 'radio-button__control'
+            .radio-button__label-text Big option 3
