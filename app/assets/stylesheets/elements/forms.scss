@@ -38,10 +38,6 @@ textarea {
   }
 }
 
-input[type=text] {
-  @include text-field;
-}
-
 input[type=submit], button {
   @extend .button;
   @extend .button--primary;

@@ -126,6 +126,12 @@
                 Hidden label - next
 
     .update-content-block
+      %h2.update-content-block__title Text inputs
+      .update-content-block__content
+        %p= text_field_tag 'text_field', nil, class: 'text-input'
+        %p= text_field_tag 'text_field_2', 'Hello, world', class: 'text-input'
+
+    .update-content-block
       %h2.update-content-block__title Select boxes
       .update-content-block__content
         %p= select_tag 'select', options_for_select(['One', 'Two', 'Three']), class: 'select-box select-box--sm'

@@ -5,7 +5,8 @@
                          include_blank: true,
                          input_html: { class: 'select-box select-box--lg' } }
   = f.input :name, { required: true,
-                     input_html: { style: 'width: 20rem' } }
+                     input_html: { class: 'text-input',
+                                   style: 'width: 20rem' } }
   = f.input :start_on, { as: :date,
                          required: false,
                          include_blank: true,

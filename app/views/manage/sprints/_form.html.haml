@@ -1,5 +1,5 @@
 = simple_form_for [:manage, form] do |f|
-  = f.input :name, required: true
+  = f.input :name, required: true, input_html: { class: 'text-input' }
   = f.input :start_on, as: :date, required: true, input_html: { class: 'select-box select-box--lg' }
   = f.input :end_on, as: :date, required: true, input_html: { class: 'select-box select-box--lg' }
 

@@ -5,4 +5,4 @@
 .sprint-goals
   %ol
     - f.object.next_sprint_goals.each do |goal|
-      %li= text_field_tag "update[next_sprint_goals][]", goal
+      %li= text_field_tag "update[next_sprint_goals][]", goal, class: 'text-input'
