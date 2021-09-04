@@ -100,3 +100,16 @@ $selected-color: colours.$blue-900;
 .radio-button__control:checked + .radio-button__label-text {
   color: $selected-color;
 }
+
+.radio-button--with-subtitle {
+  &.radio-button--lg .radio-button__label-text {
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
+  }
+}
+
+.radio-button__subtitle {
+  display: block;
+  font-size: .7em;
+  padding-top: .4em;
+}

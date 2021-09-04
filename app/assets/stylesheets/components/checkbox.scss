@@ -95,3 +95,16 @@ $selected-color: colours.$blue-900;
 .checkbox__control:checked + .checkbox__label-text {
   color: $selected-color;
 }
+
+.checkbox--with-subtitle {
+  &.checkbox--lg .checkbox__label-text {
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
+  }
+}
+
+.checkbox__subtitle {
+  display: block;
+  font-size: .7em;
+  padding-top: .4em;
+}

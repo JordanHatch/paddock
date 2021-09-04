@@ -145,10 +145,13 @@
           %label.checkbox__label{for: 'checkbox-2-1'}
             = check_box_tag 'checkbox', nil, true, id: 'checkbox-2-1', class: 'checkbox__control'
             .checkbox__label-text Big checkbox 1
-        .checkbox.checkbox--lg
+        .checkbox.checkbox--lg.checkbox--with-subtitle
           %label.checkbox__label{for: 'checkbox-2-2'}
             = check_box_tag 'checkbox', nil, false, id: 'checkbox-2-2', class: 'checkbox__control'
-            .checkbox__label-text Big checkbox 2
+            .checkbox__label-text
+              Big checkbox 2
+              .checkbox__subtitle
+                with a longer description in the subtitle
         .checkbox.checkbox--lg
           %label.checkbox__label{for: 'checkbox-2-3'}
             = check_box_tag 'checkbox', nil, false, id: 'checkbox-2-3', class: 'checkbox__control'
@@ -174,11 +177,15 @@
           %label.radio-button__label{for: 'radio-2-1'}
             = radio_button_tag 'radio-2', nil, true, id: 'radio-2-1', class: 'radio-button__control'
             .radio-button__label-text Big option 1
-        .radio-button.radio-button--lg
+        .radio-button.radio-button--lg.radio-button--with-subtitle
           %label.radio-button__label{for: 'radio-2-2'}
             = radio_button_tag 'radio-2', nil, false, id: 'radio-2-2', class: 'radio-button__control'
-            .radio-button__label-text Big option 2
+            .radio-button__label-text
+              Big option 2
+              .radio-button__subtitle
+                with a longer description in the subtitle
         .radio-button.radio-button--lg
           %label.radio-button__label{for: 'radio-2-3'}
             = radio_button_tag 'radio-2', nil, false, id: 'radio-2-3', class: 'radio-button__control'
             .radio-button__label-text Big option 3
+
