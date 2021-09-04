@@ -7,34 +7,36 @@
 
 .multiple-choice-filter
   - unless multi_select
-    .multiple-choice-filter__option
-      = radio_button_tag id,
-          '',
-          search.params[id].blank?,
-          id: "#{id}__all",
-          class: 'multiple-choice-filter__control radio-button',
-          data: { action: control_data_action }
-      %label.multiple-choice-filter__label{ for: "#{id}__all" }
-        Show all
-  - options.each do |label, value|
-    .multiple-choice-filter__option
-      - if multi_select
-        .checkbox.checkbox--sm
-          %label{ for: "#{id}_#{value}" }
-            = check_box_tag "#{id}[]",
-                value,
-                search.selected?(id, value),
-                id: "#{id}_#{value}",
-                class: 'checkbox__control',
-                data: { action: control_data_action }
-            .checkbox__label-text
-              = label
-      - else
+    .radio-button.radio-button--sm
+      = label_tag "#{id}__all" do
         = radio_button_tag id,
-            value,
-            search.selected?(id, value),
-            id: "#{id}_#{value}",
-            class: 'multiple-choice-filter__control radio-button',
+            '',
+            search.params[id].blank?,
+            id: "#{id}__all",
+            class: 'radio-button__control',
             data: { action: control_data_action }
-      %label.multiple-choice-filter__label{ for: "#{id}_#{value}" }
-        = label
+        .radio-button__label-text
+          Show all
+  - options.each do |label, value|
+    - if multi_select
+      .checkbox.checkbox--sm
+        = label_tag "#{id}_#{value}" do
+          = check_box_tag "#{id}[]",
+              value,
+              search.selected?(id, value),
+              id: "#{id}_#{value}",
+              class: 'checkbox__control',
+              data: { action: control_data_action }
+          .checkbox__label-text
+            = label
+    - else
+      .radio-button.radio-button--sm
+        = label_tag "#{id}_#{value}" do
+          = radio_button_tag id,
+              value,
+              search.selected?(id, value),
+              id: "#{id}_#{value}",
+              class: 'radio-button__control',
+              data: { action: control_data_action }
+          .radio-button__label-text
+            = label

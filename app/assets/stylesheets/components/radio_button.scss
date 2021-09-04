@@ -1,4 +1,98 @@
+@use '../variables/colours';
+
+$default-color: colours.$black;
+$selected-color: colours.$blue-900;
+
 .radio-button {
-  height: auto !important;
-  width: auto !important;
+  font-size: 2rem;
+  position: relative;
+  margin: .4rem 0;
+  line-height: 1;
+}
+
+/* TODO: remove this once the base <label> css has been refactored */
+.radio-button label {
+  margin: 0;
+}
+
+.radio-button--sm {
+  .radio-button__label-text {
+    font-size: 1rem;
+    padding: 0.13rem 0 0.13rem 1.7rem;
+  }
+
+  .radio-button__label-text::before {
+    width: 1rem;
+    height: 1rem;
+    border-width: .15rem;
+  }
+
+  .radio-button__label-text::after {
+    top: 0.26rem;
+    left: 0.27rem;
+    width: 0.71rem;
+    height: 0.71rem;
+  }
+}
+
+.radio-button--lg {
+  .radio-button__label-text {
+    font-size: 1.4rem;
+    padding: 0.75rem 0 0.75rem 3.6rem;
+  }
+
+  .radio-button__label-text::before {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: .2rem;
+  }
+
+  .radio-button__label-text::after {
+    top: 0.55rem;
+    left: 0.57rem;
+    width: 1.76rem;
+    height: 1.76rem;
+  }
+}
+
+.radio-button__control {
+  display: none;
+}
+
+.radio-button__label-text {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.radio-button__label-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  vertical-align: bottom;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: $default-color;
+}
+
+.radio-button__label-text::after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  vertical-align: bottom;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.radio-button__control:checked + .radio-button__label-text::before {
+  border-color: $selected-color;
+}
+
+.radio-button__control:checked + .radio-button__label-text::after {
+  background-color: $selected-color;
+}
+
+.radio-button__control:checked + .radio-button__label-text {
+  color: $selected-color;
 }
