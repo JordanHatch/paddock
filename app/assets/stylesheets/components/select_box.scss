@@ -1,0 +1,36 @@
+@use '../variables/colours';
+
+$background-color: colours.$silver-50;
+$border-color: colours.$silver-800;
+
+.select-box {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  min-width: 8rem;
+  max-width: 100%;
+  margin: 0 0 .75em;
+
+  border: .1rem solid $border-color;
+  border-radius: .4rem;
+
+  background: $background-color url('../../images/down_arrow.svg') no-repeat;
+  background-position: right .75rem center;
+
+  box-shadow: rgba(0,0,0,0.1) 0px -1px 2px, rgba(0,0,0,0.1) 0px 2px 3px;
+}
+
+.select-box--sm {
+  font-size: .85rem;
+  padding: .5rem 2.5rem .5rem .5rem;
+  line-height: 1rem;
+  background-size: 1rem;
+}
+
+.select-box--lg {
+  font-size: 1.1rem;
+  padding: .75rem 2.8rem .75rem .75rem;
+  line-height: 1.3rem;
+  background-size: 1.3rem;
+}

@@ -126,6 +126,12 @@
                 Hidden label - next
 
     .update-content-block
+      %h2.update-content-block__title Select boxes
+      .update-content-block__content
+        %p= select_tag 'select', options_for_select(['One', 'Two', 'Three']), class: 'select-box select-box--sm'
+        %p= select_tag 'select', options_for_select(['One', 'Two', 'Three']), class: 'select-box select-box--lg'
+
+    .update-content-block
       %h2.update-content-block__title Checkboxes
       .update-content-block__content
         .checkbox.checkbox--sm
