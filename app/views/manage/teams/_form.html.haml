@@ -12,8 +12,8 @@
                          include_blank: true,
                          input_html: { class: 'select-box select-box--lg' } }
 
-  .actions
-    = f.submit 'Save'
-    .cancel
+  .form-actions
+    = f.button :submit, 'Save'
+    .form-actions__cancel
       or
       = link_to 'cancel', manage_teams_path

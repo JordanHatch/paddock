@@ -1,0 +1,12 @@
+@use '../variables/colours';
+
+.form-actions {
+  background: colours.$light-grey;
+  padding: 1.5rem;
+  margin: 2.5rem 0 2rem;
+}
+
+.form-actions__cancel {
+  display: inline-block;
+  padding-left: .75rem;
+}

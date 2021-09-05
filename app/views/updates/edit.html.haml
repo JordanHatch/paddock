@@ -10,6 +10,6 @@
 
         = hidden_field_tag 'form', flow.current_form_id
 
-        .actions
+        .form-actions
           = f.button :submit, (flow.last_form? ? 'Save and preview' : 'Save and next')
 

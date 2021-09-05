@@ -3,8 +3,8 @@
   = f.input :start_on, as: :date, required: true, input_html: { class: 'select-box select-box--lg' }
   = f.input :end_on, as: :date, required: true, input_html: { class: 'select-box select-box--lg' }
 
-  .actions
-    = f.submit 'Save'
-    .cancel
+  .form-actions
+    = f.button :submit, 'Save'
+    .form-actions__cancel
       or
       = link_to 'cancel', manage_sprints_path

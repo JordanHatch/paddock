@@ -9,4 +9,5 @@
 
   = form_tag invitation_path, method: :post do |f|
     = text_field_tag 'email', nil, placeholder: 'your.name@awe.gov.au', class: 'text-input'
-    = submit_tag 'Send me a link to sign in', { data: { 'disable-with': 'Send me a link to sign in' } }
+    = submit_tag 'Send me a link to sign in', { data: { 'disable-with': 'Send me a link to sign in' },
+                                                class: 'button button--primary', }

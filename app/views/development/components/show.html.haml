@@ -221,4 +221,13 @@
           = text_field_tag 'form-input', nil, class: 'form-input__control text-input'
           .form-input__error Error message
 
+    .update-content-block
+      %h2.update-content-block__title Form actions
+      .update-content-block__content
+        .form-actions
+          = submit_tag 'Save and continue', class: 'button button--primary'
+          .form-actions__cancel
+            or
+            = link_to 'cancel', '#'
+
 
