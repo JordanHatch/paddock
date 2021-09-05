@@ -15,10 +15,14 @@ class StatusPresenter
 
   def format_label(label)
     [
-      I18n.t(:label, scope: [:updates, key, label]),
       content_tag(
-        :span,
+        :div,
+        I18n.t(:label, scope: [:updates, key, label]),
+      ),
+      content_tag(
+        :div,
         I18n.t(:hint_text, scope: [:updates, key, label]),
+        class: 'radio-button__subtitle'
       ),
     ].join.html_safe
   end

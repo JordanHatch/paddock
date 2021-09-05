@@ -1,4 +1,7 @@
 %h2 How are the team feeling this week?
 
-.team-health
-  = f.input :team_health, collection: TeamHealthPresenter.all, as: :radio_buttons, label: false
+= f.input :team_health,
+    collection: TeamHealthPresenter.all,
+    as: :radio_buttons,
+    legend_tag: false,
+    item_wrapper_class: 'radio-button radio-button--lg radio-button--with-subtitle'

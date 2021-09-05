@@ -65,8 +65,21 @@ SimpleForm.setup do |config|
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
   end
 
+  # custom input for radio buttons and check boxes
+  config.wrappers :custom_collection, class: 'form-input', error_class: 'form-input--invalid', tag: 'div' do |b|
+    b.use :html5
+    b.optional :readonly
+    b.use :hint, wrap_with: { tag: 'small', class: 'form-input__hint' }
+    b.use :input,  class: 'radio-button__control'
+    b.use :full_error, wrap_with: { tag: 'div', class: 'form-input__error' }
+  end
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
+
+  config.wrapper_mappings = {
+    radio_buttons: :custom_collection,
+  }
 
   # Define the way to render check boxes / radio buttons with labels.
   # Defaults to :nested for bootstrap config.

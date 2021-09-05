@@ -5,56 +5,6 @@ input[type=submit], button {
   font-size: 1.1rem;
 }
 
-.input.radio_buttons {
-  display: flex;
-  gap: .5rem;
-
-  .radio {
-    flex: 1;
-    display: block;
-    display: flex;
-  }
-
-  label {
-    border-radius: .5rem;
-    background: $white;
-    border: 1px solid #ddd;
-    box-shadow: #eee 0px 2px 2px;
-    padding: 1rem;
-    flex: 1;
-    text-align: center;
-
-    input[type=radio] {
-      display: block;
-      margin: 0 auto .75rem;
-    }
-
-    span {
-      display: block;
-      padding-top: .3rem;
-      font-weight: normal;
-      font-size: 1rem;
-    }
-  }
-}
-
-input[type=radio] {
-  -webkit-appearance:button;
-  -moz-appearance:button;
-  appearance:button;
-  border:4px solid #ccc;
-  border-top-color:#bbb;
-  border-left-color:#bbb;
-  background:#fff;
-  width:50px;
-  height:50px;
-  border-radius:50%;
-}
-
-input[type=radio]:checked{
-  border:20px solid $green;
-}
-
 form .actions {
   background: $light-grey;
   padding: 1rem;

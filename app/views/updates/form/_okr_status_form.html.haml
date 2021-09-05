@@ -1,4 +1,7 @@
 %h2 How are you tracking against your OKRs this quarter?
 
-.delivery-status
-  = f.input :okr_status, collection: StatusPresenter.new(:okr_status).all, as: :radio_buttons, label: false
+= f.input :okr_status,
+    collection: StatusPresenter.new(:okr_status).all,
+    as: :radio_buttons,
+    legend_tag: false,
+    item_wrapper_class: 'radio-button radio-button--lg radio-button--with-subtitle'

@@ -10,11 +10,6 @@ $selected-color: colours.$blue-900;
   font-size: 2rem;
 }
 
-/* TODO: remove this once the base <label> css has been refactored */
-.radio-button label {
-  margin: 0;
-}
-
 .radio-button--sm {
   margin: .4rem 0;
 
@@ -38,11 +33,12 @@ $selected-color: colours.$blue-900;
 }
 
 .radio-button--lg {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 
   .radio-button__label-text {
     font-size: 1.4rem;
-    padding: 0.75rem 0 0.75rem 3.6rem;
+    padding: 0 0 0 3.6rem;
+    min-height: 3rem;
   }
 
   .radio-button__label-text::before {
@@ -66,6 +62,15 @@ $selected-color: colours.$blue-900;
 .radio-button__label-text {
   font-size: 1em;
   font-weight: normal;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+  > * {
+    flex: 100%;
+    text-align: left;
+  }
 }
 
 .radio-button__label-text::before {
@@ -99,13 +104,6 @@ $selected-color: colours.$blue-900;
 
 .radio-button__control:checked + .radio-button__label-text {
   color: $selected-color;
-}
-
-.radio-button--with-subtitle {
-  &.radio-button--lg .radio-button__label-text {
-    padding-top: 0.05rem;
-    padding-bottom: 0.05rem;
-  }
 }
 
 .radio-button__subtitle {
