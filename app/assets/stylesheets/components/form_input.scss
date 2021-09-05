@@ -1,0 +1,43 @@
+@use '../variables/colours';
+
+.form-input {
+  margin: 1rem 0 2rem;
+  font-size: 1rem;
+}
+
+.form-input--invalid {
+  border-left: .4rem solid $red;
+  padding: .75rem 1rem;
+}
+
+.form-input__label {
+  display: block;
+  margin: .25em 0;
+
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.form-input__optional {
+  font-weight: normal;
+  padding-left: .5rem;
+  color: #888;
+  font-size: .85em;
+}
+
+.form-input__control {
+  margin: .4em 0;
+}
+
+.form-input__hint {
+  display: block;
+  margin: .25em 0;
+  color: colours.$dark-grey;
+}
+
+.form-input__error {
+  display: block;
+  margin: .4em 0;
+  color: colours.$red;
+  font-weight: bold;
+}

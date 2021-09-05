@@ -84,7 +84,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
       fill_in "What's the issue?", with: 'Example description'
       fill_in 'How will we solve it?', with: 'Example treatment'
       fill_in 'What do you need help with?', with: 'Help required'
-      fill_in 'If this issue has been raised', with: '12345'
+      fill_in "What's the DevOps issue number?", with: '12345'
     end
 
     click_on 'Add issue'
@@ -93,7 +93,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
       fill_in "What's the issue?", with: 'A second issue'
       fill_in 'How will we solve it?', with: 'Another treatment'
       fill_in 'What do you need help with?', with: 'More help required'
-      fill_in 'If this issue has been raised', with: '67890'
+      fill_in "What's the DevOps issue number?", with: '67890'
     end
 
     save_and_next

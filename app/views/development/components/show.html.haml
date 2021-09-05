@@ -207,3 +207,18 @@
             = radio_button_tag 'radio-2', nil, false, id: 'radio-2-3', class: 'radio-button__control'
             .radio-button__label-text Big option 3
 
+    .update-content-block
+      %h2.update-content-block__title Form input
+      .update-content-block__content
+        .form-input
+          = label_tag 'form-input', 'Form input', class: 'form-input__label'
+          .form-input__hint Hint text
+          = text_field_tag 'form-input', nil, class: 'form-input__control text-input'
+
+        .form-input--invalid
+          = label_tag 'form-input', 'Form input', class: 'form-input__label'
+          .form-input__hint Hint text
+          = text_field_tag 'form-input', nil, class: 'form-input__control text-input'
+          .form-input__error Error message
+
+
