@@ -1,5 +1,5 @@
 class Invitation < ApplicationRecord
-  before_validation :set_token, :set_expires_at
+  before_validation :set_token, :set_expires_at, :convert_email_to_lowercase
 
   scope :active, -> { where('expires_at > ?', Time.now) }
 
@@ -30,5 +30,10 @@ class Invitation < ApplicationRecord
     domain_list = Paddock.permitted_domains.split(';')
 
     errors.add(:email, 'must be a permitted email') unless domain_list.include?(domain)
+  end
+
+  def convert_email_to_lowercase
+    return if email.blank?
+    self.email = email.downcase
   end
 end

@@ -26,5 +26,16 @@ RSpec.describe Invitation do
         expect(subject.errors).to have_key(:email)
       end
     end
+
+    context 'with a mixed case email' do
+      let(:email) { 'Foo.Bar@example.org' }
+
+      it 'converts to lower case before creation' do
+        subject.email = email
+        subject.save
+
+        expect(subject.email).to eq('foo.bar@example.org')
+      end
+    end
   end
 end
