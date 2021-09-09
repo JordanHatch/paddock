@@ -175,18 +175,8 @@
       }
     }
 
-    button.remove {
-      @extend .button;
-      @extend .button--danger;
-      font-size: .85rem;
-    }
-
     .action {
       margin-bottom: 2rem;
-    }
-
-    button.add {
-      font-size: .9rem;
     }
   }
 
