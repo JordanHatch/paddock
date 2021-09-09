@@ -3,6 +3,10 @@ FactoryBot.define do
     sprint
     team
 
+    factory :not_started_sprint_update do
+      state { :not_started }
+    end
+
     factory :draft_sprint_update do
       state { :draft }
     end

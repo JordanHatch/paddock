@@ -29,6 +29,10 @@ class Update < ApplicationRecord
     event :publish do
       transitions from: :draft, to: :published
     end
+
+    event :unpublish do
+      transitions from: :published, to: :draft
+    end
   end
 
   def can_be_edited?
