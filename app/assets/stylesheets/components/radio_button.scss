@@ -4,10 +4,10 @@ $default-color: colours.$black;
 $selected-color: colours.$blue-900;
 
 .radio-button {
-  position: relative;
   display: block;
+  position: relative;
+  font-size: 1rem;
   line-height: 1;
-  font-size: 2rem;
 }
 
 .radio-button--sm {
@@ -19,16 +19,15 @@ $selected-color: colours.$blue-900;
   }
 
   .radio-button__label-text::before {
-    width: 1rem;
-    height: 1rem;
-    border-width: .15rem;
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
   }
 
   .radio-button__label-text::after {
-    top: 0.26rem;
-    left: 0.27rem;
-    width: 0.71rem;
-    height: 0.71rem;
+    top: 4px;
+    left: 4px;
+    border-width: 6px;
   }
 }
 
@@ -38,20 +37,19 @@ $selected-color: colours.$blue-900;
   .radio-button__label-text {
     font-size: 1.4rem;
     padding: 0 0 0 3.6rem;
-    min-height: 3rem;
+    min-height: 46px;
   }
 
   .radio-button__label-text::before {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-width: .2rem;
+    width: 46px;
+    height: 46px;
+    border-width: 4px;
   }
 
   .radio-button__label-text::after {
-    top: 0.55rem;
-    left: 0.57rem;
-    width: 1.76rem;
-    height: 1.76rem;
+    top: 9px;
+    left: 9px;
+    border-width: 14px;
   }
 }
 
@@ -62,6 +60,7 @@ $selected-color: colours.$blue-900;
 .radio-button__label-text {
   font-size: 1em;
   font-weight: normal;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -74,24 +73,32 @@ $selected-color: colours.$blue-900;
 }
 
 .radio-button__label-text::before {
-  content: '';
+  content: ' ';
+  display: block;
+
   position: absolute;
   top: 0;
   left: 0;
-  display: inline-block;
-  vertical-align: bottom;
+
   border-radius: 50%;
   border-style: solid;
   border-color: $default-color;
 }
 
 .radio-button__label-text::after {
-  content: '';
+  content: ' ';
+
+  display: block;
+  width: 0;
+  height: 0;
+
   position: absolute;
-  display: inline-block;
-  vertical-align: bottom;
-  background-color: transparent;
+
   border-radius: 50%;
+  border-style: solid;
+  border-color: $selected-color;
+
+  opacity: 0;
 }
 
 .radio-button__control:checked + .radio-button__label-text::before {
@@ -99,7 +106,7 @@ $selected-color: colours.$blue-900;
 }
 
 .radio-button__control:checked + .radio-button__label-text::after {
-  background-color: $selected-color;
+  opacity: 1;
 }
 
 .radio-button__control:checked + .radio-button__label-text {
