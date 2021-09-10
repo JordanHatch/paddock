@@ -46,12 +46,16 @@ class SprintUpdates::UnpublishService < BaseService
     end
   end
 
+  def errors
+    result.failure.to_a
+  end
+
   private
 
   attr_reader :team_id, :sprint_id
 
   def validate_team(id)
-    team = Team.friendly.find_by_id(id)
+    team = Team.friendly.find(id)
 
     if team
       Valid(team)
@@ -61,7 +65,7 @@ class SprintUpdates::UnpublishService < BaseService
   end
 
   def validate_sprint(id)
-    sprint = Sprint.find_by_id(id)
+    sprint = Sprint.find(id)
 
     if sprint
       Valid(sprint)

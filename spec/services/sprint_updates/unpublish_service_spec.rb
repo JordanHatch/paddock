@@ -41,12 +41,8 @@ RSpec.describe SprintUpdates::UnpublishService do
 
       subject { described_class.build(team_id: team.id, sprint_id: 'foo') }
 
-      it 'is not successful' do
-        expect(subject.result).to_not be_success
-      end
-
-      it 'returns an error' do
-        expect(subject.result.failure).to contain_exactly(:invalid_sprint)
+      it 'raises an ActiveRecord::RecordNotFound exception' do
+        expect{ subject.result.failure }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
@@ -55,12 +51,8 @@ RSpec.describe SprintUpdates::UnpublishService do
 
       subject { described_class.build(team_id: 'foo', sprint_id: sprint.id) }
 
-      it 'is not successful' do
-        expect(subject.result).to_not be_success
-      end
-
-      it 'returns an error' do
-        expect(subject.result.failure).to contain_exactly(:invalid_team)
+      it 'raises an ActiveRecord::RecordNotFound exception' do
+        expect{ subject.result.failure }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
