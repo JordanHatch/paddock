@@ -1,3 +1,5 @@
+@use '../variables/colours';
+
 @mixin button-colors($base-color, $text-color, $border-color) {
   &, &:link, &:visited {
     background: $base-color;
@@ -62,6 +64,14 @@
   );
 }
 
+.button--warning {
+  @include button-colors(
+    colours.$white,
+    colours.$black,
+    colours.$orange-700
+  );
+}
+
 .button--danger {
   @include button-colors(
     $danger-button-color,
@@ -72,4 +82,12 @@
 
 .button--sm {
   font-size: .85rem;
+}
+
+.button__icon {
+  padding-right: .25rem;
+}
+
+.button__icon--warning {
+  color: colours.$orange-700;
 }
