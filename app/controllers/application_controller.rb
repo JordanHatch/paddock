@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  helper_method :signed_in?, :signed_in_user
+  helper_method :signed_in?, :signed_in_admin?, :signed_in_user
 
   def signed_in?
     session[:user_id].present?
@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
 
   def signed_in_user
     @signed_in_user ||= User.find(session[:user_id]) if session[:user_id].present?
+  end
+
+  def signed_in_admin?
+    signed_in_user.present? &&
+      signed_in_user.admin?
   end
 
   def current_user

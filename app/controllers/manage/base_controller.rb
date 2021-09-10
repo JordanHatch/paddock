@@ -6,6 +6,6 @@ class Manage::BaseController < ApplicationController
   private
 
   def authorize_admin_user!
-    raise ActionController::RoutingError, 'Not Found' unless signed_in_user.present? && signed_in_user.admin?
+    raise ActionController::RoutingError, 'Not Found' unless signed_in_admin?
   end
 end
