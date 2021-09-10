@@ -1,0 +1,24 @@
+.view.view--manage-sprints
+  .team-header
+    .team-header__content
+      .team-header__group
+        = team.group.name
+      %h2.team-header__name
+        = team.name
+      .sprint-name= sprint.name
+    .team-header__actions
+      = link_to 'View sprint update', update_path(sprint, team), class: 'button button--inverted'
+
+  .update-content-block
+    %h2.update-content-block__title Unpublish
+    .update-content-block__content
+      - if service.result.success?
+        %p You can unpublish this sprint update.
+        %p This will return the sprint update to a draft so that it can be edited again.
+        %p If you've already exported a PDF for the sprint, export a fresh copy after any changes have been made.
+        %p= button_to 'Unpublish', unpublish_manage_sprint_update_path(sprint, team), class: 'button button--danger'
+      - else
+        .errors
+          %ul.errors__list
+            - service.errors.each do |error|
+              %li.errors__item= t(error, scope: %w(services sprint_updates unpublish))

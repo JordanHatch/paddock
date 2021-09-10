@@ -1,5 +1,7 @@
 .team-header {
   margin: .5rem 0 2.3rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .team-header__group {
@@ -14,3 +16,11 @@
   margin: 0;
 }
 
+.team-header__content {
+  flex: auto;
+}
+
+.team-header__actions {
+  flex: 1 0 auto;
+  text-align: right;
+}

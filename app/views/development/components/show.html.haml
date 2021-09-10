@@ -82,10 +82,20 @@
       %h2.update-content-block__title Team header
       .update-content-block__content
         .team-header
-          .team-header__group
-            Group name
-          .team-header__name
-            Team name
+          .team-header__content
+            .team-header__group
+              Group name
+            .team-header__name
+              Team name
+
+        .team-header
+          .team-header__content
+            .team-header__group
+              Group name
+            .team-header__name
+              Team name
+          .team-header__actions
+            = link_to 'Action', '#', class: 'button button--inverted'
 
     .update-content-block
       %h2.update-content-block__title Flash messages

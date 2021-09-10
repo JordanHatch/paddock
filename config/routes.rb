@@ -24,6 +24,13 @@ Rails.application.routes.draw do
 
   namespace :manage do
     resources :sprints
+
+    resources :sprint_updates, path: '/sprints/:sprint_id',
+                               except: [:index, :new, :create], param: :team_id do
+      member do
+        post :unpublish
+      end
+    end
     resources :teams
 
     root to: 'root#index'

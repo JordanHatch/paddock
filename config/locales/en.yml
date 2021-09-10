@@ -67,3 +67,12 @@ en:
       rules:
         identifier:
           int?: 'must be a DevOps issue number'
+  services:
+    sprint_updates:
+      unpublish:
+        success: The sprint update has been unpublished
+        invalid_team: The team does not exist
+        invalid_sprint: The sprint does not exist
+        invalid_update: The sprint update could not be found
+        update_not_published: This sprint update is not currently published
+        unpublish_failed: The sprint update could not be unpublished

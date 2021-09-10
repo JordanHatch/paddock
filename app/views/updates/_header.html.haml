@@ -1,5 +1,11 @@
 .team-header
-  .team-header__group
-    = team.group.name
-  %h2.team-header__name
-    = team.name
+  .team-header__content
+    .team-header__group
+      = team.group.name
+    %h2.team-header__name
+      = team.name
+  .team-header__actions
+    - if signed_in_admin?
+      = link_to manage_sprint_update_path(sprint, team), class: 'button button--warning' do
+        %i.button__icon.button__icon--warning.fas.fa-radiation-alt
+        Danger zone
