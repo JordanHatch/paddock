@@ -56,7 +56,7 @@
 
     a {
       @extend .button;
-      @extend .button--inverted;
+      @extend .button--inverted-primary;
     }
   }
 }

@@ -8,10 +8,13 @@
         %p
           .button.button--primary Primary button
           .button.button--success Success button
+          .button.button--warning Warning button
           .button.button--danger Danger button
         %p
-          .button.button--inverted Inverted button
-          .button.button--warning Warning button
+          .button.button--inverted-primary Inverted primary
+          .button.button--inverted-success Inverted success
+          .button.button--inverted-warning Inverted warning
+          .button.button--inverted-danger Inverted danger
 
     .update-content-block
       %h2.update-content-block__title Status indicators
@@ -97,7 +100,7 @@
             .team-header__name
               Team name
           .team-header__actions
-            = link_to 'Action', '#', class: 'button button--inverted'
+            = link_to 'Action', '#', class: 'button button--inverted-primary'
 
     .update-content-block
       %h2.update-content-block__title Flash messages

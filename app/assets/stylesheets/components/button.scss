@@ -48,14 +48,6 @@
   @include button-colours($base-colour, $text-colour, $border-colour);
 }
 
-.button--inverted {
-  $base-colour: helpers.colour('white', '100');
-  $text-colour: helpers.colour('black', '900');
-  $border-colour: helpers.colour('silver', '500');
-
-  @include button-colours($base-colour, $text-colour, $border-colour);
-}
-
 .button--success {
   $base-colour: helpers.colour('green', '800');
   $text-colour: helpers.colour('white', '100');
@@ -65,9 +57,9 @@
 }
 
 .button--warning {
-  $base-colour: helpers.colour('white', '100');
-  $text-colour: helpers.colour('black', '900');
-  $border-colour: helpers.colour('orange', '700');
+  $base-colour: helpers.colour('orange', '700');
+  $text-colour: helpers.colour('white', '900');
+  $border-colour: helpers.colour('orange', '900');
 
   @include button-colours($base-colour, $text-colour, $border-colour);
 }
@@ -79,6 +71,39 @@
 
   @include button-colours($base-colour, $text-colour, $border-colour);
 }
+
+.button--inverted-primary {
+  $base-colour: helpers.colour('white', '100');
+  $text-colour: helpers.colour('black', '900');
+  $border-colour: helpers.colour('silver', '500');
+
+  @include button-colours($base-colour, $text-colour, $border-colour);
+}
+
+.button--inverted-success {
+  $base-colour: helpers.colour('white', '100');
+  $text-colour: helpers.colour('black', '900');
+  $border-colour: helpers.colour('green', '800');
+
+  @include button-colours($base-colour, $text-colour, $border-colour);
+}
+
+.button--inverted-warning {
+  $base-colour: helpers.colour('white', '100');
+  $text-colour: helpers.colour('black', '900');
+  $border-colour: helpers.colour('orange', '700');
+
+  @include button-colours($base-colour, $text-colour, $border-colour);
+}
+
+.button--inverted-danger {
+  $base-colour: helpers.colour('white', '100');
+  $text-colour: helpers.colour('black', '900');
+  $border-colour: helpers.colour('red', '600');
+
+  @include button-colours($base-colour, $text-colour, $border-colour);
+}
+
 
 .button--sm {
   font-size: .85rem;
