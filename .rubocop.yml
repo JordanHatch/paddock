@@ -3,6 +3,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/**/*'
+    - 'node_modules*/**/*'
   NewCops: enable
 
 Lint/MissingSuper:
