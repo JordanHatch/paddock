@@ -1,15 +1,19 @@
 @use 'helpers';
-@import 'typefaces';
+@use 'typefaces';
+
+body.pdf, footer.pdf {
+  background: helpers.colour('silver', '50');
+}
 
 body.pdf {
-  @include pdfRegularFontStack;
+  @include typefaces.pdfRegularFontStack;
 
   h1, h2, h3, strong {
-    @include pdfBoldFontStack;
+    @include typefaces.pdfBoldFontStack;
   }
 
   em, i {
-    @include pdfItalicFontStack;
+    @include typefaces.pdfItalicFontStack;
   }
 
   .page-break {
@@ -18,7 +22,6 @@ body.pdf {
 }
 
 footer.pdf {
-  background: helpers.colour('silver', '50');
   padding-top: 1rem;
 
   .inner {

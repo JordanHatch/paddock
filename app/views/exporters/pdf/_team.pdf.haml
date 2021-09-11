@@ -5,75 +5,65 @@
     .team-name=update.team.name
 
   %section.inner
-    .key-indicators
-      .indicator.delivery-status
-        .inner
-          .label Delivery status
-          .value
+    .team-indicators
+      .team-indicators__indicator.delivery-status
+        .team-indicators__inner
+          .team-indicators__label Delivery status
+          .team-indicators__value
             .status-indicator{ class: "status-indicator--#{update.delivery_status}"}
               .status-indicator__circle
               = delivery_status_text(update)
-      .indicator.delivery-status
-        .inner
-          .label OKR progress
-          .value{:class => "status-indicator--#{update.okr_status}"}
+      .team-indicators__indicator.delivery-status
+        .team-indicators__inner
+          .team-indicators__label OKR progress
+          .team-indicators__value{:class => "status-indicator--#{update.okr_status}"}
             .status-indicator{ class: "status-#{update.okr_status}" }
               .status-indicator__circle
               = okr_status_text(update)
-      .indicator.team-health
-        .inner
-          .label Team health
-          .value
+      .team-indicators__indicator.team-health
+        .team-indicators__inner
+          .team-indicators__label Team health
+          .team-indicators__value
             = "#{update.team_health} / 5"
-      .indicator.headcount
-        .inner
-          .label Headcount
-          .value
+      .team-indicators__indicator.headcount
+        .team-indicators__inner
+          .team-indicators__label Headcount
+          .team-indicators__value
             = "#{update.current_headcount} / #{update.total_headcount}"
-    .update-section
-      .inner
-        .title Summary
-        .content
+    .update-section.update-section--with-break
+      .update-section__inner
+        .update-section__title Summary
+        .update-section__content
           - if update.content.present?
-            .markdown-block.summary
+            .markdown-block.markdown-block--pdf.summary
               = render_markdown(update.content).html_safe
         .clear
     .update-section.sprint-goals
-      .inner
-        .title Sprint goals
-        .content
+      .update-section__inner
+        .update-section__title Sprint goals
+        .update-section__content
           %ol
             - update.sprint_goals.each do |goal|
               %li= goal
         .clear
     .update-section.sprint-goals
-      .inner
-        .title Goals for next sprint
-        .content
+      .update-section__inner
+        .update-section__title Goals for next sprint
+        .update-section__content
           %ol
             - update.next_sprint_goals.each do |goal|
               %li= goal
         .clear
-    .update-section.issues
-      .inner
-        .title Issues
-        .content
+    .update-section.update-section--with-break.issues
+      .update-section__inner
+        .update-section__title Issues
+        .update-section__content
           - if update.issues.any?
             %ul
               - update.issues.each do |issue|
                 %li
-                  .inner
-                    .description= issue.description
-                    .treatment
-                      %span.label How we're solving it:
-                      = issue.treatment
-                    .help
-                      %span.label What we need help with:
-                      = issue.help
-                    - if issue.identifier.present?
-                      .identifier
-                        %span.label Identifier for this issue:
-                        = issue.identifier
+                  .issue-wrapper
+                    = render partial: 'shared/components/issue', formats: [:html], locals: { issue: issue, show_team_name: false, link_to_update: false }
           - else
             %p.no-issues No issues have been reported for this sprint.
         .clear

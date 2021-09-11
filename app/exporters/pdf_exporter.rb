@@ -19,6 +19,9 @@ class PdfExporter
                                     content: footer,
                                     line: false,
                                     spacing: 0,
+                                  },
+                                  outline: {
+                                    outline_depth: 2,
                                   })
   end
 

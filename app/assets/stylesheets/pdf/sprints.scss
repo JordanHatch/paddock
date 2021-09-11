@@ -1,4 +1,7 @@
 @use 'helpers';
+@use 'typefaces';
+
+$pdf-margin: 2.5rem;
 
 body.pdf {
   .outline-anchor {
@@ -11,17 +14,17 @@ body.pdf {
 }
 
 body.pdf .page {
-  $pdf-margin: 2.5rem;
   position: relative;
   font-weight: normal;
 
   header {
-    background: helpers.colour('grey', '600');
+    background: helpers.colour('silver', '700');
     color: helpers.colour('white');
     padding: 1.5rem $pdf-margin;
 
     .title {
-      @include pdfBoldFontStack;
+      @include typefaces.pdfBoldFontStack;
+
       font-size: 1.8rem;
       margin-bottom: 0;
     }
@@ -33,7 +36,8 @@ body.pdf .page {
 
   section.overview {
     .summary {
-      @include pdfBoldFontStack;
+      @include typefaces.pdfBoldFontStack;
+
       padding: 1rem;
       border-radius: .5rem;
       background: helpers.colour('grey', '100');
@@ -84,11 +88,13 @@ body.pdf .page {
     }
 
     li.group {
-      margin: 2rem 0;
+      margin: 0;
+      padding: 1.5rem 0 0.5rem;
+      page-break-inside: avoid;
 
       .group-name {
         display: block;
-        @include pdfBoldFontStack;
+        @include typefaces.pdfBoldFontStack;
 
         font-size: .9rem;
         text-transform: uppercase;
@@ -100,16 +106,19 @@ body.pdf .page {
     li.team {
       display: block;
       background: helpers.colour('grey', '100');
-      border-radius: .3rem;
+      border-radius: .4rem;
+      box-shadow: rgba(0,0,0,0.05) 0px 2px 2px,
+        rgba(0,0,0,0.03) 0px -2px 2px;
       padding: 1rem;
       margin-bottom: 1rem;
       overflow: auto;
 
       .team-name {
-        @include pdfBoldFontStack;
+        @include typefaces.pdfBoldFontStack;
         float: left;
         width: 40%;
-        padding-top: .5rem;
+        padding: .5rem 0;
+        font-size: 1.3rem;
       }
 
       .key-indicators {
@@ -120,6 +129,7 @@ body.pdf .page {
         .indicator {
           float: left;
           background: helpers.colour('white');
+          border: 1px solid helpers.colour('grey', '300');
           padding: .5rem;
           border-radius: .3rem;
           width: 32%;
@@ -128,14 +138,15 @@ body.pdf .page {
 
           &.delivery-status {
             .label {
+              @include typefaces.pdfBoldFontStack;
+
               float: left;
               width: 40%;
               color: #000;
               padding-right: .4rem;
-              font-weight: bold;
               text-transform: uppercase;
               font-size: .65rem;
-              margin-top: .35rem;
+              margin-top: .25rem;
               color: #888;
             }
 
@@ -144,7 +155,6 @@ body.pdf .page {
               width: 60%;
               text-align: right;
             }
-
 
             .status-indicator__circle {
               margin-left: .2rem;
@@ -168,88 +178,26 @@ body.pdf .page {
 
     header {
       .group {
-        font-family: $pdfRegularFontStack;
-        font-weight: normal;
+        @include typefaces.pdfRegularFontStack;
+
         display: block;
-        font-size: 1.1rem;
+        font-size: 1.3rem;
       }
 
       .team-name {
-        @include pdfBoldFontStack;
-        font-size: 1.8rem;
+        @include typefaces.pdfBoldFontStack;
+
+        font-size: 2.2rem;
         margin: 0;
       }
     }
 
     section.inner {
-      padding: $pdf-margin;
+      padding: 0;
       position: relative;
 
-      .key-indicators {
-        display: block;
-        background: helpers.colour('white');
-        padding: .75rem;
-        border-radius: .5rem;
-        margin-bottom: 0.5rem;
-        overflow: auto;
-
-        .indicator {
-          width: 25%;
-          float: left;
-          padding-right: .5rem;
-
-          &:last-of-type {
-            padding-right: 0;
-          }
-
-          .inner {
-            background: helpers.colour('silver', '100');
-            border-radius: .5rem;
-            padding: .8rem;
-            text-align: center;
-          }
-
-          .label {
-            @include pdfBoldFontStack;
-            font-size: 1rem;
-            margin: 0 0 .5rem;
-          }
-
-          .value {
-            display: block;
-            border-radius: .5rem;
-            background: helpers.colour('white');
-            padding: .6rem;
-            font-size: 1.3rem;
-          }
-        }
-      }
-
       .update-section {
-        padding: 1.5rem 0 0;
-        page-break-inside: avoid;
 
-        > .inner {
-          background: helpers.colour('white');
-          border-radius: .5rem;
-          padding: 1.5rem;
-        }
-
-        .title {
-          @include pdfBoldFontStack;
-          font-size: 1.4rem;
-
-          width: 35%;
-          float: left;
-        }
-        .content {
-          margin-left: 35%;
-          width: 65%;
-          font-size: .95rem;
-        }
-        .clear {
-          clear: both;
-        }
       }
 
       .summary {
@@ -266,52 +214,124 @@ body.pdf .page {
           margin-bottom: .2rem;
         }
       }
-
-      .issues ul {
-        display: block;
-      }
-
-      .issues li {
-        position: relative;
-        display: block;
-        padding: .75rem 0 .25rem;
-        page-break-inside: avoid;
-
-        &:first-of-type {
-          padding-top: 0;
-        }
-
-        > .inner {
-          padding: 1rem;
-          background: helpers.colour('silver', '50');
-          border-radius: .3rem;
-          overflow: auto;
-        }
-
-        .description {
-          @include pdfBoldFontStack;
-        }
-
-        .treatment, .help {
-          margin-top: .85rem;
-        }
-
-        .label {
-          @include pdfBoldFontStack;
-          display: block;
-        }
-
-        .identifier {
-          float: right;
-          font-size: .85rem;
-          margin-top: 1rem;
-
-          .label {
-            @include pdfRegularFontStack;
-            display: inline;
-          }
-        }
-      }
     }
   }
+}
+
+.team-indicators {
+  display: block;
+  margin: 0;
+  padding: 1.5rem $pdf-margin;
+  overflow: auto;
+  background: helpers.colour('silver', '400');
+
+  .team-indicators__indicator {
+    width: 25%;
+    float: left;
+    padding-right: .5rem;
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
+
+  .team-indicators__inner {
+    background: helpers.colour('silver', '100');
+    border-radius: .5rem;
+    padding: .8rem;
+    text-align: center;
+  }
+
+  .team-indicators__label {
+    @include typefaces.pdfBoldFontStack;
+
+    font-size: 1rem;
+    margin: 0 0 .5rem;
+  }
+
+  .team-indicators__value {
+    display: block;
+    border-radius: .5rem;
+    background: helpers.colour('white');
+    padding: .6rem;
+    font-size: 1.3rem;
+  }
+}
+
+.update-section {
+  padding: 0;
+  page-break-inside: avoid;
+
+  .update-section__inner {
+    background: helpers.colour('white');
+    padding: 1.5rem $pdf-margin;
+  }
+
+  &:nth-of-type(even) > .update-section__inner {
+    background: helpers.colour('silver', '25');
+  }
+
+  .update-section__title {
+    @include typefaces.pdfBoldFontStack;
+
+    font-size: 1.4rem;
+    padding-top: .25rem;
+    width: 35%;
+    float: left;
+  }
+
+  .update-section__content {
+    margin-left: 35%;
+    width: 65%;
+    font-size: .95rem;
+  }
+
+  .update-section__clear {
+    clear: both;
+  }
+
+  &.update-section--with-break {
+    page-break-inside: auto;
+  }
+}
+
+.markdown-block--pdf {
+  p, ul, ol {
+    page-break-inside: avoid;
+
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+
+    margin: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @include typefaces.pdfBoldFontStack;
+    page-break-after: avoid;
+
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+    margin: 0;
+  }
+
+  li > p {
+    padding: 0;
+  }
+}
+
+.issue-wrapper {
+  page-break-inside: avoid;
+  padding: .6rem 0;
+}
+
+.issue {
+  margin: 0;
+
+  .issue__description, .issue__section-label {
+    @include typefaces.pdfBoldFontStack;
+  }
+}
+
+.button {
+  @include typefaces.pdfBoldFontStack;
 }
