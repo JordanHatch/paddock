@@ -27,14 +27,7 @@
         font-size: .85rem;
 
         a {
-          @extend .button;
-          @extend .button--primary;
           margin: 0 .25rem .25rem 0;
-
-          &.add {
-            @extend .button;
-            @extend .button--success;
-          }
         }
       }
     }
@@ -65,11 +58,6 @@
       width: 5rem;
       text-align: right;
       font-size: .9rem;
-
-      a {
-        @extend .button;
-        @extend .button--primary;
-      }
     }
   }
 }

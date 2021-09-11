@@ -9,12 +9,11 @@
           .group-details
             %h3= group.name
             .actions
-              / = link_to 'Edit group', '#'
-              = link_to 'Add a new team', new_manage_team_path(team, group: group.id)
+              = link_to 'Add a new team', new_manage_team_path(team, group: group.id), class: 'button button--success button--sm'
           %ul.teams
             - group.teams.each do |team|
               %li.team
                 .team-name
                   %span= team.name
                 .actions
-                  = link_to 'Edit', edit_manage_team_path(team)
+                  = link_to 'Edit', edit_manage_team_path(team), class: 'button button--sm button--inverted-primary'
