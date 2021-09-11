@@ -1,0 +1,23 @@
+- colours = %w(grey silver red blue green orange purple)
+- all_colours = %w(white black) + colours
+
+.inner
+  .view.view--development
+    %h1 Colours
+
+    .update-content-block
+      %h2.update-content-block__title Base colours
+      .update-content-block__content
+        .colour-grid
+          - all_colours.each do |colour|
+            %div{ class: "colour-grid__item colour-grid__item--#{colour}-default" }
+              .colour-grid__label=colour
+
+    - colours.each do |colour|
+      .update-content-block
+        %h2.update-content-block__title=colour.capitalize
+        .update-content-block__content
+          .colour-grid
+            - [50,100,200,300,400,500,600,700,800,900].each do |accent|
+              %div{ class: "colour-grid__item colour-grid__item--#{colour}-#{accent}" }
+                .colour-grid__label=accent

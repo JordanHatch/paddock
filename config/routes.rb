@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   end
 
   if Rails.env.development?
-    get '/components', to: 'development/components#show'
+    get '/development/:view', to: 'development/static#show'
   end
 
   root to: redirect('/sprints')
