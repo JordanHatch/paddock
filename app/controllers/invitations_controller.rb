@@ -28,9 +28,7 @@ class InvitationsController < ApplicationController
     if token.present? && token.redeem
       user = User.with_case_insensitive_email(token.email).first
 
-      unless user
-        user = User.create!(email: token.email.downcase)
-      end
+      user ||= User.create!(email: token.email.downcase)
 
       session[:user_id] = user.id
       redirect_to root_path

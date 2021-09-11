@@ -10,15 +10,15 @@ class SprintUpdates::UnpublishService < BaseService
   end
 
   def self.build(**args)
-    new(**args).tap {|service|
+    new(**args).tap do |service|
       service.result = service.build
-    }
+    end
   end
 
   def self.unpublish(**args)
-    new(**args).tap {|service|
+    new(**args).tap do |service|
       service.result = service.unpublish
-    }
+    end
   end
 
   def build

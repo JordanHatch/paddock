@@ -4,20 +4,20 @@ class TeamSummary < ApplicationRecord
   belongs_to :team, foreign_key: 'id'
   belongs_to :sprint_update, foreign_key: 'update_id', class_name: 'Update'
 
-  scope :for_sprint, ->(sprint) {
+  scope :for_sprint, lambda { |sprint|
     where(sprint_id: sprint.id)
       .includes(:sprint_update)
       .order('name ASC')
   }
-  scope :with_groups, ->{
-    Group.in_order.map {|group|
+  scope :with_groups, lambda {
+    Group.in_order.map { |group|
       [
         group,
-        self.select {|t| t.group_id == group.id },
+        self.select { |t| t.group_id == group.id },
       ]
-    }.reject {|(group, teams)|
+    }.reject do |(_group, teams)|
       teams.empty?
-    }
+    end
   }
 
   def_delegators :sprint_update, :delivery_status_text, :okr_status_text

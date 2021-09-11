@@ -22,7 +22,7 @@ class StatusPresenter
       content_tag(
         :div,
         I18n.t(:hint_text, scope: [:updates, key, label]),
-        class: 'radio-button__subtitle'
+        class: 'radio-button__subtitle',
       ),
     ].join.html_safe
   end

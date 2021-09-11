@@ -34,6 +34,7 @@ class Invitation < ApplicationRecord
 
   def convert_email_to_lowercase
     return if email.blank?
+
     self.email = email.downcase
   end
 end

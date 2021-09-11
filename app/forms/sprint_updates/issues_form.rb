@@ -32,8 +32,8 @@ class SprintUpdates::IssuesForm < BaseForm
   end
 
   before_validate do |form, atts|
-    atts[:issues_attributes].reject! {|obj| if_all_blank?(obj) }
-    form.issues_attributes.reject! {|obj| if_all_blank?(obj) }
+    atts[:issues_attributes].reject! { |obj| if_all_blank?(obj) }
+    form.issues_attributes.reject! { |obj| if_all_blank?(obj) }
   end
 
   validation do
@@ -47,8 +47,6 @@ class SprintUpdates::IssuesForm < BaseForm
       issue.attributes.compact.empty?
     }.any?
   end
-
-  private
 
   def self.if_all_blank?(obj)
     atts = obj.to_hash

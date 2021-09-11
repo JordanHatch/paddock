@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe TeamSummary do
-
   describe '.for_sprint' do
     let(:sprint) { create(:sprint) }
 
     context 'the team is active for the sprint' do
-      let!(:teams) {
+      let!(:teams) do
         create_list(:team, 3, start_on: sprint.start_on)
-      }
+      end
 
       it 'returns the teams for the current sprint' do
         summaries = described_class.for_sprint(sprint)
@@ -17,17 +16,17 @@ RSpec.describe TeamSummary do
       end
 
       context 'when an update exists for the team and sprint' do
-        before(:each) {
-          teams.map {|team|
+        before(:each) do
+          teams.map do |team|
             create_list(:sprint_update, 3, team: team)
-          }
-        }
+          end
+        end
 
-        let!(:updates) {
-          teams.map {|team|
+        let!(:updates) do
+          teams.map do |team|
             create(:sprint_update, team: team, sprint: sprint)
-          }
-        }
+          end
+        end
 
         it 'returns the relevant update fields' do
           summaries = described_class.for_sprint(sprint)
@@ -49,7 +48,7 @@ RSpec.describe TeamSummary do
 
           summaries = described_class.for_sprint(sprint)
 
-          expect(summaries.map(&:issue_count)).to contain_exactly(*[3]*3)
+          expect(summaries.map(&:issue_count)).to contain_exactly(*[3] * 3)
         end
       end
 
@@ -69,9 +68,9 @@ RSpec.describe TeamSummary do
     end
 
     context 'the team starts after the sprint' do
-      let!(:teams) {
+      let!(:teams) do
         create_list(:team, 3, start_on: sprint.end_on + 1.day)
-      }
+      end
 
       it 'returns an empty list' do
         summaries = described_class.for_sprint(sprint)
@@ -80,9 +79,9 @@ RSpec.describe TeamSummary do
     end
 
     context 'the team has no start_on date' do
-      let!(:teams) {
+      let!(:teams) do
         create_list(:team, 3, start_on: nil)
-      }
+      end
 
       it 'returns the teams' do
         summaries = described_class.for_sprint(sprint)
@@ -95,20 +94,20 @@ RSpec.describe TeamSummary do
   describe '.with_groups' do
     let(:sprint) { create(:sprint) }
     let!(:groups) { create_list(:group, 3) }
-    let!(:teams) {
-      groups.map {|group|
+    let!(:teams) do
+      groups.map do |group|
         create_list(:team, 3, group: group, start_on: nil)
-      }
-    }
+      end
+    end
 
     it 'returns the teams in groups' do
-      expected_teams = teams.map {|teams| teams.map(&:id).sort }
+      expected_teams = teams.map { |teams| teams.map(&:id).sort }
 
       result = described_class.for_sprint(sprint).with_groups
-      result_groups = result.map {|group, _teams| group }
-      result_teams = result.map {|_group, teams|
+      result_groups = result.map { |group, _teams| group }
+      result_teams = result.map do |_group, teams|
         teams.map(&:id).sort
-      }
+      end
 
       expect(result_groups).to contain_exactly(*groups)
       expect(result_teams).to contain_exactly(*expected_teams)
@@ -119,7 +118,7 @@ RSpec.describe TeamSummary do
       extra_group = create(:group)
 
       result = described_class.for_sprint(sprint).with_groups
-      result_groups = result.map {|group, _teams| group }
+      result_groups = result.map { |group, _teams| group }
 
       expect(result_groups).to_not include(extra_group)
     end
@@ -135,5 +134,4 @@ RSpec.describe TeamSummary do
       expect(summary.to_param).to eq(team.slug)
     end
   end
-
 end

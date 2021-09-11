@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe SprintUpdates::UnpublishService do
-
   describe '.unpublish' do
     subject do
       described_class.unpublish(
@@ -42,7 +41,7 @@ RSpec.describe SprintUpdates::UnpublishService do
       subject { described_class.build(team_id: team.id, sprint_id: 'foo') }
 
       it 'raises an ActiveRecord::RecordNotFound exception' do
-        expect{ subject.result.failure }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { subject.result.failure }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
@@ -52,7 +51,7 @@ RSpec.describe SprintUpdates::UnpublishService do
       subject { described_class.build(team_id: 'foo', sprint_id: sprint.id) }
 
       it 'raises an ActiveRecord::RecordNotFound exception' do
-        expect{ subject.result.failure }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { subject.result.failure }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 

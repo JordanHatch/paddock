@@ -7,25 +7,25 @@ module Search
     FilterSprintID = Filter.new(
       :sprint_id,
       :multi_select,
-      ->(scope, params) {
+      lambda { |scope, params|
         scope.for_sprint_id(params[:sprint_id])
       },
-      -> { Sprint.all.map {|sprint| [ sprint.name, sprint.id ] }.to_h },
+      -> { Sprint.all.map { |sprint| [sprint.name, sprint.id] }.to_h },
     )
 
     FilterGroupID = Filter.new(
       :group_id,
       :multi_select,
-      ->(scope, params) {
-        scope.for_group_ids([ params[:group_id] ].flatten)
+      lambda { |scope, params|
+        scope.for_group_ids([params[:group_id]].flatten)
       },
-      -> { Group.in_order.map {|group| [ group.name, group.id ] }.to_h },
+      -> { Group.in_order.map { |group| [group.name, group.id] }.to_h },
     )
 
     FilterIdentifier = Filter.new(
       :identifier,
       :select,
-      ->(scope, params) {
+      lambda { |scope, params|
         case params[:identifier].to_i
         when 1
           scope.with_identifier
@@ -33,7 +33,7 @@ module Search
           scope.without_identifier
         end
       },
-      -> {
+      lambda {
         {
           'Linked to DevOps' => 1,
           'Not linked to DevOps' => 0,
@@ -54,16 +54,16 @@ module Search
     end
 
     def available_filters
-      defined_filters.map {|filter|
-        [ filter.id, filter ]
+      defined_filters.map { |filter|
+        [filter.id, filter]
       }.to_h
     end
 
     def active_filters
-      defined_filters.select {|filter|
+      defined_filters.select do |filter|
         params[filter.id].present? &&
           params[filter.id] != 'false'
-      }
+      end
     end
 
     def selected?(filter_id, value)
@@ -92,15 +92,14 @@ module Search
 
     def apply_filters
       merge_relations(
-        active_filters.map(&:scope)
+        active_filters.map(&:scope),
       )
     end
 
     def merge_relations(relations)
-      relations.inject(base_scope) {|output, scope|
+      relations.inject(base_scope) do |output, scope|
         scope.call(output, params)
-      }
+      end
     end
-
   end
 end

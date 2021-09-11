@@ -24,9 +24,9 @@ module BaseForm::Validation
 
     contract = self.class.schema_block.new
     @errors = contract.call(atts)
-                .errors
-                .to_hash
-                .with_indifferent_access
+                      .errors
+                      .to_hash
+                      .with_indifferent_access
 
     validate_nested_rows
 
@@ -42,19 +42,17 @@ module BaseForm::Validation
   def validate_nested_rows
     self.class.nested_attributes.each do |key|
       key = self.class.nested_attributes_key(key).to_sym
-      rows = self.send(key)
+      rows = send(key)
 
-      nested_errors = rows.map {|row|
+      nested_errors = rows.map do |row|
         row.validate
 
         row.errors
-          .to_hash
-          .with_indifferent_access
-      }
-
-      if nested_errors.reject(&:blank?).any?
-        @errors[key] = nested_errors
+           .to_hash
+           .with_indifferent_access
       end
+
+      @errors[key] = nested_errors if nested_errors.reject(&:blank?).any?
     end
   end
 end

@@ -41,8 +41,7 @@ class SprintsController < ApplicationController
 
   def issues_search
     @issues_search ||= Search::Issue.new(params:
-      params.to_unsafe_h.symbolize_keys.merge(sprint_id: params[:id])
-    )
+      params.to_unsafe_h.symbolize_keys.merge(sprint_id: params[:id]))
   end
 
   def published_issues

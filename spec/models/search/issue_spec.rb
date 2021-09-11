@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Search::Issue do
-
   it 'returns all published issues' do
     create_list(:draft_issue, 2) # non-matching rows
 
@@ -16,9 +15,9 @@ RSpec.describe Search::Issue do
 
     sprint = create(:sprint)
     updates = create_list(:published_sprint_update, 2, sprint: sprint)
-    expected = updates.map {|update|
+    expected = updates.map do |update|
       create(:issue, sprint_update: update)
-    }
+    end
 
     search = described_class.new(params: { sprint_id: sprint.id })
 
@@ -30,12 +29,12 @@ RSpec.describe Search::Issue do
 
     group = create(:group)
     teams = create_list(:team, 2, group: group)
-    updates = teams.map {|team|
+    updates = teams.map do |team|
       create(:published_sprint_update, team: team)
-    }
-    expected = updates.map {|update|
+    end
+    expected = updates.map do |update|
       create(:issue, sprint_update: update)
-    }
+    end
 
     search = described_class.new(params: { group_id: group.id })
 
@@ -46,11 +45,11 @@ RSpec.describe Search::Issue do
     create_list(:published_issue, 2) # non-matching rows
 
     updates = create_list(:published_sprint_update, 2)
-    expected = updates.map {|update|
+    expected = updates.map do |update|
       create(:issue, sprint_update: update)
-    }
+    end
 
-    groups = updates.map {|u| u.team.group }
+    groups = updates.map { |u| u.team.group }
     search = described_class.new(params: { group_id: groups.map(&:id) })
 
     expect(search.results).to contain_exactly(*expected)
@@ -75,5 +74,4 @@ RSpec.describe Search::Issue do
 
     expect(search.results).to contain_exactly(*expected)
   end
-
 end

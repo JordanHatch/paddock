@@ -7,21 +7,21 @@ class Issue < ApplicationRecord
 
   has_paper_trail
 
-  scope :with_identifier, ->{ where("identifier <> ''") }
+  scope :with_identifier, -> { where("identifier <> ''") }
 
   scope :without_identifier, -> { where("identifier IS NULL or identifier = ''") }
 
-  scope :for_group_ids, ->(group_ids) {
+  scope :for_group_ids, lambda { |group_ids|
     joins(:sprint_update).joins(:team)
-      .where('teams.group_id = ANY(ARRAY[?]::int[])', group_ids)
+                         .where('teams.group_id = ANY(ARRAY[?]::int[])', group_ids)
   }
 
-  scope :for_sprint_id, ->(sprint_id) {
+  scope :for_sprint_id, lambda { |sprint_id|
     joins(:sprint_update)
       .where('updates.sprint_id': sprint_id)
   }
 
-  scope :published, ->{
+  scope :published, lambda {
     joins(:sprint_update)
       .where('updates.state': 'published')
   }

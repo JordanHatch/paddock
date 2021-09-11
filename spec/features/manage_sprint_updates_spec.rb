@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'managing sprint updates', type: :feature, admin_user: true do
   describe 'unpublishing updates' do
     it 'can unpublish a sprint update' do
-      success_message = I18n.t(:success, scope: %w(services sprint_updates unpublish))
+      success_message = I18n.t(:success, scope: %w[services sprint_updates unpublish])
 
       update = create(:published_sprint_update)
       sprint = update.sprint
