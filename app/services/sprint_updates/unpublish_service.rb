@@ -1,18 +1,9 @@
 class SprintUpdates::UnpublishService < BaseService
-  include Dry::Monads[:list, :result, :validated, :do]
-
   attr_reader :team, :sprint, :update
-  attr_accessor :result
 
   def initialize(team_id:, sprint_id:)
     @team_id = team_id
     @sprint_id = sprint_id
-  end
-
-  def self.build(**args)
-    new(**args).tap do |service|
-      service.result = service.build
-    end
   end
 
   def self.unpublish(**args)
@@ -36,7 +27,7 @@ class SprintUpdates::UnpublishService < BaseService
     end
   end
 
-  def unpublish
+  def call
     yield(build)
 
     if update.unpublish && update.save
@@ -44,10 +35,6 @@ class SprintUpdates::UnpublishService < BaseService
     else
       Failure(List[:unpublish_failed])
     end
-  end
-
-  def errors
-    result.failure.to_a
   end
 
   private

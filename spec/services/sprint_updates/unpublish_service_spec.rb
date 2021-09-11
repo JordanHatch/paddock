@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SprintUpdates::UnpublishService do
   describe '.unpublish' do
     subject do
-      described_class.unpublish(
+      described_class.call(
         team_id: update.team.id,
         sprint_id: update.sprint.id,
       )
@@ -13,7 +13,8 @@ RSpec.describe SprintUpdates::UnpublishService do
       let(:update) { create(:published_sprint_update) }
 
       it 'is successful' do
-        expect(subject.result).to be_success
+        expect(subject).to be_success
+        expect(subject).to_not be_failure
       end
 
       it 'unpublishes the update' do
@@ -26,7 +27,8 @@ RSpec.describe SprintUpdates::UnpublishService do
         end
 
         it 'is unsuccessful' do
-          expect(subject.result).to_not be_success
+          expect(subject).to be_failure
+          expect(subject).to_not be_success
         end
 
         it 'returns an error' do
@@ -70,7 +72,8 @@ RSpec.describe SprintUpdates::UnpublishService do
       let(:update) { create(:not_started_sprint_update) }
 
       it 'is not successful' do
-        expect(subject.result).to_not be_success
+        expect(subject).to be_failure
+        expect(subject).to_not be_success
       end
 
       it 'returns an error' do
@@ -82,7 +85,8 @@ RSpec.describe SprintUpdates::UnpublishService do
       let(:update) { create(:draft_sprint_update) }
 
       it 'is not successful' do
-        expect(subject.result).to_not be_success
+        expect(subject).to be_failure
+        expect(subject).to_not be_success
       end
 
       it 'returns an error' do

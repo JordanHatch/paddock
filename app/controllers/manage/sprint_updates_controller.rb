@@ -5,10 +5,10 @@ class Manage::SprintUpdatesController < Manage::BaseController
   end
 
   def unpublish
-    @service = SprintUpdates::UnpublishService.unpublish(team_id: params[:team_id],
-                                                         sprint_id: params[:sprint_id])
+    @service = SprintUpdates::UnpublishService.call(team_id: params[:team_id],
+                                                    sprint_id: params[:sprint_id])
 
-    if service.result.success?
+    if service.success?
       flash.notice = I18n.t(:success, scope: %w[services sprint_updates unpublish])
       redirect_to update_path(service.sprint, service.team)
     else

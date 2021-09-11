@@ -5,29 +5,26 @@ class SprintUpdates::PublishService < BaseService
     @flow = flow
   end
 
-  def self.build(**args)
-    new(**args).tap(&:build)
-  end
-
   def self.publish(**args)
-    new(**args).tap(&:publish)
+    new(**args).tap do |service|
+      service.result = service.publish
+    end
   end
 
   def build
-    check_update_can_be_published
+    yield List::Validated[
+            validate_update,
+            validate_flow
+          ].traverse.to_result
 
-    set_state(:success)
-  rescue Failure
-    set_state(:failure)
+    Success(update)
   end
 
-  def publish
-    check_update_can_be_published
-    publish_update
+  def call
+    yield build
+    yield publish_update
 
-    set_state(:success)
-  rescue Failure
-    set_state(:failure)
+    Success(update)
   end
 
   def team
@@ -47,12 +44,26 @@ class SprintUpdates::PublishService < BaseService
   attr_reader :team_id, :sprint_id, :flow
 
   def publish_update
-    raise Failure unless update.publish && update.save
+    if update.publish && update.save
+      Success(update)
+    else
+      Failure(:save_failed)
+    end
   end
 
-  def check_update_can_be_published
-    raise Failure unless update.present? && update.may_publish? && flow.valid?
-  rescue ActiveRecord::RecordNotFound
-    raise Failure
+  def validate_update
+    if update.present? && update.may_publish?
+      Valid(update)
+    else
+      Invalid(:invalid_state)
+    end
+  end
+
+  def validate_flow
+    if flow.valid?
+      Valid(flow)
+    else
+      Invalid(:flow_not_valid)
+    end
   end
 end

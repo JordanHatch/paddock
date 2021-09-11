@@ -12,7 +12,7 @@
   .update-content-block
     %h2.update-content-block__title Unpublish
     .update-content-block__content
-      - if service.result.success?
+      - if service.success?
         %p You can unpublish this sprint update.
         %p This will return the sprint update to a draft so that it can be edited again.
         %p If you've already exported a PDF for the sprint, export a fresh copy after any changes have been made.

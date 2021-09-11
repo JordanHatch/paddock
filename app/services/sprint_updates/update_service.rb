@@ -1,43 +1,37 @@
 class SprintUpdates::UpdateService < BaseService
   attr_reader :form
 
-  def initialize(team_id:, sprint_id:, form_class:)
+  def initialize(team_id:, sprint_id:, form_class:, attributes: {})
     @team_id = team_id
     @sprint_id = sprint_id
     @form_class = form_class
+    @attributes = attributes
   end
 
-  def self.build(**args)
-    new(**args).tap(&:build_form)
-  end
-
-  def self.update(**args)
-    new(**args.slice(:team_id, :sprint_id, :form_class))
-      .tap { |s| s.persist_form(args[:attributes]) }
-  end
-
-  def build_form
-    check_update_can_be_edited
+  def build
+    yield List::Validated[
+             validate_update,
+           ].traverse.to_result
 
     @form = form_class.from_model(update)
     prevalidate_form
 
-    set_state(:success)
-  rescue Failure
-    set_state(:failure)
+    Success(update)
   end
 
-  def persist_form(attributes)
-    check_update_can_be_edited
+  def call
+    yield List::Validated[
+             validate_update,
+           ].traverse.to_result
 
     @form = form_class.from_form(attributes)
     update.assign_attributes(form.to_model_hash)
 
-    raise Failure unless update.save
-
-    set_state(:success)
-  rescue Failure
-    set_state(:failure)
+    if update.save
+      Success(update)
+    else
+      Failure(:save_failed)
+    end
   end
 
   def team
@@ -54,12 +48,14 @@ class SprintUpdates::UpdateService < BaseService
 
   private
 
-  attr_reader :team_id, :sprint_id, :form_class
+  attr_reader :team_id, :sprint_id, :form_class, :attributes
 
-  def check_update_can_be_edited
-    raise Failure unless update.present? && update.can_be_edited?
-  rescue ActiveRecord::RecordNotFound
-    raise Failure
+  def validate_update
+    if update.present? && update.can_be_edited?
+      Valid(update)
+    else
+      Invalid(:update_cannot_be_edited)
+    end
   end
 
   def prevalidate_form

@@ -20,14 +20,15 @@ RSpec.describe SprintUpdates::UpdateService do
 
       it 'is successful' do
         expect(subject).to be_success
+        expect(subject).to_not be_failure
       end
     end
 
     context 'when the team is not active for the sprint' do
       let(:team) { create(:team, start_on: sprint.end_on + 2.weeks) }
 
-      it 'fails' do
-        expect(subject).to be_failure
+      it 'raises an ActiveRecord::RecordNotFound exception' do
+        expect { subject }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
@@ -35,6 +36,7 @@ RSpec.describe SprintUpdates::UpdateService do
       let(:update) { create(:published_sprint_update, team: team, sprint: sprint) }
 
       it 'fails' do
+        expect(subject).to_not be_success
         expect(subject).to be_failure
       end
     end

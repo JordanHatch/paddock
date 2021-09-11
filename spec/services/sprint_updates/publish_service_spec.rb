@@ -20,6 +20,7 @@ RSpec.describe SprintUpdates::PublishService do
 
       it 'is successful' do
         expect(subject).to be_success
+        expect(subject).to_not be_failure
       end
     end
 
@@ -30,21 +31,27 @@ RSpec.describe SprintUpdates::PublishService do
 
       it 'is not successful' do
         expect(subject).to be_failure
+        expect(subject).to_not be_success
       end
     end
 
     context 'when the update is not a draft' do
       let(:update) { create(:published_sprint_update) }
 
+      before(:each) do
+        flow.expects(:valid?).returns(true)
+      end
+
       it 'is not successful' do
         expect(subject).to be_failure
+        expect(subject).to_not be_success
       end
     end
   end
 
   describe '#publish' do
     subject do
-      described_class.publish(
+      described_class.call(
         team_id: update.team.id,
         sprint_id: update.sprint.id,
         flow: flow,
@@ -58,6 +65,7 @@ RSpec.describe SprintUpdates::PublishService do
 
       it 'is successful' do
         expect(subject).to be_success
+        expect(subject).to_not be_failure
       end
 
       it 'sets the state to published' do
@@ -73,14 +81,20 @@ RSpec.describe SprintUpdates::PublishService do
 
       it 'is not successful' do
         expect(subject).to be_failure
+        expect(subject).to_not be_success
       end
     end
 
     context 'when the update is not a draft' do
       let(:update) { create(:published_sprint_update) }
 
+      before(:each) do
+        flow.expects(:valid?).returns(true)
+      end
+
       it 'is not successful' do
         expect(subject).to be_failure
+        expect(subject).to_not be_success
       end
     end
   end

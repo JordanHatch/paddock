@@ -26,7 +26,7 @@ class UpdatesController < ApplicationController
   end
 
   def update
-    @service = SprintUpdates::UpdateService.update(
+    @service = SprintUpdates::UpdateService.call(
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
       form_class: flow.form_class,
@@ -57,7 +57,7 @@ class UpdatesController < ApplicationController
   def do_submit
     @form_id = :submit
 
-    @service = SprintUpdates::PublishService.publish(
+    @service = SprintUpdates::PublishService.call(
       team_id: params[:team_id],
       sprint_id: params[:sprint_id],
       flow: flow,
