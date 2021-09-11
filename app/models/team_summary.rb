@@ -10,12 +10,14 @@ class TeamSummary < ApplicationRecord
       .order('name ASC')
   }
   scope :with_groups, lambda {
-    Group.in_order.map { |group|
+    all_groups = Group.in_order.map do |group|
       [
         group,
         self.select { |t| t.group_id == group.id },
       ]
-    }.reject do |(_group, teams)|
+    end
+
+    all_groups.reject do |(_group, teams)|
       teams.empty?
     end
   }

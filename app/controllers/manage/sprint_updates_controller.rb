@@ -1,12 +1,12 @@
 class Manage::SprintUpdatesController < Manage::BaseController
   def show
-    @service ||= SprintUpdates::UnpublishService.build(team_id: params[:team_id],
-                                                       sprint_id: params[:sprint_id])
+    @service = SprintUpdates::UnpublishService.build(team_id: params[:team_id],
+                                                     sprint_id: params[:sprint_id])
   end
 
   def unpublish
-    @service ||= SprintUpdates::UnpublishService.unpublish(team_id: params[:team_id],
-                                                           sprint_id: params[:sprint_id])
+    @service = SprintUpdates::UnpublishService.unpublish(team_id: params[:team_id],
+                                                         sprint_id: params[:sprint_id])
 
     if service.result.success?
       flash.notice = I18n.t(:success, scope: %w[services sprint_updates unpublish])
