@@ -1,7 +1,7 @@
 @use 'helpers';
 
-$default-color: helpers.colour('black', '900');
-$selected-color: helpers.colour('blue', '900');
+$default-colour: helpers.colour('black', '900');
+$selected-colour: helpers.colour('blue', '900');
 
 .checkbox {
   display: block;
@@ -84,22 +84,22 @@ $selected-color: helpers.colour('blue', '900');
   top: 0;
   left: 0;
 
-  border: solid $default-color;
+  border: solid $default-colour;
 }
 
 .checkbox__label-text::after {
   content: '';
   position: absolute;
 
-  border-right: solid $selected-color;
-  border-bottom: solid $selected-color;
+  border-right: solid $selected-colour;
+  border-bottom: solid $selected-colour;
   transform: rotate(46deg);
 
   opacity: 0;
 }
 
 .checkbox__control:checked + .checkbox__label-text::before {
-  border-color: $selected-color;
+  border-color: $selected-colour;
 }
 
 .checkbox__control:checked + .checkbox__label-text::after {
@@ -107,7 +107,7 @@ $selected-color: helpers.colour('blue', '900');
 }
 
 .checkbox__control:checked + .checkbox__label-text {
-  color: $selected-color;
+  color: $selected-colour;
 }
 
 .checkbox__subtitle {

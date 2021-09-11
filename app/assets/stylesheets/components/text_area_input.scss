@@ -1,8 +1,8 @@
 @use 'helpers';
 @use 'variables/typography';
 
-$background-color: helpers.colour('white', '100');
-$border-color: helpers.colour('silver', '900');
+$background-colour: helpers.colour('white', '100');
+$border-colour: helpers.colour('silver', '900');
 
 .text-area-input {
   font-size: 1rem;
@@ -13,8 +13,8 @@ $border-color: helpers.colour('silver', '900');
 
   resize: vertical;
 
-  background: $background-color;
-  border: .14rem solid $border-color;
+  background: $background-colour;
+  border: .14rem solid $border-colour;
   border-radius: .4rem;
 
   box-shadow: rgba(0,0,0,0.05) 0px -1px 1px, rgba(0,0,0,0.1) 0px 2px 3px;

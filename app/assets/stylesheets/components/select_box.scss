@@ -1,8 +1,8 @@
 @use 'helpers';
 @use 'variables/typography';
 
-$background-color: helpers.colour('silver', '50');
-$border-color: helpers.colour('silver', '900');
+$background-colour: helpers.colour('silver', '50');
+$border-colour: helpers.colour('silver', '900');
 
 .select-box {
   -webkit-appearance: none;
@@ -15,10 +15,10 @@ $border-color: helpers.colour('silver', '900');
   max-width: 100%;
   vertical-align: bottom;
 
-  border: .14rem solid $border-color;
+  border: .14rem solid $border-colour;
   border-radius: .4rem;
 
-  background: $background-color url('../../images/down_arrow.svg') no-repeat;
+  background: $background-colour url('../../images/down_arrow.svg') no-repeat;
   background-position: right .75rem center;
 
   box-shadow: rgba(0,0,0,0.05) 0px -1px 1px, rgba(0,0,0,0.1) 0px 2px 3px;

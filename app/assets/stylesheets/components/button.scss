@@ -1,14 +1,14 @@
 @use 'helpers';
 
-@mixin button-colors($base-color, $text-color, $border-color) {
+@mixin button-colours($base-colour, $text-colour, $border-colour) {
   &, &:link, &:visited {
-    background: $base-color;
-    border-bottom-color: $border-color;
-    color: $text-color;
+    background: $base-colour;
+    border-bottom-color: $border-colour;
+    color: $text-colour;
   }
 
   &:hover {
-    background: darken($base-color, 5%);
+    background: darken($base-colour, 5%);
   }
 }
 
@@ -33,7 +33,7 @@
     margin-top: .1em;
   }
 
-  @include button-colors(
+  @include button-colours(
     helpers.colour('blue', '800'),
     helpers.colour('white', '100'),
     helpers.colour('blue', '900'),
@@ -45,7 +45,7 @@
   $text-colour: helpers.colour('white', '100');
   $border-colour: helpers.colour('blue', '900');
 
-  @include button-colors($base-colour, $text-colour, $border-colour);
+  @include button-colours($base-colour, $text-colour, $border-colour);
 }
 
 .button--inverted {
@@ -53,7 +53,7 @@
   $text-colour: helpers.colour('black', '900');
   $border-colour: helpers.colour('silver', '500');
 
-  @include button-colors($base-colour, $text-colour, $border-colour);
+  @include button-colours($base-colour, $text-colour, $border-colour);
 }
 
 .button--success {
@@ -61,7 +61,7 @@
   $text-colour: helpers.colour('white', '100');
   $border-colour: helpers.colour('green', '900');
 
-  @include button-colors($base-colour, $text-colour, $border-colour);
+  @include button-colours($base-colour, $text-colour, $border-colour);
 }
 
 .button--warning {
@@ -69,7 +69,7 @@
   $text-colour: helpers.colour('black', '900');
   $border-colour: helpers.colour('orange', '700');
 
-  @include button-colors($base-colour, $text-colour, $border-colour);
+  @include button-colours($base-colour, $text-colour, $border-colour);
 }
 
 .button--danger {
@@ -77,7 +77,7 @@
   $text-colour: helpers.colour('white', '100');
   $border-colour: helpers.colour('red', '900');
 
-  @include button-colors($base-colour, $text-colour, $border-colour);
+  @include button-colours($base-colour, $text-colour, $border-colour);
 }
 
 .button--sm {

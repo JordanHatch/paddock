@@ -1,7 +1,7 @@
 @use 'helpers';
 
-$default-color: helpers.colour('black', '900');
-$selected-color: helpers.colour('blue', '900');
+$default-colour: helpers.colour('black', '900');
+$selected-colour: helpers.colour('blue', '900');
 
 .radio-button {
   display: block;
@@ -82,7 +82,7 @@ $selected-color: helpers.colour('blue', '900');
 
   border-radius: 50%;
   border-style: solid;
-  border-color: $default-color;
+  border-color: $default-colour;
 }
 
 .radio-button__label-text::after {
@@ -96,13 +96,13 @@ $selected-color: helpers.colour('blue', '900');
 
   border-radius: 50%;
   border-style: solid;
-  border-color: $selected-color;
+  border-color: $selected-colour;
 
   opacity: 0;
 }
 
 .radio-button__control:checked + .radio-button__label-text::before {
-  border-color: $selected-color;
+  border-color: $selected-colour;
 }
 
 .radio-button__control:checked + .radio-button__label-text::after {
@@ -110,7 +110,7 @@ $selected-color: helpers.colour('blue', '900');
 }
 
 .radio-button__control:checked + .radio-button__label-text {
-  color: $selected-color;
+  color: $selected-colour;
 }
 
 .radio-button__subtitle {
