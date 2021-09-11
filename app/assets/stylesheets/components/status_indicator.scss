@@ -1,3 +1,5 @@
+@use 'helpers';
+
 .status-indicator { }
 
 .status-indicator__circle {
@@ -7,29 +9,35 @@
   border-radius: 50%;
   margin-right: .2rem;
   margin-bottom: -.1rem;
-  background-color: $dark-grey;
+  background-color: helpers.colour('grey', '600');
 }
 
 .status-indicator--green {
-  color: $green;
+  $status-colour: helpers.colour('green', '800');
+
+  color: $status-colour;
 
   .status-indicator__circle {
-    background-color: $green;
+    background-color: $status-colour;
   }
 }
 
 .status-indicator--amber {
-  color: $amber;
+  $status-colour: helpers.colour('orange', '600');
+
+  color: $status-colour;
 
   .status-indicator__circle {
-    background-color: $amber;
+    background-color: $status-colour;
   }
 }
 
 .status-indicator--red {
-  color: $red;
+  $status-colour: helpers.colour('red', '600');
+
+  color: $status-colour;
 
   .status-indicator__circle {
-    background-color: $red;
+    background-color: $status-colour;
   }
 }

@@ -1,5 +1,6 @@
-.unauthenticated {
+@use 'helpers';
 
+.unauthenticated {
   max-width: 23rem;
   margin: 6rem auto;
   text-align: center;
@@ -11,8 +12,9 @@
   }
 
   .box {
-    background: $white;
-    box-shadow: darken($base-color, 1%) 0px -3px 3px;
+    background: helpers.colour('white');
+    box-shadow: rgba(0,0,0,0.03) 0px -3px 5px,
+      rgba(0,0,0,0.03) 0px 2px 2px;
     border-radius: .5rem;
     padding: 1.5rem;
     line-height: 1.4rem;

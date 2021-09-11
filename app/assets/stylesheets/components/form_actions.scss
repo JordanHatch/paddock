@@ -1,7 +1,7 @@
-@use '../variables/colours';
+@use 'helpers';
 
 .form-actions {
-  background: colours.$light-grey;
+  background: helpers.colour('grey', '100');
   padding: 1.5rem;
   margin: 2.5rem 0 2rem;
 }

@@ -1,3 +1,4 @@
+@use 'helpers';
 @import 'typefaces';
 
 body.pdf {
@@ -17,12 +18,12 @@ body.pdf {
 }
 
 footer.pdf {
-  background: $silver;
+  background: helpers.colour('silver', '50');
   padding-top: 1rem;
 
   .inner {
-    background: $dark-grey;
-    color: $white;
+    background: helpers.colour('grey', '600');
+    color: helpers.colour('white');
     padding: 1.25rem 1.5rem;
     height: 5rem;
     font-size: .75rem;

@@ -1,5 +1,7 @@
+@use 'helpers';
+
 .issue {
-  background: $silver-50;
+  background: helpers.colour('silver', '50');
   font-size: 1rem;
   box-shadow: rgba(0,0,0,0.07) 0px 1px 1px;
   border-radius: .25rem;
@@ -10,7 +12,7 @@
   padding: .5em 1em;
   border-top-left-radius: .25rem;
   border-top-right-radius: .25rem;
-  background: $silver-100;
+  background: helpers.colour('silver', '100');
 }
 
 .issue__inner {
@@ -38,12 +40,12 @@
 }
 
 .issue__section--actions {
-  background: $silver-200;
+  background: helpers.colour('silver', '200');
   border-bottom-left-radius: .25rem;
   border-bottom-right-radius: .25rem;
   text-align: right;
   padding: .85em 1em;
-  color: $silver-900;
+  color: helpers.colour('silver', '900');
   font-size: .9em;
 }
 

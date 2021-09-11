@@ -1,3 +1,5 @@
+@use 'helpers';
+
 .view--manage-teams {
   @extend .manage--common;
 
@@ -9,7 +11,7 @@
     display: flex;
     padding: .5rem 1rem;
     border-radius: .5rem;
-    background: $silver-50;
+    background: helpers.colour('silver', '50');
     margin-bottom: .5rem;
 
     .group-details {
@@ -47,7 +49,7 @@
     padding: .5rem .5rem .5rem 1rem;
     margin: .75rem 0;
     gap: 1rem;
-    background: $white;
+    background: helpers.colour('white');
     border-radius: .25rem;
     box-shadow: rgba(0,0,0,0.05) 0px 2px 2px;
 

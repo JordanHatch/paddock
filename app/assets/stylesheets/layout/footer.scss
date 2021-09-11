@@ -1,3 +1,5 @@
+@use 'helpers';
+
 footer {
   @include container;
 
@@ -23,7 +25,7 @@ footer {
   right: 1rem;
   padding: .5rem .8rem;
   font-weight: bold;
-  color: $white;
-  background: $amethyst;
+  color: helpers.colour('white', '100');
+  background: helpers.colour('purple', '400');
   border-radius: .5rem;
 }

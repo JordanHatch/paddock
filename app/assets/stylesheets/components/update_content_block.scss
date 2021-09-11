@@ -1,3 +1,4 @@
+@use 'helpers';
 @use 'breakpoint-sass/stylesheets/_breakpoint';
 
 .update-content-block {
@@ -12,7 +13,7 @@
   }
 
   &:nth-of-type(even) {
-    background: $silver-25;
+    background: helpers.colour('silver', '25');
   }
 }
 

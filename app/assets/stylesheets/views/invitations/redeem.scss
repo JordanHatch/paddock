@@ -1,3 +1,5 @@
+@use 'helpers';
+
 .view--invitations-redeem {
 
   .user-initials {
@@ -5,7 +7,7 @@
     margin: 0 auto 1rem;
     width: 8rem;
     height: 8rem;
-    background: $green-600;
+    background: helpers.colour('green', '600');
     border-radius: .5rem;
     display: flex;
     align-items: center;
@@ -13,7 +15,7 @@
     .user-initials-text {
       font-size: 4rem;
       font-weight: bold;
-      color: $white;
+      color: helpers.colour('white');
       text-align: center;
       flex: 1;
     }

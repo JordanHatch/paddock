@@ -1,4 +1,4 @@
-@use '../variables/colours';
+@use 'helpers';
 
 @mixin button-colors($base-color, $text-color, $border-color) {
   &, &:link, &:visited {
@@ -34,50 +34,50 @@
   }
 
   @include button-colors(
-    $primary-button-color,
-    $primary-button-text-color,
-    $primary-button-border-color
+    helpers.colour('blue', '800'),
+    helpers.colour('white', '100'),
+    helpers.colour('blue', '900'),
   );
 }
 
 .button--primary {
-  @include button-colors(
-    $primary-button-color,
-    $primary-button-text-color,
-    $primary-button-border-color
-  );
+  $base-colour: helpers.colour('blue', '800');
+  $text-colour: helpers.colour('white', '100');
+  $border-colour: helpers.colour('blue', '900');
+
+  @include button-colors($base-colour, $text-colour, $border-colour);
 }
 
 .button--inverted {
-  @include button-colors(
-    $inverted-button-color,
-    $inverted-button-text-color,
-    $inverted-button-border-color
-  );
+  $base-colour: helpers.colour('white', '100');
+  $text-colour: helpers.colour('black', '900');
+  $border-colour: helpers.colour('silver', '500');
+
+  @include button-colors($base-colour, $text-colour, $border-colour);
 }
 
 .button--success {
-  @include button-colors(
-    $success-button-color,
-    $success-button-text-color,
-    $success-button-border-color
-  );
+  $base-colour: helpers.colour('green', '800');
+  $text-colour: helpers.colour('white', '100');
+  $border-colour: helpers.colour('green', '900');
+
+  @include button-colors($base-colour, $text-colour, $border-colour);
 }
 
 .button--warning {
-  @include button-colors(
-    colours.$white,
-    colours.$black,
-    colours.$orange-700
-  );
+  $base-colour: helpers.colour('white', '100');
+  $text-colour: helpers.colour('black', '900');
+  $border-colour: helpers.colour('orange', '700');
+
+  @include button-colors($base-colour, $text-colour, $border-colour);
 }
 
 .button--danger {
-  @include button-colors(
-    $danger-button-color,
-    $danger-button-text-color,
-    $danger-button-border-color
-  );
+  $base-colour: helpers.colour('red', '600');
+  $text-colour: helpers.colour('white', '100');
+  $border-colour: helpers.colour('red', '900');
+
+  @include button-colors($base-colour, $text-colour, $border-colour);
 }
 
 .button--sm {
@@ -89,5 +89,5 @@
 }
 
 .button__icon--warning {
-  color: colours.$orange-700;
+  color: helpers.colour('orange', '700');
 }

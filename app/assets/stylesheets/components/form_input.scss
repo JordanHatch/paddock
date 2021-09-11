@@ -1,4 +1,4 @@
-@use '../variables/colours';
+@use 'helpers';
 
 .form-input {
   margin: 1rem 0 2rem;
@@ -6,7 +6,7 @@
 }
 
 .form-input--invalid {
-  border-left: .4rem solid $red;
+  border-left: .4rem solid helpers.colour('red', '600');
   padding: .75rem 1rem;
 }
 
@@ -32,12 +32,12 @@
 .form-input__hint {
   display: block;
   margin: .25em 0;
-  color: colours.$dark-grey;
+  color: helpers.colour('grey', '600');
 }
 
 .form-input__error {
   display: block;
   margin: .4em 0;
-  color: colours.$red;
+  color: helpers.colour('red', '600');
   font-weight: bold;
 }

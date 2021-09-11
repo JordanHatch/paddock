@@ -1,4 +1,4 @@
-@import 'colours';
+@use 'helpers';
 
-$section--updates: $purple-500;
-$section--manage: $orange-700;
+$section--updates: helpers.colour('purple', '500');
+$section--manage: helpers.colour('orange', '700');

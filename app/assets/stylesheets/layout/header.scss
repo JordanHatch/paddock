@@ -1,3 +1,4 @@
+@use 'helpers';
 @import 'container';
 
 header.app {
@@ -18,10 +19,10 @@ header.app {
 
     a {
       text-decoration: none;
-      color: $black;
+      color: helpers.colour('black');
 
       &:hover {
-        color: $blue;
+        color: helpers.colour('blue', '800');
       }
     }
   }
@@ -63,8 +64,8 @@ header.app {
     }
 
     .selected a {
-      background: $light-blue;
-      color: $white;
+      background: helpers.colour('blue', '100');
+      color: helpers.colour('white');
     }
   }
 }

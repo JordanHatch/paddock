@@ -1,8 +1,10 @@
+@use 'helpers';
+
 .view--sprints-show {
   .summary {
     padding: 1rem;
     border-radius: .5rem;
-    background: $light-grey;
+    background: helpers.colour('grey', '100');
     margin-bottom: 2rem;
 
     ul.delivery-status {
@@ -15,7 +17,7 @@
         min-height: 8rem;
         border-radius: .5rem;
         display: block;
-        color: $white;
+        color: helpers.colour('white');
         text-align: center;
 
         .value {
@@ -28,9 +30,15 @@
           font-size: 1.2rem;
         }
 
-        &.status-green { background: $green; }
-        &.status-amber { background: $amber; }
-        &.status-red { background: $red; }
+        &.status-green {
+          background: helpers.colour('green', '800');
+        }
+        &.status-amber {
+          background: helpers.colour('orange', '600');
+        }
+        &.status-red {
+          background: helpers.colour('red', '600');
+        }
       }
     }
   }
@@ -63,14 +71,14 @@
       display: flex;
       gap: 1rem;
       text-decoration: none;
-      color: $black;
+      color: helpers.colour('black');
       padding: 1rem;
       border-radius: .5rem;
-      background: $light-grey;
+      background: helpers.colour('grey', '100');
       box-shadow: #e6e6e6 0px 1px 1px;
 
       &:hover {
-        background: $silver;
+        background: helpers.colour('silver', '50');
       }
     }
 

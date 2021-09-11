@@ -1,7 +1,7 @@
-@use '../variables/colours';
+@use 'helpers';
 
-$default-color: colours.$black;
-$selected-color: colours.$blue-900;
+$default-color: helpers.colour('black', '900');
+$selected-color: helpers.colour('blue', '900');
 
 .checkbox {
   display: block;

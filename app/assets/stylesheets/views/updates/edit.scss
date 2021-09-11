@@ -1,3 +1,5 @@
+@use 'helpers';
+
 .view--updates-edit {
   min-height: 40rem;
 
@@ -21,7 +23,7 @@
         border-radius: .25rem;
         padding: .6rem .7rem;
         text-decoration: none;
-        color: $black;
+        color: helpers.colour('black');
 
         &:hover {
           background: #eee;
@@ -36,12 +38,12 @@
 
           &.valid i {
             @extend .fa-check-circle;
-            color: $green;
+            color: helpers.colour('green', '800');
           }
 
           &.invalid i {
             @extend .fa-exclamation-circle;
-            color: $amber;
+            color: helpers.colour('orange', '600');
           }
 
           &.not-started i {
@@ -57,7 +59,7 @@
       }
 
       &.selected a {
-        background: $light-blue;
+        background: helpers.colour('blue', '100');
         font-weight: bold;
 
         .validation-status.not-started i {
@@ -123,12 +125,12 @@
     margin-bottom: 2rem;
 
     li {
-      background: $light-grey;
+      background: helpers.colour('grey', '100');
       margin-bottom: 1rem;
 
       h2 {
-        background: $light-blue;
-        color: $black;
+        background: helpers.colour('blue', '100');
+        color: helpers.colour('black');
         padding: .7rem 1rem;
         font-size: 1.3rem;
         margin-bottom: .5rem;
@@ -138,7 +140,7 @@
         border-top-right-radius: .25rem;
 
         &:hover {
-          background: darken($light-blue, 5%);
+          background: helpers.colour('blue', '200');
         }
 
         .title {

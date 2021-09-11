@@ -1,0 +1,13 @@
+@use 'variables/colours' as variables;
+@use 'sass:string';
+
+@function colour($colour, $accent: '') {
+  $accents: map-get(variables.$colours, $colour);
+  $accent: string.quote($accent);
+
+  @if ($accent == '' or $accent == 'default') {
+    $accent: map-get($accents, 'default');
+  }
+
+  @return map-get($accents, $accent);
+}

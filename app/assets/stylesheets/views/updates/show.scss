@@ -1,9 +1,11 @@
+@use 'helpers';
+
 .view--updates-show {
   .update-status {
     padding: 1rem;
     border-radius: .5rem;
     margin-bottom: 2.7rem;
-    background: $light-blue;
+    background: helpers.colour('blue', '100');
     text-align: center;
 
     h3 {

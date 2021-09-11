@@ -1,10 +1,12 @@
+@use 'helpers';
+
 .section-navigation {
   display: flex;
   margin: 0 0 0;
   padding: .5rem 1.5rem;
 
-  background: $light-blue;
-  color: $white;
+  background: helpers.colour('blue', '100');
+  color: helpers.colour('white');
   border-top-left-radius: .5rem;
   border-top-right-radius: .5rem;
 }
@@ -35,7 +37,7 @@
 }
 
 .section-navigation__nav-link {
-  color: $white;
+  color: helpers.colour('white');
   display: inline-block;
   text-decoration: none;
   font-size: .95rem;
@@ -44,7 +46,7 @@
 
   &:hover {
     background: rgba(255,255,255,0.9);
-    color: $black;
+    color: helpers.colour('black');
   }
 }
 
@@ -53,6 +55,6 @@
 
   &:hover {
     background: rgba(255,255,255,0.9);
-    color: $black;
+    color: helpers.colour('black');
   }
 }

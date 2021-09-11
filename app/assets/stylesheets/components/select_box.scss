@@ -1,8 +1,8 @@
-@use '../variables/colours';
-@use '../variables/typography';
+@use 'helpers';
+@use 'variables/typography';
 
-$background-color: colours.$silver-50;
-$border-color: colours.$silver-900;
+$background-color: helpers.colour('silver', '50');
+$border-color: helpers.colour('silver', '900');
 
 .select-box {
   -webkit-appearance: none;

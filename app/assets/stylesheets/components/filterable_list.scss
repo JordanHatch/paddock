@@ -1,3 +1,5 @@
+@use 'helpers';
+
 .filterable-list {
   display: flex;
   gap: 3em;
@@ -47,7 +49,7 @@
 
 .filterable-list__reset-filters-action {
   font-size: .9em;
-  color: $silver-700;
+  color: helpers.colour('silver', '700');
 }
 
 .filterable-list__results {
@@ -59,5 +61,5 @@
   font-size: 1.7em;
   margin: .5em 0;
   padding-bottom: .5em;
-  border-bottom: 1px solid $silver-100;
+  border-bottom: 1px solid helpers.colour('silver', '100');
 }

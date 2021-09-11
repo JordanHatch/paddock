@@ -1,0 +1,43 @@
+@use 'variables/colours' as variables;
+@use 'helpers';
+@use 'sass:string';
+@use 'sass:color' as sass_color;
+
+.view--development {
+
+  .colour-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .colour-grid__item {
+    display: flex;
+    width: 5rem;
+    height: 5rem;
+    flex: 5rem 0;
+    background: grey;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .colour-grid__label {
+    font-size: .8rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  @each $name, $accents in variables.$colours {
+    @each $accent, $colour in $accents {
+      .colour-grid__item--#{$name}-#{$accent} {
+        $colour: helpers.colour($name, $accent);
+
+        background-color: $colour;
+        @if (sass_color.lightness($colour) < 70) {
+          color: sass_color.change($colour, $lightness: 100%);
+        }
+      }
+    }
+  }
+
+}

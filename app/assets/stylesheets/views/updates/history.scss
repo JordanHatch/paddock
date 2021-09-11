@@ -1,9 +1,11 @@
+@use 'helpers';
+
 .view--updates-history {
 
   ul.history {
     li {
       padding: 1.5rem;
-      background: $silver;
+      background: helpers.colour('silver', '50');
       margin-bottom: 1rem;
       border-radius: .5rem;
 
@@ -30,17 +32,17 @@
 
       dd {
         .previous, .current {
-          background: $white;
+          background: helpers.colour('white');
           padding: .5rem;
           border-radius: .25rem;
           display: inline-block;
         }
 
         .previous {
-          color: $red;
+          color: helpers.colour('red', '600');
         }
         .current {
-          color: $green;
+          color: helpers.colour('green', '800');
         }
 
         .arrow {

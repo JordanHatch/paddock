@@ -1,3 +1,5 @@
+@use 'helpers';
+
 .indicator-list {
   flex: 1;
   max-width: 280px;
@@ -8,7 +10,7 @@
 
 .indicator-list__indicator {
   border-radius: .5em;
-  background: $light-brown;
+  background: helpers.colour('silver', '100');
   padding: .8em;
   margin: 0 0 .5em;
 }
@@ -22,7 +24,7 @@
 .indicator-list__value {
   display: block;
   border-radius: .5em;
-  background: $white;
+  background: helpers.colour('white');
   padding: .45em;
   font-size: 1.3em;
 }
@@ -53,7 +55,7 @@
     min-width: 11em;
     padding: .6em;
     margin: 0;
-    background: $white;
+    background: helpers.colour('white');
   }
 
   .indicator-list__label, .indicator-list__value {

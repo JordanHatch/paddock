@@ -1,8 +1,8 @@
-@use '../variables/colours';
-@use '../variables/typography';
+@use 'helpers';
+@use 'variables/typography';
 
-$background-color: colours.$white;
-$border-color: colours.$silver-900;
+$background-color: helpers.colour('white', '100');
+$border-color: helpers.colour('silver', '900');
 
 .text-area-input {
   font-size: 1rem;

@@ -1,3 +1,5 @@
+@use 'helpers';
+
 .view--manage-sprints {
   @extend .manage--common;
 
@@ -14,7 +16,7 @@
     width: 30%;
 
     .sprint {
-      background: $silver-100;
+      background: helpers.colour('silver', '100');
       display: block;
     }
 
@@ -26,7 +28,7 @@
 
   .sprint {
     list-style: none;
-    background: $silver-50;
+    background: helpers.colour('silver', '50');
     border-radius: .5rem;
     padding: 1rem;
     margin-bottom: .5rem;
@@ -45,7 +47,7 @@
 
   .sprint-date {
     font-size: .9rem;
-    color: $dark-grey;
+    color: helpers.colour('grey', '600');
   }
 
   .sprint-actions {

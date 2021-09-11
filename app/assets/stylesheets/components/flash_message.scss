@@ -1,8 +1,11 @@
+@use 'helpers';
+
 .flash-message {
   padding: .7rem .5rem;
-  background: $light-grey;
+  background: helpers.colour('grey', '100');
   margin-bottom: 1.5rem;
   border-radius: .25rem;
+  color: helpers.colour('white');
 }
 
 .flash-message--global {
@@ -12,15 +15,14 @@
   right: 0;
   margin: auto;
   width: 20rem;
-  box-shadow: darken($base-color, 2%) 0px -3px 3px;
+  box-shadow: rgba(0,0,0,0.05) 0px -3px 3px;
   text-align: center;
 }
 
 .flash-message--alert {
-  background: $light-red;
+  background: helpers.colour('red', '600');
 }
 
 .flash-message--notice {
-  background: $green-800;
-  color: $white;
+  background: helpers.colour('green', '800');
 }

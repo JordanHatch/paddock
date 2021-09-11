@@ -1,10 +1,10 @@
-@use '../variables/colours';
+@use 'helpers';
 
 .errors {
   font-size: 1rem;
   padding: 1.5rem;
-  background: $white;
-  border-left: .75rem solid $red;
+  background: helpers.colour('white');
+  border-left: .75rem solid helpers.colour('red');
   border-radius: .5rem;
   box-shadow: rgba(0,0,0,0.03) 1px -2px 1px,
     rgba(0,0,0,0.03) 2px 2px 1px;

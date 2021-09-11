@@ -1,3 +1,4 @@
+@use 'helpers';
 @import 'container';
 
 *, *::before, *::after {
@@ -6,19 +7,19 @@
 
 body {
   font-family: $font-stack;
-  background: $base-color;
+  background: helpers.colour('silver', '50');
   font-size: 100%;
   line-height: 1.25;
-  color: $black;
+  color: helpers.colour('black');
 }
 
 main.app {
   @include container;
 
-  box-shadow: darken($base-color, 3%) 0px -3px 5px,
-    darken($base-color, 3%) 0px 2px 2px;
+  box-shadow: rgba(0,0,0,0.03) 0px -3px 5px,
+    rgba(0,0,0,0.03) 0px 2px 2px;
   min-height: 90vh;
-  background: $white;
+  background: helpers.colour('white');
   margin: 0 auto 2rem;
   border-radius: .5rem;
 
