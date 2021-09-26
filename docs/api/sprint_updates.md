@@ -1,6 +1,6 @@
 # Sprint updates
 
-## Get all sprints
+## Get all sprint updates
 
 This returns all sprints, ordered by their `id`.
 
@@ -87,11 +87,12 @@ GET /api/v1/sprint-updates
 
 ### Request parameters
 
+* `sprint` - the ID of the [sprint](sprints.md) to filter updates by
 * `per_page` - the number of results returned per page (default: `20`)
 * `page` - the page of results to request
 
 
-## Get a single sprint
+## Get a single sprint update
 
 Returns the details for the sprint with the requested ID.
 
