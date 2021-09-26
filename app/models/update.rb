@@ -4,6 +4,7 @@ class Update < ApplicationRecord
 
   belongs_to :team
   belongs_to :sprint
+  has_one :group, through: :team
 
   has_many :issues, inverse_of: :sprint_update
   has_paper_trail skip: %i[created_at updated_at]
@@ -16,6 +17,7 @@ class Update < ApplicationRecord
 
   scope :recent_first, -> { order('created_at DESC') }
   scope :published_for_sprint, ->(sprint) { where(sprint: sprint).published }
+  scope :by_sprint_id, ->(id) { where(sprint_id: id ) }
 
   aasm(column: :state) do
     state :not_started, initial: true

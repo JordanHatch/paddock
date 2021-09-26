@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.4.1'
 gem 'aasm'
 gem 'after_commit_everywhere', '~> 1.0.0'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'doorkeeper'
 gem 'dry-monads'
 gem 'dry-schema'
 gem 'dry-struct'
@@ -18,6 +19,7 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'good_job'
 gem 'haml'
 gem 'jbuilder', '~> 2.7'
+gem 'kaminari'
 gem 'paper_trail'
 gem 'pg'
 gem 'premailer-rails'
@@ -50,6 +52,7 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'web-console', '>= 4.1.0'
 end
 

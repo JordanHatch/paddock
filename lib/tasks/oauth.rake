@@ -1,0 +1,2 @@
+namespace :oauth do
+end
