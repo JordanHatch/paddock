@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
-gem 'rails', '~> 6.1.4.1'
+gem 'rails', '~> 6.1.4.4'
 
 gem 'aasm'
 gem 'after_commit_everywhere', '~> 1.0.0'
