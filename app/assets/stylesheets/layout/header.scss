@@ -1,4 +1,6 @@
 @use 'helpers';
+@use 'variables/sections';
+
 @import 'container';
 
 header.app {
@@ -42,11 +44,10 @@ header.app {
       margin-left: .2rem;
 
       &.selected {
-        &.section-manage a {
-          background: $section--manage;
-        }
-        &.section-updates a {
-          background: $section--updates;
+        @each $name, $colour in sections.$sections {
+          &.section-#{$name} a {
+            background-color: $colour;
+          }
         }
       }
     }

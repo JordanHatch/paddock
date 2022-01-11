@@ -10,11 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_26_012410) do
+ActiveRecord::Schema.define(version: 2022_01_11_021647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "commitments", force: :cascade do |t|
+    t.bigint "quarter_id", null: false
+    t.integer "number", null: false
+    t.string "name", null: false
+    t.text "overview"
+    t.text "benefits", default: [], array: true
+    t.text "actions", default: [], array: true
+    t.text "commodities", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quarter_id"], name: "index_commitments_on_quarter_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -115,6 +128,16 @@ ActiveRecord::Schema.define(version: 2021_09_26_012410) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "quarters", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug"
+    t.date "start_on", null: false
+    t.date "end_on", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_quarters_on_slug", unique: true
+  end
+
   create_table "sprints", force: :cascade do |t|
     t.string "name", null: false
     t.date "start_on", null: false
@@ -170,6 +193,7 @@ ActiveRecord::Schema.define(version: 2021_09_26_012410) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "commitments", "quarters"
   add_foreign_key "issues", "updates", on_delete: :cascade
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"

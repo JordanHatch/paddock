@@ -1,0 +1,10 @@
+= simple_form_for [quarter, commitment] do |f|
+  = f.input :name, input_html: { class: 'text-input', size: 50 }
+  = f.input :number, input_html: { class: 'text-input', size: 3 }
+
+  = f.input :overview, input_html: { class: 'text-area-input text-area-input--full-width'}
+  = f.input :actions
+  = f.input :benefits
+  = f.input :commodities
+
+  = f.button :submit

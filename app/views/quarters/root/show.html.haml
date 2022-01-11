@@ -1,0 +1,10 @@
+%h1 Key commitments this quarter
+
+%ul.commitments-list
+  - commitments.each do |commitment|
+    %li.commitments-list__item
+      = link_to quarter_commitment_path(quarter, commitment), class: 'commitments-list__box' do
+        .commitments-list__number
+          = commitment.number
+        .commitments-list__name
+          = commitment.name

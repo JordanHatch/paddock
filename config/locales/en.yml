@@ -22,6 +22,16 @@ en:
       update:
         issues:
           identifier: If this issue has been raised in Azure DevOps, what's the identifier?
+  commitments:
+    commodities:
+      meat: Meat
+      eggs: Eggs
+      dairy: Dairy
+      fish: Fish
+      horticulture: Horticulture
+      grain: Grain
+      honey: Honey
+      lae: Live Animal Exports
   updates:
     delivery_status:
       green:

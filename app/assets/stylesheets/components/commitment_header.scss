@@ -1,0 +1,25 @@
+@use 'helpers';
+
+.commitment-header {
+  font-size: 1em;
+  background: helpers.colour('blue', '50');
+  padding: 4rem 1.5rem 1.5rem;
+  margin: -1.5rem -1.5rem 0 -1.5rem;
+}
+
+.commitment-header__number {
+  display: inline-block;
+  font-size: 1.4em;
+  margin-bottom: .2em;
+
+  border-radius: .2em;
+  color: helpers.colour('silver', '800');
+  font-weight: normal;
+}
+
+.commitment-header__title {
+  margin: 0;
+  font-size: 1.9em;
+
+  color: helpers.colour('grey', '900');
+}

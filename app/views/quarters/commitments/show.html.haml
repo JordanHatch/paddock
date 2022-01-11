@@ -1,0 +1,38 @@
+%header.commitment-header
+  .commitment-header__number
+    Commitment
+    = commitment.number
+  %h1.commitment-header__title= commitment.name
+
+.update-content-block#overview
+  .update-content-block__content
+    - if commitment.overview.present?
+      .markdown-block.summary
+        = render_markdown(commitment.overview).html_safe
+
+- if commitment.benefits.any?
+  .update-content-block#benefits
+    %h3.update-content-block__title
+      This will...
+    .update-content-block__content
+      %ul
+        - commitment.benefits.each do |benefit|
+          %li=benefit
+
+- if commitment.actions.any?
+  .update-content-block#actions
+    %h3.update-content-block__title
+      So we'll be...
+    .update-content-block__content
+      %ul
+        - commitment.actions.each do |action|
+          %li=action
+
+- if commitment.commodities.any?
+  .update-content-block#actions
+    %h3.update-content-block__title
+      Commodities
+    .update-content-block__content
+      %ul
+        - commitment.commodities.each do |label|
+          %li=t(label, scope: %w[commitments commodities])

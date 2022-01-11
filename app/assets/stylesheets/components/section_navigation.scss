@@ -1,4 +1,5 @@
 @use 'helpers';
+@use 'variables/sections';
 
 .section-navigation {
   display: flex;
@@ -11,12 +12,10 @@
   border-top-right-radius: .5rem;
 }
 
-.section-navigation--section-updates {
-  background: $section--updates;
-}
-
-.section-navigation--section-manage {
-  background: $section--manage;
+@each $name, $colour in sections.$sections {
+  .section-navigation--section-#{$name} {
+    background-color: $colour;
+  }
 }
 
 .section-navigation__title {

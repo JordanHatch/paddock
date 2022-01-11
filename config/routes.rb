@@ -26,6 +26,12 @@ Rails.application.routes.draw do
   get '/sprints/:sprint_id/:team_id/edit', to: 'updates#edit', as: :edit_update
   get '/sprints/:sprint_id/:team_id/:form', to: 'updates#edit', as: :edit_update_form
 
+  scope module: 'quarters' do
+    resources :quarters, controller: 'root', only: [:index, :show] do
+      resources :commitments
+    end
+  end
+
   namespace :api do
     scope :v1, as: :v1 do
       get '/sprints', to: 'v1#sprints', as: :sprints

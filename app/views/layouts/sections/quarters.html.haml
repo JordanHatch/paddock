@@ -1,0 +1,17 @@
+- content_for :selected_section, :quarters
+
+- content_for :content do
+  .section-navigation.section-navigation--section-quarters
+    - if quarter.present?
+      .section-navigation__title
+        = quarter.name
+      .section-navigation__nav
+        %ul
+          = nav_link 'Overview',
+              quarter_path(quarter),
+              list_item_class: 'section-navigation__nav-item',
+              link_class: 'section-navigation__nav-link'
+  .inner
+    = yield
+
+= render template: 'layouts/application'

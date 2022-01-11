@@ -1,0 +1,56 @@
+@use 'helpers';
+
+.commitments-list {
+  font-size: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75em;
+}
+
+.commitments-list__item {
+  display: flex;
+  width: 32%;
+}
+
+.commitments-list__box {
+  display: flex;
+  background: helpers.colour('silver', '25');
+  border: 1px solid helpers.colour('grey', '300');
+  border-radius: .3em;
+  box-shadow: helpers.colour('silver', '50') 0px 2px 0px;
+  padding: 1.1em;
+  min-height: 5em;
+  color: helpers.colour('black');
+  text-decoration: none;
+
+  &:hover {
+    background: helpers.colour('silver', '50');
+  }
+}
+
+.commitments-list__number {
+  display: inline-block;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  padding: .25em .4em;
+  max-height: 1.8em;
+  min-width: 1.7em;
+  font-size: 1.1em;
+
+  border-radius: .2em;
+  background: helpers.colour('red', '800');
+  color: helpers.colour('white');
+  font-weight: bold;
+  text-align: center;
+}
+
+.commitments-list__name {
+  display: flex;
+
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-left: .75em;
+  padding-right: .5em;
+}

@@ -2,3 +2,9 @@
 
 $section--updates: helpers.colour('purple', '500');
 $section--manage: helpers.colour('orange', '700');
+
+$sections: (
+  'updates': helpers.colour('purple', '500'),
+  'manage': helpers.colour('orange', '700'),
+  'quarters': helpers.colour('red', '800')
+)
