@@ -1,0 +1,33 @@
+.markdown-input {
+  display: flex;
+  gap: 1.5em;
+  font-size: 1em;
+}
+
+.markdown-input__input {
+  margin-top: 0;
+  width: 70%;
+
+  textarea {
+    min-height: 18em;
+  }
+}
+
+.markdown-input__guidance {
+  width: 30%;
+  font-size: .85em;
+
+  pre {
+    background: #eee;
+    padding: .5rem;
+    font-family: monospace;
+    font-size: .8rem;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+  .italic {
+    font-style: italic;
+  }
+}

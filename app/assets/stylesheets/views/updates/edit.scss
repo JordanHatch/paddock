@@ -92,37 +92,4 @@
       @extend .fa-exclamation-circle;
     }
   }
-
-  .markdown-wrapper {
-    display: flex;
-    gap: 1.5rem;
-
-    .form-input {
-      width: 70%;
-      margin-top: 0;
-
-      #update_content {
-        min-height: 22rem;
-        max-height: 35rem;
-      }
-    }
-    .hint {
-      width: 30%;
-      font-size: .85rem;
-    }
-
-    pre {
-      background: #eee;
-      padding: .5rem;
-      font-family: monospace;
-      font-size: .8rem;
-    }
-
-    .bold {
-      font-weight: bold;
-    }
-    .italic {
-      font-style: italic;
-    }
-  }
 }

@@ -12,27 +12,10 @@
       %li what the team learned
       %li what's affecting the delivery status
 
-.markdown-wrapper
-  = f.input :content, as: :text, label: false, input_html: { class: 'text-area-input text-area-input--full-width'}
-  .hint
-    %p
-      You can style your text with
-      = link_to 'Markdown', 'https://www.markdownguide.org/cheat-sheet'
-      \.
-    %p
-      For example:
-    %pre
-      \# Heading
-    %pre.italic
-      *italic*
-    %pre.bold
-      **bold**
-    %pre
-      \- Dot point A
-      \- Dot point B
-      \- Dot point C
-    %pre
-      1. Numbered item 1
-      2. Numbered item 2
-      3. Numbered item 3
+  .markdown-input
+    = f.input :content, as: :text,
+                        label: false,
+                        input_html: { class: 'text-area-input text-area-input--full-width', rows: 16 },
+                        wrapper_html: { class: 'markdown-input__input' }
+    = render partial: 'shared/components/markdown_input_guidance'
 
