@@ -4,7 +4,10 @@ RSpec.describe SprintUpdates::UpdateFlow do
   let(:sprint_update) { create(:draft_sprint_update) }
 
   let(:forms) do
-    SprintUpdates::UpdateFlow::FORMS
+    SprintUpdates::UpdateFlow.new(
+      current_form_id: nil,
+      sprint_update: sprint_update
+    ).forms
   end
 
   describe '#initialize' do
