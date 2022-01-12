@@ -1,13 +1,15 @@
 %nav
   %ul
     - flow.form_keys.each do |form|
-      %li{ class: (form == flow.current_form_id ? 'selected' : '') }
-        = link_to edit_update_form_path(sprint, team, form) do
+      %li.flow-navigation-item{ class: (form == flow.current_form_id ? 'flow-navigation-item--selected' : '') }
+        = link_to edit_update_form_path(sprint, team, form), class: 'flow-navigation-item__link' do
           = t(form, scope: [:updates, :forms])
-          .validation-status{ class: flow.completion_status_for_form(form).to_s.dasherize }
-            %i
-            %span.label= flow.completion_status_for_form(form)
-    %li.preview
-      = link_to 'Preview update', update_path(sprint, team), data: { 'turbo-frame' => '_top' }
-    %li{ class: (flow.current_form_id == :submit ? 'selected' : '') }
-      = link_to 'Submit update', submit_update_path(sprint, team)
+          .flow-navigation-item__status
+            .flow-navigation-item__icon{ class: "flow-navigation-item__icon--#{flow.completion_status_for_form(form).to_s.dasherize}" }
+            .flow-navigation-item__status-text= flow.completion_status_for_form(form)
+    %li.flow-navigation-item.flow-navigation-item--preview
+      = link_to 'Preview update', update_path(sprint, team),
+                data: { 'turbo-frame' => '_top' },
+                class: 'flow-navigation-item__link'
+    %li.flow-navigation-item{ class: (flow.current_form_id == :submit ? 'flow-navigation-item--selected' : '') }
+      = link_to 'Submit update', submit_update_path(sprint, team), class: 'flow-navigation-item__link'

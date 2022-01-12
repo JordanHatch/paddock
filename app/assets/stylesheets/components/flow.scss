@@ -1,0 +1,16 @@
+.flow {
+  display: flex;
+  gap: 2.5rem;
+
+  font-size: 1em;
+  min-height: 40em;
+  margin-top: 1.5em;
+}
+
+.flow__navigation, .flow__current-step {
+  flex: 1;
+}
+
+.flow__navigation {
+  max-width: 12em;
+}

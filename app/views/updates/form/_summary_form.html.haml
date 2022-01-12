@@ -1,14 +1,16 @@
-%h2 What happened this sprint?
+.flow-question
+  %h2.flow-question__question
+    What happened this sprint?
 
-.question-detail
-  %p Write a short summary of this sprint.
+  .flow-question__detail
+    %p Write a short summary of this sprint.
 
-  %p A good summary covers:
+    %p A good summary covers:
 
-  %ul
-    %li what the team achieved
-    %li what the team learned
-    %li what's affecting the delivery status
+    %ul
+      %li what the team achieved
+      %li what the team learned
+      %li what's affecting the delivery status
 
 .markdown-wrapper
   = f.input :content, as: :text, label: false, input_html: { class: 'text-area-input text-area-input--full-width'}

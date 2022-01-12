@@ -1,7 +1,9 @@
-%h2 How are the team feeling this week?
+.flow-question
+  %h2.flow-question__question
+    How are the team feeling this week?
 
-= f.input :team_health,
-    collection: TeamHealthPresenter.all,
-    as: :radio_buttons,
-    legend_tag: false,
-    item_wrapper_class: 'radio-button radio-button--lg radio-button--with-subtitle'
+  = f.input :team_health,
+      collection: TeamHealthPresenter.all,
+      as: :radio_buttons,
+      legend_tag: false,
+      item_wrapper_class: 'radio-button radio-button--lg radio-button--with-subtitle'

@@ -1,0 +1,62 @@
+@use 'helpers';
+
+.flow-navigation-item {
+  margin-bottom: .1rem;
+}
+
+.flow-navigation-item__link {
+  display: block;
+  border-radius: .25rem;
+  padding: .6rem .7rem;
+  text-decoration: none;
+  color: helpers.colour('black');
+
+  &:hover {
+    background: #eee;
+  }
+}
+
+.flow-navigation-item--selected .flow-navigation-item__link {
+  background: helpers.colour('blue', '100');
+  font-weight: bold;
+
+  .flow-navigation-item__icon--not-started {
+    color: #91C9DE;
+  }
+}
+
+.flow-navigation-item--preview {
+  padding-top: .4rem;
+  border-top: 1px solid #ddd;
+  margin-top: .4rem;
+}
+
+.flow-navigation-item__status {
+  float: right;
+}
+
+.flow-navigation-item__status-text {
+  display: none;
+}
+
+.flow-navigation-item__icon {
+  @extend .fas;
+  display: inline;
+}
+
+.flow-navigation-item__icon.flow-navigation-item__icon--valid {
+  @extend .fa-check-circle;
+  color: helpers.colour('green', '800');
+}
+
+.flow-navigation-item__icon.flow-navigation-item__icon--invalid {
+  @extend .fa-exclamation-circle;
+  color: helpers.colour('orange', '600');
+}
+
+.flow-navigation-item__icon.flow-navigation-item__icon--not-started {
+  @extend .far;
+  @extend .fa-circle;
+  color: #ddd;
+}
+

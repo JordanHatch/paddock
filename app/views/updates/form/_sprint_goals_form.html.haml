@@ -1,8 +1,11 @@
-%h2 What were the team's goals for this sprint?
+.flow-question
+  %h2.flow-question__question
+    What were the team's goals for this sprint?
 
-%p You can list up to five goals.
+  .flow-question__detail
+    %p You can list up to five goals.
 
-.sprint-goals
-  %ol
-    - f.object.sprint_goals.each do |goal|
-      %li= text_field_tag "update[sprint_goals][]", goal, class: 'text-input'
+  .sprint-goals
+    %ol
+      - f.object.sprint_goals.each do |goal|
+        %li= text_field_tag "update[sprint_goals][]", goal, class: 'text-input'

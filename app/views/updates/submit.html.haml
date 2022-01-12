@@ -1,10 +1,11 @@
 .view.view--updates-edit
   = render partial: 'header', locals: { team: service.team }
 
-  .columns
-    = render partial: 'edit_navigation', locals: { flow: flow, sprint: service.sprint, team: service.team }
+  .flow
+    .flow__navigation
+      = render partial: 'edit_navigation', locals: { flow: flow, sprint: service.sprint, team: service.team }
 
-    .main-col
+    .flow__current-step
       %h2 Submit the team update
 
       - if service.success?

@@ -1,0 +1,28 @@
+.flow-question {
+  font-size: 1em;
+  padding-top: .5em;
+}
+
+.flow-question__question {
+  font-size: 1.7em;
+  margin: 0 0 1em;
+}
+
+.flow-question__detail {
+  font-size: 1em;
+  margin-bottom: 1em;
+
+  p {
+    margin-bottom: 1.5em;
+  }
+
+  ul {
+    padding-left: 1em;
+    margin-bottom: 1.5em;
+  }
+
+  li {
+    list-style: disc;
+    padding-bottom: .2em;
+  }
+}

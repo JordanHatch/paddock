@@ -246,3 +246,30 @@
             .form-actions__cancel
               or
               = link_to 'cancel', '#'
+
+    .update-content-block
+      %h2.update-content-block__title Flow navigation
+      .update-content-block__content
+        %div{style: 'background: #fafafa; padding: 1rem; width: 16rem;'}
+          %ul
+            %li.flow-navigation-item.flow-navigation-item--selected
+              = link_to '#', { class: 'flow-navigation-item__link' } do
+                Valid and selected
+                .flow-navigation-item__status
+                  .flow-navigation-item__icon.flow-navigation-item__icon--valid
+                  .flow-navigation-item__status-text Valid
+            %li.flow-navigation-item
+              = link_to '#', { class: 'flow-navigation-item__link' } do
+                Invalid
+                .flow-navigation-item__status
+                  .flow-navigation-item__icon.flow-navigation-item__icon--invalid
+                  .flow-navigation-item__status-text Invalid
+            %li.flow-navigation-item
+              = link_to '#', { class: 'flow-navigation-item__link' } do
+                Not yet started
+                .flow-navigation-item__status
+                  .flow-navigation-item__icon.flow-navigation-item__icon--not-started
+                  .flow-navigation-item__status-text Not started
+            %li.flow-navigation-item.flow-navigation-item--preview
+              = link_to '#', { class: 'flow-navigation-item__link' } do
+                Preview link

@@ -1,6 +1,8 @@
-%h2 How is delivery going overall?
+.flow-question
+  %h2.flow-question__question
+    How is delivery going overall?
 
-= f.input :delivery_status,
-    collection: StatusPresenter.new(:delivery_status).all,
-    as: :radio_buttons,
-    legend_tag: false
+  = f.input :delivery_status,
+      collection: StatusPresenter.new(:delivery_status).all,
+      as: :radio_buttons,
+      legend_tag: false

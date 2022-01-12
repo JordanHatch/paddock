@@ -1,10 +1,11 @@
 .view.view--updates-edit
   = render partial: 'header', locals: { team: service.team }
 
-  .columns
-    = render partial: 'edit_navigation', locals: { flow: flow, sprint: sprint, team: team }
+  .flow
+    .flow__navigation
+      = render partial: 'edit_navigation', locals: { flow: flow, sprint: sprint, team: team }
 
-    .main-col
+    .flow__current-step
       = simple_form_for service.form, url: update_path(sprint, team), as: :update, method: :patch do |f|
         = render partial: "updates/form/#{service.form.template_name}", locals: { f: f }
 
