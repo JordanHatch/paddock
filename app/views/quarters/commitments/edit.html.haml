@@ -1,10 +1,14 @@
-= simple_form_for [quarter, commitment] do |f|
-  = f.input :name, input_html: { class: 'text-input', size: 50 }
-  = f.input :number, input_html: { class: 'text-input', size: 3 }
+.view.view--updates-edit
+  = render partial: 'header', locals: { commitment: commitment }
 
-  = f.input :overview, input_html: { class: 'text-area-input text-area-input--full-width'}
-  = f.input :actions
-  = f.input :benefits
-  = f.input :commodities
+  .flow
+    .flow__navigation
+      = render partial: 'quarters/commitments/form/navigation', locals: { flow: flow, commitment: commitment }
+    .flow__current-step
+      = simple_form_for service.form, url: quarter_commitment_path(quarter, commitment), as: :commitment, method: :patch do |f|
+        = render partial: "quarters/commitments/form/#{service.form.template_name}", locals: { f: f }
 
-  = f.button :submit
+        = hidden_field_tag 'form', flow.current_form_id
+
+        .form-actions
+          = f.button :submit, (flow.last_form? ? 'Save and finish' : 'Save and next')

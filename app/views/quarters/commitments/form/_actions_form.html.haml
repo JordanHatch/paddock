@@ -1,0 +1,18 @@
+.flow-question
+  %h2.flow-question__question
+    What are the key actions required to deliver the commitment?
+
+  .flow-question__detail
+    %p For example:
+    %ul
+      %li identifying establishments to test the service
+      %li adding new tabs to the dashboard
+      %li automating the EX188b certificate
+    %p You can list up to five actions.
+
+  %h3 We will be...
+
+  .sprint-goals
+    %ol
+      - f.object.actions.each do |item|
+        %li= text_field_tag "commitment[actions][]", item, class: 'text-input'

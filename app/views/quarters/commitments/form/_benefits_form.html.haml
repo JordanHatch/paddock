@@ -1,0 +1,14 @@
+.flow-question
+  %h2.flow-question__question
+    What are the benefits?
+
+  .flow-question__detail
+    %p Who will impact from the delivery of this commitment?
+    %p You can list up to five benefits.
+
+  %h3 This will...
+
+  .sprint-goals
+    %ol
+      - f.object.benefits.each do |item|
+        %li= text_field_tag "commitment[benefits][]", item, class: 'text-input'

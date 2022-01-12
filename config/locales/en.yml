@@ -32,6 +32,12 @@ en:
       grain: Grain
       honey: Honey
       lae: Live Animal Exports
+    forms:
+      name: Name
+      overview: Summary
+      benefits: Benefits
+      actions: Key actions
+      commodities: Commodities
   updates:
     delivery_status:
       green:

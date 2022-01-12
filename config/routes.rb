@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   scope module: 'quarters' do
     resources :quarters, controller: 'root', only: [:index, :show] do
       resources :commitments
+      get '/commitments/:id/:form', to: 'commitments#edit', as: :commitment_form
     end
   end
 

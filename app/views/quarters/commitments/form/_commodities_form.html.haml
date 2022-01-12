@@ -1,0 +1,7 @@
+.flow-question
+  %h2.flow-question__question Which commodities are impacted?
+
+  = f.input :commodities,
+      collection: CommitmentCommodityListPresenter.all,
+      as: :check_boxes,
+      legend_tag: false

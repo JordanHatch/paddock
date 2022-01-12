@@ -1,0 +1,13 @@
+.flow-question
+  %h2.flow-question__question
+    What's the name of the commitment?
+
+  .flow-question__detail
+    %p A good commitment name is about 6 or 7 words, starting with a verb.
+    %p For example:
+    %ul
+      %li Deliver a new permits capability
+      %li Extend the digital service to new exporters
+      %li Test the platform with plant exporters
+
+  = f.input :name, as: :string, label: false, input_html: { class: 'text-input', size: 60 }

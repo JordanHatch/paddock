@@ -1,0 +1,13 @@
+%nav
+  %ul
+    - flow.form_keys.each do |form|
+      %li.flow-navigation-item{ class: (form == flow.current_form_id ? 'flow-navigation-item--selected' : '') }
+        = link_to quarter_commitment_form_path(commitment.quarter, commitment, form), class: 'flow-navigation-item__link' do
+          = t(form, scope: [:commitments, :forms])
+          .flow-navigation-item__status
+            .flow-navigation-item__icon{ class: "flow-navigation-item__icon--#{flow.completion_status_for_form(form).to_s.dasherize}" }
+            .flow-navigation-item__status-text= flow.completion_status_for_form(form)
+    %li.flow-navigation-item.flow-navigation-item--preview
+      = link_to 'View commitment', quarter_commitment_path(commitment.quarter, commitment),
+                                   data: { 'turbo-frame' => '_top' },
+                                   class: 'flow-navigation-item__link'

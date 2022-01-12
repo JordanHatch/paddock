@@ -2,27 +2,45 @@ class Quarters::CommitmentsController < Quarters::BaseController
 
   def show; end
 
-  def edit; end
+  def edit
+    @service = Quarters::Commitments::UpdateService.build(
+      commitment_id: commitment.id,
+      form_class: flow.form_class,
+    )
+  end
 
   def update
-    commitment.assign_attributes(commitment_params)
+    @service = Quarters::Commitments::UpdateService.call(
+      commitment_id: commitment.id,
+      form_class: flow.form_class,
+      attributes: params[:commitment],
+    )
 
-    if commitment.save
-      redirect_to quarter_commitment_path(quarter, commitment)
+    if @service.success?
+      if flow.last_form?
+        redirect_to quarter_commitment_path(quarter, commitment)
+      else
+        redirect_to quarter_commitment_form_path(quarter, commitment, flow.next_form_id)
+      end
     else
-      render action: :edit
+      render :edit
     end
   end
 
   private
 
-  helper_method :commitment
+  attr_reader :service
+
+  helper_method :commitment, :service, :flow
 
   def commitment
-    @commitments ||= quarter.commitments.find(params[:id])
+    @commitment ||= quarter.commitments.find(params[:id])
   end
 
-  def commitment_params
-    params.require(:commitment).permit(:name, :number, :overview, :actions, :benefits)
+  def flow
+    @flow ||= Quarters::CommitmentFlow.new(
+      current_form_id: @form_id || params[:form],
+      object: commitment,
+    )
   end
 end

@@ -1,0 +1,14 @@
+.flow-question
+  %h2.flow-question__question
+    What's this commitment about?
+
+  .flow-question__detail
+    %p Write a short summary of the commitment for the quarter.
+
+  .markdown-input
+    = f.input :overview, as: :text,
+                         label: false,
+                         input_html: { class: 'text-area-input text-area-input--full-width', rows: 16 },
+                         wrapper_html: { class: 'markdown-input__input' }
+    = render partial: 'shared/components/markdown_input_guidance'
+

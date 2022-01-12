@@ -1,8 +1,4 @@
-%header.commitment-header
-  .commitment-header__number
-    Commitment
-    = commitment.number
-  %h1.commitment-header__title= commitment.name
+= render partial: 'header', locals: { commitment: commitment }
 
 .update-content-block#overview
   .update-content-block__content
@@ -14,8 +10,8 @@
   .update-content-block#benefits
     %h3.update-content-block__title
       This will...
-    .update-content-block__content
-      %ul
+    .update-content-block__content.update-content-block__content--list
+      %ol
         - commitment.benefits.each do |benefit|
           %li=benefit
 
@@ -23,8 +19,8 @@
   .update-content-block#actions
     %h3.update-content-block__title
       So we'll be...
-    .update-content-block__content
-      %ul
+    .update-content-block__content.update-content-block__content--list
+      %ol
         - commitment.actions.each do |action|
           %li=action
 
@@ -36,3 +32,7 @@
       %ul
         - commitment.commodities.each do |label|
           %li=t(label, scope: %w[commitments commodities])
+
+.update-content-block
+  .update-content-block__content
+    = link_to 'Edit this page', edit_quarter_commitment_path(commitment.quarter, commitment), class: 'button'
