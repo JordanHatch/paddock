@@ -17,6 +17,6 @@ class Quarters::RootController < Quarters::BaseController
   end
 
   def commitments
-    quarter.commitments
+    quarter.commitments.in_order
   end
 end
