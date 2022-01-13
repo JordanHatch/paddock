@@ -46,6 +46,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'simplecov', require: false
+  gem 'timecop'
 end
 
 group :development do
