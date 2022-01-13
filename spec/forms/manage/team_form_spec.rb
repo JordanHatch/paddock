@@ -8,6 +8,7 @@ RSpec.describe Manage::TeamForm do
         name: 'Team Name',
         group_id: group.id,
         start_on: Date.today,
+        end_on: Date.today,
       }
     end
 
@@ -20,6 +21,26 @@ RSpec.describe Manage::TeamForm do
 
       it 'is valid' do
         expect(subject).to be_valid
+      end
+
+      context 'with a blank start_on date' do
+        let(:params) do
+          valid_params.merge(start_on: nil)
+        end
+
+        it 'is valid' do
+          expect(subject).to be_valid
+        end
+      end
+
+      context 'with a blank end_on date' do
+        let(:params) do
+          valid_params.merge(end_on: nil)
+        end
+
+        it 'is valid' do
+          expect(subject).to be_valid
+        end
       end
     end
 
@@ -54,6 +75,39 @@ RSpec.describe Manage::TeamForm do
         it 'is not valid' do
           expect(subject).to_not be_valid
           expect(subject.errors).to have_key(:group_id)
+        end
+      end
+
+      context 'with an invalid start_on date' do
+        let(:params) do
+          valid_params.merge(start_on: 'not a date')
+        end
+
+        it 'is not valid' do
+          expect(subject).to_not be_valid
+          expect(subject.errors).to have_key(:start_on)
+        end
+      end
+
+      context 'with an invalid end_on date' do
+        let(:params) do
+          valid_params.merge(end_on: 'not a date')
+        end
+
+        it 'is not valid' do
+          expect(subject).to_not be_valid
+          expect(subject.errors).to have_key(:end_on)
+        end
+      end
+
+      context 'when end_on is before start_on' do
+        let(:params) do
+          valid_params.merge(start_on: Date.today + 2.weeks, end_on: Date.today)
+        end
+
+        it 'is not valid' do
+          expect(subject).to_not be_valid
+          expect(subject.errors).to have_key(:end_on)
         end
       end
     end

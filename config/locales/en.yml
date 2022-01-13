@@ -8,6 +8,7 @@ en:
       team:
         name: Team name
         start_on: Starts on
+        end_on: Ends on
       update:
         vacant_roles: How many roles in the team are vacant?
         current_headcount: How many people are currently in the team?
@@ -18,7 +19,8 @@ en:
           identifier: What's the DevOps issue number?
     hints:
       team:
-        start_on: The date the team started sprint reporting. The team won't show up in sprints that ended before this date. If blank, the team will show up in all sprints.
+        start_on: The date the team started sprint reporting. The team won't show up in sprints that end before this date. If blank, the team will show up in all previous sprints.
+        end_on: The date the team finished sprint reporting. The team won't show up in sprints that end after this date. If blank, the team will show up in all future sprints.
       update:
         issues:
           identifier: If this issue has been raised in Azure DevOps, what's the identifier?

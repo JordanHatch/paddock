@@ -12,6 +12,11 @@
                          include_blank: true,
                          input_html: { class: 'select-box select-box--lg' } }
 
+  = f.input :end_on, { as: :date,
+                         required: false,
+                         include_blank: true,
+                         input_html: { class: 'select-box select-box--lg' } }
+
   .form-actions
     = f.button :submit, 'Save'
     .form-actions__cancel
