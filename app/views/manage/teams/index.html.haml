@@ -15,5 +15,13 @@
               %li.team
                 .team-name
                   %span= team.name
+                  - if team.start_on.present? && team.start_on > Date.today
+                    %span.date
+                      from
+                      = team.start_on.strftime('%-d %b %Y')
+                  - if team.end_on.present?
+                    %span.date
+                      to
+                      = team.end_on.strftime('%-d %b %Y')
                 .actions
                   = link_to 'Edit', edit_manage_team_path(team), class: 'button button--sm button--inverted-primary'

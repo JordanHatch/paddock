@@ -54,6 +54,13 @@
       font-weight: bold;
     }
 
+    .date {
+      font-size: .85rem;
+      padding-left: .5rem;
+      color: helpers.colour('grey', '700');
+      font-weight: normal;
+    }
+
     .actions {
       width: 5rem;
       text-align: right;
