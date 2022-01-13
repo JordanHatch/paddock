@@ -10,7 +10,7 @@ class Team < ApplicationRecord
 
   scope :in_name_order, -> { order('name ASC') }
   scope :for_sprint, lambda { |sprint|
-    where('start_on IS NULL OR start_on <= ?', sprint.end_on)
+    where('(start_on IS NULL OR start_on <= ?) AND (end_on IS NULL OR end_on >= ?)', sprint.end_on, sprint.end_on)
   }
 
   def update_for_sprint(sprint)
@@ -18,7 +18,7 @@ class Team < ApplicationRecord
   end
 
   def active_in_sprint?(sprint)
-    start_on.blank? ||
-      start_on <= sprint.end_on
+    (start_on.blank? || start_on <= sprint.end_on) &&
+      (end_on.blank? || end_on >= sprint.end_on)
   end
 end

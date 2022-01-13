@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_021647) do
+ActiveRecord::Schema.define(version: 2022_01_13_003042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 2022_01_11_021647) do
     t.string "slug"
     t.integer "group_id"
     t.date "start_on"
+    t.date "end_on"
     t.index ["slug"], name: "index_teams_on_slug", unique: true
   end
 
