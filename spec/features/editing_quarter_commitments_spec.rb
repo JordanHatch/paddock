@@ -80,7 +80,7 @@ RSpec.describe 'editing quarter commitments', type: :feature do
       expect(page).to have_selector('li', text: 'Action 3')
     end
 
-    actions = find_content_block("Commodities")
+    actions = find_content_block('Commodities')
     within actions do
       expect(page).to have_selector('li', text: 'Meat')
       expect(page).to have_selector('li', text: 'Eggs')

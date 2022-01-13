@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'API V1 Sprint Updates', type: :request, authenticate_api: true do
-
   describe 'fetching all sprint updates' do
     let!(:sprint_updates) { create_list(:published_sprint_update, 5) }
     let!(:issue) { create(:issue, sprint_update: sprint_updates[0]) }
@@ -95,5 +94,4 @@ RSpec.describe 'API V1 Sprint Updates', type: :request, authenticate_api: true d
       expect(response).to have_http_status(404)
     end
   end
-
 end

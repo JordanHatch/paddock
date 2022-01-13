@@ -17,8 +17,8 @@ class Manage::TeamForm < BaseForm
     end
 
     rule(:end_on, :start_on) do
-      if values[:start_on].present? && values[:end_on].present?
-        key.failure('must be after the start date') if values[:end_on] < values[:start_on]
+      if values[:start_on].present? && values[:end_on].present? && (values[:end_on] < values[:start_on])
+        key.failure('must be after the start date')
       end
     end
   end

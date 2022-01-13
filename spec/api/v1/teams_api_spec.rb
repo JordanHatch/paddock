@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'API V1 Teams', type: :request, authenticate_api: true do
-
   describe 'fetching all teams' do
     let!(:teams) { create_list(:team, 5) }
 
@@ -47,5 +46,4 @@ RSpec.describe 'API V1 Teams', type: :request, authenticate_api: true do
       expect(body['group']['name']).to eq(team.group.name)
     end
   end
-
 end

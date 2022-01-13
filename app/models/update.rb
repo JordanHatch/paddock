@@ -17,7 +17,7 @@ class Update < ApplicationRecord
 
   scope :recent_first, -> { order('created_at DESC') }
   scope :published_for_sprint, ->(sprint) { where(sprint: sprint).published }
-  scope :by_sprint_id, ->(id) { where(sprint_id: id ) }
+  scope :by_sprint_id, ->(id) { where(sprint_id: id) }
 
   aasm(column: :state) do
     state :not_started, initial: true

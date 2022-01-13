@@ -10,8 +10,6 @@ class Quarters::BaseController < ApplicationController
   end
 
   def quarter
-    if quarter_id.present?
-      @quarter ||= Quarter.friendly.includes(:commitments).find(quarter_id)
-    end
+    @quarter ||= Quarter.friendly.includes(:commitments).find(quarter_id) if quarter_id.present?
   end
 end

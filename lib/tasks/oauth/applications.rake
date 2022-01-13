@@ -31,10 +31,10 @@ namespace :oauth do
     end
 
     task list: :environment do |_t|
-      puts "  ---> List all OAuth applications"
+      puts '  ---> List all OAuth applications'
 
       Doorkeeper::Application.all.each do |app|
-        puts "-------------------------------------"
+        puts '-------------------------------------'
         puts "ID: #{app.id}"
         puts "Name: #{app.name}"
         puts "-------------------------------------\n"

@@ -9,7 +9,7 @@ class CommitmentCommodityListPresenter
   end
 
   def self.format_label(key)
-    label = I18n.t(key, scope: [:commitments, :commodities], default: '')
+    label = I18n.t(key, scope: %i[commitments commodities], default: '')
 
     content_tag(:div, label).html_safe
   end

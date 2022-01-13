@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'API V1 Sprints', type: :request, authenticate_api: true do
-
   describe 'fetching all sprints' do
     let!(:sprints) { create_list(:sprint, 5) }
 
@@ -70,5 +69,4 @@ RSpec.describe 'API V1 Sprints', type: :request, authenticate_api: true do
       expect(Date.parse(body['end_on'])).to eq(sprint.end_on)
     end
   end
-
 end

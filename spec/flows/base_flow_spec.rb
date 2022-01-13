@@ -41,9 +41,9 @@ RSpec.describe BaseFlow do
   let(:object) { stub(attributes: { first_name: 'Test', last_name: 'User' }) }
   let(:current_form_id) { :one }
 
-  subject {
+  subject do
     ExampleFlow.new(current_form_id: current_form_id, object: object)
-  }
+  end
 
   describe '#initialize' do
     it 'sets the current form id' do
@@ -116,15 +116,15 @@ RSpec.describe BaseFlow do
       let(:current_form_id) { :foo }
 
       it 'raises a FormNotFound exception' do
-        expect{ subject.form_class }.to raise_error(BaseFlow::FormNotFound)
+        expect { subject.form_class }.to raise_error(BaseFlow::FormNotFound)
       end
     end
   end
 
   describe '#completion_status_for_form' do
-    let(:mock_status) {
+    let(:mock_status) do
       { completion: :not_started }
-    }
+    end
 
     it 'returns the status for the given form' do
       ExampleForms::FormOne.any_instance.stubs(:status).returns(mock_status)
@@ -135,9 +135,9 @@ RSpec.describe BaseFlow do
 
   describe '#valid?' do
     context 'when all forms are valid' do
-      let(:mock_status) {
+      let(:mock_status) do
         { validation: :valid }
-      }
+      end
 
       before(:each) do
         ExampleForms::FormOne.any_instance.stubs(:status).returns(mock_status)

@@ -1,5 +1,4 @@
 class Quarters::CommitmentsController < Quarters::BaseController
-
   def show; end
 
   def edit

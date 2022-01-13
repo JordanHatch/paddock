@@ -1,12 +1,9 @@
 class Quarters::RootController < Quarters::BaseController
   def index
-    if quarters.any?
-      redirect_to quarter_path(quarters.first)
-    end
+    redirect_to quarter_path(quarters.first) if quarters.any?
   end
 
-  def show
-  end
+  def show; end
 
   private
 
