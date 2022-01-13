@@ -10,7 +10,7 @@ class Commitment < ApplicationRecord
     grain
     honey
     lae
-  ]
+  ].freeze
 
   enumerize :commodities, in: COMMODITIES, multiple: true
 

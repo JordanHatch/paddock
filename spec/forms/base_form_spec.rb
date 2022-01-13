@@ -35,7 +35,7 @@ end
 
 RSpec.describe BaseForm do
   def build_mock_model(attributes)
-    OpenStruct.new(
+    stub(
       attributes.merge({
         attributes: attributes,
       }),

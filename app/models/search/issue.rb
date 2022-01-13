@@ -10,7 +10,7 @@ module Search
       lambda { |scope, params|
         scope.for_sprint_id(params[:sprint_id])
       },
-      -> { Sprint.all.map { |sprint| [sprint.name, sprint.id] }.to_h },
+      -> { Sprint.all.to_h { |sprint| [sprint.name, sprint.id] } },
     )
 
     FilterGroupID = Filter.new(
@@ -19,7 +19,7 @@ module Search
       lambda { |scope, params|
         scope.for_group_ids([params[:group_id]].flatten)
       },
-      -> { Group.in_order.map { |group| [group.name, group.id] }.to_h },
+      -> { Group.in_order.to_h { |group| [group.name, group.id] } },
     )
 
     FilterIdentifier = Filter.new(
@@ -54,9 +54,9 @@ module Search
     end
 
     def available_filters
-      defined_filters.map { |filter|
+      defined_filters.to_h do |filter|
         [filter.id, filter]
-      }.to_h
+      end
     end
 
     def active_filters
@@ -68,8 +68,7 @@ module Search
 
     def selected?(filter_id, value)
       params[filter_id].present? &&
-        (params[filter_id].is_a?(Array) && params[filter_id].include?(value.to_s)) ||
-        params[filter_id] == value.to_s
+        ((params[filter_id].is_a?(Array) && params[filter_id].include?(value.to_s)) || params[filter_id] == value.to_s)
     end
 
     private
