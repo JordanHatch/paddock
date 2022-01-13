@@ -5,12 +5,6 @@ class SprintUpdates::PublishService < BaseService
     @flow = flow
   end
 
-  def self.publish(**args)
-    new(**args).tap do |service|
-      service.result = service.publish
-    end
-  end
-
   def build
     yield List::Validated[
             validate_update,

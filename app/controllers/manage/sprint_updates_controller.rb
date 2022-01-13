@@ -23,14 +23,10 @@ class Manage::SprintUpdatesController < Manage::BaseController
 
   attr_reader :service
 
-  helper_method :service, :team, :update, :sprint
+  helper_method :service, :team, :sprint
 
   def team
     service.team
-  end
-
-  def update
-    service.update
   end
 
   def sprint

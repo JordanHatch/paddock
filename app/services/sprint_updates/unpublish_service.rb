@@ -6,12 +6,6 @@ class SprintUpdates::UnpublishService < BaseService
     @sprint_id = sprint_id
   end
 
-  def self.unpublish(**args)
-    new(**args).tap do |service|
-      service.result = service.unpublish
-    end
-  end
-
   def build
     @team, @sprint = yield List::Validated[
                              validate_team(team_id),
