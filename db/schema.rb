@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_003042) do
+ActiveRecord::Schema.define(version: 2022_01_13_012049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_003042) do
              FROM issues i
             WHERE (i.update_id = u.id)) AS issue_count
      FROM ((sprints s
-       JOIN teams t ON (((t.start_on <= s.end_on) OR (t.start_on IS NULL))))
+       JOIN teams t ON ((((t.start_on <= s.end_on) OR (t.start_on IS NULL)) AND ((t.end_on >= s.end_on) OR (t.end_on IS NULL)))))
        LEFT JOIN updates u ON (((u.sprint_id = s.id) AND (u.team_id = t.id))));
   SQL
 end

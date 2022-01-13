@@ -89,6 +89,29 @@ RSpec.describe TeamSummary do
         expect(summaries.map(&:id)).to contain_exactly(*teams.map(&:id))
       end
     end
+
+    context 'the team ends before the sprint' do
+      let!(:teams) do
+        create_list(:team, 3, end_on: sprint.end_on - 1.day)
+      end
+
+      it 'returns an empty list' do
+        summaries = described_class.for_sprint(sprint)
+        expect(summaries).to be_empty
+      end
+    end
+
+    context 'the team has no end_on date' do
+      let!(:teams) do
+        create_list(:team, 3, end_on: nil)
+      end
+
+      it 'returns the teams' do
+        summaries = described_class.for_sprint(sprint)
+
+        expect(summaries.map(&:id)).to contain_exactly(*teams.map(&:id))
+      end
+    end
   end
 
   describe '.with_groups' do
