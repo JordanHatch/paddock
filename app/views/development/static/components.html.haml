@@ -160,6 +160,16 @@
         %p= select_tag 'select', options_for_select(['One', 'Two', 'Three']), class: 'select-box select-box--lg'
 
     .update-content-block
+      %h2.update-content-block__title Multi select boxes
+      .update-content-block__content
+        .multiple-select-box{ data: { controller: 'multiple-select', multiple_select_placeholder_value: 'Search for a value...' }}
+          = select_tag 'select',
+                       options_for_select(['One', 'Two', 'Three']),
+                       class: 'multiple-select-box__input',
+                       multiple: true,
+                       data: { multiple_select_target: 'input' }
+
+    .update-content-block
       %h2.update-content-block__title Checkboxes
       .update-content-block__content
         .checkbox.checkbox--sm

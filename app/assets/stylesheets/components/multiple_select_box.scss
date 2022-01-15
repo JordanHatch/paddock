@@ -1,0 +1,55 @@
+@use 'helpers';
+@use 'variables/typography';
+
+@import 'choices.js/src/styles/choices.scss';
+
+$border-colour: helpers.colour('silver', '900');
+
+.multiple-select-box {
+  padding-right: 4rem;
+}
+
+.multiple-select-box .choices__inner {
+  border: .14rem solid $border-colour;
+  border-radius: .4rem;
+
+  font-size: 1.1rem;
+
+  padding: .65rem .75rem .65rem .75rem;
+  line-height: 1.3rem;
+  background-size: 1.3rem;
+  min-height: 3.8rem;
+}
+
+.multiple-select-box .choices__list--multiple .choices__item {
+  font-size: 1.1rem;
+
+  background-color: helpers.colour('silver', '50');
+  box-shadow: helpers.colour('grey', '400') 0px 2px 0px;
+  color: helpers.colour('silver', '900');
+
+  border-color: helpers.colour('silver', '600');
+  border-radius: .4rem;
+
+  padding: .5rem .9rem;
+
+  margin-bottom: .2rem;
+  margin-top: .2rem;
+  margin-right: .4rem;
+}
+
+.multiple-select-box .choices__input {
+  font-size: 1.1rem;
+  font-family: typography.$font-stack;
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+}
+
+.multiple-select-box .choices[data-type*='select-multiple'] .choices__button {
+  background-color: helpers.colour('silver', '900');
+  border-left: 0px;
+  padding: .2rem .6rem;
+  border-radius: .2rem;
+  top: -1.5px;
+  margin-right: -6px;
+}
