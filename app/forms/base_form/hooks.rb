@@ -4,6 +4,7 @@ module BaseForm::Hooks
   HOOKS = %i[
     preprocess
     before_validate
+    deserialize_model
   ].freeze
 
   module ClassMethods
