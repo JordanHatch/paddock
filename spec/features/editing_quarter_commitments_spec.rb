@@ -94,5 +94,11 @@ RSpec.describe 'editing quarter commitments', type: :feature do
       expect(page).to have_selector('li', text: 'Eggs')
       expect(page).to have_selector('li', text: 'Fish')
     end
+
+    actions = find_content_block('Teams')
+    within actions do
+      expect(page).to have_selector('li', text: team_1.name)
+      expect(page).to have_selector('li', text: team_2.name)
+    end
   end
 end

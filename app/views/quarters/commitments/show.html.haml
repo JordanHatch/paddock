@@ -33,6 +33,15 @@
         - commitment.commodities.each do |label|
           %li=t(label, scope: %w[commitments commodities])
 
+- if commitment.teams.any?
+  .update-content-block#actions
+    %h3.update-content-block__title
+      Teams
+    .update-content-block__content
+      %ul
+        - commitment.teams.each do |team|
+          %li= team.name
+
 .update-content-block
   .update-content-block__content
     = link_to 'Edit this page', edit_quarter_commitment_path(commitment.quarter, commitment), class: 'button'
