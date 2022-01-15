@@ -15,6 +15,9 @@ class Team < ApplicationRecord
   scope :for_sprint, lambda { |sprint|
     where('(start_on IS NULL OR start_on <= ?) AND (end_on IS NULL OR end_on >= ?)', sprint.end_on, sprint.end_on)
   }
+  scope :for_quarter, lambda { |quarter|
+    where('(start_on IS NULL OR start_on <= ?) AND (end_on IS NULL OR end_on >= ?)', quarter.end_on, quarter.start_on)
+  }
 
   def update_for_sprint(sprint)
     updates.find { |update| update.sprint_id == sprint.id } || updates.build
