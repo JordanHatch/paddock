@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_012049) do
+ActiveRecord::Schema.define(version: 2022_01_15_040300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -146,6 +146,15 @@ ActiveRecord::Schema.define(version: 2022_01_13_012049) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "team_commitments", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "commitment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["commitment_id"], name: "index_team_commitments_on_commitment_id"
+    t.index ["team_id"], name: "index_team_commitments_on_team_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -200,6 +209,8 @@ ActiveRecord::Schema.define(version: 2022_01_13_012049) do
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
+  add_foreign_key "team_commitments", "commitments"
+  add_foreign_key "team_commitments", "teams"
   add_foreign_key "teams", "groups", on_delete: :restrict
   add_foreign_key "updates", "sprints", on_delete: :restrict
   add_foreign_key "updates", "teams"

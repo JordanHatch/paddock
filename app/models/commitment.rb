@@ -16,5 +16,7 @@ class Commitment < ApplicationRecord
 
   belongs_to :quarter
 
+  has_many :team_commitments
+  has_many :teams, through: :team_commitments
   scope :in_order, -> { order('number ASC') }
 end

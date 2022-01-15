@@ -2,6 +2,9 @@ class Team < ApplicationRecord
   extend FriendlyId
 
   belongs_to :group
+
+  has_many :team_commitments
+  has_many :commitments, through: :team_commitments
   has_many :updates
 
   has_paper_trail skip: %i[created_at updated_at]
