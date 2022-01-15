@@ -1,0 +1,14 @@
+.flow-question
+  %h2.flow-question__question
+    Which teams are leading this commitment?
+
+  .flow-question__detail
+    %p Select one or more teams responsible for delivering on this commitment.
+
+  .multiple-select-box{ data: { controller: 'multiple-select',
+                                multiple_select_placeholder_value: 'Search for a team...' } }
+    = f.input :team_ids, collection: Team.for_quarter(commitment.quarter),
+                         label: false,
+                         input_html: { class: 'multiple-select-box__input',
+                           multiple: true,
+                           data: { multiple_select_target: 'input' } }

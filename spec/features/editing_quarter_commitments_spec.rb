@@ -13,6 +13,10 @@ RSpec.describe 'editing quarter commitments', type: :feature do
   end
 
   it 'can edit a commitment', admin_user: true do
+    create_list(:team, 3)
+    team_1 = create(:team, name: 'Example team 1')
+    team_2 = create(:team, name: 'Example team 2')
+
     visit quarter_path(quarter)
 
     click_on commitment.name
@@ -54,6 +58,10 @@ RSpec.describe 'editing quarter commitments', type: :feature do
     check 'Meat'
     check 'Eggs'
     check 'Fish'
+    save_and_next
+
+    select team_1.name, from: 'commitment[team_ids][]'
+    select team_2.name, from: 'commitment[team_ids][]'
 
     click_on 'Save and finish'
 
