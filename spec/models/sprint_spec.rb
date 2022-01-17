@@ -14,7 +14,7 @@ RSpec.describe Sprint do
     end
   end
 
-  describe '.for_quarter', focus: true do
+  describe '.for_quarter' do
     let(:quarter_start_date) { Date.parse('2022-07-01') }
     let(:quarter_end_date) { Date.parse('2022-09-30') }
     let(:quarter) { create(:quarter, start_on: quarter_start_date, end_on: quarter_end_date) }

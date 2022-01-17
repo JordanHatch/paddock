@@ -1,7 +1,7 @@
 %ul.sprint-timeline
   .sprint-timeline__background
   - sprints.each do |sprint|
-    %li.sprint-timeline__item
+    %li.sprint-timeline__item{ class: "sprint-timeline__item--#{sprint.status}" }
       = link_to sprint_path(sprint), class: 'sprint-timeline__number' do
         = sprint.name.sub(/Sprint /, '')
 
