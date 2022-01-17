@@ -1,0 +1,43 @@
+@use 'helpers';
+
+.sprint-timeline {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: .5rem;
+  height: 3rem;
+}
+
+.sprint-timeline__item {
+  position: relative;
+
+  &:not(:first-of-type)::before {
+    content: ' ';
+    position: absolute;
+    width: 3.5rem;
+    height: .5rem;
+    background: helpers.colour('silver', '600');
+    z-index: 1;
+    top: 1.25rem;
+    left: -3.5rem;
+  }
+}
+
+.sprint-timeline__number {
+  background: helpers.colour('grey', '50');
+  border: 1px solid helpers.colour('black');
+  border-radius: 50%;
+  padding: .75rem 0 0;
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  font-size: 1.1rem;
+  text-align: center;
+  color: helpers.colour('black');
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 10;
+  position: relative;
+}

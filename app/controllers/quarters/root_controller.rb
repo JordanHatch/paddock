@@ -7,13 +7,17 @@ class Quarters::RootController < Quarters::BaseController
 
   private
 
-  helper_method :quarters, :commitments
+  helper_method :quarters, :commitments, :sprints
 
   def quarters
     @quarters ||= Quarter.all
   end
 
   def commitments
-    quarter.commitments.in_order
+    @commitments ||= quarter.commitments.in_order
+  end
+
+  def sprints
+    @sprints ||= Sprint.for_quarter(quarter)
   end
 end

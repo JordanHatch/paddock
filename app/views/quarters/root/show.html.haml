@@ -1,3 +1,10 @@
+%ul.sprint-timeline
+  .sprint-timeline__background
+  - sprints.each do |sprint|
+    %li.sprint-timeline__item
+      = link_to sprint_path(sprint), class: 'sprint-timeline__number' do
+        = sprint.name.sub(/Sprint /, '')
+
 = turbo_frame_tag 'quarter-commitments-list', target: '_top' do
   .team-header
     .team-header__content
@@ -17,3 +24,4 @@
             = commitment.number
           .commitments-list__name
             = commitment.name
+

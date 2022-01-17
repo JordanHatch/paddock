@@ -10,6 +10,8 @@ class Sprint < ApplicationRecord
   scope :in_reverse_date_order, -> { order('start_on desc') }
   scope :recent, -> { where('start_on < ?', Date.today).order('start_on desc') }
 
+  scope :for_quarter, ->(quarter) { where('end_on >= ? AND start_on <= ?', quarter.start_on, quarter.end_on) }
+
   scope :previous_sprints, ->(sprint) { where('start_on < ?', sprint.start_on).order('start_on DESC') }
   scope :next_sprints, ->(sprint) { where('start_on > ?', sprint.start_on).order('start_on ASC') }
 
