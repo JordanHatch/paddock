@@ -55,3 +55,16 @@
   padding-left: .75em;
   padding-right: .5em;
 }
+
+.commitments-list--sortable {
+  background: helpers.colour('orange', '50');
+  padding: .5em;
+}
+
+.commitments-list--sortable .commitments-list__item {
+  cursor: move;
+}
+
+.commitments-list--sortable .commitments-list__box {
+  border: 2px dashed helpers.colour('orange', '900');
+}

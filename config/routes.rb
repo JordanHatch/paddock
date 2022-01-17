@@ -55,6 +55,13 @@ Rails.application.routes.draw do
     end
     resources :teams
 
+    resources :quarters do
+      member do
+        get :reorder_commitments, path: 'reorder-commitments'
+        patch :do_reorder_commitments, path: 'reorder-commitments'
+      end
+    end
+
     root to: 'root#index'
   end
 
