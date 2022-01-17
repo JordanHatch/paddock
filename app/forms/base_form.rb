@@ -17,7 +17,7 @@ class BaseForm < Dry::Struct
 
       deserialize_nested_attributes_from_model(self, attributes, model)
 
-      self.trigger_hook(:deserialize_model, attributes, model)
+      trigger_hook(:deserialize_model, attributes, model)
 
       new(attributes).set_model(model)
     end
