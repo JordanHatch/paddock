@@ -4,12 +4,12 @@
   font-size: 1em;
   display: flex;
   flex-wrap: wrap;
-  gap: .75em;
+  grid-gap: .75em;
 }
 
 .commitments-list__item {
   display: flex;
-  width: 32%;
+  width: calc(33.3% - .5em);
 }
 
 .commitments-list__box {
@@ -22,6 +22,7 @@
   min-height: 5em;
   color: helpers.colour('black');
   text-decoration: none;
+  width: 100%;
 
   &:hover {
     background: helpers.colour('silver', '50');
