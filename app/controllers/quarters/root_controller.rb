@@ -18,6 +18,6 @@ class Quarters::RootController < Quarters::BaseController
   end
 
   def sprints
-    @sprints ||= Sprint.for_quarter(quarter)
+    @sprints ||= Sprint.for_quarter(quarter).in_date_order
   end
 end

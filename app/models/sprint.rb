@@ -32,4 +32,24 @@ class Sprint < ApplicationRecord
   def delivery_status_summary
     updates.published.group(:delivery_status).count
   end
+
+  def status
+    case
+    when current? then :current
+    when historical? then :historical
+    when future? then :future
+    end
+  end
+
+  def current?
+    Date.today >= start_on && Date.today <= end_on
+  end
+
+  def historical?
+    Date.today > end_on
+  end
+
+  def future?
+    Date.today < start_on
+  end
 end
