@@ -15,9 +15,9 @@
 .commitments-list__box {
   display: flex;
   background: helpers.colour('silver', '25');
-  border: 1px solid helpers.colour('grey', '300');
+  border: 1px solid helpers.colour('grey', '400');
   border-radius: .3em;
-  box-shadow: helpers.colour('silver', '50') 0px 2px 0px;
+  box-shadow: rgba(0,0,0,0.05) 0px 2px 0px;
   padding: 1.1em;
   min-height: 5em;
   color: helpers.colour('black');
