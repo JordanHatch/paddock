@@ -41,9 +41,10 @@
     %h3.update-content-block__title
       Teams
     .update-content-block__content
-      %ul
+      %ul.teams-list
         - commitment.teams.each do |team|
-          %li= team.name
+          %li.teams-list__item
+            .teams-list__name= team.name
 
 .update-content-block
   .update-content-block__content

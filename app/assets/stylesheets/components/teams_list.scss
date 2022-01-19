@@ -1,0 +1,20 @@
+@use 'helpers';
+
+.teams-list {
+  font-size: 1em;
+}
+
+.teams-list__item {
+  display: block;
+  margin: 0 0 .5em;
+}
+
+.teams-list__name {
+  display: inline-block;
+
+  background-color: helpers.colour('white', '50');
+  border: 1px solid helpers.colour('grey', '400');
+  border-radius: .4em;
+
+  padding: .6em .8em;
+}
