@@ -1,0 +1,22 @@
+= turbo_frame_tag 'quarter-commitments-list', class: 'turbo-frame', target: '_top' do
+  .section-header
+    .section-header__content
+      %h1.section-header__title Key commitments this quarter
+    .section-header__actions.turbo-frame__container
+      .turbo-frame__loading
+      - if signed_in_admin?
+        = link_to reorder_commitments_manage_quarter_path(quarter.id),
+             class: 'button button--sm button--inverted-warning',
+             data: { turbo_frame: '_self' } do
+          %i.button__icon.button__icon--warning.fas.fa-sort
+          Change order
+  .turbo-frame__container
+    .turbo-frame__loading
+    %ul.commitments-list
+      - commitments.each do |commitment|
+        %li.commitments-list__item
+          = link_to quarter_commitment_path(quarter, commitment), class: 'commitments-list__box' do
+            .commitments-list__number
+              = commitment.number
+            .commitments-list__name
+              = commitment.name

@@ -1,12 +1,17 @@
 = turbo_frame_tag('quarter-commitments-list', class: 'turbo-frame', target: '_top') do
   = form_tag do_reorder_commitments_manage_quarter_path(quarter.id), method: :patch do
-    .team-header
-      .team-header__content
-        %h1 Key commitments this quarter
-      .team-header__actions
-        = button_tag 'Save order', class: 'button button--primary', data: { sortable_commitments_list_target: 'submit' }
-        = link_to 'Cancel', quarter_path(quarter), class: 'button button--inverted-primary'
-    .sortable-list{ data: { controller: 'sortable-commitments-list' } }
+    .section-header
+      .section-header__content
+        %h1.section-header__title Key commitments this quarter
+      .section-header__actions.turbo-frame__container
+        .turbo-frame__loading
+        = button_tag 'Save order',
+                     class: 'button button--primary button--sm',
+                     data: { sortable_commitments_list_target: 'submit',
+                             turbo_frame: '_self' }
+        = link_to 'Cancel', quarter_path(quarter), class: 'button button--sm button--inverted-primary'
+    .turbo-frame__container{ data: { controller: 'sortable-commitments-list' } }
+      .turbo-frame__loading
       %ul.commitments-list.commitments-list--sortable{ data: { sortable_commitments_list_target: 'list' } }
         - commitments.each_with_index do |commitment, i|
           %li.commitments-list__item
