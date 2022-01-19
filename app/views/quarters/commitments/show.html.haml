@@ -29,9 +29,12 @@
     %h3.update-content-block__title
       Commodities
     .update-content-block__content
-      %ul
+      %ul.commodities-list
         - commitment.commodities.each do |label|
-          %li=t(label, scope: %w[commitments commodities])
+          %li.commodities-list__item
+            .commodities-list__icon
+              .icon.icon--sm{ class: "icon--commodities-#{label}" }
+            .commodities-list__label= t(label, scope: %w[commitments commodities])
 
 - if commitment.teams.any?
   .update-content-block#actions

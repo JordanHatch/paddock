@@ -1,0 +1,32 @@
+@use 'helpers';
+
+.commodities-list {
+  font-size: 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em;
+}
+
+.commodities-list__item {
+  display: block;
+  width: calc(33% - .5em);
+  padding: 1em;
+
+  background: helpers.colour('white');
+  border: 1px solid helpers.colour('grey', '400');
+  border-radius: .4em;
+  box-shadow: rgba(0,0,0,0.05) 0px 2px 2px;
+
+  text-align: center;
+}
+
+.commodities-list__icon {
+  margin-bottom: .25rem;
+}
+
+
+.commodities-list__label {
+  font-weight: bold;
+}
+
