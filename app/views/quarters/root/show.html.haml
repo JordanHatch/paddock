@@ -1,9 +1,4 @@
-%ul.sprint-timeline
-  .sprint-timeline__background
-  - sprints.each do |sprint|
-    %li.sprint-timeline__item{ class: "sprint-timeline__item--#{sprint.status}" }
-      = link_to sprint_path(sprint), class: 'sprint-timeline__number' do
-        = sprint.name.sub(/Sprint /, '')
+= render partial: 'timeline', locals: { sprints: sprints }
 
 = turbo_frame_tag 'quarter-commitments-list', target: '_top' do
   .team-header

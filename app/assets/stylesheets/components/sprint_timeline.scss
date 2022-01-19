@@ -20,27 +20,31 @@
     position: absolute;
     width: 3.5rem;
     height: .5rem;
-    background: helpers.colour('silver', '500');
     z-index: 1;
     top: 1.25rem;
     left: -3.5rem;
+
+    background: helpers.colour('silver', '500');
   }
 }
 
 .sprint-timeline__number {
-  background: helpers.colour('grey', '50');
-  border-radius: 50%;
-  padding: .8rem 0 0;
+  font-size: 1.05rem;
+
+  position: relative;
+  display: block;
   width: 3rem;
   height: 3rem;
-  display: block;
-  font-size: 1.1rem;
-  text-align: center;
+  padding: .82rem 0 0;
+  z-index: 10;
+
+  background: helpers.colour('grey', '50');
+  border-radius: 50%;
+
   color: helpers.colour('black');
   font-weight: bold;
   text-decoration: none;
-  z-index: 10;
-  position: relative;
+  text-align: center;
 }
 
 .sprint-timeline__item--current .sprint-timeline__number {
@@ -74,4 +78,15 @@
   &:hover {
     background: helpers.colour('blue', '200');
   }
+}
+
+.sprint-timeline__item--current .sprint-timeline__number::after {
+  content: ' ';
+  width: .26rem;
+  height: .26rem;
+  border-radius: 50%;
+  position: absolute;
+  bottom: .55rem;
+  left: 1.36rem;
+  background-color: helpers.colour('orange', '50');
 }

@@ -1,0 +1,8 @@
+%ul.sprint-timeline
+  .sprint-timeline__background
+  - sprints.each do |sprint|
+    %li.sprint-timeline__item{ class: "sprint-timeline__item--#{sprint.status}" }
+      = link_to sprint_path(sprint), class: 'sprint-timeline__number' do
+        - if sprint.current?
+          .sprint-timeline__current-marker
+        = sprint.short_label
