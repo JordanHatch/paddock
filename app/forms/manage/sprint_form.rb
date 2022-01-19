@@ -1,5 +1,6 @@
 class Manage::SprintForm < BaseForm
   attribute :name, Types::Nominal::String
+  attribute :short_label, Types::Nominal::String
   attribute :start_on, Types::Nominal::Date
   attribute :end_on, Types::Nominal::Date
 
@@ -18,6 +19,7 @@ class Manage::SprintForm < BaseForm
   validation do
     params do
       required(:name).filled(:string)
+      required(:short_label).value(:filled?, max_size?: 3)
       required(:start_on).filled(:date)
       required(:end_on).filled(:date)
     end

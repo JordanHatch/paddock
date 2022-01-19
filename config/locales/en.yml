@@ -21,6 +21,8 @@ en:
       team:
         start_on: The date the team started sprint reporting. The team won't show up in sprints that end before this date. If blank, the team will show up in all previous sprints.
         end_on: The date the team finished sprint reporting. The team won't show up in sprints that end after this date. If blank, the team will show up in all future sprints.
+      sprint:
+        short_label: How the sprint appears in timelines.<br> If it's Sprint 15, the short label should be '15'.
       update:
         issues:
           identifier: If this issue has been raised in Azure DevOps, what's the identifier?

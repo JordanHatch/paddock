@@ -6,6 +6,7 @@ RSpec.describe Manage::SprintForm do
       let(:params) do
         {
           name: 'Sprint X',
+          short_label: 'X',
           start_on: nil,
           end_on: nil,
         }
@@ -40,6 +41,7 @@ RSpec.describe Manage::SprintForm do
         let(:params) do
           {
             name: 'Sprint X',
+            short_label: 'X',
             start_on: Date.today,
             end_on: nil,
           }
@@ -55,6 +57,7 @@ RSpec.describe Manage::SprintForm do
         let(:params) do
           {
             name: 'Sprint X',
+            short_label: 'X',
             start_on: nil,
             end_on: Date.today,
           }
@@ -71,6 +74,7 @@ RSpec.describe Manage::SprintForm do
     let(:valid_params) do
       {
         name: 'Example',
+        short_label: '1',
         start_on: Date.today,
         end_on: Date.today + 2.weeks,
       }
@@ -122,6 +126,17 @@ RSpec.describe Manage::SprintForm do
         end
       end
 
+      context 'with a blank short_label' do
+        let(:params) do
+          valid_params.merge(short_label: nil)
+        end
+
+        it 'is not valid' do
+          expect(subject).to_not be_valid
+          expect(subject.errors).to have_key(:short_label)
+        end
+      end
+
       context 'with an invalid start_on date' do
         let(:params) do
           valid_params.merge(start_on: 'not a date')
@@ -152,6 +167,17 @@ RSpec.describe Manage::SprintForm do
         it 'is not valid' do
           expect(subject).to_not be_valid
           expect(subject.errors).to have_key(:end_on)
+        end
+      end
+
+      context 'when the short_label is longer than 3 characters' do
+        let(:params) do
+          valid_params.merge(short_label: '1234')
+        end
+
+        it 'is not valid' do
+          expect(subject).to_not be_valid
+          expect(subject.errors).to have_key(:short_label)
         end
       end
     end

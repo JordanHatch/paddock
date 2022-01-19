@@ -30,6 +30,7 @@ RSpec.describe 'managing sprints', type: :feature, admin_user: true do
     click_on 'Add a new sprint'
 
     fill_in 'Sprint name', with: sprint.name
+    fill_in 'Short label', with: sprint.short_label
 
     select sprint.start_on.year, from: 'sprint[start_on(1i)]'
     select sprint.start_on.strftime('%B'), from: 'sprint[start_on(2i)]'
