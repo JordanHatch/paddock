@@ -2,4 +2,9 @@
 
 - if commitments.any?
   = render partial: 'commitments', locals: { quarter: quarter, commitments: commitments }
+- else
+  .info-box.no-sprints-message
+    .info-box__icon
+      .icon.icon--xl.icon--commitment
+    .info-box__message Paddock doesn't have the detail on commitments for this quarter
 
