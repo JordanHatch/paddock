@@ -11,6 +11,8 @@
               quarter_path(quarter),
               list_item_class: 'section-navigation__nav-item',
               link_class: 'section-navigation__nav-link'
+
+      = render partial: 'shared/components/quarter_navigation', locals: { quarter: quarter }
   .inner
     = yield
 
