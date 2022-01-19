@@ -1,0 +1,23 @@
+.section-header {
+  margin: 1.5rem 0 1.5rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.section-header__title {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.section-header__content {
+  flex: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.section-header__actions {
+  flex: 1 0 auto;
+  text-align: right;
+}
