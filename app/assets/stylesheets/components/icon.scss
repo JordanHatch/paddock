@@ -1,0 +1,62 @@
+.icon {
+  display: inline-block;
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: 2.5rem;
+}
+
+@mixin icon-size($size) {
+  width: $size;
+  height: $size;
+  background-size: $size;
+}
+
+.icon--sm {
+  @include icon-size(2.5rem);
+}
+
+.icon--lg {
+  @include icon-size(7.5rem);
+}
+
+.icon--xl {
+  @include icon-size(10rem);
+}
+
+.icon--commitment {
+  background-image: url('../../images/icons/commitment.svg');
+}
+.icon--warning {
+  background-image: url('../../images/icons/warning.svg');
+}
+.icon--future {
+  background-image: url('../../images/icons/future.svg');
+}
+
+.icon--commodities-eggs {
+  background-image: url('../../images/commodities/eggs.svg');
+}
+.icon--commodities-meat {
+  background-image: url('../../images/commodities/meat.svg');
+}
+.icon--commodities-fish {
+  background-image: url('../../images/commodities/fish.svg');
+}
+.icon--commodities-dairy {
+  background-image: url('../../images/commodities/dairy.svg');
+}
+.icon--commodities-horticulture {
+  background-image: url('../../images/commodities/horticulture.svg');
+}
+.icon--commodities-grain {
+  background-image: url('../../images/commodities/grain.svg');
+}
+.icon--commodities-honey {
+  background-image: url('../../images/commodities/honey.svg');
+}
+.icon--commodities-lae {
+  background-image: url('../../images/commodities/lae.svg');
+}
