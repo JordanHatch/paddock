@@ -46,6 +46,6 @@ class Update < ApplicationRecord
   end
 
   def recent_versions
-    versions.order('created_at DESC')
+    versions.reverse
   end
 end

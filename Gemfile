@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.4.4'
 gem 'aasm'
 gem 'after_commit_everywhere', '~> 1.0.0'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'diffy'
 gem 'doorkeeper'
 gem 'dry-monads'
 gem 'dry-schema'

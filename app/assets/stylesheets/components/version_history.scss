@@ -1,0 +1,138 @@
+@use 'helpers';
+@use 'variables/typography';
+
+.version-history {
+  font-size: 1em;
+}
+
+.version-history__list {
+  margin: 0 -1.5rem;
+}
+
+.version-history__item {
+  display: flex;
+
+  &:nth-of-type(even) {
+    background: helpers.colour('silver', '25');
+  }
+}
+
+.version-history__metadata {
+  width: 32%;
+  padding: 1.5rem;
+  margin-right: .5em;
+}
+
+.version-history__changeset {
+  width: 68%;
+  padding: 1.5rem;
+}
+
+.version-history__author {
+  font-weight: bold;
+}
+
+.version-history__time {
+  font-size: .9em;
+  margin-top: .25em;
+
+  time {
+    text-decoration: underline dashed helpers.colour('grey', '500');
+    cursor: help;
+  }
+}
+
+.version-history__item--state-change {
+  padding: 1.5rem;
+
+  .version-history__metadata {
+    padding: 0;
+  }
+}
+
+.version-history__state {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background: helpers.colour('purple');
+  color: helpers.colour('white');
+  font-weight: bold;
+
+  padding: .6em .8em;
+  margin-right: 1em;
+
+  border-radius: .4em;
+}
+
+.version-history__field {
+  font-weight: bold;
+  font-size: 1em;
+  margin-bottom: .4em;
+}
+
+.version-history__diff {
+  margin-bottom: .85em;
+  padding: .85em;
+  font-size: .85em;
+  font-family: typography.$mono-font-stack;
+
+  background: helpers.colour('white');
+  border: 1px solid helpers.colour('grey', '400');
+  border-radius: .4em;
+
+  line-height: 1.3em;
+
+  ul {
+    display: table;
+  }
+
+  del, ins {
+    display: flex;
+    text-decoration: none;
+  }
+
+  li {
+    padding: 0;
+    display: table-row;
+    margin: 0;
+    height: 1em;
+  }
+
+  li.ins {
+    background: #dfd;
+    color: #080;
+  }
+
+  li.del {
+    background: #fee;
+    color: #b00;
+  }
+
+  del, ins, span {
+    white-space: pre-wrap;
+  }
+
+  del strong {
+    font-weight:normal;
+    background:#fcc;
+  }
+
+  ins strong{
+    font-weight:normal;
+    background:#9f9;
+  }
+
+  li.diff-comment {
+    display: none;
+  }
+
+  li.diff-block-info {
+    background: none repeat scroll 0 0 gray;
+  }
+
+  span.symbol {
+    padding-right: .5rem;
+    opacity: 0.3;
+  }
+}

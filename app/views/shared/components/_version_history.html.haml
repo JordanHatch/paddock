@@ -1,0 +1,30 @@
+- versions = local_assigns[:versions]
+- presenter = VersionHistoryPresenter.new(versions)
+
+.version-history
+  %ul.version-history__list
+    - presenter.items.each do |version|
+      - if version.state_change?
+        %li.version-history__item.version-history__item--state-change
+          .version-history__state
+            = version.new_state
+          .version-history__metadata
+            .version-history__author
+              = version.author_email
+            .version-history__time
+              %time{ title: version.created_at }
+                = version.time_ago
+                ago
+      - else
+        %li.version-history__item
+          .version-history__metadata
+            .version-history__author
+              = version.author_email
+            .version-history__time
+              %time{ title: version.created_at }
+                = version.time_ago
+                ago
+          .version-history__changeset
+            - version.changes.each do |change|
+              .version-history__field= change.field_name
+              .version-history__diff= change.diff

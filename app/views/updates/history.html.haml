@@ -3,19 +3,4 @@
 
   %h2 Change history
 
-  %ul.history
-    - sprint_update.recent_versions.each do |version|
-      %li
-        .metadata
-          .user
-            = change_history_user(version.whodunnit)
-          .timestamp
-            = time_ago_in_words(version.created_at)
-            ago
-        %dl.changeset
-          - version.changeset.each do |field,(previous,current)|
-            %dt=field
-            %dd
-              %span.previous=previous
-              %span.arrow
-              %span.current=current
+  = render partial: 'shared/components/version_history', locals: { versions: sprint_update.recent_versions }

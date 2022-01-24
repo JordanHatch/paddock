@@ -94,6 +94,7 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
+    diffy (3.4.0)
     docile (1.4.0)
     doorkeeper (5.5.4)
       railties (>= 5)
@@ -371,6 +372,7 @@ DEPENDENCIES
   capybara
   cuprite
   database_cleaner-active_record
+  diffy
   doorkeeper
   dotenv-rails
   dry-monads
