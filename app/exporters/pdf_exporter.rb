@@ -27,8 +27,8 @@ class PdfExporter
 
   def body
     renderer.render(
-      template: "#{views_path}/report",
-      layout: "../#{views_path}/_layout",
+      template: 'report',
+      layout: '_layout',
       formats: [:pdf],
       locals: {
         sprint: sprint,
@@ -40,8 +40,8 @@ class PdfExporter
 
   def footer
     renderer.render(
-      template: "#{views_path}/_footer",
-      layout: "../#{views_path}/_layout",
+      template: '_footer',
+      layout: '_layout',
     )
   end
 
@@ -85,10 +85,11 @@ class PdfExporter
   end
 
   def renderer
+    ApplicationController.prepend_view_path(views_path)
     ApplicationController.renderer
   end
 
   def views_path
-    'exporters/pdf'
+    'app/views/exporters/pdf'
   end
 end
