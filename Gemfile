@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
-gem 'rails', '~> 6.1.4.4'
+gem 'rails', '~> 7.0.1'
 
 gem 'aasm'
 gem 'after_commit_everywhere', '~> 1.0.0'
@@ -21,7 +21,7 @@ gem 'good_job'
 gem 'haml'
 gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
-gem 'paper_trail'
+gem 'paper_trail', '~> 12.2.0'
 gem 'pg'
 gem 'premailer-rails'
 gem 'puma', '~> 5.0'
