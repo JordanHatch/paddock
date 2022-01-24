@@ -1,0 +1,5 @@
+= render partial: 'header', locals: { commitment: commitment }
+
+%h2 Change history
+
+= render partial: 'shared/components/version_history', locals: { versions: commitment.versions.reverse }
