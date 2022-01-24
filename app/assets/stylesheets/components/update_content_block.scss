@@ -24,7 +24,6 @@
 
   @include breakpoint.breakpoint($desktop) {
     width: 32%;
-    padding-left: .3em;
     font-size: 1.4em;
     margin-top: .1em;
   }

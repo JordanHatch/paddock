@@ -15,10 +15,10 @@ $border-colour: helpers.colour('silver', '900');
 
   font-size: 1.1rem;
 
-  padding: .65rem .75rem .65rem .75rem;
+  padding: .45rem .75rem .45rem .75rem;
   line-height: 1.3rem;
   background-size: 1.3rem;
-  min-height: 3.8rem;
+  min-height: 3.35rem;
 }
 
 .multiple-select-box .choices__list--multiple .choices__item {
@@ -41,8 +41,10 @@ $border-colour: helpers.colour('silver', '900');
 .multiple-select-box .choices__input {
   font-size: 1.1rem;
   font-family: typography.$font-stack;
-  margin-top: .2rem;
-  margin-bottom: .2rem;
+  padding-top: .85rem;
+  padding-bottom: .85rem;
+  margin-bottom: 0;
+  vertical-align: top;
 }
 
 .multiple-select-box .choices[data-type*='select-multiple'] .choices__button {
