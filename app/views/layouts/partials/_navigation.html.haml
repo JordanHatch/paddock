@@ -1,7 +1,6 @@
 %nav
   %ul
-    - if signed_in_user.present? && signed_in_user.admin?
-      = section_nav_link 'Quarters', quarters_path, :quarters
+    = section_nav_link 'Quarters', quarters_path, :quarters
     = section_nav_link 'Sprints', sprints_path, :updates
     - if signed_in_user.present? && signed_in_user.admin?
       = section_nav_link 'Manage', manage_root_path, :manage
