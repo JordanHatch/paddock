@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-npx sass \
+sass \
   ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css \
   ./app/assets/stylesheets/pdf.scss:./app/assets/builds/pdf.css \
   ./app/assets/stylesheets/mailer.scss:./app/assets/builds/mailer.css \
