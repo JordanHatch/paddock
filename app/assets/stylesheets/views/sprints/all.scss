@@ -1,8 +1,10 @@
+@use 'helpers';
+
 .view--sprints-index {
   .no-sprints-message {
     .info-box__icon {
-      @extend .fas;
-      @extend .fa-wrench;
+      @include helpers.fa-solid;
+      @include helpers.fa-icon(helpers.$fa-var-wrench);
     }
   }
 }

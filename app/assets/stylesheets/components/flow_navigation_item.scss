@@ -1,10 +1,5 @@
 @use 'helpers';
 
-$fa-font-path: '';
-@import '@fortawesome/fontawesome-free/scss/fontawesome';
-@import '@fortawesome/fontawesome-free/scss/solid';
-@import '@fortawesome/fontawesome-free/scss/regular';
-
 .flow-navigation-item {
   margin-bottom: .1rem;
 }
@@ -45,23 +40,27 @@ $fa-font-path: '';
 }
 
 .flow-navigation-item__icon {
-  @extend .fas;
+  @include helpers.fa-solid;
+
   display: inline;
 }
 
 .flow-navigation-item__icon.flow-navigation-item__icon--valid {
-  @extend .fa-check-circle;
+  @include helpers.fa-icon(helpers.$fa-var-check-circle);
+
   color: helpers.colour('green', '800');
 }
 
 .flow-navigation-item__icon.flow-navigation-item__icon--invalid {
-  @extend .fa-exclamation-circle;
+  @include helpers.fa-icon(helpers.$fa-var-exclamation-circle);
+
   color: helpers.colour('orange', '600');
 }
 
 .flow-navigation-item__icon.flow-navigation-item__icon--not-started {
-  @extend .far;
-  @extend .fa-circle;
+  @include helpers.fa-regular;
+  @include helpers.fa-icon(helpers.$fa-var-circle);
+
   color: #ddd;
 }
 

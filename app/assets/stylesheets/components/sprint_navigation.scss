@@ -1,9 +1,5 @@
 @use 'helpers';
 
-$fa-font-path: '';
-@import '@fortawesome/fontawesome-free/scss/fontawesome';
-@import '@fortawesome/fontawesome-free/scss/solid';
-
 .sprint-navigation {
   display: flex;
   min-width: 16em;
@@ -45,7 +41,7 @@ $fa-font-path: '';
 }
 
 .sprint-navigation__icon {
-  @extend .fas;
+  @include helpers.fa-solid;
 }
 
 .sprint-navigation__button--disabled {
@@ -55,11 +51,11 @@ $fa-font-path: '';
 }
 
 .sprint-navigation__button--previous .sprint-navigation__icon {
-  @extend .fa-chevron-left;
+  @include helpers.fa-icon(helpers.$fa-var-chevron-left);
 }
 
 .sprint-navigation__button--next .sprint-navigation__icon {
-  @extend .fa-chevron-right;
+  @include helpers.fa-icon(helpers.$fa-var-chevron-right);
 }
 
 .sprint-navigation__hidden-label {

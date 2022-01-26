@@ -7,5 +7,5 @@
   .team-header__actions
     - if signed_in_admin?
       = link_to manage_sprint_update_path(sprint, team), class: 'button button--inverted-warning' do
-        %i.button__icon.button__icon--warning.fas.fa-radiation-alt
+        %i.button__icon.button__icon--warning
         Danger zone

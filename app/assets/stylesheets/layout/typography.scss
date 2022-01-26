@@ -1,6 +1,11 @@
 @use 'helpers';
+
 @use "@fontsource/public-sans/scss/mixins" as PublicSans;
 @use "@fontsource/fira-code/scss/mixins" as FiraCode;
+
+$fa-font-path: '';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/solid';
 
 $publicSansName: 'Public Sans';
 $firaCodeName: 'Fira Code';

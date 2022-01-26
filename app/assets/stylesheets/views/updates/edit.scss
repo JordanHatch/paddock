@@ -56,8 +56,8 @@
           display: block;
 
           i {
-            @extend .fas;
-            @extend .fa-chevron-down;
+            @include helpers.fa-solid;
+            @include helpers.fa-icon(helpers.$fa-var-chevron-down);
           }
         }
       }
@@ -75,7 +75,7 @@
           border-radius: .25rem;
 
           .toggle i {
-            @extend .fa-chevron-right;
+            @include helpers.fa-icon(helpers.$fa-var-chevron-right);
           }
         }
       }
@@ -88,8 +88,8 @@
 
   .invalid-submit-message {
     .info-box__icon {
-      @extend .fas;
-      @extend .fa-exclamation-circle;
+      @include helpers.fa-solid;
+      @include helpers.fa-icon(helpers.$fa-var-exclamation-circle);
     }
   }
 }
