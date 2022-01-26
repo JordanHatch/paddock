@@ -6,4 +6,5 @@ esbuild \
   --sourcemap \
   --outdir=app/assets/builds \
   --target=es2018 \
+  --minify \
   $@
