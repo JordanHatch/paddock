@@ -1,12 +1,14 @@
 @use 'helpers';
-@import 'container';
+@use 'variables/typography';
+
+@import './container';
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
-  font-family: $font-stack;
+  font-family: typography.$font-stack;
   background: helpers.colour('silver', '50');
   font-size: 100%;
   line-height: 1.25;

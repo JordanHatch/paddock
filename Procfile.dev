@@ -1,0 +1,4 @@
+web: bin/rails server -p $PORT -b 0.0.0.0
+worker: bin/good_job start
+js: yarn build --watch
+css: yarn build:css --watch

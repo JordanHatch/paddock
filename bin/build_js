@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+npx esbuild \
+  app/javascript/*.* \
+  --bundle \
+  --sourcemap \
+  --outdir=app/assets/builds \
+  --target=es2018 \
+  $@

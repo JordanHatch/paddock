@@ -3,47 +3,47 @@
 @use "@fontsource/fira-code/scss/mixins" as FiraCode;
 
 $publicSansName: 'Public Sans';
-$publicSansDir: "~@fontsource/public-sans/files";
-
 $firaCodeName: 'Fira Code';
-$firaCodeDir: "~@fontsource/fira-code/files";
 
-@include PublicSans.fontFace(
+@include PublicSans.fontFaceCustom(
   $fontName: $publicSansName,
   $weight: 400,
   $style: 'italic',
-  $fontDir: $publicSansDir,
+  $woff2Path: "public-sans-latin-400-italic.woff2",
+  $woffPath: "public-sans-latin-400-italic.woff"
 );
 
-@include PublicSans.fontFace(
+@include PublicSans.fontFaceCustom(
   $fontName: $publicSansName,
   $weight: 400,
   $style: 'normal',
-  $fontDir: $publicSansDir,
+  $woff2Path: "public-sans-latin-400-normal.woff2",
+  $woffPath: "public-sans-latin-400-normal.woff"
 );
 
-@include PublicSans.fontFace(
+@include PublicSans.fontFaceCustom(
   $fontName: $publicSansName,
   $weight: 700,
   $style: 'italic',
-  $fontDir: $publicSansDir
+  $woff2Path: "public-sans-latin-700-italic.woff2",
+  $woffPath: "public-sans-latin-700-italic.woff"
 );
 
-@include PublicSans.fontFace(
+@include PublicSans.fontFaceCustom(
   $fontName: $publicSansName,
   $weight: 700,
   $style: 'normal',
-  $fontDir: $publicSansDir
+  $woff2Path: "public-sans-latin-700-normal.woff2",
+  $woffPath: "public-sans-latin-700-normal.woff"
 );
 
-@include FiraCode.fontFace(
+@include FiraCode.fontFaceCustom(
   $fontName: $firaCodeName,
   $weight: 400,
   $style: 'normal',
-  $fontDir: $firaCodeDir,
+  $woffPath: "fira-code-latin-400-normal.woff",
+  $woff2Path: "fira-code-latin-400-normal.woff2"
 );
-
-
 
 h1, h2, h3, h4 {
   font-weight: bold;

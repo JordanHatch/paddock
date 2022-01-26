@@ -1,4 +1,5 @@
 @use 'helpers';
+@use 'variables/breakpoints';
 @use 'breakpoint-sass/stylesheets/_breakpoint';
 
 .update-content-block {
@@ -6,7 +7,7 @@
   margin: 0 -1.5rem;
   padding: 1rem 1.5rem;
 
-  @include breakpoint.breakpoint($desktop) {
+  @include breakpoint.breakpoint(breakpoints.$desktop) {
     display: flex;
     gap: 1em;
     padding: 2rem 1.5rem;
@@ -22,7 +23,7 @@
   font-size: 1.3em;
   margin: .5em 0 1em;
 
-  @include breakpoint.breakpoint($desktop) {
+  @include breakpoint.breakpoint(breakpoints.$desktop) {
     width: 32%;
     font-size: 1.4em;
     margin-top: .1em;
@@ -30,7 +31,7 @@
 }
 
 .update-content-block__content {
-  @include breakpoint.breakpoint($desktop) {
+  @include breakpoint.breakpoint(breakpoints.$desktop) {
     width: 68%;
   }
 }
@@ -45,7 +46,7 @@
 }
 
 .update-content-block__content--offset-list {
-  @include breakpoint.breakpoint($desktop) {
+  @include breakpoint.breakpoint(breakpoints.$desktop) {
     margin-top: -1em;
   }
 }

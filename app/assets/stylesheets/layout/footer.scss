@@ -1,7 +1,8 @@
 @use 'helpers';
+@use 'container';
 
 footer {
-  @include container;
+  @include container.container;
 
   margin-top: 2rem;
   margin-bottom: 2rem;

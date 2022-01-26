@@ -101,47 +101,16 @@ RSpec.describe PdfExporter do
   end
 
   describe '.stylesheet' do
-    it 'makes a HTTP request to the stylesheet and returns it inline' do
-      asset_host = 'localhost'
-      manifest_url = "http://#{asset_host}/packs/manifest.json"
-      stylesheet_path = '/example'
-      stylesheet_url = "http://#{asset_host}#{stylesheet_path}"
-
-      manifest = { 'pdf.css' => stylesheet_path }.to_json
+    it 'renders the compiled PDF stylesheet and returns it inline' do
       stylesheet = 'body { color: red; }'
+      mock_asset = mock()
 
-      PdfExporter.stubs(:asset_host).returns(asset_host)
-      URI.expects(:parse).with(manifest_url).returns(mock(read: manifest))
-      URI.expects(:parse).with(stylesheet_url).returns(mock(read: stylesheet))
+      Rails.application.assets.load_path.expects(:find).with('pdf.css').returns(mock_asset)
+      Rails.application.assets.compilers.expects(:compile).with(mock_asset).returns(stylesheet)
 
       expected = '<style type="text/css">body { color: red; }</style>'
 
       expect(described_class.stylesheet).to eq(expected)
-    end
-  end
-
-  describe '.asset_host' do
-    context 'in development' do
-      before(:each) do
-        Rails.env.stubs(:development?).returns(true)
-      end
-
-      it 'returns the webpacker dev server details' do
-        Webpacker.stubs(:dev_server).returns(mock(host: 'localhost', port: 1234))
-
-        expect(PdfExporter.asset_host).to eq('localhost:1234')
-      end
-    end
-
-    context 'in other environments' do
-      before(:each) do
-        Rails.env.stubs(:development?).returns(false)
-      end
-
-      it 'returns the asset host' do
-        Rails.application.config.action_controller.stubs(:asset_host).returns('example')
-        expect(PdfExporter.asset_host).to eq('example')
-      end
     end
   end
 end

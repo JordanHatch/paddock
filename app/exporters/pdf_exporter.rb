@@ -27,8 +27,8 @@ class PdfExporter
 
   def body
     renderer.render(
-      template: "#{views_path}/report",
-      layout: "../#{views_path}/_layout",
+      template: 'report',
+      layout: '_layout',
       formats: [:pdf],
       locals: {
         sprint: sprint,
@@ -40,8 +40,8 @@ class PdfExporter
 
   def footer
     renderer.render(
-      template: "#{views_path}/_footer",
-      layout: "../#{views_path}/_layout",
+      template: '_footer',
+      layout: '_layout',
     )
   end
 
@@ -52,28 +52,12 @@ class PdfExporter
   end
 
   def self.stylesheet
-    manifest_url = "http://#{asset_host}/packs/manifest.json"
-    stylesheet_file = 'pdf.css'
+    assets = Rails.application.assets
 
-    manifest = JSON.parse(
-      URI.parse(manifest_url).read,
-    )
-
-    stylesheet_path = manifest[stylesheet_file]
-    stylesheet_url = "http://#{asset_host}#{stylesheet_path}"
-
-    body = URI.parse(stylesheet_url).read
+    stylesheet = assets.load_path.find('pdf.css')
+    body = assets.compilers.compile(stylesheet)
 
     "<style type=\"text/css\">#{body}</style>".html_safe
-  end
-
-  def self.asset_host
-    if Rails.env.development?
-      wds = Webpacker.dev_server
-      "#{wds.host}:#{wds.port}"
-    else
-      Rails.application.config.action_controller.asset_host
-    end
   end
 
   private
@@ -85,10 +69,11 @@ class PdfExporter
   end
 
   def renderer
+    ApplicationController.prepend_view_path(views_path)
     ApplicationController.renderer
   end
 
   def views_path
-    'exporters/pdf'
+    'app/views/exporters/pdf'
   end
 end
