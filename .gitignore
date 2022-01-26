@@ -43,3 +43,6 @@ waypoint.hcl
 .waypoint
 
 coverage/
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

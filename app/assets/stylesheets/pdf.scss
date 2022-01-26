@@ -1,8 +1,8 @@
 @import 'pdf/reset';
 @import 'pdf/typefaces';
 
-@import 'variables/**/*.scss';
-@import 'components/**/*.scss';
+@import 'variables';
+@import 'components';
 
 @import 'layout/body';
 @import 'layout/typography';

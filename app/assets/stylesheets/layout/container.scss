@@ -1,11 +1,12 @@
 @use 'breakpoint-sass/stylesheets/_breakpoint';
+@use 'variables/breakpoints';
 
 @mixin container {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 
-  @include breakpoint.breakpoint($desktop) {
-    max-width: $desktop;
+  @include breakpoint.breakpoint(breakpoints.$desktop) {
+    max-width: breakpoints.$desktop;
   }
 }
