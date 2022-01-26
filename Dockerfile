@@ -31,7 +31,7 @@ RUN gem install foreman && \
 
 ADD . $APP_HOME
 
-RUN RAILS_ENV=production SECRET_KEY_BASE=example_secret_key_for_assets bundle exec rails assets:clean assets:precompile
+RUN RAILS_ENV=production SECRET_KEY_BASE=example_secret_key_for_assets bundle exec rails assets:precompile
 
 HEALTHCHECK CMD curl --silent --fail localhost:$PORT || exit 1
 
