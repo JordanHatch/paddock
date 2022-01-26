@@ -47,11 +47,19 @@ jobs:
         run: |
           bin/rails db:setup
 
+      - name: Build assets
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost/paddock
+          RAILS_ENV: test
+        run: |
+          bin/rails css:build
+          bin/rails javascript:build
+
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost/paddock
           RAILS_ENV: test
-        run: bundle exec rake
+        run: bin/rake
 
   build-and-push-image:
     name: Build and push image
