@@ -20,8 +20,8 @@
     "stimulus-rails-nested-form": "^4.0.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --target=es2018",
-    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css ./app/assets/stylesheets/pdf.scss:./app/assets/builds/pdf.css --no-source-map --load-path app/assets/stylesheets --load-path=node_modules"
+    "build": "bin/build_js",
+    "build:css": "bin/build_css"
   },
   "version": "0.1.0",
   "devDependencies": {

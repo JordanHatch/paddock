@@ -1,5 +1,6 @@
 @use 'helpers';
-@import 'variables/**/*.scss';
+
+@import 'variables';
 @import 'components/button';
 
 $base-colour: helpers.colour('silver', '50');
