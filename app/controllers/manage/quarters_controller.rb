@@ -19,13 +19,13 @@ class Manage::QuartersController < Manage::BaseController
 
   private
 
-  helper_method :quarter, :commitments
+  helper_method :quarter, :key_commitments
 
   def quarter
     @quarter ||= Quarter.find(params[:id])
   end
 
-  def commitments
-    @commitments ||= quarter.commitments.in_order
+  def key_commitments
+    @key_commitments ||= quarter.key_commitments.in_order
   end
 end

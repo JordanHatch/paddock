@@ -1,4 +1,4 @@
-= turbo_frame_tag 'quarter-commitments-list', class: 'turbo-frame', target: '_top' do
+= turbo_frame_tag 'quarter-key-commitments-list', class: 'turbo-frame', target: '_top' do
   .section-header
     .section-header__content
       %h1.section-header__title Key commitments this quarter
@@ -13,7 +13,7 @@
   .turbo-frame__container
     .turbo-frame__loading
     %ul.commitments-list
-      - commitments.each do |commitment|
+      - key_commitments.each do |commitment|
         %li.commitments-list__item
           = link_to quarter_commitment_path(quarter, commitment), class: 'commitments-list__box' do
             .commitments-list__number

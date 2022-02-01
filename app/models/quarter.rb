@@ -3,6 +3,7 @@ class Quarter < ApplicationRecord
   friendly_id :name, use: :slugged
 
   has_many :commitments
+  has_many :key_commitments, -> { key_commitments }, class_name: 'Commitment'
 
   scope :previous_quarters, ->(quarter) { where('start_on < ?', quarter.start_on).order('start_on DESC') }
   scope :next_quarters, ->(quarter) { where('start_on > ?', quarter.start_on).order('start_on ASC') }

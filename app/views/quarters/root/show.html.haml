@@ -1,7 +1,7 @@
 = render partial: 'timeline', locals: { sprints: sprints }
 
-- if commitments.any?
-  = render partial: 'commitments', locals: { quarter: quarter, commitments: commitments }
+- if key_commitments.any?
+  = render partial: 'key_commitments', locals: { quarter: quarter, key_commitments: key_commitments }
 - else
   .info-box.no-sprints-message
     .info-box__icon

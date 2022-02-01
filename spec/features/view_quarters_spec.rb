@@ -11,7 +11,7 @@ RSpec.describe 'viewing quarters', type: :feature, admin_user: true do
   describe 'viewing a quarter' do
     it 'lists the key commitments' do
       quarter = create(:quarter)
-      commitments = create_list(:commitment, 5, quarter: quarter)
+      commitments = create_list(:key_commitment, 5, quarter: quarter)
 
       visit quarter_path(quarter)
 
