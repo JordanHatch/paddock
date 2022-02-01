@@ -22,7 +22,7 @@ class Quarters::CommitmentsController < Quarters::BaseController
         redirect_to quarter_commitment_form_path(quarter, commitment, flow.next_form_id)
       end
     else
-      render :edit
+      render action: :edit, status: :unprocessable_entity
     end
   end
 

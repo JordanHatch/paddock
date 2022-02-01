@@ -5,6 +5,7 @@ FactoryBot.define do
     overview { Faker::Hacker.say_something_smart }
     key_commitment { false }
 
+    group
     quarter
 
     factory :key_commitment do

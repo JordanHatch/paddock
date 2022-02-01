@@ -1,0 +1,9 @@
+.flow-question
+  %h2.flow-question__question
+    Which service line is leading this commitment?
+
+  = f.input :group_id, { collection: f.object.class.options,
+                         include_blank: true,
+                         required: true,
+                         label: false,
+                         input_html: { class: 'select-box select-box--lg' } }

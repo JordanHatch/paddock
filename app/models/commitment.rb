@@ -15,6 +15,8 @@ class Commitment < ApplicationRecord
   enumerize :commodities, in: COMMODITIES, multiple: true
 
   belongs_to :quarter
+  belongs_to :group
+
   has_many :team_commitments
   has_many :teams, through: :team_commitments
 

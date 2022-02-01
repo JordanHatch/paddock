@@ -6,6 +6,7 @@ class Quarters::CommitmentFlow < BaseFlow
       benefits: Quarters::Commitments::BenefitsForm,
       actions: Quarters::Commitments::ActionsForm,
       commodities: Quarters::Commitments::CommoditiesForm,
+      group: Quarters::Commitments::GroupForm,
       teams: Quarters::Commitments::TeamsForm,
     }
   end

@@ -23,10 +23,10 @@ class Quarters::Commitments::UpdateService < BaseService
              validate_object,
            ].traverse.to_result
 
-    @form = form_class.from_form(attributes)
+    @form = form_class.from_form(attributes, model: commitment)
     commitment.assign_attributes(form.to_model_hash)
 
-    if commitment.save
+    if form.valid? && commitment.save
       Success(commitment)
     else
       Failure(:save_failed)

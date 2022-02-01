@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_100136) do
+ActiveRecord::Schema.define(version: 2022_02_01_101551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2022_02_01_100136) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "key_commitment", default: false, null: false
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_commitments_on_group_id"
     t.index ["quarter_id"], name: "index_commitments_on_quarter_id"
   end
 
@@ -205,6 +207,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_100136) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "commitments", "groups", on_delete: :restrict
   add_foreign_key "commitments", "quarters"
   add_foreign_key "issues", "updates", on_delete: :cascade
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"

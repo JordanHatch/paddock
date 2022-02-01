@@ -42,6 +42,8 @@ en:
       benefits: Benefits
       actions: Key actions
       commodities: Commodities
+      group: Service line
+      teams: Teams
   updates:
     delivery_status:
       green:

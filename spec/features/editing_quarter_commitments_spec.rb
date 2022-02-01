@@ -16,6 +16,7 @@ RSpec.describe 'editing quarter commitments', type: :feature do
     create_list(:team, 3)
     team_1 = create(:team, name: 'Example team 1')
     team_2 = create(:team, name: 'Example team 2')
+    group = create(:group, name: 'Example group')
 
     visit quarter_path(quarter)
 
@@ -58,6 +59,9 @@ RSpec.describe 'editing quarter commitments', type: :feature do
     check 'Meat'
     check 'Eggs'
     check 'Fish'
+    save_and_next
+
+    select group.name, from: 'commitment[group_id]'
     save_and_next
 
     select team_1.name, from: 'commitment[team_ids][]'
