@@ -6,5 +6,6 @@ sass \
   ./app/assets/stylesheets/mailer.scss:./app/assets/builds/mailer.css \
   --no-source-map \
   --load-path app/assets/stylesheets \
-  --load-path=node_modules \
+  --load-path node_modules \
+  --style=compressed \
   $@
