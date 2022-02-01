@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'editing quarter commitments', type: :feature do
   let!(:quarter) { create(:quarter) }
-  let!(:commitment) { create(:commitment, quarter: quarter) }
+  let!(:commitment) { create(:key_commitment, quarter: quarter) }
 
   def save_and_next
     click_on 'Save and next'

@@ -21,4 +21,7 @@ class Commitment < ApplicationRecord
   has_paper_trail skip: %i[created_at updated_at]
 
   scope :in_order, -> { order('number ASC') }
+
+  scope :key_commitments, -> { where(key_commitment: true) }
+  scope :other_commitments, -> { where(key_commitment: false) }
 end

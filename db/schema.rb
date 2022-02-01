@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_140426) do
+ActiveRecord::Schema.define(version: 2022_02_01_100136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_140426) do
     t.text "commodities", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "key_commitment", default: false, null: false
     t.index ["quarter_id"], name: "index_commitments_on_quarter_id"
   end
 

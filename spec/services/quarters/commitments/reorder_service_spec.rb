@@ -4,9 +4,9 @@ RSpec.describe Quarters::Commitments::ReorderService do
   let!(:quarter) { create(:quarter) }
   let!(:commitments) do
     {
-      1 => create(:commitment, quarter: quarter, number: 1),
-      2 => create(:commitment, quarter: quarter, number: 2),
-      3 => create(:commitment, quarter: quarter, number: 3),
+      1 => create(:key_commitment, quarter: quarter, number: 1),
+      2 => create(:key_commitment, quarter: quarter, number: 2),
+      3 => create(:key_commitment, quarter: quarter, number: 3),
     }
   end
 
