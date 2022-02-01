@@ -34,10 +34,12 @@ class Sprint < ApplicationRecord
   end
 
   def status
-    case
-    when current? then :current
-    when historical? then :historical
-    when future? then :future
+    if current?
+      :current
+    elsif historical?
+      :historical
+    elsif future?
+      :future
     end
   end
 

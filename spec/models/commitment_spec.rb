@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Commitment, type: :model do
-
   describe '.key_commitments' do
     it 'returns only objects where key_commitment is true' do
       create(:commitment)
@@ -19,5 +18,4 @@ RSpec.describe Commitment, type: :model do
       expect(described_class.other_commitments).to contain_exactly(result)
     end
   end
-
 end

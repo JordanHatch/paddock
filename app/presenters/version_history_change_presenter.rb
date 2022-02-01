@@ -20,8 +20,8 @@ class VersionHistoryChangePresenter
   def diff
     options = { include_plus_and_minus_in_html: true }
     Diffy::Diff.new(formatted_old_value, formatted_new_value, options)
-      .to_s(:html_simple)
-      .html_safe
+               .to_s(:html_simple)
+               .html_safe
   end
 
   private
@@ -30,9 +30,9 @@ class VersionHistoryChangePresenter
 
   def format_value(value)
     if value.is_a?(Array)
-      value.map do |item|
+      value.map { |item|
         "* #{item}\n"
-      end.join
+      }.join
     else
       value
     end

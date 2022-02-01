@@ -4,7 +4,7 @@ class VersionHistoryItemPresenter
 
   def_delegators :version, :created_at, :changeset
 
-  STATE_FIELD = 'state'
+  STATE_FIELD = 'state'.freeze
 
   def initialize(version)
     @version = version
@@ -19,7 +19,7 @@ class VersionHistoryItemPresenter
   end
 
   def changes
-    changeset.map do |field,(previous,current)|
+    changeset.map do |field, (previous, current)|
       VersionHistoryChangePresenter.new(field, previous, current)
     end
   end
@@ -41,8 +41,8 @@ class VersionHistoryItemPresenter
 
   def diff(old_value, new_value)
     Diffy::Diff.new(old_value, new_value)
-      .to_s(:html_simple)
-      .html_safe
+               .to_s(:html_simple)
+               .html_safe
   end
 
   private
@@ -50,9 +50,6 @@ class VersionHistoryItemPresenter
   attr_reader :version
 
   def author
-    if version.whodunnit.present?
-      User.where(id: version.whodunnit).first
-    end
+    User.where(id: version.whodunnit).first if version.whodunnit.present?
   end
-
 end

@@ -12,5 +12,4 @@ class VersionHistoryPresenter
   private
 
   attr_reader :versions
-
 end

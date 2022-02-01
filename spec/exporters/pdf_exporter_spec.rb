@@ -103,7 +103,7 @@ RSpec.describe PdfExporter do
   describe '.stylesheet' do
     it 'renders the compiled PDF stylesheet and returns it inline' do
       stylesheet = 'body { color: red; }'
-      mock_asset = mock()
+      mock_asset = mock
 
       Rails.application.assets.load_path.expects(:find).with('pdf.css').returns(mock_asset)
       Rails.application.assets.compilers.expects(:compile).with(mock_asset).returns(stylesheet)
