@@ -16,6 +16,9 @@ application.register("redeem-invitation", RedeemInvitationController)
 import SortableCommitmentsListController from "./sortable_commitments_list_controller.js"
 application.register("sortable-commitments-list", SortableCommitmentsListController)
 
+import TurboFormRedirectController from "./turbo_form_redirect_controller.js"
+application.register("turbo-form-redirect", TurboFormRedirectController)
+
 import UpdateIssuesController from "./update_issues_controller.js"
 application.register("update-issues", UpdateIssuesController)
 

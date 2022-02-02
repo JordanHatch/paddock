@@ -1,9 +1,16 @@
+= turbo_frame_tag 'modal'
+
 %h1 All commitments for this quarter
 
 - groups_with_commitments.each do |group|
   .update-content-block
     %h3.update-content-block__title
       = group.name
+      %p{style: 'padding-top: 1rem;'}
+        = link_to 'Add commitment',
+                  new_quarter_commitment_path(quarter, group: group.id),
+                  class: 'button button--primary button--sm',
+                  data: { turbo_frame: 'modal' }
     .update-content-block__content.update-content-block__content--list
       %ul.commitments-list.commitments-list--all-commitments
         - group.commitments.for_quarter(quarter).in_key_and_alphabetical_order.each do |commitment|

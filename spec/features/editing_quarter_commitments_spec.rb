@@ -12,6 +12,31 @@ RSpec.describe 'editing quarter commitments', type: :feature do
     page.find('.update-content-block__title', text: title).ancestor('.update-content-block')
   end
 
+  it 'can add a new commitment', js: true do
+    group = create(:group, name: 'Example group')
+    name = 'Commitment name'
+
+    visit quarter_path(quarter)
+    click_on 'Commitments'
+
+    group_block = find_content_block(group.name)
+    within group_block do
+      click_on 'Add commitment'
+    end
+
+    fill_in 'commitment_name', with: name
+    click_button 'Add commitment'
+
+    expect(page).to have_content("What's this commitment about?")
+
+    click_on 'Commitments'
+
+    group_block = find_content_block(group.name)
+    within group_block do
+      expect(page).to have_link(name)
+    end
+  end
+
   it 'can edit a commitment', admin_user: true do
     create_list(:team, 3)
     team_1 = create(:team, name: 'Example team 1')
