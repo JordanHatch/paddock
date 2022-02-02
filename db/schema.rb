@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_101551) do
+ActiveRecord::Schema.define(version: 2022_02_01_115025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_101551) do
 
   create_table "commitments", force: :cascade do |t|
     t.bigint "quarter_id", null: false
-    t.integer "number", null: false
+    t.integer "number"
     t.string "name", null: false
     t.text "overview"
     t.text "benefits", default: [], array: true
