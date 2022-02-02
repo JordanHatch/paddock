@@ -1,3 +1,5 @@
+= turbo_frame_tag 'modal'
+
 .team-header
   .team-header__content
     .team-header__group
@@ -6,6 +8,6 @@
       = team.name
   .team-header__actions
     - if signed_in_admin?
-      = link_to manage_sprint_update_path(sprint, team), class: 'button button--inverted-warning' do
+      = link_to manage_sprint_update_path(sprint, team), class: 'button button--inverted-warning', data: { turbo_frame: 'modal' } do
         %i.button__icon.button__icon--warning
         Danger zone

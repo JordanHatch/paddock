@@ -9,16 +9,27 @@
     .team-header__actions
       = link_to 'View sprint update', update_path(sprint, team), class: 'button button--inverted-primary'
 
-  .update-content-block
-    %h2.update-content-block__title Unpublish
-    .update-content-block__content
-      - if service.success?
-        %p You can unpublish this sprint update.
-        %p This will return the sprint update to a draft so that it can be edited again.
-        %p If you've already exported a PDF for the sprint, export a fresh copy after any changes have been made.
-        %p= button_to 'Unpublish', unpublish_manage_sprint_update_path(sprint, team), class: 'button button--danger'
-      - else
-        .errors
-          %ul.errors__list
-            - service.errors.each do |error|
-              %li.errors__item= t(error, scope: %w(services sprint_updates unpublish))
+  = turbo_frame_tag 'modal', autoscroll: true do
+    .modal-window
+      .modal-window__background
+      .modal-window__content
+        .modal-window__header
+          %h1.modal-window__header-label Danger zone
+        .update-content-block
+          %h2.update-content-block__title Unpublish
+          .update-content-block__content
+            - if service.success?
+              %p You can unpublish this sprint update.
+              %p This will return the sprint update to a draft so that it can be edited again.
+              %p If you've already exported a PDF for the sprint, export a fresh copy after any changes have been made.
+              %p= button_to 'Unpublish',
+                    unpublish_manage_sprint_update_path(sprint, team),
+                    class: 'button button--danger',
+                    form: { data: { controller: 'turbo-form-redirect' } }
+            - else
+              .errors
+                %ul.errors__list
+                  - service.errors.each do |error|
+                    %li.errors__item= t(error, scope: %w(services sprint_updates unpublish))
+        .form-actions.model-window__actions
+          = link_to 'Cancel', update_path(sprint, team), data: { turbo_frame: '_top' }
