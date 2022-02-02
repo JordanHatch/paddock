@@ -11,6 +11,11 @@
               quarter_path(quarter),
               list_item_class: 'section-navigation__nav-item',
               link_class: 'section-navigation__nav-link'
+          = nav_link 'Commitments',
+              quarter_commitments_path(quarter),
+              match_prefix: true,
+              list_item_class: 'section-navigation__nav-item',
+              link_class: 'section-navigation__nav-link'
 
       = render partial: 'shared/components/quarter_navigation', locals: { quarter: quarter }
   .inner

@@ -47,6 +47,19 @@
   text-align: center;
 }
 
+.commitments-list__key-commitment-icon {
+  @include helpers.fa-solid;
+  @include helpers.fa-icon(helpers.$fa-var-star);
+  padding-right: .2em;
+}
+
+.commitments-list__key-commitment-label {
+  position: absolute;
+  display: block;
+  top: -9999px;
+  left: -9999px;
+}
+
 .commitments-list__name {
   display: flex;
 
@@ -54,6 +67,42 @@
   font-weight: bold;
   padding-left: .75em;
   padding-right: .5em;
+}
+
+.commitments-list--all-commitments {
+  font-size: .85em;
+}
+
+.commitments-list--all-commitments .commitments-list__item {
+  width: calc(25% - .57em);
+}
+
+.commitments-list--all-commitments .commitments-list__box {
+  padding: 0;
+  align-items: center;
+  flex-direction: row;
+}
+
+.commitments-list--all-commitments .commitments-list__name {
+  display: block;
+  padding: .8em;
+  width: 100%;
+  text-align: center;
+  font-weight: normal;
+}
+
+.commitments-list--all-commitments .commitments-list__box--key-commitment {
+  flex-direction: column;
+  border-color: helpers.colour('red', '800');
+  border-width: 2px;
+}
+
+.commitments-list__box--key-commitment .commitments-list__number {
+  margin: .5em;
+}
+
+.commitments-list__box--key-commitment .commitments-list__name {
+  padding-top: 0;
 }
 
 .commitments-list--sortable {

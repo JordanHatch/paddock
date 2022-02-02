@@ -1,4 +1,6 @@
 class Quarters::CommitmentsController < Quarters::BaseController
+  def index; end
+
   def show; end
 
   def edit
@@ -30,7 +32,11 @@ class Quarters::CommitmentsController < Quarters::BaseController
 
   attr_reader :service
 
-  helper_method :commitment, :service, :flow
+  helper_method :groups_with_commitments, :commitment, :service, :flow
+
+  def groups_with_commitments
+    @groups_with_commitments ||= Group.in_order.includes(:commitments)
+  end
 
   def commitment
     @commitment ||= quarter.commitments.find(params[:id])

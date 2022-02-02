@@ -1,0 +1,20 @@
+%h1 All commitments for this quarter
+
+- groups_with_commitments.each do |group|
+  .update-content-block
+    %h3.update-content-block__title
+      = group.name
+    .update-content-block__content.update-content-block__content--list
+      %ul.commitments-list.commitments-list--all-commitments
+        - group.commitments.for_quarter(quarter).in_key_and_alphabetical_order.each do |commitment|
+          %li.commitments-list__item
+            = link_to quarter_commitment_path(quarter, commitment),
+                      class: ("commitments-list__box" + (commitment.key_commitment? ? " commitments-list__box--key-commitment" : "")) do
+              - if commitment.key_commitment?
+                .commitments-list__number{ title: "Key commitment #{commitment.number}" }
+                  .commitments-list__key-commitment-icon
+                  .commitments-list__key-commitment-label
+                    Key Commitment
+                  = commitment.number
+              .commitments-list__name
+                = commitment.name

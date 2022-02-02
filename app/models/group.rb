@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+  has_many :commitments
   has_many :teams, -> { in_name_order }
   has_many :updates, through: :teams
 
