@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :commitment do
     sequence(:number)
-    name { Faker::Lorem.words(number: 7) }
+    name { Faker::Lorem.words(number: 7).join(' ') }
     overview { Faker::Hacker.say_something_smart }
     key_commitment { false }
 

@@ -1,0 +1,16 @@
+= turbo_frame_tag 'modal', autoscroll: true do
+  .modal-window
+    .modal-window__background
+    .modal-window__content
+      = simple_form_for service.form,
+                        url: quarter_commitments_path(quarter),
+                        as: :commitment,
+                        data: { controller: 'turbo-form-redirect' } do |f|
+
+        = render partial: 'quarters/commitments/form/name_form', locals: { f: f }
+        = f.input :group_id, as: :hidden
+
+        .form-actions.model-window__actions
+          = f.submit 'Add commitment', class: 'button button--primary'
+          .form-actions__cancel
+            = link_to 'Cancel', quarter_commitments_path(quarter), data: { turbo_frame: '_top' }

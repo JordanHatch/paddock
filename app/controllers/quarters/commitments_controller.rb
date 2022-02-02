@@ -3,6 +3,28 @@ class Quarters::CommitmentsController < Quarters::BaseController
 
   def show; end
 
+  def new
+    @service = Quarters::Commitments::CreateService.build(
+      quarter_id: quarter.id,
+      group_id: params[:group],
+    )
+
+    redirect_to quarter_commitments_path(quarter) if @service.failure?
+  end
+
+  def create
+    @service = Quarters::Commitments::CreateService.call(
+      quarter_id: quarter.id,
+      attributes: params[:commitment],
+    )
+
+    if @service.success?
+      redirect_to quarter_commitment_form_path(quarter, @service.commitment, :overview), status: 302
+    else
+      render action: :new, status: :unprocessable_entity
+    end
+  end
+
   def edit
     @service = Quarters::Commitments::UpdateService.build(
       commitment_id: commitment.id,
