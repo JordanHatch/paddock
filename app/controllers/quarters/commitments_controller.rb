@@ -26,20 +26,20 @@ class Quarters::CommitmentsController < Quarters::BaseController
   end
 
   def edit
-    @service = Quarters::Commitments::UpdateService.build(
-      commitment_id: commitment.id,
+    @service = Quarters::UpdateCommitment.new(
+      commitment: commitment,
       form_class: flow.form_class,
     )
   end
 
   def update
-    @service = Quarters::Commitments::UpdateService.call(
-      commitment_id: commitment.id,
+    @service = Quarters::UpdateCommitment.run(
+      commitment: commitment,
       form_class: flow.form_class,
-      attributes: params[:commitment],
+      attributes: params[:commitment].permit!,
     )
 
-    if @service.success?
+    if @service.valid?
       if flow.last_form?
         redirect_to quarter_commitment_path(quarter, commitment)
       else
