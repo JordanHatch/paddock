@@ -29,7 +29,7 @@ RSpec.describe 'editing quarter commitments', type: :feature do
 
     expect(page).to have_content("What's this commitment about?")
 
-    click_on 'Commitments'
+    visit quarter_commitments_path(quarter)
 
     group_block = find_content_block(group.name)
     within group_block do
