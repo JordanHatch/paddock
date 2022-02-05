@@ -5,15 +5,15 @@ class Manage::QuartersController < Manage::BaseController
     quarter_params = params.require(:commitments).permit(order: {})
     order = quarter_params[:order].to_h
 
-    service = Quarters::Commitments::ReorderService.call(
-      quarter_id: quarter.id,
+    service = Quarters::ReorderKeyCommitments.run(
+      quarter: quarter,
       order: order,
     )
 
-    if service.success?
+    if service.valid?
       redirect_to quarter_path(quarter)
     else
-      redirect_to reorder_commitments_manage_quarter_path(quarter.id)
+      render action: :reorder_commitments, status: :unprocessable_entity
     end
   end
 

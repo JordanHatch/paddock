@@ -59,6 +59,12 @@ bin/dev
 
 ## Running the tests
 
+You'll need Chrome (or Chromium) installed to run the feature specs which require JavaScript.
+
+Rails should precompile assets automatically before running tests. If this doesn't happen, you can build assets manually by running `yarn build` (for JavaScript) and `yarn build:css` (for CSS).
+
+To run the full test suite:
+
 ```
 bin/rake
 ```
