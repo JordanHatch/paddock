@@ -9,7 +9,10 @@
                         data: { controller: 'turbo-form-redirect' } do |f|
 
         = render partial: 'quarters/commitments/form/name_form', locals: { f: f }
-        = f.input :group_id, as: :hidden
+        - if f.object.group_id.present?
+          = f.input :group_id, as: :hidden
+        - else
+          = render partial: 'quarters/commitments/form/group_form', locals: { f: f }
 
         .form-actions.modal-window__actions
           = f.submit 'Add commitment', class: 'button button--primary', data: { disable: true }

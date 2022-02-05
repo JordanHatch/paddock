@@ -6,6 +6,7 @@ ruby '3.0.3'
 gem 'rails', '~> 7.0.1'
 
 gem 'aasm'
+gem 'active_interaction'
 gem 'after_commit_everywhere', '~> 1.0.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'cssbundling-rails'
