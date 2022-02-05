@@ -4,7 +4,7 @@ class Quarters::CreateCommitment < ActiveInteraction::Base
   record :quarter
   hash :attributes, default: {}, strip: false
 
-  set_callback :type_check, :after, -> {
+  set_callback :type_check, :after, lambda {
     raise MissingQuarter unless quarter.present?
   }
 

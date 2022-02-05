@@ -6,7 +6,7 @@ class Quarters::CommitmentsController < Quarters::BaseController
   def new
     @service = Quarters::CreateCommitment.new(
       quarter: quarter,
-      attributes: { group_id: params[:group] }
+      attributes: { group_id: params[:group] },
     )
 
     redirect_to quarter_commitments_path(quarter) unless @service.valid?

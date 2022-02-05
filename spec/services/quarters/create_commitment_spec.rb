@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Quarters::CreateCommitment do
-
   let(:group) { create(:group) }
   let(:quarter) { create(:quarter) }
   let(:name) { 'Commitment name' }
@@ -22,7 +21,7 @@ RSpec.describe Quarters::CreateCommitment do
       let(:quarter) { nil }
 
       it 'raises an exception' do
-        expect{ subject.form }.to raise_error(Quarters::CreateCommitment::MissingQuarter)
+        expect { subject.form }.to raise_error(Quarters::CreateCommitment::MissingQuarter)
       end
     end
 
@@ -65,7 +64,7 @@ RSpec.describe Quarters::CreateCommitment do
       let(:quarter) { nil }
 
       it 'is invalid' do
-        expect{ subject }.to raise_error(Quarters::CreateCommitment::MissingQuarter)
+        expect { subject }.to raise_error(Quarters::CreateCommitment::MissingQuarter)
       end
     end
 
