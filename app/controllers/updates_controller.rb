@@ -18,29 +18,27 @@ class UpdatesController < ApplicationController
   end
 
   def edit
-    @service = SprintUpdates::UpdateService.build(
-      team_id: params[:team_id],
-      sprint_id: params[:sprint_id],
+    @service = Sprints::UpdateSprintUpdate.new(
+      update: sprint_update,
       form_class: flow.form_class,
     )
   end
 
   def update
-    @service = SprintUpdates::UpdateService.call(
-      team_id: params[:team_id],
-      sprint_id: params[:sprint_id],
+    @service = Sprints::UpdateSprintUpdate.run(
+      update: sprint_update,
       form_class: flow.form_class,
-      attributes: params[:update],
+      attributes: params[:update].permit!,
     )
 
-    if @service.success?
+    if @service.valid?
       if flow.last_form?
         redirect_to update_path(sprint, team)
       else
         redirect_to edit_update_form_path(sprint, team, flow.next_form_id)
       end
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
