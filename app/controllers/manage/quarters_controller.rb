@@ -2,12 +2,9 @@ class Manage::QuartersController < Manage::BaseController
   def reorder_commitments; end
 
   def do_reorder_commitments
-    quarter_params = params.require(:commitments).permit(order: {})
-    order = quarter_params[:order].to_h
-
     service = Quarters::ReorderKeyCommitments.run(
       quarter: quarter,
-      order: order,
+      order: params.fetch(:commitments, {}).fetch(:order, {}).permit!,
     )
 
     if service.valid?
