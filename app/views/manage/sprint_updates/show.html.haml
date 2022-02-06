@@ -30,7 +30,7 @@
             - else
               .errors
                 %ul.errors__list
-                  - service.errors.each do |error|
-                    %li.errors__item= t(error, scope: %w(services sprint_updates unpublish))
+                  %li.errors__item
+                    = t('update_not_published', scope: %w[services sprint_updates unpublish])
         .form-actions.modal-window__actions
           = link_to 'Cancel', update_path(sprint, team), data: { turbo_frame: '_top' }
