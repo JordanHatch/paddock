@@ -55,5 +55,4 @@ RSpec.describe Sprints::UnpublishSprintUpdate do
       end
     end
   end
-
 end

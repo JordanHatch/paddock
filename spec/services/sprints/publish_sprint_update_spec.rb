@@ -103,7 +103,7 @@ RSpec.describe Sprints::PublishSprintUpdate do
       end
 
       it 'does not publish the update' do
-        expect { subject }.to_not change { update.reload.state }
+        expect { subject }.to_not(change { update.reload.state })
       end
     end
 

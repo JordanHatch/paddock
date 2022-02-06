@@ -52,17 +52,17 @@ RSpec.describe Sprints::UpdateSprintUpdate do
   end
 
   describe '.run' do
-    let(:attributes) {
+    let(:attributes) do
       {
         'delivery_status' => 'red',
       }
-    }
+    end
 
     subject do
       described_class.run(
         update: update,
         form_class: form_class,
-        attributes: attributes
+        attributes: attributes,
       )
     end
 
@@ -99,7 +99,7 @@ RSpec.describe Sprints::UpdateSprintUpdate do
       end
 
       it 'does not amend the record' do
-        expect { subject }.to_not change { update.reload.delivery_status }
+        expect { subject }.to_not(change { update.reload.delivery_status })
       end
     end
 
@@ -130,5 +130,4 @@ RSpec.describe Sprints::UpdateSprintUpdate do
       end
     end
   end
-
 end
