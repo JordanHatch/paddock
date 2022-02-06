@@ -45,9 +45,8 @@ class UpdatesController < ApplicationController
   def submit
     @form_id = :submit
 
-    @service = SprintUpdates::PublishService.build(
-      team_id: params[:team_id],
-      sprint_id: params[:sprint_id],
+    @service = Sprints::PublishSprintUpdate.new(
+      update: sprint_update,
       flow: flow,
     )
   end
@@ -55,16 +54,15 @@ class UpdatesController < ApplicationController
   def do_submit
     @form_id = :submit
 
-    @service = SprintUpdates::PublishService.call(
-      team_id: params[:team_id],
-      sprint_id: params[:sprint_id],
+    @service = Sprints::PublishSprintUpdate.run(
+      update: sprint_update,
       flow: flow,
     )
 
-    if @service.success?
+    if @service.valid?
       redirect_to update_path(sprint, team)
     else
-      render action: :submit
+      render action: :submit, status: :unprocessable_entity
     end
   end
 

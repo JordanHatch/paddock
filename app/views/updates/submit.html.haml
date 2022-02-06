@@ -8,7 +8,7 @@
     .flow__current-step
       %h2 Submit the team update
 
-      - if service.success?
+      - if service.valid?
         %p When you've finished making changes, you can submit the update.
         %p Once you've submitted the update, you won't be able to make further changes to it.
 
@@ -18,4 +18,3 @@
         .info-box.invalid-submit-message
           .info-box__icon
           You need to complete all steps before submitting the update.
-
