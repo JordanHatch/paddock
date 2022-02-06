@@ -1,16 +1,14 @@
 class Manage::SprintUpdatesController < Manage::BaseController
   def show
-    @service = SprintUpdates::UnpublishService.build(team_id: params[:team_id],
-                                                     sprint_id: params[:sprint_id])
+    @service = Sprints::UnpublishSprintUpdate.new(update: update)
   end
 
   def unpublish
-    @service = SprintUpdates::UnpublishService.call(team_id: params[:team_id],
-                                                    sprint_id: params[:sprint_id])
+    @service = Sprints::UnpublishSprintUpdate.run(update: update)
 
-    if service.success?
+    if service.valid?
       flash.notice = I18n.t(:success, scope: %w[services sprint_updates unpublish])
-      redirect_to update_path(service.sprint, service.team)
+      redirect_to update_path(sprint, team)
     else
       flash.alert = service.errors.map { |error|
         I18n.t(error, scope: %w[services sprint_updates unpublish])
@@ -23,13 +21,17 @@ class Manage::SprintUpdatesController < Manage::BaseController
 
   attr_reader :service
 
-  helper_method :service, :team, :sprint
+  helper_method :service, :team, :sprint, :update
+
+  def update
+    @update ||= Update.find_by!(sprint: sprint, team: team)
+  end
 
   def team
-    service.team
+    @team ||= Team.friendly.find(params[:team_id])
   end
 
   def sprint
-    service.sprint
+    @sprint ||= Sprint.find(params[:sprint_id])
   end
 end
