@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionController::RoutingError, with: :render_404
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from BaseFlow::FormNotFound, with: :render_404
 
   private
 
