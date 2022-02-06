@@ -8,8 +8,6 @@ class Quarters::CommitmentsController < Quarters::BaseController
       quarter: quarter,
       attributes: { group_id: params[:group] },
     )
-
-    redirect_to quarter_commitments_path(quarter) unless @service.valid?
   end
 
   def create

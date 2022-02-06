@@ -8,25 +8,58 @@ RSpec.describe Quarters::CreateCommitment do
 
   let(:form_class) { Quarters::Commitments::CreateForm }
 
-  describe '.new' do
-    subject { described_class.run(quarter: quarter) }
+  describe '.form' do
+    subject { described_class.new(quarter: quarter).form }
 
     context 'with valid params' do
       it 'builds a form' do
-        expect(subject.form).to be_a(form_class)
+        expect(subject).to be_a(form_class)
+      end
+    end
+  end
+
+  describe '.valid?' do
+    let(:attributes) do
+      {
+        name: name,
+        group_id: group_id,
+      }
+    end
+    subject { described_class.new(quarter: quarter, attributes: attributes) }
+
+    context 'with valid arguments' do
+      it 'is valid' do
+        expect(subject).to be_valid
       end
     end
 
     context 'with an empty quarter' do
       let(:quarter) { nil }
 
-      it 'raises an exception' do
-        expect { subject.form }.to raise_error(Quarters::CreateCommitment::MissingQuarter)
+      it 'is invalid' do
+        expect(subject).to_not be_valid
+        expect(subject.errors).to have_key(:quarter)
       end
     end
 
     context 'with an invalid quarter' do
-      let(:quarter) { nil }
+      let(:quarter) { Object.new }
+
+      it 'is invalid' do
+        expect(subject).to_not be_valid
+        expect(subject.errors).to have_key(:quarter)
+      end
+    end
+
+    context 'when the form is invalid' do
+      before(:each) do
+        form_class.any_instance.stubs(:valid?).returns(false)
+      end
+
+      it 'is invalid' do
+        expect(subject).to_not be_valid
+        expect(subject.errors).to have_key(:form)
+      end
     end
   end
 
@@ -52,39 +85,14 @@ RSpec.describe Quarters::CreateCommitment do
       end
     end
 
-    context 'with a valid quarter ID' do
-      let(:quarter) { create(:quarter).id }
-
-      it 'is valid' do
-        expect(subject).to be_valid
-      end
-    end
-
-    context 'with an empty quarter' do
-      let(:quarter) { nil }
-
-      it 'is invalid' do
-        expect { subject }.to raise_error(Quarters::CreateCommitment::MissingQuarter)
-      end
-    end
-
-    context 'with an invalid quarter' do
-      let(:quarter) { Object.new }
-
-      it 'is invalid' do
-        expect(subject).to_not be_valid
-        expect(subject.errors).to have_key(:quarter)
-      end
-    end
-
-    context 'when the form is invalid' do
+    context 'when saving the commitment fails' do
       before(:each) do
-        form_class.any_instance.stubs(:valid?).returns(false)
+        Commitment.any_instance.expects(:save).returns(false)
       end
 
-      it 'is invalid' do
+      it 'is not valid' do
         expect(subject).to_not be_valid
-        expect(subject.errors).to have_key(:form)
+        expect(subject.errors).to have_key(:save)
       end
     end
   end

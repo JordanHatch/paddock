@@ -1,13 +1,9 @@
 class Quarters::UpdateCommitment < ActiveInteraction::Base
-  class RequiredArgumentMissing < StandardError; end
-
   record :commitment
   interface :form_class, from: BaseForm
   hash :attributes, default: {}, strip: false
 
-  set_callback :type_check, :after, lambda { |service|
-    raise RequiredArgumentMissing if service.errors.key?(:commitment) || service.errors.key?(:form_class)
-  }
+  validate :form_is_valid?
 
   def form
     @form ||= if attributes.any?
@@ -18,11 +14,14 @@ class Quarters::UpdateCommitment < ActiveInteraction::Base
   end
 
   def execute
-    if form.valid?
-      commitment.assign_attributes(form.to_model_hash)
-      commitment.save
-    else
-      errors.add(:form, 'is invalid')
-    end
+    commitment.assign_attributes(form.to_model_hash)
+
+    errors.add(:save, 'failed') unless commitment.save
+  end
+
+  private
+
+  def form_is_valid?
+    errors.add(:form, 'is invalid') unless form.valid?
   end
 end

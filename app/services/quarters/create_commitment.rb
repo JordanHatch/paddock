@@ -1,12 +1,8 @@
 class Quarters::CreateCommitment < ActiveInteraction::Base
-  class MissingQuarter < StandardError; end
-
   record :quarter
   hash :attributes, default: {}, strip: false
 
-  set_callback :type_check, :after, lambda {
-    raise MissingQuarter unless quarter.present?
-  }
+  validate :form_is_valid?
 
   def commitment
     @commitment ||= quarter.commitments.build
@@ -17,17 +13,18 @@ class Quarters::CreateCommitment < ActiveInteraction::Base
   end
 
   def execute
-    if form.valid?
-      commitment.assign_attributes(form.to_model_hash)
-      commitment.save
-    else
-      errors.add(:form, 'is invalid')
-    end
+    commitment.assign_attributes(form.to_model_hash)
+
+    errors.add(:save, 'failed') unless commitment.save
   end
 
   private
 
   def form_class
     Quarters::Commitments::CreateForm
+  end
+
+  def form_is_valid?
+    errors.add(:form, 'is not valid') unless form.valid?
   end
 end
