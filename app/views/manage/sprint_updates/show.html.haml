@@ -9,10 +9,11 @@
     .team-header__actions
       = link_to 'View sprint update', update_path(sprint, team), class: 'button button--inverted-primary'
 
-  = turbo_frame_tag 'modal', autoscroll: true do
+  = turbo_frame_tag 'modal', class: 'turbo-frame turbo-frame--modal', autoscroll: true do
     .modal-window
       .modal-window__background
-      .modal-window__content
+      .modal-window__content.turbo-frame__container
+        .turbo-frame__loading
         .modal-window__header
           %h1.modal-window__header-label Danger zone
         .update-content-block
@@ -31,5 +32,5 @@
                 %ul.errors__list
                   - service.errors.each do |error|
                     %li.errors__item= t(error, scope: %w(services sprint_updates unpublish))
-        .form-actions.model-window__actions
+        .form-actions.modal-window__actions
           = link_to 'Cancel', update_path(sprint, team), data: { turbo_frame: '_top' }
