@@ -4,7 +4,7 @@
       %h1.section-header__title Key commitments this quarter
     .section-header__actions.turbo-frame__container
       .turbo-frame__loading
-      - if signed_in_admin?
+      - if signed_in_admin? && quarter.editable?
         = link_to reorder_commitments_manage_quarter_path(quarter.id),
              class: 'button button--sm button--inverted-warning',
              data: { turbo_frame: '_self' } do

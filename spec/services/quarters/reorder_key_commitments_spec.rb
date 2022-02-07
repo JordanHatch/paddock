@@ -10,6 +10,13 @@ RSpec.describe Quarters::ReorderKeyCommitments do
     ]
   end
   let(:ids) { commitments.map(&:id) }
+  let(:order) do
+    {
+      ids[0] => 3,
+      ids[1] => 1,
+      ids[2] => 2,
+    }
+  end
 
   subject do
     described_class.run(
@@ -20,14 +27,6 @@ RSpec.describe Quarters::ReorderKeyCommitments do
 
   describe '.run' do
     context 'with valid arguments' do
-      let(:order) do
-        {
-          ids[0] => 3,
-          ids[1] => 1,
-          ids[2] => 2,
-        }
-      end
-
       it 'reorders commitments' do
         expect(subject).to be_valid
 
@@ -143,70 +142,14 @@ RSpec.describe Quarters::ReorderKeyCommitments do
         expect(subject).to be_invalid
       end
     end
-  end
 
-  #
-  # it 'accepts form input as strings of integers' do
-  #   input = {
-  #     "#{ids[1]}" => '3',
-  #     "#{ids[2]}" => '1',
-  #     "#{ids[3]}" => '2',
-  #   }
-  #
-  #   service = described_class.call(
-  #     quarter_id: quarter.id,
-  #     order: input,
-  #   )
-  #   expect(service).to be_success
-  #
-  #   records = quarter.commitments.order(:id)
-  #   expect(records.map(&:number)).to eq([3, 1, 2])
-  # end
-  #
-  # it 'fails when not provided valid input' do
-  #   examples = [
-  #     'foo',
-  #     [],
-  #     { 'foo' => 1 },
-  #     { 1 => 'bar' },
-  #   ]
-  #
-  #   examples.each do |value|
-  #     service = described_class.call(
-  #       quarter_id: quarter.id,
-  #       order: value,
-  #     )
-  #     expect(service).to be_failure
-  #     expect(service.result.failure).to eq(:invalid_parameters)
-  #   end
-  # end
-  #
-  # it 'fails when a commitment does not exist' do
-  #   input = {
-  #     1 => 3,
-  #     4 => 2,
-  #   }
-  #
-  #   service = described_class.call(
-  #     quarter_id: quarter.id,
-  #     order: input,
-  #   )
-  #   expect(service).to be_failure
-  #   expect(service.result.failure).to eq(:invalid_commitment)
-  # end
-  #
-  # it 'fails when a commitment cannot be saved' do
-  #   Commitment.any_instance.stubs(:save).returns(false)
-  #
-  #   input = {
-  #     1 => 2,
-  #   }
-  #
-  #   service = described_class.call(
-  #     quarter_id: quarter.id,
-  #     order: input,
-  #   )
-  #   expect(service).to be_failure
-  #   expect(service.result.failure).to eq(:save_failed)
-  # end
+    context 'when the quarter is not editable' do
+      let(:quarter) { create(:non_editable_quarter) }
+
+      it 'is invalid' do
+        expect(subject).to_not be_valid
+        expect(subject.errors).to have_key(:quarter)
+      end
+    end
+  end
 end

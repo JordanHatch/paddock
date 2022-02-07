@@ -2,6 +2,7 @@ class Quarters::ReorderKeyCommitments < ActiveInteraction::Base
   record :quarter
   hash :order, strip: false
 
+  validate :quarter_is_editable?
   validate :order_keys_and_values_are_numeric
 
   def execute
@@ -29,5 +30,9 @@ class Quarters::ReorderKeyCommitments < ActiveInteraction::Base
     errors.add(:order) unless (order.keys + order.values).all? do |i|
                                 i.is_a?(Integer) || (i.is_a?(String) && i.match?(/^\d+$/))
                               end
+  end
+
+  def quarter_is_editable?
+    errors.add(:quarter, 'cannot be edited') unless quarter.editable?
   end
 end
