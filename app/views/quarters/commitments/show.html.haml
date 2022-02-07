@@ -46,6 +46,7 @@
           %li.teams-list__item
             .teams-list__name= team.name
 
-.update-content-block
-  .update-content-block__content
-    = link_to 'Edit this page', edit_quarter_commitment_path(commitment.quarter, commitment), class: 'button'
+- if quarter.editable?
+  .update-content-block
+    .update-content-block__content
+      = link_to 'Edit this page', edit_quarter_commitment_path(commitment.quarter, commitment), class: 'button'

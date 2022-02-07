@@ -61,6 +61,15 @@ RSpec.describe Quarters::CreateCommitment do
         expect(subject.errors).to have_key(:form)
       end
     end
+
+    context 'when the quarter is not editable' do
+      let(:quarter) { create(:non_editable_quarter) }
+
+      it 'is invalid' do
+        expect(subject).to_not be_valid
+        expect(subject.errors).to have_key(:quarter)
+      end
+    end
   end
 
   describe '.run' do

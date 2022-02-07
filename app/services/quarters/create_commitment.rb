@@ -3,6 +3,7 @@ class Quarters::CreateCommitment < ActiveInteraction::Base
   hash :attributes, default: {}, strip: false
 
   validate :form_is_valid?
+  validate :quarter_is_editable?
 
   def commitment
     @commitment ||= quarter.commitments.build
@@ -26,5 +27,9 @@ class Quarters::CreateCommitment < ActiveInteraction::Base
 
   def form_is_valid?
     errors.add(:form, 'is not valid') unless form.valid?
+  end
+
+  def quarter_is_editable?
+    errors.add(:quarter, 'cannot be edited') unless quarter.editable?
   end
 end

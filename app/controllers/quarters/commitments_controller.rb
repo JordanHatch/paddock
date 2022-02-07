@@ -1,4 +1,6 @@
 class Quarters::CommitmentsController < Quarters::BaseController
+  before_action :ensure_quarter_is_editable, only: [:new, :create, :edit, :update]
+
   def index; end
 
   def show; end
@@ -67,5 +69,12 @@ class Quarters::CommitmentsController < Quarters::BaseController
       current_form_id: @form_id || params[:form],
       object: commitment,
     )
+  end
+
+  def ensure_quarter_is_editable
+    unless quarter.editable?
+      flash.alert = "The details about this quarter's commitments can no longer be changed."
+      return redirect_to quarter_commitments_path(quarter)
+    end
   end
 end
