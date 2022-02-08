@@ -130,4 +130,15 @@ RSpec.describe 'editing quarter commitments', type: :feature do
       expect(page).to have_selector('li', text: team_2.name)
     end
   end
+
+  context 'when the quarter cannot be edited' do
+    let!(:quarter) { create(:non_editable_quarter) }
+
+    it 'redirects with an error message' do
+      error_message = I18n.t('quarters.alerts.not_editable')
+      visit new_quarter_commitment_path(quarter)
+
+      expect(page).to have_content(error_message)
+    end
+  end
 end

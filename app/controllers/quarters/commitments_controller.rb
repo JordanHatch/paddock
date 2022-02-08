@@ -75,7 +75,7 @@ class Quarters::CommitmentsController < Quarters::BaseController
 
   def ensure_quarter_is_editable
     unless quarter.editable?
-      flash.alert = "The details about this quarter's commitments can no longer be changed."
+      flash.alert = I18n.t('quarters.alerts.not_editable')
       return redirect_to quarter_commitments_path(quarter)
     end
   end

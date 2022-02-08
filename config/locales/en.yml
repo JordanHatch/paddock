@@ -44,6 +44,9 @@ en:
       commodities: Commodities
       group: Service line
       teams: Teams
+  quarters:
+    alerts:
+      not_editable: The details about this quarter's commitments can no longer be changed.
   updates:
     delivery_status:
       green:
