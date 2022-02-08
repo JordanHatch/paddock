@@ -1,7 +1,9 @@
 = turbo_frame_tag 'quarter-key-commitments-list', class: 'turbo-frame', target: '_top' do
   .section-header
     .section-header__content
-      %h1.section-header__title Key commitments this quarter
+      %h1.section-header__title
+        = pluralize(key_commitments.size, 'key commitment')
+        this quarter
     .section-header__actions.turbo-frame__container
       .turbo-frame__loading
       - if signed_in_admin? && quarter.editable?
