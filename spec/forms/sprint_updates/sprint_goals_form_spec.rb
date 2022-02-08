@@ -28,4 +28,36 @@ RSpec.describe SprintUpdates::SprintGoalsForm do
       expect(output).to contain_exactly('One', 'Two')
     end
   end
+
+  describe '#valid?' do
+    subject do
+      described_class.new(Update.new).tap {|form| form.validate({ sprint_goals: goals }) }
+    end
+
+    context 'with one or more goals' do
+      let(:goals) { ['Goal 1', 'Goal 2'] }
+
+      it 'is valid' do
+        expect(subject).to be_valid
+      end
+    end
+
+    context 'with an empty array' do
+      let(:goals) { [] }
+
+      it 'is invalid' do
+        expect(subject).to_not be_valid
+        expect(subject.errors.messages).to have_key(:sprint_goals)
+      end
+    end
+
+    context 'when nil' do
+      let(:goals) { nil }
+
+      it 'is invalid' do
+        expect(subject).to_not be_valid
+        expect(subject.errors.messages).to have_key(:sprint_goals)
+      end
+    end
+  end
 end
