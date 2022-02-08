@@ -51,7 +51,7 @@ class BaseFlow
 
   def form_status
     @form_status ||= forms.transform_values do |klass|
-      klass.from_model(object).status
+      klass.new(object).status
     end
   end
 
