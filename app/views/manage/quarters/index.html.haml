@@ -1,0 +1,23 @@
+%header.section-header
+  %h1.section-header__title Quarters
+  .section-header__actions
+    = link_to 'Add a new quarter', new_manage_quarter_path, class: 'button button--primary'
+
+%ul.managed-resource-list
+  - quarters.each do |quarter|
+    %li.managed-resource-list__item{ class: ('managed-resource-list__item--highlighted' if quarter.current?) }
+      .managed-resource-list__detail
+        .managed-resource-list__name=quarter.name
+        .managed-resource-list__metadata
+          = quarter.start_on.strftime('%b %e %Y')
+          to
+          = quarter.end_on.strftime('%b %e %Y')
+      .managed-resource-list__status
+        %ul
+          - if quarter.current?
+            %li Current quarter
+          - if quarter.editable?
+            %li Open for changes
+      .managed-resource-list__actions
+        = link_to 'Edit', edit_manage_quarter_path(quarter),
+                          class: 'button button--inverted-primary button--sm'

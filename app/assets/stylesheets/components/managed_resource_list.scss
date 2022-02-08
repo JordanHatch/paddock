@@ -1,0 +1,45 @@
+@use 'helpers';
+
+.managed-resource-list {
+  font-size: 1rem;
+}
+
+.managed-resource-list__item {
+  display: flex;
+  margin-bottom: .5em;
+  padding: .85em;
+  border-radius: .4em;
+  background: helpers.colour('silver', '50');
+}
+
+.managed-resource-list__item--highlighted {
+  background: helpers.colour('silver', '100');
+}
+
+.managed-resource-list__detail {
+  flex: 1;
+}
+
+.managed-resource-list__name {
+  font-weight: bold;
+  font-size: 1em;
+  margin-bottom: .15em;
+}
+
+.managed-resource-list__metadata, .managed-resource-list__status {
+  font-size: .85em;
+  color: helpers.colour('grey', '600');
+}
+
+.managed-resource-list__status, .managed-resource-list__actions {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 1em;
+}
+
+.managed-resource-list__actions {
+  text-align: right;
+  flex: 0;
+}

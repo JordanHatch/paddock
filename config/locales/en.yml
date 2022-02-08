@@ -1,6 +1,9 @@
 en:
   simple_form:
     labels:
+      quarter:
+        name: Quarter name
+        editable: Allow this quarter and its commitments to be edited?
       sprint:
         name: Sprint name
         start_on: Starts on

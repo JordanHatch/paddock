@@ -21,6 +21,12 @@
                    match_prefix: true,
                    list_item_class: 'section-navigation__nav-item',
                    link_class: 'section-navigation__nav-link'
+
+        = nav_link 'Quarters',
+                   manage_quarters_path,
+                   match_prefix: true,
+                   list_item_class: 'section-navigation__nav-item',
+                   link_class: 'section-navigation__nav-link'
   .inner
     = yield
 
