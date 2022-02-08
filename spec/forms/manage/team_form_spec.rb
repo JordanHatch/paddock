@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Manage::TeamForm do
   describe '#valid?' do
     let(:group) { create(:group) }
+    let(:team) { Team.new }
     let(:valid_params) do
       {
         name: 'Team Name',
@@ -13,7 +14,7 @@ RSpec.describe Manage::TeamForm do
     end
 
     subject do
-      described_class.from_form(params)
+      described_class.new(team).tap {|form| form.validate(params) }
     end
 
     context 'when given valid data' do
@@ -52,7 +53,7 @@ RSpec.describe Manage::TeamForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:name)
+          expect(subject.errors.messages).to have_key(:name)
         end
       end
 
@@ -63,7 +64,7 @@ RSpec.describe Manage::TeamForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:group_id)
+          expect(subject.errors.messages).to have_key(:group_id)
         end
       end
 
@@ -74,7 +75,7 @@ RSpec.describe Manage::TeamForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:group_id)
+          expect(subject.errors.messages).to have_key(:group_id)
         end
       end
 
@@ -85,7 +86,7 @@ RSpec.describe Manage::TeamForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:start_on)
+          expect(subject.errors.messages).to have_key(:start_on)
         end
       end
 
@@ -96,7 +97,7 @@ RSpec.describe Manage::TeamForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:end_on)
+          expect(subject.errors.messages).to have_key(:end_on)
         end
       end
 
@@ -107,7 +108,7 @@ RSpec.describe Manage::TeamForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:end_on)
+          expect(subject.errors.messages).to have_key(:end_on)
         end
       end
     end

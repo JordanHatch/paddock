@@ -4,7 +4,7 @@
   %h2{ data: { update_single_issue_target: 'header',
                action: 'click->update-single-issue#toggle' } }
     .title{ data: { update_single_issue_target: 'title' } }
-      - if f.object.description.present?
+      - if f.object.present? && f.object.description.present?
         = f.object.description
       - else
         Issue

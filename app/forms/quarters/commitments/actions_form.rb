@@ -1,13 +1,13 @@
 class Quarters::Commitments::ActionsForm < BaseForm
-  attribute :actions, Types::Nominal::Array
+  property :actions
 
-  preprocess do |form|
-    (5 - form.actions.size).times do
-      form.actions << ''
-    end
+  def actions=(value)
+    super(value.reject!(&:blank?))
   end
 
-  before_validate do |_form, atts|
-    atts[:actions].reject!(&:blank?)
+  def prepopulate!
+    (5 - actions.size).times do
+      self.actions << ''
+    end
   end
 end

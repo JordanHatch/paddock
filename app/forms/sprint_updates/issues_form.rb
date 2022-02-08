@@ -1,55 +1,47 @@
 class SprintUpdates::IssuesForm < BaseForm
-  class Issue < BaseForm
-    attribute? :id, Types::Nominal::Integer
-    attribute? :description, Types::Nominal::String
-    attribute? :treatment, Types::Nominal::String
-    attribute? :help, Types::Nominal::String
-    attribute? :identifier, Types::Nominal::Nil | Types::Nominal::Integer
-    attribute? :_destroy, Types::Nominal::Integer
-
-    def persisted?
-      id.present?
-    end
+  collection :issues, populator: :populate_issues! do
+    property :description
+    property :treatment
+    property :help
+    property :identifier
+    property :_destroy, virtual: true, writeable: false
 
     validation do
       params do
-        required(:description).filled(:string)
+        required(:description).filled
         optional(:identifier).maybe(:integer)
       end
     end
   end
 
-  def issues
-    issues_attributes
-  end
-
-  nested_attributes :issues
-
-  attribute? :issues_attributes, Types::Array.of(Issue).default([], shared: true)
-
-  preprocess do |form|
-    form.issues_attributes << Issue.new if form.issues_attributes.empty?
-  end
-
-  before_validate do |form, atts|
-    atts[:issues_attributes].reject! { |obj| if_all_blank?(obj) }
-    form.issues_attributes.reject! { |obj| if_all_blank?(obj) }
-  end
-
-  validation do
-    params do
-      optional(:issues_attributes).value(:array)
-    end
-  end
-
   def started?
-    issues_attributes.reject { |issue|
-      issue.attributes.compact.empty?
+    issues.reject { |issue|
+      issue.to_nested_hash.compact.empty?
     }.any?
   end
 
-  def self.if_all_blank?(obj)
-    atts = obj.to_hash
-    atts.reject { |_key, value| value.blank? }.empty?
+  def prepopulate!
+    self.issues << model.issues.build if self.issues.empty?
+  end
+
+  def populate_issues!(fragment:, collection:, **)
+    item = issues.find { |issue| issue.id == fragment["id"].to_i }
+    fields = %w{description treatment help identifier}
+
+    if fragment['_destroy'] == '1'
+      issues.delete(item)
+      return skip!
+    end
+
+    completed_fields = fragment.slice(*fields).values.reject(&:blank?)
+    if completed_fields.empty?
+      return skip!
+    end
+
+    return item if item.present?
+
+    issues.append(
+      Issue.new(fragment.slice(*fields))
+    )
   end
 end

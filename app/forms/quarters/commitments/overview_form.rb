@@ -1,5 +1,5 @@
 class Quarters::Commitments::OverviewForm < BaseForm
-  attribute :overview, Types::Nominal::String
+  property :overview
 
   validation do
     params do

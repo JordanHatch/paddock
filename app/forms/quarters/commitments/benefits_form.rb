@@ -1,13 +1,13 @@
 class Quarters::Commitments::BenefitsForm < BaseForm
-  attribute :benefits, Types::Nominal::Array
+  property :benefits
 
-  preprocess do |form|
-    (5 - form.benefits.size).times do
-      form.benefits << ''
-    end
+  def benefits=(value)
+    super(value.reject!(&:blank?))
   end
 
-  before_validate do |_form, atts|
-    atts[:benefits].reject!(&:blank?)
+  def prepopulate!
+    (5 - benefits.size).times do
+      self.benefits << ''
+    end
   end
 end

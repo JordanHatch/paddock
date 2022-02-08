@@ -1,13 +1,13 @@
 class SprintUpdates::NextSprintForm < BaseForm
-  attribute :next_sprint_goals, Types::Nominal::Array
+  property :next_sprint_goals
 
-  preprocess do |form|
-    (5 - form.next_sprint_goals.size).times do
-      form.next_sprint_goals << ''
-    end
+  def next_sprint_goals=(value)
+    super(value.reject!(&:blank?))
   end
 
-  before_validate do |_form, atts|
-    atts[:next_sprint_goals].reject!(&:blank?)
+  def prepopulate!
+    (5 - next_sprint_goals.size).times do
+      self.next_sprint_goals << ''
+    end
   end
 end

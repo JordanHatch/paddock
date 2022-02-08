@@ -6,7 +6,7 @@ class Update < ApplicationRecord
   belongs_to :sprint
   has_one :group, through: :team
 
-  has_many :issues, inverse_of: :sprint_update
+  has_many :issues, inverse_of: :sprint_update, dependent: :destroy
   has_paper_trail skip: %i[created_at updated_at]
 
   accepts_nested_attributes_for :issues, allow_destroy: true, reject_if: :all_blank

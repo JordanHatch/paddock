@@ -177,4 +177,21 @@ RSpec.describe 'editing sprint updates', type: :feature do
 
     expect(page).to_not have_content('currently in draft')
   end
+
+  it 'can delete an issue from a sprint update', js: true do
+    update = create(:draft_sprint_update)
+    issue = create(:issue, sprint_update: update)
+
+    visit edit_update_form_path(update.sprint, update.team, :issues)
+
+    within '.issues ol li:nth-of-type(1)' do
+      find('h2').click
+      click_on 'Delete issue'
+    end
+    save_and_next
+
+    update.reload
+
+    expect(update.issues.size).to eq(0)
+  end
 end

@@ -1,17 +1,16 @@
 class Manage::SprintForm < BaseForm
-  attribute :name, Types::Nominal::String
-  attribute :short_label, Types::Nominal::String
-  attribute :start_on, Types::Nominal::Date
-  attribute :end_on, Types::Nominal::Date
+  property :name
+  property :short_label
+  property :start_on, multi_params: true, prepopulator: :prepopulate_start_on!
+  property :end_on, multi_params: true, prepopulator: :prepopulate_end_on!
 
-  preprocess do |form|
-    if form.start_on.blank?
+  def prepopulate!
+    if start_on.blank?
       last_sprint = Sprint.in_reverse_date_order.first
 
       if last_sprint.present?
-        form.attributes[:start_on] = last_sprint.end_on + 1.day
-
-        form.attributes[:end_on] = form.start_on + 13.days if form.end_on.blank?
+        self.start_on = last_sprint.end_on + 1.day
+        self.end_on = start_on + 13.days if end_on.blank?
       end
     end
   end

@@ -22,6 +22,9 @@ class UpdatesController < ApplicationController
       update: sprint_update,
       form_class: flow.form_class,
     )
+
+    @service.form.prepopulate!
+    @service.form.validate({}) if @service.form.started?
   end
 
   def update
@@ -87,7 +90,7 @@ class UpdatesController < ApplicationController
   def flow
     @flow ||= SprintUpdates::UpdateFlow.new(
       current_form_id: @form_id || params[:form],
-      sprint_update: sprint_update,
+      object: sprint_update,
     )
   end
 

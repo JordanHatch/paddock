@@ -14,7 +14,7 @@ module BaseForm::Status
   end
 
   def started?
-    attributes.map { |_, value|
+    to_nested_hash.map { |_, value|
       value.is_a?(Array) ? value.reject(&:blank?) : value
     }.reject(&:blank?).any?
   end

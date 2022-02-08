@@ -14,7 +14,9 @@ RSpec.describe Quarters::Commitments::CreateForm do
     let(:group_id) { create(:group).id }
     let(:name) { 'Name' }
 
-    subject { described_class.new(group_id: group_id, name: name) }
+    subject do
+      described_class.new(Commitment.new).tap { |form| form.validate(group_id: group_id, name: name) }
+    end
 
     context 'with a valid group ID' do
       it 'is true' do

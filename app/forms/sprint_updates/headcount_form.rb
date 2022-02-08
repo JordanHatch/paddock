@@ -1,6 +1,6 @@
 class SprintUpdates::HeadcountForm < BaseForm
-  attribute :current_headcount, Types::Nominal::Integer
-  attribute :vacant_roles, Types::Nominal::Integer
+  property :current_headcount
+  property :vacant_roles
 
   validation do
     params do

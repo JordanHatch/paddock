@@ -30,6 +30,8 @@ class Quarters::CommitmentsController < Quarters::BaseController
       commitment: commitment,
       form_class: flow.form_class,
     )
+
+    @service.form.prepopulate!
   end
 
   def update

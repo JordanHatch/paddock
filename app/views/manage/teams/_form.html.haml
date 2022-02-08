@@ -1,4 +1,4 @@
-= simple_form_for [:manage, form] do |f|
+= simple_form_for form, as: :team do |f|
   = f.input :group_id, { as: :select,
                          collection: Group.all,
                          required: true,

@@ -1,13 +1,11 @@
 class Sprints::UpdateSprintUpdate < ActiveInteraction::Base
   record :update
-  interface :form_class, from: BaseForm
+  interface :form_class, from: Reform::Form
   hash :attributes, default: {}, strip: false
 
   def form
-    @form ||= if attributes.any?
-                form_class.from_form(attributes, model: update)
-              else
-                form_class.from_model(update)
+    @form ||= form_class.new(update).tap do |form|
+                form.deserialize(attributes)
               end
   end
 
@@ -20,11 +18,6 @@ class Sprints::UpdateSprintUpdate < ActiveInteraction::Base
   end
 
   def execute
-    if form.valid?
-      update.assign_attributes(form.to_model_hash)
-      update.save
-    else
-      errors.add(:form, 'is invalid')
-    end
+    errors.add(:save, 'failed') unless form.save
   end
 end

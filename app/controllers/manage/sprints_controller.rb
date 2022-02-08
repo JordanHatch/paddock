@@ -1,15 +1,15 @@
 class Manage::SprintsController < Manage::BaseController
   def index; end
 
-  def new; end
+  def new
+    form.prepopulate!
+  end
 
   def edit; end
 
   def create
-    if form.valid?
-      sprint.assign_attributes(form.to_model_hash)
-
-      if sprint.save
+    if form.validate(params[:sprint])
+      if form.save
         flash.notice = 'Sprint created'
         return redirect_to manage_sprints_path
       end
@@ -19,10 +19,8 @@ class Manage::SprintsController < Manage::BaseController
   end
 
   def update
-    if form.valid?
-      sprint.assign_attributes(form.to_model_hash)
-
-      if sprint.save
+    if form.validate(params[:sprint])
+      if form.save
         flash.notice = 'Sprint updated'
         return redirect_to manage_sprints_path
       end
@@ -48,11 +46,7 @@ class Manage::SprintsController < Manage::BaseController
   end
 
   def form
-    @form ||= if params.key?(:sprint)
-                Manage::SprintForm.from_form(params[:sprint], model: sprint)
-              else
-                Manage::SprintForm.from_model(sprint)
-              end
+    @form ||= Manage::SprintForm.new(sprint)
   end
 
   def current_sprint

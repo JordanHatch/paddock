@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module ExampleForms
   class FormOne < BaseForm
-    attribute :first_name, Types::Nominal::String
+    property :first_name
 
     validation do
       params do
@@ -12,7 +12,7 @@ module ExampleForms
   end
 
   class FormTwo < BaseForm
-    attribute :last_name, Types::Nominal::String
+    property :last_name
 
     validation do
       params do
@@ -38,7 +38,7 @@ class ExampleFlow < BaseFlow
 end
 
 RSpec.describe BaseFlow do
-  let(:object) { stub(attributes: { first_name: 'Test', last_name: 'User' }) }
+  let(:object) { stub(first_name: 'Test', last_name: 'User') }
   let(:current_form_id) { :one }
 
   subject do

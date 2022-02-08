@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Quarters::Commitments::TeamsForm do
   describe 'callback:deserialize_model' do
     let(:commitment) { create(:commitment, teams: teams) }
-    let(:form) { described_class.from_model(commitment) }
+    let(:form) { described_class.new(commitment) }
 
     context 'with teams present' do
       let(:teams) { create_list(:team, 2) }

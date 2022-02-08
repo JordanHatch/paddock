@@ -1,5 +1,5 @@
 class Quarters::Commitments::NameForm < BaseForm
-  attribute :name, Types::Nominal::String
+  property :name
 
   validation do
     params do
