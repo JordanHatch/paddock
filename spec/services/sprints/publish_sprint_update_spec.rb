@@ -5,7 +5,7 @@ RSpec.describe Sprints::PublishSprintUpdate do
   let(:flow) do
     SprintUpdates::UpdateFlow.new(
       current_form_id: :submit,
-      sprint_update: update,
+      object: update,
     )
   end
 

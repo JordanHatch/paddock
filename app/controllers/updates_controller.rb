@@ -87,7 +87,7 @@ class UpdatesController < ApplicationController
   def flow
     @flow ||= SprintUpdates::UpdateFlow.new(
       current_form_id: @form_id || params[:form],
-      sprint_update: sprint_update,
+      object: sprint_update,
     )
   end
 

@@ -1,11 +1,4 @@
 class SprintUpdates::UpdateFlow < BaseFlow
-  def initialize(current_form_id:, sprint_update:)
-    super(
-      current_form_id: current_form_id,
-      object: sprint_update,
-    )
-  end
-
   def forms
     {
       delivery_status: SprintUpdates::DeliveryStatusForm,
