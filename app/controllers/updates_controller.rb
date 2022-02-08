@@ -22,6 +22,9 @@ class UpdatesController < ApplicationController
       update: sprint_update,
       form_class: flow.form_class,
     )
+
+    @service.form.prepopulate!
+    @service.form.validate({}) if @service.form.started?
   end
 
   def update

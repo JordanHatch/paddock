@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe SprintUpdates::IssuesForm do
-  let(:klass) { subject.class }
+  let(:params) { {} }
+  let(:update) { Update.new }
+
+  subject do
+    described_class.new(update).tap {|form| form.validate(params) }
+  end
 
   describe '#valid?' do
     context 'when given valid data' do
@@ -17,8 +22,7 @@ RSpec.describe SprintUpdates::IssuesForm do
       end
 
       it 'is valid' do
-        form = klass.from_form(params)
-        expect(form).to be_valid
+        expect(subject).to be_valid
       end
     end
 
@@ -30,8 +34,7 @@ RSpec.describe SprintUpdates::IssuesForm do
       end
 
       it 'is valid' do
-        form = klass.from_form(params)
-        expect(form).to be_valid
+        expect(subject).to be_valid
       end
     end
 
@@ -49,10 +52,9 @@ RSpec.describe SprintUpdates::IssuesForm do
         end
 
         it 'is not valid' do
-          form = klass.from_form(params)
-          expect(form).to_not be_valid
+          expect(subject).to_not be_valid
 
-          errors = form.errors[:issues_attributes][0]
+          errors = subject.issues[0].errors.messages
           expect(errors).to have_key(:description)
         end
       end
@@ -71,10 +73,9 @@ RSpec.describe SprintUpdates::IssuesForm do
         end
 
         it 'is not valid' do
-          form = klass.from_form(params)
-          expect(form).to_not be_valid
+          expect(subject).to_not be_valid
 
-          errors = form.errors[:issues_attributes][0]
+          errors = subject.issues[0].errors.messages
           expect(errors).to have_key(:identifier)
         end
       end
@@ -96,10 +97,9 @@ RSpec.describe SprintUpdates::IssuesForm do
         end
 
         it 'is not valid' do
-          form = klass.from_form(params)
-          expect(form).to_not be_valid
+          expect(subject).to_not be_valid
 
-          errors = form.errors[:issues_attributes][1]
+          errors = subject.issues[1].errors.messages
           expect(errors).to have_key(:description)
         end
       end
@@ -115,8 +115,7 @@ RSpec.describe SprintUpdates::IssuesForm do
       end
 
       it 'is false' do
-        form = klass.from_form(params)
-        expect(form).to_not be_started
+        expect(subject).to_not be_started
       end
     end
 
@@ -133,13 +132,12 @@ RSpec.describe SprintUpdates::IssuesForm do
       end
 
       it 'is true' do
-        form = klass.from_form(params)
-        expect(form).to be_started
+        expect(subject).to be_started
       end
     end
   end
 
-  describe 'callback:before_validate' do
+  describe '#populate_issues!' do
     context 'with all blank issues' do
       let(:params) do
         {
@@ -157,11 +155,34 @@ RSpec.describe SprintUpdates::IssuesForm do
       end
 
       it 'removes the issues' do
-        form = klass.from_form(params)
-        output = form.to_model_hash
+        output = subject.to_nested_hash
 
-        expect(output[:issues_attributes].size).to eq(0)
-        expect(form.issues_attributes.size).to eq(0)
+        expect(output['issues'].size).to eq(0)
+        expect(subject.issues.size).to eq(0)
+      end
+    end
+  end
+
+  describe '#prepopulate!' do
+    before(:each) {
+      subject.prepopulate!
+    }
+
+    context 'when no issues exist' do
+      it 'creates a first issue' do
+        expect(subject.issues.size).to eq(1)
+      end
+    end
+
+    context 'when an issue already exists' do
+      let(:update) do
+        Update.new(
+          issues: [ Issue.new ]
+        )
+      end
+
+      it 'does not create a new issue' do
+        expect(subject.issues.size).to eq(1)
       end
     end
   end

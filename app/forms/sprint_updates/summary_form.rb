@@ -1,5 +1,5 @@
 class SprintUpdates::SummaryForm < BaseForm
-  attribute :content, Types::Nominal::String
+  property :content
 
   validation do
     params do

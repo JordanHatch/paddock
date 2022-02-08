@@ -1,5 +1,5 @@
 class SprintUpdates::OkrStatusForm < BaseForm
-  attribute :okr_status, Types::Nominal::String
+  property :okr_status
 
   validation do
     params do

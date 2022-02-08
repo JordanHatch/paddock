@@ -53,7 +53,7 @@ RSpec.describe Quarters::CreateCommitment do
 
     context 'when the form is invalid' do
       before(:each) do
-        form_class.any_instance.stubs(:valid?).returns(false)
+        form_class.any_instance.stubs(:validate).returns(false)
       end
 
       it 'is invalid' do

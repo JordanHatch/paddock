@@ -1,8 +1,8 @@
 class Quarters::Commitments::GroupForm < BaseForm
-  attribute :group_id, Types::Nominal::Integer
+  property :group_id
 
   def self.options
-    Group.in_order
+    ::Group.in_order
   end
 
   validation do

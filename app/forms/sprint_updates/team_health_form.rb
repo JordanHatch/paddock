@@ -1,5 +1,5 @@
 class SprintUpdates::TeamHealthForm < BaseForm
-  attribute :team_health, Types::Nominal::String
+  property :team_health
 
   validation do
     params do

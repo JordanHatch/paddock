@@ -1,9 +1,9 @@
 class Quarters::Commitments::CreateForm < BaseForm
-  attribute? :name, Types::Nominal::String
-  attribute? :group_id, Types::Nominal::Integer
+  property :name
+  property :group_id
 
   def self.options
-    Group.in_order
+    ::Group.in_order
   end
 
   validation do

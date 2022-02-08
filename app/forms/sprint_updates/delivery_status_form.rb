@@ -1,9 +1,9 @@
 class SprintUpdates::DeliveryStatusForm < BaseForm
-  attribute :delivery_status, Types::Nominal::String
+  property :delivery_status
 
   validation do
     params do
-      required(:delivery_status).filled(:string)
+      required(:delivery_status).filled
     end
   end
 end

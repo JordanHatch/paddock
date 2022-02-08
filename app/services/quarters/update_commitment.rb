@@ -7,17 +7,13 @@ class Quarters::UpdateCommitment < ActiveInteraction::Base
   validate :quarter_is_editable?
 
   def form
-    @form ||= if attributes.any?
-                form_class.from_form(attributes, model: commitment)
-              else
-                form_class.from_model(commitment)
+    @form ||= form_class.new(commitment).tap do |form|
+                form.deserialize(attributes)
               end
   end
 
   def execute
-    commitment.assign_attributes(form.to_model_hash)
-
-    errors.add(:save, 'failed') unless commitment.save
+    errors.add(:save, 'failed') unless form.save
   end
 
   private

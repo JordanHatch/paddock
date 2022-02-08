@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Quarters::Commitments::GroupForm do
+  let(:form) do
+    described_class.new(Commitment.new)
+  end
+
   describe '.options' do
     it 'returns groups in order' do
       result = mock
@@ -11,7 +15,9 @@ RSpec.describe Quarters::Commitments::GroupForm do
   end
 
   describe '#valid?' do
-    subject { described_class.new(group_id: group_id) }
+    subject do
+      form.tap { |form| form.validate(group_id: group_id) }
+    end
 
     context 'with a valid group ID' do
       let(:group_id) { create(:group).id }

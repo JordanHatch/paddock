@@ -1,7 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Manage::SprintForm do
-  describe 'on initialize' do
+  subject do
+    described_class.new(Sprint.new).tap do |form|
+      form.validate(params)
+    end
+  end
+
+  describe '#prepopulate!' do
+    subject do
+      described_class.new(Sprint.new).tap do |form|
+        form.validate(params)
+        form.prepopulate!
+      end
+    end
+
     context 'when the start and end dates are blank' do
       let(:params) do
         {
@@ -11,8 +24,6 @@ RSpec.describe Manage::SprintForm do
           end_on: nil,
         }
       end
-
-      subject { described_class.from_form(params) }
 
       context 'when the most recent sprint exists' do
         let!(:sprints) do
@@ -80,10 +91,6 @@ RSpec.describe Manage::SprintForm do
       }
     end
 
-    subject do
-      described_class.from_form(params)
-    end
-
     context 'when given valid data' do
       let(:params) { valid_params }
 
@@ -100,7 +107,7 @@ RSpec.describe Manage::SprintForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:name)
+          expect(subject.errors.messages).to have_key(:name)
         end
       end
 
@@ -111,7 +118,7 @@ RSpec.describe Manage::SprintForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:start_on)
+          expect(subject.errors.messages).to have_key(:start_on)
         end
       end
 
@@ -122,7 +129,7 @@ RSpec.describe Manage::SprintForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:end_on)
+          expect(subject.errors.messages).to have_key(:end_on)
         end
       end
 
@@ -133,7 +140,7 @@ RSpec.describe Manage::SprintForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:short_label)
+          expect(subject.errors.messages).to have_key(:short_label)
         end
       end
 
@@ -144,7 +151,7 @@ RSpec.describe Manage::SprintForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:start_on)
+          expect(subject.errors.messages).to have_key(:start_on)
         end
       end
 
@@ -155,7 +162,7 @@ RSpec.describe Manage::SprintForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:end_on)
+          expect(subject.errors.messages).to have_key(:end_on)
         end
       end
 
@@ -166,7 +173,7 @@ RSpec.describe Manage::SprintForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:end_on)
+          expect(subject.errors.messages).to have_key(:end_on)
         end
       end
 
@@ -177,7 +184,7 @@ RSpec.describe Manage::SprintForm do
 
         it 'is not valid' do
           expect(subject).to_not be_valid
-          expect(subject.errors).to have_key(:short_label)
+          expect(subject.errors.messages).to have_key(:short_label)
         end
       end
     end
