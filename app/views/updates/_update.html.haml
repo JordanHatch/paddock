@@ -50,7 +50,7 @@
 
 .update-content-block#issues
   %h3.update-content-block__title
-    = pluralize(sprint_update.issues.size, 'issues')
+    = pluralize(sprint_update.issues.size, 'issue')
   .update-content-block__content.update-content-block__content--offset-list
     - if sprint_update.issues.any?
       %ul
