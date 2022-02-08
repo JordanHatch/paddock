@@ -8,6 +8,13 @@ RSpec.describe SprintUpdates::SprintGoalsForm do
 
       expect(form.sprint_goals.size).to eq(5)
     end
+
+    it 'initializes an array when nil' do
+      form = described_class.new(Update.new(sprint_goals: nil))
+      form.prepopulate!
+
+      expect(form.sprint_goals.size).to eq(5)
+    end
   end
 
   describe '#sprint_goals=' do
