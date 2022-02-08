@@ -13,20 +13,12 @@ class ExampleForm < BaseForm
 end
 
 RSpec.describe BaseForm do
-  def build_mock_model(attributes)
-    stub(
-      attributes.merge({
-        attributes: attributes,
-      }),
-    )
-  end
-
+  let(:model) { Struct.new(:name, :lastname, :array).new }
   let(:form_class) { ExampleForm }
-  let(:model) { OpenStruct.new }
 
   describe '#started?' do
     subject do
-      form_class.new(model).tap {|form| form.validate(params) }
+      form_class.new(model).tap { |form| form.deserialize(params) }
     end
 
     context 'when all fields are empty' do

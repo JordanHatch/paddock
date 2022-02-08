@@ -21,7 +21,7 @@ RSpec.describe Quarters::Commitments::ActionsForm do
           '',
           '',
           '',
-        ]
+        ],
       })
       output = form.to_nested_hash['actions']
 

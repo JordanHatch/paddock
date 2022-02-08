@@ -5,8 +5,8 @@ class Sprints::UpdateSprintUpdate < ActiveInteraction::Base
 
   def form
     @form ||= form_class.new(update).tap do |form|
-                form.deserialize(attributes)
-              end
+      form.deserialize(attributes)
+    end
   end
 
   def team

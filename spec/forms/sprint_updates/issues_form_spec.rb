@@ -5,7 +5,7 @@ RSpec.describe SprintUpdates::IssuesForm do
   let(:update) { Update.new }
 
   subject do
-    described_class.new(update).tap {|form| form.validate(params) }
+    described_class.new(update).tap { |form| form.validate(params) }
   end
 
   describe '#valid?' do
@@ -164,9 +164,9 @@ RSpec.describe SprintUpdates::IssuesForm do
   end
 
   describe '#prepopulate!' do
-    before(:each) {
+    before(:each) do
       subject.prepopulate!
-    }
+    end
 
     context 'when no issues exist' do
       it 'creates a first issue' do
@@ -177,7 +177,7 @@ RSpec.describe SprintUpdates::IssuesForm do
     context 'when an issue already exists' do
       let(:update) do
         Update.new(
-          issues: [ Issue.new ]
+          issues: [Issue.new],
         )
       end
 

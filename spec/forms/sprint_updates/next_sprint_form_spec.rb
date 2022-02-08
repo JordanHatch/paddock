@@ -21,7 +21,7 @@ RSpec.describe SprintUpdates::NextSprintForm do
           '',
           '',
           '',
-        ]
+        ],
       })
       output = form.to_nested_hash['next_sprint_goals']
 

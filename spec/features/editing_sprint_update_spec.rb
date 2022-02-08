@@ -180,7 +180,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
 
   it 'can delete an issue from a sprint update', js: true do
     update = create(:draft_sprint_update)
-    issue = create(:issue, sprint_update: update)
+    create(:issue, sprint_update: update)
 
     visit edit_update_form_path(update.sprint, update.team, :issues)
 

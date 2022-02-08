@@ -8,8 +8,8 @@ class Quarters::UpdateCommitment < ActiveInteraction::Base
 
   def form
     @form ||= form_class.new(commitment).tap do |form|
-                form.deserialize(attributes)
-              end
+      form.deserialize(attributes)
+    end
   end
 
   def execute

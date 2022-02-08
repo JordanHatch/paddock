@@ -7,7 +7,7 @@ class SprintUpdates::SprintGoalsForm < BaseForm
 
   def prepopulate!
     (5 - sprint_goals.size).times do
-      self.sprint_goals << ''
+      sprint_goals << ''
     end
   end
 end

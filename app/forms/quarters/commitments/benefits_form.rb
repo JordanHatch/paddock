@@ -7,7 +7,7 @@ class Quarters::Commitments::BenefitsForm < BaseForm
 
   def prepopulate!
     (5 - benefits.size).times do
-      self.benefits << ''
+      benefits << ''
     end
   end
 end

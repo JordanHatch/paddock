@@ -7,7 +7,7 @@ class Quarters::Commitments::ActionsForm < BaseForm
 
   def prepopulate!
     (5 - actions.size).times do
-      self.actions << ''
+      actions << ''
     end
   end
 end

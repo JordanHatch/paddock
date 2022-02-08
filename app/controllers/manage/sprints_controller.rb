@@ -8,22 +8,18 @@ class Manage::SprintsController < Manage::BaseController
   def edit; end
 
   def create
-    if form.validate(params[:sprint])
-      if form.save
-        flash.notice = 'Sprint created'
-        return redirect_to manage_sprints_path
-      end
+    if form.validate(params[:sprint]) && form.save
+      flash.notice = 'Sprint created'
+      return redirect_to manage_sprints_path
     end
 
     render action: :new, status: :unprocessable_entity
   end
 
   def update
-    if form.validate(params[:sprint])
-      if form.save
-        flash.notice = 'Sprint updated'
-        return redirect_to manage_sprints_path
-      end
+    if form.validate(params[:sprint]) && form.save
+      flash.notice = 'Sprint updated'
+      return redirect_to manage_sprints_path
     end
 
     render action: :edit, status: :unprocessable_entity

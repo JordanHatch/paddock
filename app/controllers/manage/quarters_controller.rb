@@ -1,16 +1,14 @@
 class Manage::QuartersController < Manage::BaseController
-  before_action :ensure_quarter_is_editable, only: [:reorder_commitments, :do_reorder_commitments]
+  before_action :ensure_quarter_is_editable, only: %i[reorder_commitments do_reorder_commitments]
 
   def index; end
 
   def new; end
 
   def create
-    if form.validate(params[:quarter])
-      if form.save
-        flash.notice = 'Quarter created'
-        return redirect_to manage_quarters_path
-      end
+    if form.validate(params[:quarter]) && form.save
+      flash.notice = 'Quarter created'
+      return redirect_to manage_quarters_path
     end
 
     render action: :new, status: :unprocessable_entity
@@ -19,11 +17,9 @@ class Manage::QuartersController < Manage::BaseController
   def edit; end
 
   def update
-    if form.validate(params[:quarter])
-      if form.save
-        flash.notice = 'Quarter updated'
-        return redirect_to manage_quarters_path
-      end
+    if form.validate(params[:quarter]) && form.save
+      flash.notice = 'Quarter updated'
+      return redirect_to manage_quarters_path
     end
 
     render action: :edit, status: :unprocessable_entity
@@ -71,7 +67,7 @@ class Manage::QuartersController < Manage::BaseController
   def ensure_quarter_is_editable
     unless quarter.editable?
       flash.alert = "The details about this quarter's commitments can no longer be changed."
-      return redirect_to quarter_path(quarter)
+      redirect_to quarter_path(quarter)
     end
   end
 end

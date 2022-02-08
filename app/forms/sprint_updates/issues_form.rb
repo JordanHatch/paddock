@@ -21,12 +21,12 @@ class SprintUpdates::IssuesForm < BaseForm
   end
 
   def prepopulate!
-    self.issues << model.issues.build if self.issues.empty?
+    issues << model.issues.build if issues.empty?
   end
 
-  def populate_issues!(fragment:, collection:, **)
-    item = issues.find { |issue| issue.id == fragment["id"].to_i }
-    fields = %w{description treatment help identifier}
+  def populate_issues!(fragment:, **)
+    item = issues.find { |issue| issue.id == fragment['id'].to_i }
+    fields = %w[description treatment help identifier]
 
     if fragment['_destroy'] == '1'
       issues.delete(item)
@@ -34,14 +34,12 @@ class SprintUpdates::IssuesForm < BaseForm
     end
 
     completed_fields = fragment.slice(*fields).values.reject(&:blank?)
-    if completed_fields.empty?
-      return skip!
-    end
+    return skip! if completed_fields.empty?
 
     return item if item.present?
 
     issues.append(
-      Issue.new(fragment.slice(*fields))
+      Issue.new(fragment.slice(*fields)),
     )
   end
 end

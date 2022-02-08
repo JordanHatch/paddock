@@ -2,18 +2,18 @@ require 'rails_helper'
 
 RSpec.describe Manage::QuarterForm do
   let(:quarter) { Quarter.new }
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     {
       name: 'Quarter',
       start_on: Date.today,
       end_on: Date.today + 3.months,
       editable: true,
     }
-  }
+  end
   let(:attributes) { valid_attributes }
 
   subject do
-    described_class.new(quarter).tap {|form| form.deserialize(attributes) }
+    described_class.new(quarter).tap { |form| form.deserialize(attributes) }
   end
 
   describe '#valid?' do

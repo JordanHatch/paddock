@@ -1,5 +1,5 @@
 class Quarters::CommitmentsController < Quarters::BaseController
-  before_action :ensure_quarter_is_editable, only: [:new, :create, :edit, :update]
+  before_action :ensure_quarter_is_editable, only: %i[new create edit update]
 
   def index; end
 
@@ -76,7 +76,7 @@ class Quarters::CommitmentsController < Quarters::BaseController
   def ensure_quarter_is_editable
     unless quarter.editable?
       flash.alert = I18n.t('quarters.alerts.not_editable')
-      return redirect_to quarter_commitments_path(quarter)
+      redirect_to quarter_commitments_path(quarter)
     end
   end
 end

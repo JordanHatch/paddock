@@ -8,22 +8,18 @@ class Manage::TeamsController < Manage::BaseController
   def edit; end
 
   def create
-    if form.validate(params[:team])
-      if form.save
-        flash.notice = 'Team created'
-        return redirect_to manage_teams_path
-      end
+    if form.validate(params[:team]) && form.save
+      flash.notice = 'Team created'
+      return redirect_to manage_teams_path
     end
 
     render action: :new, status: :unprocessable_entity
   end
 
   def update
-    if form.validate(params[:team])
-      if form.save
-        flash.notice = 'Team updated'
-        return redirect_to manage_teams_path
-      end
+    if form.validate(params[:team]) && form.save
+      flash.notice = 'Team updated'
+      return redirect_to manage_teams_path
     end
 
     render action: :edit, status: :unprocessable_entity

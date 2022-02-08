@@ -14,7 +14,7 @@ RSpec.describe Manage::TeamForm do
     end
 
     subject do
-      described_class.new(team).tap {|form| form.validate(params) }
+      described_class.new(team).tap { |form| form.validate(params) }
     end
 
     context 'when given valid data' do
