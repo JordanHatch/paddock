@@ -131,9 +131,6 @@ GEM
     dry-logic (1.2.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.5, >= 0.5)
-    dry-monads (1.4.0)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 0.7)
     dry-schema (1.8.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.13, >= 0.13.0)
@@ -141,10 +138,6 @@ GEM
       dry-initializer (~> 3.0)
       dry-logic (~> 1.0)
       dry-types (~> 1.5)
-    dry-struct (1.4.0)
-      dry-core (~> 0.5, >= 0.5)
-      dry-types (~> 1.5)
-      ice_nine (~> 0.11)
     dry-types (1.5.1)
       concurrent-ruby (~> 1.0)
       dry-container (~> 0.3)
@@ -200,7 +193,6 @@ GEM
       concurrent-ruby (~> 1.0)
     i18n-debug (1.2.0)
       i18n (< 2)
-    ice_nine (0.11.2)
     io-wait (0.2.1)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -419,10 +411,6 @@ DEPENDENCIES
   diffy
   doorkeeper
   dotenv-rails
-  dry-monads
-  dry-schema
-  dry-struct
-  dry-types
   dry-validation
   enumerize
   factory_bot_rails
