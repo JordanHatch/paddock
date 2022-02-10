@@ -2,8 +2,7 @@
   = form_tag quarter_commitments_path(quarter),
              method: :get,
              class: 'quarters-commodity-filter__form',
-             data: { turbo_frame: 'quarter-commodities-index',
-               controller: 'filterable-list' } do
+             data: { controller: 'filterable-list' } do
     = label_tag :commodity, class: 'quarters-commodity-filter__label' do
       Filter commitments by:
     = select_tag :commodity,

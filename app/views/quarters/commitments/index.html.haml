@@ -2,30 +2,27 @@
 
 = render(Quarters::CommodityFilterComponent.new(quarter: quarter, selected_commodity: commodity))
 
-= turbo_frame_tag 'quarter-commodities-index', class: 'turbo-frame', target: '_top' do
-  .turbo-frame__container
-    .turbo-frame__loading
-    - groups.each do |group, commitments|
-      .update-content-block
-        %h3.update-content-block__title
-          = group.name
-          %p{style: 'padding-top: 1rem;'}
-            - if quarter.editable?
-              = link_to 'Add commitment',
-                        new_quarter_commitment_path(quarter, group: group.id),
-                        class: 'button button--primary button--sm',
-                        data: { turbo_frame: 'modal' }
-        .update-content-block__content.update-content-block__content--list
-          %ul.commitments-list.commitments-list--all-commitments
-            - commitments.each do |commitment|
-              %li.commitments-list__item
-                = link_to quarter_commitment_path(quarter, commitment),
-                          class: ("commitments-list__box" + (commitment.key_commitment? ? " commitments-list__box--key-commitment" : "")) do
-                  - if commitment.key_commitment?
-                    .commitments-list__number{ title: "Key commitment #{commitment.number}" }
-                      .commitments-list__key-commitment-icon
-                      .commitments-list__key-commitment-label
-                        Key Commitment
-                      = commitment.number
-                  .commitments-list__name
-                    = commitment.name
+- groups.each do |group, commitments|
+  .update-content-block
+    %h3.update-content-block__title
+      = group.name
+      %p{style: 'padding-top: 1rem;'}
+        - if quarter.editable?
+          = link_to 'Add commitment',
+                    new_quarter_commitment_path(quarter, group: group.id),
+                    class: 'button button--primary button--sm',
+                    data: { turbo_frame: 'modal' }
+    .update-content-block__content.update-content-block__content--list
+      %ul.commitments-list.commitments-list--all-commitments
+        - commitments.each do |commitment|
+          %li.commitments-list__item
+            = link_to quarter_commitment_path(quarter, commitment),
+                      class: ("commitments-list__box" + (commitment.key_commitment? ? " commitments-list__box--key-commitment" : "")) do
+              - if commitment.key_commitment?
+                .commitments-list__number{ title: "Key commitment #{commitment.number}" }
+                  .commitments-list__key-commitment-icon
+                  .commitments-list__key-commitment-label
+                    Key Commitment
+                  = commitment.number
+              .commitments-list__name
+                = commitment.name
