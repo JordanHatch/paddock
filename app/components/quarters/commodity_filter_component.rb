@@ -1,4 +1,4 @@
-class Quarters::CommodityFilterComponent < ViewComponent::Base
+class Quarters::CommodityFilterComponent < BaseComponent
   extend Dry::Initializer
 
   option :quarter

@@ -1,13 +1,10 @@
-- quarter = local_assigns[:quarter]
-- presenter = QuarterNavigationPresenter.new(self, quarter: quarter)
-
 .sprint-navigation
   .sprint-navigation__dates
-    = presenter.quarter_start_on
+    = quarter_start_on
     to
-    = presenter.quarter_end_on
-  - if presenter.link_to_previous_quarter?
-    = link_to presenter.previous_quarter_link,
+    = quarter_end_on
+  - if link_to_previous_quarter?
+    = link_to previous_quarter_link,
         class: 'sprint-navigation__button sprint-navigation__button--previous',
         title: 'Previous quarter' do
       .sprint-navigation__icon
@@ -16,8 +13,8 @@
   - else
     .sprint-navigation__button.sprint-navigation__button--previous.sprint-navigation__button--disabled
       .sprint-navigation__icon
-  - if presenter.link_to_next_quarter?
-    = link_to presenter.next_quarter,
+  - if link_to_next_quarter?
+    = link_to next_quarter_link,
         class: 'sprint-navigation__button sprint-navigation__button--next',
         title: 'Next quarter' do
       .sprint-navigation__icon

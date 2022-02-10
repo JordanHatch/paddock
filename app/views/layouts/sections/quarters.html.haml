@@ -17,7 +17,11 @@
               list_item_class: 'section-navigation__nav-item',
               link_class: 'section-navigation__nav-link'
 
-      = render partial: 'shared/components/quarter_navigation', locals: { quarter: quarter }
+      = render(Quarters::QuarterNavigationComponent.new(quarter: quarter,
+                                                        previous_quarter: quarter.previous_quarter,
+                                                        next_quarter: quarter.next_quarter,
+                                                        controller_name: controller_name,
+                                                        action_name: action_name))
   .inner
     = yield
 

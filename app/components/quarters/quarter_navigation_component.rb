@@ -1,16 +1,12 @@
-class QuarterNavigationPresenter
-  def initialize(context, quarter:)
-    @context = context
-    @quarter = quarter
-  end
+class Quarters::QuarterNavigationComponent < BaseComponent
+  option :quarter
+  option :previous_quarter
+  option :next_quarter
 
-  def next_quarter
-    quarter.next_quarter
-  end
+  option :controller_name, type: proc(&:to_s)
+  option :action_name, type: proc(&:to_s)
 
-  def previous_quarter
-    quarter.previous_quarter
-  end
+  private
 
   def link_to_previous_quarter?
     previous_quarter_exists?
@@ -36,10 +32,6 @@ class QuarterNavigationPresenter
     quarter_navigation_path(previous_quarter)
   end
 
-  private
-
-  attr_reader :context, :quarter
-
   def previous_quarter_exists?
     previous_quarter.present?
   end
@@ -49,6 +41,10 @@ class QuarterNavigationPresenter
   end
 
   def quarter_navigation_path(quarter)
-    context.quarter_path(quarter)
+    if controller_name == 'commitments' && action_name == 'index'
+      quarter_commitments_path(quarter)
+    else
+      quarter_path(quarter)
+    end
   end
 end
