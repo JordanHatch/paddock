@@ -42,17 +42,19 @@
       .update-section__inner
         .update-section__title Sprint goals
         .update-section__content
-          %ol
-            - update.sprint_goals.each do |goal|
-              %li= goal
+          - if update.sprint_goals.present?
+            %ol
+              - update.sprint_goals.each do |goal|
+                %li= goal
         .clear
     .update-section.sprint-goals
       .update-section__inner
         .update-section__title Goals for next sprint
         .update-section__content
-          %ol
-            - update.next_sprint_goals.each do |goal|
-              %li= goal
+          - if update.next_sprint_goals.present?
+            %ol
+              - update.next_sprint_goals.each do |goal|
+                %li= goal
         .clear
     .update-section.update-section--with-break.issues
       .update-section__inner
