@@ -1,17 +1,14 @@
-class SprintNavigationPresenter
-  def initialize(context, sprint:, team:)
-    @context = context
-    @sprint = sprint
-    @team = team
-  end
+class Sprints::SprintNavigationComponent < BaseComponent
+  option :sprint
+  option :team
 
-  def next_sprint
-    sprint.next_sprint
-  end
+  option :previous_sprint
+  option :next_sprint
 
-  def previous_sprint
-    sprint.previous_sprint
-  end
+  option :controller_name, type: proc(&:to_s)
+  option :action_name, type: proc(&:to_s)
+
+  private
 
   def link_to_previous_sprint?
     if team
@@ -45,10 +42,6 @@ class SprintNavigationPresenter
     sprint_navigation_path(previous_sprint)
   end
 
-  private
-
-  attr_reader :context, :sprint, :team
-
   def previous_sprint_exists?
     previous_sprint.present?
   end
@@ -66,12 +59,12 @@ class SprintNavigationPresenter
   end
 
   def sprint_navigation_path(sprint)
-    if context.controller_name == 'updates'
-      context.update_path(sprint, team)
-    elsif context.controller_name == 'sprints' && context.action_name == 'issues'
-      context.sprint_issues_path(sprint)
+    if controller_name == 'updates'
+      update_path(sprint, team)
+    elsif controller_name == 'sprints' && action_name == 'issues'
+      sprint_issues_path(sprint)
     else
-      context.sprint_path(sprint)
+      sprint_path(sprint)
     end
   end
 end

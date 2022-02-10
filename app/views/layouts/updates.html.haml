@@ -15,7 +15,12 @@
               list_item_class: 'section-navigation__nav-item',
               link_class: 'section-navigation__nav-link'
 
-      = render partial: 'shared/components/sprint_navigation', locals: { sprint: sprint, team: (team if self.respond_to?(:team)) }
+      = render(Sprints::SprintNavigationComponent.new(sprint: sprint,
+                                                      team: (team if self.respond_to?(:team)),
+                                                      previous_sprint: sprint.previous_sprint,
+                                                      next_sprint: sprint.next_sprint,
+                                                      controller_name: controller_name,
+                                                      action_name: action_name))
   .inner
     = yield
 

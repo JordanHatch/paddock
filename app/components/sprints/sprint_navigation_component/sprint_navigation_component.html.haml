@@ -1,0 +1,25 @@
+.sprint-navigation
+  .sprint-navigation__dates
+    = sprint_start_on
+    to
+    = sprint_end_on
+  - if link_to_previous_sprint?
+    = link_to previous_sprint_link,
+        class: 'sprint-navigation__button sprint-navigation__button--previous',
+        title: 'Previous sprint' do
+      .sprint-navigation__icon
+      .sprint-navigation__hidden-label
+        Previous sprint
+  - else
+    .sprint-navigation__button.sprint-navigation__button--previous.sprint-navigation__button--disabled
+      .sprint-navigation__icon
+  - if link_to_next_sprint?
+    = link_to next_sprint_link,
+        class: 'sprint-navigation__button sprint-navigation__button--next',
+        title: 'Next sprint' do
+      .sprint-navigation__icon
+      .sprint-navigation__hidden-label
+        Next sprint
+  - else
+    .sprint-navigation__button.sprint-navigation__button--next.sprint-navigation__button--disabled
+      .sprint-navigation__icon
