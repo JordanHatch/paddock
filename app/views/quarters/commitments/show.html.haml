@@ -6,7 +6,7 @@
       .markdown-block.summary
         = render_markdown(commitment.overview).html_safe
 
-- if commitment.benefits.any?
+- if commitment.benefits.present? && commitment.benefits.any?
   .update-content-block#benefits
     %h3.update-content-block__title
       This will...
@@ -15,7 +15,7 @@
         - commitment.benefits.each do |benefit|
           %li=benefit
 
-- if commitment.actions.any?
+- if commitment.actions.present? && commitment.actions.any?
   .update-content-block#actions
     %h3.update-content-block__title
       So we'll be...

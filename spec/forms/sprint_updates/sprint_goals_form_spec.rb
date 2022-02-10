@@ -18,27 +18,41 @@ RSpec.describe SprintUpdates::SprintGoalsForm do
   end
 
   describe '#sprint_goals=' do
-    it 'removes blank sprint goals' do
-      form = described_class.new(Update.new)
+    subject do
+      described_class.new(Update.new).tap { |form| form.validate({ sprint_goals: goals }) }
+    end
 
-      form.validate({
-        'sprint_goals' => [
-          'One',
-          'Two',
-          '',
-          '',
-          '',
-        ],
-      })
-      output = form.to_nested_hash['sprint_goals']
+    context 'with blank sprint goals' do
+      let(:goals) { ['One', 'Two', '', '', ''] }
 
-      expect(output).to contain_exactly('One', 'Two')
+      it 'removes the blank goals' do
+        output = subject.to_nested_hash['sprint_goals']
+        expect(output).to contain_exactly('One', 'Two')
+      end
+    end
+
+    context 'when nil' do
+      let(:goals) { nil }
+
+      it 'sets an empty array' do
+        output = subject.to_nested_hash['sprint_goals']
+        expect(output).to eq([])
+      end
+    end
+
+    context 'with 5 sprint goals' do
+      let(:goals) { %w[One Two Three Four Five] }
+
+      it 'does not remove any goals' do
+        output = subject.to_nested_hash['sprint_goals']
+        expect(output).to contain_exactly(*goals)
+      end
     end
   end
 
   describe '#valid?' do
     subject do
-      described_class.new(Update.new).tap {|form| form.validate({ sprint_goals: goals }) }
+      described_class.new(Update.new).tap { |form| form.validate({ sprint_goals: goals }) }
     end
 
     context 'with one or more goals' do
@@ -59,7 +73,9 @@ RSpec.describe SprintUpdates::SprintGoalsForm do
     end
 
     context 'when nil' do
-      let(:goals) { nil }
+      subject do
+        described_class.new(Update.new(sprint_goals: nil))
+      end
 
       it 'is invalid' do
         expect(subject).to_not be_valid

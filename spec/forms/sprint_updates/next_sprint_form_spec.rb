@@ -19,7 +19,7 @@ RSpec.describe SprintUpdates::NextSprintForm do
 
   describe '#next_sprint_goals=' do
     subject do
-      described_class.new(Update.new).tap {|form| form.validate({ next_sprint_goals: goals }) }
+      described_class.new(Update.new).tap { |form| form.validate({ next_sprint_goals: goals }) }
     end
 
     context 'with blank sprint goals' do
@@ -31,8 +31,17 @@ RSpec.describe SprintUpdates::NextSprintForm do
       end
     end
 
+    context 'when nil' do
+      let(:goals) { nil }
+
+      it 'sets an empty array' do
+        output = subject.to_nested_hash['next_sprint_goals']
+        expect(output).to eq([])
+      end
+    end
+
     context 'with 5 sprint goals' do
-      let(:goals) { ['One', 'Two', 'Three', 'Four', 'Five'] }
+      let(:goals) { %w[One Two Three Four Five] }
 
       it 'does not remove any goals' do
         output = subject.to_nested_hash['next_sprint_goals']
@@ -43,7 +52,7 @@ RSpec.describe SprintUpdates::NextSprintForm do
 
   describe '#valid?' do
     subject do
-      described_class.new(Update.new).tap {|form| form.validate({ next_sprint_goals: goals }) }
+      described_class.new(Update.new).tap { |form| form.validate({ next_sprint_goals: goals }) }
     end
 
     context 'with zero goals' do
@@ -63,7 +72,9 @@ RSpec.describe SprintUpdates::NextSprintForm do
     end
 
     context 'when nil' do
-      let(:goals) { nil }
+      subject do
+        described_class.new(Update.new(next_sprint_goals: nil))
+      end
 
       it 'is invalid' do
         expect(subject).to_not be_valid

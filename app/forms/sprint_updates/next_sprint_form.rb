@@ -2,8 +2,8 @@ class SprintUpdates::NextSprintForm < BaseForm
   property :next_sprint_goals
 
   def next_sprint_goals=(value)
-    value.reject!(&:blank?) if value.is_a?(Array)
-    super(value)
+    value = [] unless value.is_a?(Array)
+    super(value.reject(&:blank?))
   end
 
   def prepopulate!
