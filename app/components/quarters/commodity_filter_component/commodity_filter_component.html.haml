@@ -1,0 +1,17 @@
+.quarters-commodity-filter
+  = form_tag quarter_commitments_path(quarter),
+             method: :get,
+             class: 'quarters-commodity-filter__form',
+             data: { turbo_frame: 'quarter-commodities-index',
+               controller: 'filterable-list' } do
+    = label_tag :commodity, class: 'quarters-commodity-filter__label' do
+      Filter commitments by:
+    = select_tag :commodity,
+        options_for_select(options, selected: selected_commodity),
+        include_blank: 'All commodities',
+        class: 'quarters-commodity-filter__control select-box select-box--sm',
+        data: { action: 'change->filterable-list#update' }
+    = submit_tag 'Filter',
+        name: nil,
+        class: 'quarters-commodity-filter__button button button--primary button--sm',
+        data: { filterable_list_target: 'button' }

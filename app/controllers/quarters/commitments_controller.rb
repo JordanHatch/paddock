@@ -56,10 +56,17 @@ class Quarters::CommitmentsController < Quarters::BaseController
 
   attr_reader :service
 
-  helper_method :groups_with_commitments, :commitment, :service, :flow
+  helper_method :groups, :commitment, :commodity, :service, :flow
 
-  def groups_with_commitments
-    @groups_with_commitments ||= Group.in_order.includes(:commitments)
+  def groups
+    @groups ||= Commitment.in_key_and_alphabetical_order
+                          .for_quarter(quarter)
+                          .for_commodity(commodity)
+                          .grouped
+  end
+
+  def commodity
+    params[:commodity]
   end
 
   def commitment

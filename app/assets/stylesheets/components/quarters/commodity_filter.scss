@@ -1,0 +1,23 @@
+@use 'helpers';
+
+.quarters-commodity-filter {
+  display: block;
+  background: helpers.colour('silver', '50');
+  font-size: 1rem;
+  padding: 1.5rem;
+  margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+}
+
+.quarters-commodity-filter__form {
+  text-align: center;
+}
+
+.quarters-commodity-filter__label {
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-right: .5em;
+}
+
+.quarters-commodity-filter__label, .quarters-commodity-filter__control, .quarters-commodity-filter__button {
+  vertical-align: middle !important;
+}
