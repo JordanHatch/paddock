@@ -55,7 +55,7 @@ class PdfExporter
     assets = Rails.application.assets
 
     stylesheet = assets.load_path.find('pdf.css')
-    body = assets.compilers.compile(stylesheet)
+    body = assets.compilers.compile(stylesheet).force_encoding('UTF-8')
 
     "<style type=\"text/css\">#{body}</style>".html_safe
   end
