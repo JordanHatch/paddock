@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_110636) do
+ActiveRecord::Schema.define(version: 2022_02_10_113823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2022_02_10_110636) do
     t.bigint "group_id"
     t.index ["group_id"], name: "index_commitments_on_group_id"
     t.index ["quarter_id"], name: "index_commitments_on_quarter_id"
+  end
+
+  create_table "exported_sprint_reports", force: :cascade do |t|
+    t.bigint "sprint_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sprint_id"], name: "index_exported_sprint_reports_on_sprint_id"
+    t.index ["user_id"], name: "index_exported_sprint_reports_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -240,6 +249,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_110636) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "commitments", "groups", on_delete: :restrict
   add_foreign_key "commitments", "quarters"
+  add_foreign_key "exported_sprint_reports", "sprints"
+  add_foreign_key "exported_sprint_reports", "users"
   add_foreign_key "issues", "updates", on_delete: :cascade
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"

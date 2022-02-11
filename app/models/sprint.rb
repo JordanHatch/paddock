@@ -1,4 +1,5 @@
 class Sprint < ApplicationRecord
+  has_many :exported_reports, -> { order(created_at: :desc) }, class_name: 'ExportedSprintReport'
   has_many :updates
 
   has_many :published_updates, -> { published }, class_name: 'Update'
