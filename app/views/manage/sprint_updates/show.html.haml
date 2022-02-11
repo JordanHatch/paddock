@@ -9,28 +9,23 @@
     .team-header__actions
       = link_to 'View sprint update', update_path(sprint, team), class: 'button button--inverted-primary'
 
-  = turbo_frame_tag 'modal', class: 'turbo-frame turbo-frame--modal', autoscroll: true do
-    .modal-window
-      .modal-window__background
-      .modal-window__content.turbo-frame__container
-        .turbo-frame__loading
-        .modal-window__header
-          %h1.modal-window__header-label Danger zone
-        .update-content-block
-          %h2.update-content-block__title Unpublish
-          .update-content-block__content
-            - if service.valid?
-              %p You can unpublish this sprint update.
-              %p This will return the sprint update to a draft so that it can be edited again.
-              %p If you've already exported a PDF for the sprint, export a fresh copy after any changes have been made.
-              %p= button_to 'Unpublish',
-                    unpublish_manage_sprint_update_path(sprint, team),
-                    class: 'button button--danger',
-                    form: { data: { controller: 'turbo-form-redirect' } }
-            - else
-              .errors
-                %ul.errors__list
-                  %li.errors__item
-                    = t('update_not_published', scope: %w[services sprint_updates unpublish])
-        .form-actions.modal-window__actions
-          = link_to 'Cancel', update_path(sprint, team), data: { turbo_frame: '_top' }
+  = render ModalWindowComponent.new(close_link: update_path(sprint, team)) do |c|
+    - c.header { 'Danger zone' }
+
+    .update-content-block
+      %h2.update-content-block__title Unpublish
+      .update-content-block__content
+        - if service.valid?
+          %p You can unpublish this sprint update.
+          %p This will return the sprint update to a draft so that it can be edited again.
+          %p If you've already exported a PDF for the sprint, export a fresh copy after any changes have been made.
+          %p= button_to 'Unpublish',
+                unpublish_manage_sprint_update_path(sprint, team),
+                class: 'button button--danger',
+                form: { data: { controller: 'turbo-form-redirect' } }
+        - else
+          .errors
+            %ul.errors__list
+              %li.errors__item
+                = t('update_not_published', scope: %w[services sprint_updates unpublish])
+

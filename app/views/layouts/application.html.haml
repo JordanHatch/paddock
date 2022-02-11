@@ -21,6 +21,10 @@
       - flash.each do |key, message|
         %div{class: "flash-message flash-message--global flash-message--#{key}"}= message
 
+    - unless request.headers.include?('Turbo-Frame')
+      = render ModalWindowComponent.new do
+        .loading
+
     %main.app
       = content_for?(:content) ? yield(:content) : yield
 

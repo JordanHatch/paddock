@@ -34,3 +34,28 @@ turbo-frame[src] .modal-window__actions {
   border-bottom-left-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
 }
+
+turbo-frame.turbo-frame--modal[busy][src] .loading {
+  background: url('loading.svg') no-repeat top center;
+  background-size: 4rem;
+  padding-top: 5rem;
+  margin-top: 1rem;
+}
+
+.modal-window__close-link {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  color: helpers.colour('black');
+}
+
+.modal-window__close-icon {
+  @include helpers.fa-solid;
+  @include helpers.fa-icon(helpers.$fa-var-times);
+  font-size: 1.5rem;
+}
+.modal-window__close-label {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
