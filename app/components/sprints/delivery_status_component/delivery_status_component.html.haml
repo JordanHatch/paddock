@@ -1,0 +1,5 @@
+%ul.sprint-delivery-status
+  - statuses.each do |status|
+    %li.sprint-delivery-status__item{class: "sprint-delivery-status__item--status-#{status}"}
+      .sprint-delivery-status__value= count(status)
+      .sprint-delivery-status__label= label(status)

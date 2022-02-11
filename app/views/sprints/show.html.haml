@@ -1,14 +1,9 @@
+.sprint-summary
+  = render Sprints::DeliveryStatusComponent.new(sprint: sprint)
+  - if Features.enabled?(:export_uploads, signed_in_user)
+    = link_to 'Export', sprint_exports_path(sprint), class: 'button button--primary', data: { turbo_frame: 'modal' }
+
 .view.view--sprints-show
-  .summary
-    %ul.delivery-status
-      - Update.delivery_status.values.each do |status|
-        %li{'class' => "status-#{status}"}
-          %span.value= sprint.delivery_status_summary[status] || 0
-          %span.label= status.capitalize
-
-    - if Features.enabled?(:export_uploads, signed_in_user)
-      = link_to 'Export', sprint_exports_path(sprint), class: 'button button--primary', data: { turbo_frame: 'modal' }
-
   %ul.groups
     - team_summaries.each do |group, teams|
       %li.group

@@ -1,0 +1,38 @@
+@use 'helpers';
+
+.sprint-delivery-status {
+  display: flex;
+  gap: .5rem;
+}
+
+.sprint-delivery-status__item {
+  flex: 1;
+  padding: 1rem;
+  min-height: 8rem;
+  border-radius: .5rem;
+  display: block;
+  color: helpers.colour('white');
+  text-align: center;
+}
+
+.sprint-delivery-status__item--status-green {
+  background: helpers.colour('green', '800');
+}
+
+.sprint-delivery-status__item--status-amber {
+  background: helpers.colour('orange', '600');
+}
+
+.sprint-delivery-status__item--status-red {
+  background: helpers.colour('red', '600');
+}
+
+.sprint-delivery-status__value {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.sprint-delivery-status__label {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
