@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
-gem 'rails', '~> 7.0.1'
+gem 'rails', '~> 7.0.2.2'
 
 gem 'aasm'
 gem 'active_interaction'
@@ -26,7 +26,7 @@ gem 'paper_trail', '~> 12.2.0'
 gem 'pg'
 gem 'premailer-rails'
 gem 'propshaft'
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.6'
 gem 'redcarpet'
 gem 'reform', '>= 2.2.0'
 gem 'reform-rails'
