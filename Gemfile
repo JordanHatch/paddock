@@ -8,6 +8,7 @@ gem 'rails', '~> 7.0.1'
 gem 'aasm'
 gem 'active_interaction'
 gem 'after_commit_everywhere', '~> 1.0.0'
+gem 'azure-storage-blob'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'cssbundling-rails'
 gem 'diffy'
