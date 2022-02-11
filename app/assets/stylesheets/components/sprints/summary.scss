@@ -1,0 +1,25 @@
+@use 'helpers';
+
+.sprints-summary {
+  margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+  background: helpers.colour('blue', '50');
+  padding: 1.5rem;
+  display: flex;
+}
+
+.sprints-summary__status {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.sprints-summary__actions {
+  border-bottom: 1px solid helpers.colour('grey', '300');
+  text-align: right;
+  flex: 1;
+}
+
+.sprints-summary__action-icon {
+  @include helpers.fa-solid;
+  @include helpers.fa-icon(helpers.$fa-var-download);
+  padding-right: .25em;
+}

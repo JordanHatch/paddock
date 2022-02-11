@@ -1,7 +1,11 @@
-.sprint-summary
-  = render Sprints::DeliveryStatusComponent.new(sprint: sprint)
-  - if Features.enabled?(:export_uploads, signed_in_user)
-    = link_to 'Export', sprint_exports_path(sprint), class: 'button button--primary', data: { turbo_frame: 'modal' }
+.sprints-summary
+  .sprints-summary__status
+    = render Sprints::DeliveryStatusComponent.new(sprint: sprint)
+  .sprints-summary__actions
+    - if Features.enabled?(:export_uploads, signed_in_user)
+      = link_to sprint_exports_path(sprint), class: 'button button--sm button--inverted-primary', data: { turbo_frame: 'modal' } do
+        .sprints-summary__action-icon
+        Download
 
 .view.view--sprints-show
   %ul.groups

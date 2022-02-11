@@ -3,13 +3,14 @@
 .sprint-delivery-status {
   display: flex;
   gap: .5rem;
+  font-size: 1em;
 }
 
 .sprint-delivery-status__item {
   flex: 1;
-  padding: 1rem;
-  min-height: 8rem;
-  border-radius: .5rem;
+  padding: .75em 1em 1em;
+  min-height: 7em;
+  border-radius: .4em;
   display: block;
   color: helpers.colour('white');
   text-align: center;
@@ -28,11 +29,11 @@
 }
 
 .sprint-delivery-status__value {
-  font-size: 3.5rem;
+  font-size: 3.2em;
   font-weight: bold;
 }
 
 .sprint-delivery-status__label {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1em;
 }
