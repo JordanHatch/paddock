@@ -1,0 +1,18 @@
+%li.exported-report
+  .exported-report__metadata
+    .exported-report__time
+      = time_ago_in_words(report.created_at)
+      ago
+    .exported-report__user
+      by
+      = report.user.email
+  .exported-report__file
+    - if report.file.present?
+      .exported-report__action
+        = link_to rails_storage_proxy_path(report.file, disposition: 'attachment'), class: 'button button--inverted-primary' do
+          %span.exported-report__button-label Download
+          %span.exported-report__download-icon
+    - else
+      .exported-report__status
+        %span.exported-report__processing-label Processing
+        %span.exported-report__processing-icon

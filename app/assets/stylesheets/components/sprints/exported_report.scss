@@ -1,0 +1,61 @@
+@use 'helpers';
+
+.exported-report {
+  display: flex;
+  gap: 1rem;
+
+  margin: 0 0 .5em;
+  padding: 1em;
+
+  background: helpers.colour('silver', '50');
+  border-radius: .4rem;
+}
+
+.exported-report__metadata {
+  width: 66%;
+}
+
+.exported-report__time {
+  font-weight: bold;
+}
+
+.exported-report__user {
+  font-size: .85em;
+  margin-top: .25em;
+}
+
+.exported-report__file {
+  width: 33%;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.exported-report__action, .exported-report__status {
+  width: 100%;
+}
+
+.exported-report__download-icon {
+  @include helpers.fa-solid;
+  @include helpers.fa-icon(helpers.$fa-var-cloud-download-alt);
+}
+
+.exported-report__button-label {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.exported-report__processing-icon {
+  background: transparent url('loading.svg') no-repeat center center;
+  background-size: 1.2rem;
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-left: .25em;
+}
+
+.exported-report__processing-icon, .exported-report__processing-label {
+  vertical-align: middle;
+}

@@ -21,6 +21,15 @@ class SprintsController < ApplicationController
     end
   end
 
+  def exports; end
+
+  def request_export
+    report = ExportedSprintReport.create!(sprint: sprint, user: signed_in_user)
+    ExportSprintReportJob.perform_later(report)
+
+    redirect_to sprint_exports_path(sprint)
+  end
+
   def issues; end
 
   private
@@ -28,7 +37,7 @@ class SprintsController < ApplicationController
   helper_method :sprint, :issues_search, :team_summaries
 
   def sprint
-    @sprint ||= Sprint.find(params[:id]) if params.key?(:id)
+    @sprint ||= Sprint.includes(exported_reports: { file_attachment: :blob }).find(params[:id]) if params.key?(:id)
   end
 
   def team_summaries

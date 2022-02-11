@@ -1,0 +1,12 @@
+= render ModalWindowComponent.new(close_link: sprint_path(sprint)) do |c|
+  - c.header do
+    Export the sprint report
+
+  = turbo_frame_tag 'exported-sprint-reports' do
+    %p= button_to 'Generate a new report', request_sprint_export_path, method: :post, class: 'button button--primary', data: { turbo_frame: 'exported-sprint-reports' }
+
+    %ul
+      - sprint.exported_reports.each do |report|
+        = render(Sprints::ExportedReportComponent.new(report: report))
+
+    %p= button_to 'Refresh', sprint_exports_path(sprint), method: :get, class: 'button button--primary', data: { controller: 'background-refresh', turbo_frame: 'exported-sprint-reports' }

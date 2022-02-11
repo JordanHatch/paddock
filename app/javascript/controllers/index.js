@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BackgroundRefreshController from "./background_refresh_controller.js"
+application.register("background-refresh", BackgroundRefreshController)
+
 import FilterableListController from "./filterable_list_controller.js"
 application.register("filterable-list", FilterableListController)
 
