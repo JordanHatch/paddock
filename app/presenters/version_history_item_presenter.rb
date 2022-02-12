@@ -10,8 +10,8 @@ class VersionHistoryItemPresenter
     @version = version
   end
 
-  def author_email
-    author.email if author.present?
+  def author
+    User.where(id: version.whodunnit).first if version.whodunnit.present?
   end
 
   def time_ago
@@ -48,8 +48,4 @@ class VersionHistoryItemPresenter
   private
 
   attr_reader :version
-
-  def author
-    User.where(id: version.whodunnit).first if version.whodunnit.present?
-  end
 end

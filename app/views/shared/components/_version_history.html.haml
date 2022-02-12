@@ -10,7 +10,7 @@
             = version.new_state
           .version-history__metadata
             .version-history__author
-              = version.author_email
+              = render UserNameComponent.new(user: version.author)
             .version-history__time
               %time{ title: version.created_at }
                 = version.time_ago
@@ -19,7 +19,7 @@
         %li.version-history__item
           .version-history__metadata
             .version-history__author
-              = version.author_email
+              = render UserNameComponent.new(user: version.author)
             .version-history__time
               %time{ title: version.created_at }
                 = version.time_ago

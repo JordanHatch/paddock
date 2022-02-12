@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :user do
+    name { Faker::Name.name }
     sequence(:email) do |n|
       domain = Paddock.permitted_domains
       "user.#{n}@#{domain}"

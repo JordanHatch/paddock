@@ -5,7 +5,7 @@
       ago
     .exported-report__user
       by
-      = report.user.email
+      = render UserNameComponent.new(user: report.user)
   .exported-report__file
     - if report.file.present?
       .exported-report__action

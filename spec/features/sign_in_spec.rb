@@ -18,7 +18,7 @@ RSpec.describe 'signing in', type: :feature do
       visit redeem_invitation_path(invitation.token)
 
       click_on 'Sign me in'
-      expect(page).to have_content("Signed in as #{invitation.email}")
+      expect(page).to have_content("Signed in as #{invitation.email}", normalize_ws: true)
 
       click_on 'Sign out'
       expect(page).to have_content('Sign in')

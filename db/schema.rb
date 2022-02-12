@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_113823) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_02_12_110204) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -21,7 +20,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -34,7 +33,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -52,8 +51,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.text "benefits", default: [], array: true
     t.text "actions", default: [], array: true
     t.text "commodities", default: [], array: true
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "key_commitment", default: false, null: false
     t.bigint "group_id"
     t.index ["group_id"], name: "index_commitments_on_group_id"
@@ -63,8 +62,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
   create_table "exported_sprint_reports", force: :cascade do |t|
     t.bigint "sprint_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["sprint_id"], name: "index_exported_sprint_reports_on_sprint_id"
     t.index ["user_id"], name: "index_exported_sprint_reports_on_user_id"
   end
@@ -74,7 +73,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
     t.string "scope"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
@@ -84,12 +83,12 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.text "queue_name"
     t.integer "priority"
     t.jsonb "serialized_params"
-    t.datetime "scheduled_at"
-    t.datetime "performed_at"
-    t.datetime "finished_at"
+    t.datetime "scheduled_at", precision: nil
+    t.datetime "performed_at", precision: nil
+    t.datetime "finished_at", precision: nil
     t.text "error"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.uuid "active_job_id"
     t.text "concurrency_key"
     t.text "cron_key"
@@ -102,17 +101,17 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "order", default: 0, null: false
   end
 
   create_table "invitations", force: :cascade do |t|
     t.string "email", null: false
     t.string "token", null: false
-    t.datetime "expires_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "expires_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "issues", force: :cascade do |t|
@@ -120,8 +119,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.text "description"
     t.text "treatment"
     t.text "help"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "identifier"
     t.index ["update_id"], name: "index_issues_on_update_id"
   end
@@ -132,8 +131,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.string "token", null: false
     t.integer "expires_in", null: false
     t.text "redirect_uri", null: false
-    t.datetime "created_at", null: false
-    t.datetime "revoked_at"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "revoked_at", precision: nil
     t.string "scopes", default: "", null: false
     t.index ["application_id"], name: "index_oauth_access_grants_on_application_id"
     t.index ["resource_owner_id"], name: "index_oauth_access_grants_on_resource_owner_id"
@@ -146,8 +145,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.string "token", null: false
     t.string "refresh_token"
     t.integer "expires_in"
-    t.datetime "revoked_at"
-    t.datetime "created_at", null: false
+    t.datetime "revoked_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
     t.string "scopes"
     t.string "previous_refresh_token", default: "", null: false
     t.index ["application_id"], name: "index_oauth_access_tokens_on_application_id"
@@ -163,8 +162,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.text "redirect_uri"
     t.string "scopes", default: "", null: false
     t.boolean "confidential", default: true, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
@@ -173,8 +172,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.string "slug"
     t.date "start_on", null: false
     t.date "end_on", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "editable", default: true, null: false
     t.index ["slug"], name: "index_quarters_on_slug", unique: true
   end
@@ -183,24 +182,24 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.string "name", null: false
     t.date "start_on", null: false
     t.date "end_on", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "short_label"
   end
 
   create_table "team_commitments", force: :cascade do |t|
     t.bigint "team_id", null: false
     t.bigint "commitment_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["commitment_id"], name: "index_team_commitments_on_commitment_id"
     t.index ["team_id"], name: "index_team_commitments_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
     t.integer "group_id"
     t.date "start_on"
@@ -211,8 +210,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
   create_table "updates", force: :cascade do |t|
     t.text "content"
     t.bigint "team_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "delivery_status"
     t.string "team_health"
     t.integer "current_headcount"
@@ -228,9 +227,10 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "role", default: "user", null: false
+    t.string "name"
   end
 
   create_table "versions", force: :cascade do |t|
@@ -240,7 +240,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_113823) do
     t.string "event", null: false
     t.string "whodunnit"
     t.text "object"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.text "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end

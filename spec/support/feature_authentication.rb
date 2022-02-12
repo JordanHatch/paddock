@@ -6,7 +6,7 @@ module FeatureAuthentication
 
     click_on 'Sign me in'
 
-    expect(page).to have_content("Signed in as #{user.email}")
+    expect(page).to have_content("Signed in as #{user.name}", normalize_ws: true)
   end
 end
 
