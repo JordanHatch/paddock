@@ -1,6 +1,9 @@
 @use 'helpers';
+@use 'variables/breakpoints';
+@use 'breakpoint-sass/stylesheets/_breakpoint';
 
-$border-radius: .4rem;
+$border-radius: 1rem;
+$width: 40rem;
 
 turbo-frame[src] .modal-window__background {
   position: fixed;
@@ -15,22 +18,32 @@ turbo-frame[src] .modal-window__background {
   z-index: 1;
 }
 
-turbo-frame[src] .modal-window__content {
+turbo-frame[src] .modal-window__container {
   position: absolute;
-  top: 12vh;
-  width: 40%;
-  left: 30%;
-  margin: auto;
+  top: 0;
+  width: 100%;
+}
+
+turbo-frame[src] .modal-window__content {
+  width: 100%;
+  margin: 6rem auto 1rem;
 
   background: helpers.colour('white');
   box-shadow: rgba(0,0,0,0.1) -2px -2px 4px, rgba(0,0,0,0.1) 2px 2px 4px;
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
   border-radius: $border-radius;
   z-index: 2;
+
+  @include breakpoint.breakpoint($width) {
+    width: $width;
+  }
 }
 
 turbo-frame[src] .modal-window__actions {
-  margin: 1.5rem -1.5rem -1.5rem;
+  margin: 1.5rem -2rem -1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
   border-bottom-left-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
 }

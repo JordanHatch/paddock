@@ -1,15 +1,21 @@
-= turbo_frame_tag 'modal', class: 'turbo-frame turbo-frame--modal', autoscroll: true do
+= turbo_frame_tag 'modal', class: 'turbo-frame turbo-frame--modal',
+                           autoscroll: true,
+                           data: { controller: 'modal-window',
+                            action: 'keyup@document->modal-window#keyup' } do
   .modal-window
-    .modal-window__background
-    .modal-window__content.turbo-frame__container
-      .turbo-frame__loading
-      - if turbo_frame_request? && close_link.present?
-        = link_to close_link, class: 'modal-window__close-link', target: '_top' do
-          .modal-window__close-icon
-          .modal-window__close-label Close
-      - if header.present?
-        .modal-window__header
-          %h1.modal-window__header-label= header
-      = content
-      - if turbo_frame_request? && actions.present?
-        .form-actions.modal-window__actions= actions
+    .modal-window__background{ data: { action: 'click->modal-window#close' } }
+    .modal-window__container
+      .modal-window__content.turbo-frame__container
+        .turbo-frame__loading
+        - if turbo_frame_request?
+          = link_to '#', class: 'modal-window__close-link',
+                         target: '_top',
+                         data: { action: 'click->modal-window#close' } do
+            .modal-window__close-icon
+            .modal-window__close-label Close
+        - if header.present?
+          .modal-window__header
+            %h1.modal-window__header-label= header
+        = content
+        - if turbo_frame_request? && actions.present?
+          .form-actions.modal-window__actions= actions

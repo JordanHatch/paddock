@@ -1,4 +1,4 @@
-= render ModalWindowComponent.new(close_link: quarter_commitments_path(quarter)) do |c|
+= render ModalWindowComponent.new do |c|
   = simple_form_for service.form,
                     url: quarter_commitments_path(quarter),
                     as: :commitment,

@@ -10,6 +10,9 @@ application.register("background-refresh", BackgroundRefreshController)
 import FilterableListController from "./filterable_list_controller.js"
 application.register("filterable-list", FilterableListController)
 
+import ModalWindowController from "./modal_window_controller.js"
+application.register("modal-window", ModalWindowController)
+
 import MultipleSelectController from "./multiple_select_controller.js"
 application.register("multiple-select", MultipleSelectController)
 

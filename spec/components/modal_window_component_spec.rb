@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe ModalWindowComponent, type: :component do
-  let(:close_link) { '/close' }
   let(:content) { ->(_c) { 'Example' } }
   let(:turbo_frame_request) { false }
 
@@ -15,7 +14,7 @@ RSpec.describe ModalWindowComponent, type: :component do
 
   before(:each) do
     set_up_request_context(turbo_frame_request)
-    render_inline(described_class.new(close_link: close_link), &content).to_html
+    render_inline(described_class.new, &content).to_html
   end
 
   it 'renders the modal window' do
@@ -61,36 +60,20 @@ RSpec.describe ModalWindowComponent, type: :component do
     end
   end
 
-  describe 'close_link' do
-    context 'with a close link' do
-      let(:close_link) { '/close' }
+  describe 'close link' do
+    context 'for a turbo frame request' do
+      let(:turbo_frame_request) { true }
 
-      context 'for a turbo frame request' do
-        let(:turbo_frame_request) { true }
-
-        it 'renders the close link' do
-          expect(rendered_component).to have_link('Close', href: close_link)
-        end
-      end
-
-      context 'for a regular request' do
-        let(:turbo_frame_request) { false }
-
-        it 'does not render the close link' do
-          expect(rendered_component).to_not have_link('Close')
-        end
+      it 'renders the close link' do
+        expect(rendered_component).to have_link('Close', href: '#')
       end
     end
 
-    context 'without a close link' do
-      let(:close_link) { nil }
+    context 'for a regular request' do
+      let(:turbo_frame_request) { false }
 
-      context 'for a turbo frame request' do
-        let(:turbo_frame_request) { true }
-
-        it 'does not render the close link' do
-          expect(rendered_component).to_not have_link('Close')
-        end
+      it 'does not render the close link' do
+        expect(rendered_component).to_not have_link('Close')
       end
     end
   end
