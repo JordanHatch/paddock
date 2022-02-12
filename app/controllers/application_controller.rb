@@ -11,11 +11,13 @@ class ApplicationController < ActionController::Base
   helper_method :signed_in?, :signed_in_admin?, :signed_in_user
 
   def signed_in?
-    session[:user_id].present?
+    signed_in_user.present?
   end
 
   def signed_in_user
     @signed_in_user ||= User.find(session[:user_id]) if session[:user_id].present?
+  rescue ActiveRecord::RecordNotFound
+    session[:user_id] = nil
   end
 
   def signed_in_admin?
