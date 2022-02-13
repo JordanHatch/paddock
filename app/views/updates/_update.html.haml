@@ -1,28 +1,19 @@
-.indicator-list.indicator-list--inline
-  .indicator-list__indicator.delivery-status
-    .indicator-list__label
-      Delivery status
-    .indicator-list__value
-      .status-indicator{ class: "status-indicator--#{sprint_update.delivery_status}" }
-        .status-indicator__circle
-        = delivery_status_text(sprint_update)
-  .indicator-list__indicator.delivery-status
-    .indicator-list__label
-      OKR progress
-    .indicator-list__value
-      .status-indicator{ class: "status-indicator--#{sprint_update.okr_status}" }
-        .status-indicator__circle
-        = okr_status_text(sprint_update)
-  .indicator-list__indicator.team-health
-    .indicator-list__label
-      Team health
-    .indicator-list__value
-      = "#{sprint_update.team_health} / 5"
-  .indicator-list__indicator.headcount
-    .indicator-list__label
-      Headcount
-    .indicator-list__value
-      = "#{sprint_update.current_headcount} / #{sprint_update.total_headcount}"
+= render IndicatorListComponent.new(style: :inline) do |c|
+  - c.indicator(label: 'Delivery status') do |c|
+    - c.status status: sprint_update.delivery_status,
+               label: sprint_update.delivery_status_text,
+               position: :before
+
+  - c.indicator(label: 'OKR progress') do |c|
+    - c.status status: sprint_update.okr_status,
+               label: sprint_update.okr_status_text,
+               position: :before
+
+  - c.indicator(label: 'Team health') do
+    = "#{sprint_update.team_health} / 5"
+
+  - c.indicator(label: 'Headcount') do
+    = "#{sprint_update.current_headcount} / #{sprint_update.total_headcount}"
 
 .update-content-block#summary
   %h3.update-content-block__title

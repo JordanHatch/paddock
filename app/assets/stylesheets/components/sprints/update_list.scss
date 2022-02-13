@@ -1,0 +1,17 @@
+@use 'helpers';
+
+.sprints-update-list {
+  font-size: 1em;
+}
+
+.sprints-update-list__group {
+  margin-bottom: 2.5em;
+}
+
+.sprints-update-list__group-name {
+  font-size: .9em;
+  margin-bottom: .7em;
+  padding-left: 1em;
+  color: helpers.colour('grey', '700');
+  text-transform: uppercase;
+}

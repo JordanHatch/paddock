@@ -1,14 +1,15 @@
 @use 'helpers';
 
-.status-indicator { }
+.status-indicator {
+  font-size: 1em;
+}
 
 .status-indicator__circle {
   display: inline-block;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.2em;
+  height: 1.2em;
   border-radius: 50%;
-  margin-right: .2rem;
-  margin-bottom: -.1rem;
+  margin: 0 .2em -0.2em .2em;
   background-color: helpers.colour('grey', '600');
 }
 

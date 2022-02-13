@@ -7,17 +7,10 @@
         .sprints-summary__action-icon
         Download
 
-.view.view--sprints-show
-  %ul.groups
-    - team_summaries.each do |group, teams|
-      %li.group
-        %h2= group.name
-        %ul.teams
-          - teams.each do |team|
-            %li
-              = link_to update_path(sprint, team) do
-                %h3
-                  %span= team.name
-                = render partial: 'update_preview', locals: { team: team }
+.sprints-update-list
+  - team_summaries.each do |group, summaries|
+    .sprints-update-list__group
+      %h2.sprints-update-list__group-name= group.name
+      = render Sprints::UpdatePreviewComponent.with_collection(summaries)
 
-  = button_to 'Download as PDF', export_sprint_path(sprint, (params.key?(:debug) ? { debug: true } : nil )), class: 'button', form: { data: { turbo: 'false' } }
+= button_to 'Download as PDF', export_sprint_path(sprint, (params.key?(:debug) ? { debug: true } : nil )), class: 'button', form: { data: { turbo: 'false' } }

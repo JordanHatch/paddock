@@ -19,7 +19,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
 
     visit sprint_path(current_sprint)
 
-    within '.groups' do
+    within '.sprints-update-list' do
       included_teams.each do |team|
         expect(page).to have_content(team.name)
       end
@@ -33,7 +33,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
   it 'can edit a sprint update', js: true do
     visit sprint_path(sprint)
 
-    within '.groups' do
+    within '.sprints-update-list' do
       click_on team.name
     end
 

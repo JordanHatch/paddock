@@ -2,6 +2,7 @@ class TeamSummary < ApplicationRecord
   extend Forwardable
 
   belongs_to :team, foreign_key: 'id'
+  belongs_to :sprint
   belongs_to :sprint_update, foreign_key: 'update_id', class_name: 'Update'
 
   scope :for_sprint, lambda { |sprint|

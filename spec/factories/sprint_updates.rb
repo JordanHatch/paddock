@@ -13,6 +13,8 @@ FactoryBot.define do
 
     factory :published_sprint_update do
       state { :published }
+      delivery_status { :green }
+      okr_status { :amber }
     end
   end
 end
