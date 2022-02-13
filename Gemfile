@@ -49,6 +49,7 @@ group :development, :test do
   gem 'faker'
   gem 'foreman'
   gem 'i18n-debug'
+  gem 'lookbook'
   gem 'mocha'
   gem 'rspec-rails'
   gem 'rubocop', require: false

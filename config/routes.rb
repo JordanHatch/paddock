@@ -74,6 +74,7 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     get '/development/:view', to: 'development/static#show'
+    mount Lookbook::Engine, at: '/lookbook'
   end
 
   root to: redirect('/sprints')
