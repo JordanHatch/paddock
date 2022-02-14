@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe IndicatorListComponent, type: :component do
+RSpec.describe Common::IndicatorListComponent, type: :component do
   subject! do
     render_inline(described_class.new) do |c|
       c.indicator label: 'Indicator 1'
@@ -9,9 +9,9 @@ RSpec.describe IndicatorListComponent, type: :component do
   end
 
   it 'renders the indicator list with indicators' do
-    expect(rendered_component).to have_css('.indicator-list')
-    expect(rendered_component).to have_css('.indicator-list__indicator', text: 'Indicator 1')
-    expect(rendered_component).to have_css('.indicator-list__indicator', text: 'Indicator 2')
+    expect(rendered_component).to have_css('.common__indicator-list')
+    expect(rendered_component).to have_css('.common__indicator-list__indicator', text: 'Indicator 1')
+    expect(rendered_component).to have_css('.common__indicator-list__indicator', text: 'Indicator 2')
   end
 
   describe 'style' do
@@ -23,7 +23,7 @@ RSpec.describe IndicatorListComponent, type: :component do
       let(:style) { :inline_mini }
 
       it 'sets the correct class name' do
-        expect(rendered_component).to have_css('.indicator-list.indicator-list--inline-mini')
+        expect(rendered_component).to have_css('.common__indicator-list.common__indicator-list--inline-mini')
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe IndicatorListComponent, type: :component do
       let(:style) { :foo }
 
       it 'does not set a class name' do
-        expect(rendered_component).to_not have_css('.indicator-list--foo')
+        expect(rendered_component).to_not have_css('.common__indicator-list--foo')
       end
     end
   end

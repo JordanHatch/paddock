@@ -2,12 +2,12 @@
 # -------------------
 #
 # @display max_width 500px
-class ModalWindowComponentPreview < ViewComponent::Preview
+class Common::ModalWindowComponentPreview < ViewComponent::Preview
   # @label Default
   # --------------
   #
   def default
-    render ModalWindowComponent.new(force_open: true) do
+    render Common::ModalWindowComponent.new(force_open: true) do
       'Modal window content'
     end
   end
@@ -16,7 +16,7 @@ class ModalWindowComponentPreview < ViewComponent::Preview
   # -------------------------------
   #
   def with_header_and_actions
-    render ModalWindowComponent.new(force_open: true) do |c|
+    render Common::ModalWindowComponent.new(force_open: true) do |c|
       c.header do
         'Window header'
       end

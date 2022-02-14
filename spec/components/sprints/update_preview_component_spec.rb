@@ -22,9 +22,11 @@ RSpec.describe Sprints::UpdatePreviewComponent, type: :component do
   describe 'indicators' do
     context 'for a published sprint update' do
       it 'renders the indicators' do
-        expect(rendered_component).to have_css('.indicator-list__indicator', text: 'Delivery Green', normalize_ws: true)
-        expect(rendered_component).to have_css('.indicator-list__indicator', text: 'OKRs Amber', normalize_ws: true)
-        expect(rendered_component).to have_css('.indicator-list__indicator', text: '3 issues')
+        expect(rendered_component).to have_css('.common__indicator-list__indicator',
+                                               text: 'Delivery Green', normalize_ws: true)
+        expect(rendered_component).to have_css('.common__indicator-list__indicator',
+                                               text: 'OKRs Amber', normalize_ws: true)
+        expect(rendered_component).to have_css('.common__indicator-list__indicator', text: '3 issues')
       end
     end
 
@@ -32,7 +34,7 @@ RSpec.describe Sprints::UpdatePreviewComponent, type: :component do
       let(:sprint_update) { create(:draft_sprint_update, team: team, sprint: sprint) }
 
       it 'shows a placeholder message' do
-        expect(rendered_component).to have_css('.indicator-list', text: 'Awaiting submission')
+        expect(rendered_component).to have_css('.common__indicator-list', text: 'Awaiting submission')
       end
     end
   end
@@ -68,7 +70,7 @@ RSpec.describe Sprints::UpdatePreviewComponent, type: :component do
     it 'renders with a placeholder message' do
       expect(rendered_component).to have_css('.sprints-update-preview__team-name', text: team.name)
       expect(rendered_component).to have_link(href: /\/sprints\/#{sprint.id}\/#{team.to_param}$/)
-      expect(rendered_component).to have_css('.indicator-list', text: 'Awaiting submission')
+      expect(rendered_component).to have_css('.common__indicator-list', text: 'Awaiting submission')
     end
   end
 end

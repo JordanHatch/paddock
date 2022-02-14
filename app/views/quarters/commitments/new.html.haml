@@ -1,4 +1,4 @@
-= render ModalWindowComponent.new do |c|
+= render Common::ModalWindowComponent.new do |c|
   = simple_form_for service.form,
                     url: quarter_commitments_path(quarter),
                     as: :commitment,

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ModalWindowComponent, type: :component do
+RSpec.describe Common::ModalWindowComponent, type: :component do
   let(:content) { ->(_c) { 'Example' } }
   let(:turbo_frame_request) { false }
 
@@ -18,8 +18,8 @@ RSpec.describe ModalWindowComponent, type: :component do
   end
 
   it 'renders the modal window' do
-    expect(rendered_component).to have_css('.modal-window')
-    expect(rendered_component).to have_css('.modal-window__content', text: 'Example')
+    expect(rendered_component).to have_css('.common__modal-window')
+    expect(rendered_component).to have_css('.common__modal-window__content', text: 'Example')
   end
 
   describe 'actions' do
@@ -36,7 +36,7 @@ RSpec.describe ModalWindowComponent, type: :component do
         let(:turbo_frame_request) { true }
 
         it 'renders the actions' do
-          expect(rendered_component).to have_css('.modal-window__actions', text: 'A list of actions')
+          expect(rendered_component).to have_css('.common__modal-window__actions', text: 'A list of actions')
         end
       end
 
@@ -44,7 +44,7 @@ RSpec.describe ModalWindowComponent, type: :component do
         let(:turbo_frame_request) { false }
 
         it 'does not render the actions' do
-          expect(rendered_component).to_not have_css('.modal-window__actions')
+          expect(rendered_component).to_not have_css('.common__modal-window__actions')
         end
       end
     end
@@ -54,7 +54,7 @@ RSpec.describe ModalWindowComponent, type: :component do
         let(:turbo_frame_request) { true }
 
         it 'does not render the actions' do
-          expect(rendered_component).to_not have_css('.modal-window__actions')
+          expect(rendered_component).to_not have_css('.common__modal-window__actions')
         end
       end
     end
@@ -89,7 +89,7 @@ RSpec.describe ModalWindowComponent, type: :component do
       end
 
       it 'renders the header' do
-        expect(rendered_component).to have_css('.modal-window__header', text: 'Header content')
+        expect(rendered_component).to have_css('.common__modal-window__header', text: 'Header content')
       end
     end
 
@@ -101,7 +101,7 @@ RSpec.describe ModalWindowComponent, type: :component do
       end
 
       it 'does not render the header' do
-        expect(rendered_component).to_not have_css('.modal-window__header')
+        expect(rendered_component).to_not have_css('.common__modal-window__header')
       end
     end
   end

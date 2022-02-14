@@ -1,6 +1,6 @@
 @use 'helpers';
 
-.indicator-list {
+.common__indicator-list {
   flex: 1;
   max-width: 280px;
   padding-right: 2em;
@@ -8,20 +8,20 @@
   font-size: 1em;
 }
 
-.indicator-list__indicator {
+.common__indicator-list__indicator {
   border-radius: .5em;
   background: helpers.colour('silver', '100');
   padding: .8em;
   margin: 0 0 .5em;
 }
 
-.indicator-list__label {
+.common__indicator-list__label {
   font-size: 1em;
   font-weight: bold;
   margin: 0 0 .5em;
 }
 
-.indicator-list__value {
+.common__indicator-list__value {
   display: block;
   border-radius: .5em;
   background: helpers.colour('white');
@@ -29,7 +29,7 @@
   font-size: 1.3em;
 }
 
-.indicator-list--inline {
+.common__indicator-list--inline {
   display: flex;
   max-width: 100%;
   width: 100%;
@@ -37,20 +37,20 @@
   flex-wrap: wrap;
   padding: 0;
 
-  .indicator-list__indicator {
+  .common__indicator-list__indicator {
     flex: 1;
     min-width: 13rem;
   }
 }
 
-.indicator-list--inline-mini {
+.common__indicator-list--inline-mini {
   display: flex;
   flex-wrap: wrap;
   gap: .5em;
   max-width: 100%;
   padding-right: 0;
 
-  .indicator-list__indicator {
+  .common__indicator-list__indicator {
     display: flex;
     flex: 1;
     align-items: center;
@@ -60,13 +60,13 @@
     background: helpers.colour('white');
   }
 
-  .indicator-list__label, .indicator-list__value {
+  .common__indicator-list__label, .common__indicator-list__value {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
 
-  .indicator-list__label {
+  .common__indicator-list__label {
     flex: 1;
     margin: .15em .4em 0 0;
 
@@ -78,18 +78,18 @@
     text-align: left;
   }
 
-  .indicator-list__value {
+  .common__indicator-list__value {
     flex: auto;
     text-align: right;
     padding: 0;
     font-size: 1em;
   }
 
-  .indicator-list__indicator--no-label .indicator-list__value {
+  .common__indicator-list__indicator--no-label .common__indicator-list__value {
     text-align: left;
   }
 
-  .indicator-list__inner {
+  .common__indicator-list__inner {
     padding: 0;
     width: 100%;
   }

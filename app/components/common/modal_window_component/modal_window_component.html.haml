@@ -3,20 +3,20 @@
                            src: ('' if force_open),
                            data: { controller: 'modal-window',
                             action: 'keyup@document->modal-window#keyup' } do
-  .modal-window
-    .modal-window__background{ data: { action: 'click->modal-window#close' } }
-    .modal-window__container
-      .modal-window__content.turbo-frame__container
+  .common__modal-window
+    .common__modal-window__background{ data: { action: 'click->modal-window#close' } }
+    .common__modal-window__container
+      .common__modal-window__content.turbo-frame__container
         .turbo-frame__loading
         - if turbo_frame_request?
-          = link_to '#', class: 'modal-window__close-link',
+          = link_to '#', class: 'common__modal-window__close-link',
                          target: '_top',
                          data: { action: 'click->modal-window#close' } do
-            .modal-window__close-icon
-            .modal-window__close-label Close
+            .common__modal-window__close-icon
+            .common__modal-window__close-label Close
         - if header.present?
-          .modal-window__header
-            %h1.modal-window__header-label= header
+          .common__modal-window__header
+            %h1.common__modal-window__header-label= header
         = content
         - if turbo_frame_request? && actions.present?
-          .form-actions.modal-window__actions= actions
+          .form-actions.common__modal-window__actions= actions

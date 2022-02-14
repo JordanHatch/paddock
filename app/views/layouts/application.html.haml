@@ -22,7 +22,7 @@
         %div{class: "flash-message flash-message--global flash-message--#{key}"}= message
 
     - unless request.headers.include?('Turbo-Frame')
-      = render ModalWindowComponent.new do
+      = render Common::ModalWindowComponent.new do
         .loading
 
     %main.app
@@ -32,6 +32,6 @@
       - if signed_in?
         .signed-in-user
           Signed in as
-          %span= render UserNameComponent.new(user: signed_in_user)
+          %span= render Common::UserNameComponent.new(user: signed_in_user)
           = link_to 'Sign out', sign_out_path, data: { method: :post }
     = render partial: 'layouts/partials/paddock_environment'

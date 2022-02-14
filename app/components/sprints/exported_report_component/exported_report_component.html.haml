@@ -5,7 +5,7 @@
       ago
     .exported-report__user
       by
-      = render UserNameComponent.new(user: report.user)
+      = render Common::UserNameComponent.new(user: report.user)
   .exported-report__file
     - if report.file.present?
       .exported-report__action

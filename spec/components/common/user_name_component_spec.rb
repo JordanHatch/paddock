@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserNameComponent, type: :component do
+RSpec.describe Common::UserNameComponent, type: :component do
   before(:each) do
     render_inline(described_class.new(user: user))
   end

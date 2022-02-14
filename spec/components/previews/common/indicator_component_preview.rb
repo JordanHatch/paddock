@@ -1,5 +1,5 @@
 # @label Indicator
-class IndicatorComponentPreview < ViewComponent::Preview
+class Common::IndicatorComponentPreview < ViewComponent::Preview
   # @!group Indicators
 
   # @label Indicator with label and status
@@ -7,7 +7,7 @@ class IndicatorComponentPreview < ViewComponent::Preview
   #
   # @param label
   def with_label_and_status(label: 'Delivery')
-    render(IndicatorComponent.new(label: label)) do |c|
+    render(Common::IndicatorComponent.new(label: label)) do |c|
       c.status status: :green, label: 'Green'
     end
   end
@@ -16,7 +16,7 @@ class IndicatorComponentPreview < ViewComponent::Preview
   # ----------------
   #
   def with_no_label
-    render(IndicatorComponent.new(label: nil)) do |_c|
+    render(Common::IndicatorComponent.new(label: nil)) do |_c|
       'Label text'
     end
   end

@@ -1,0 +1,9 @@
+%div{ class: class_name }
+  - if label.present?
+    .common__indicator-list__label
+      .common__indicator-list__inner
+        = label
+  .common__indicator-list__value
+    .common__indicator-list__inner
+      = status
+      = content

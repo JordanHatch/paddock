@@ -5,7 +5,7 @@
 $border-radius: 1rem;
 $width: 40rem;
 
-turbo-frame[src] .modal-window__background {
+turbo-frame[src] .common__modal-window__background {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -18,13 +18,13 @@ turbo-frame[src] .modal-window__background {
   z-index: 1;
 }
 
-turbo-frame[src] .modal-window__container {
+turbo-frame[src] .common__modal-window__container {
   position: absolute;
   top: 0;
   width: 100%;
 }
 
-turbo-frame[src] .modal-window__content {
+turbo-frame[src] .common__modal-window__content {
   width: 100%;
   margin: 6rem auto 1rem;
 
@@ -39,7 +39,7 @@ turbo-frame[src] .modal-window__content {
   }
 }
 
-turbo-frame[src] .modal-window__actions {
+turbo-frame[src] .common__modal-window__actions {
   margin: 1.5rem -2rem -1.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -55,19 +55,19 @@ turbo-frame.turbo-frame--modal[busy][src] .loading {
   margin-top: 1rem;
 }
 
-.modal-window__close-link {
+.common__modal-window__close-link {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
   color: helpers.colour('black');
 }
 
-.modal-window__close-icon {
+.common__modal-window__close-icon {
   @include helpers.fa-solid;
   @include helpers.fa-icon(helpers.$fa-var-times);
   font-size: 1.5rem;
 }
-.modal-window__close-label {
+.common__modal-window__close-label {
   position: absolute;
   top: -9999px;
   left: -9999px;

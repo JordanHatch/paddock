@@ -1,4 +1,4 @@
-class ModalWindowComponent < BaseComponent
+class Common::ModalWindowComponent < BaseComponent
   include Turbo::FramesHelper
 
   option :force_open, optional: true, default: false

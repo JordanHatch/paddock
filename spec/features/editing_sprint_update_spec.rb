@@ -114,7 +114,7 @@ RSpec.describe 'editing sprint updates', type: :feature do
 
     expect(page).to have_content('currently in draft')
 
-    indicator_class = '.indicator-list__indicator'
+    indicator_class = '.common__indicator-list__indicator'
 
     delivery_status = page.find(indicator_class, text: 'Delivery status')
     within delivery_status do

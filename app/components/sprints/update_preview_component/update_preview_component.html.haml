@@ -3,13 +3,13 @@
     %h3.sprints-update-preview__team
       .sprints-update-preview__team-name= team_summary.name
     .sprints-update-preview__status
-      = render IndicatorListComponent.new(style: :inline_mini) do |c|
+      = render Common::IndicatorListComponent.new(style: :inline_mini) do |c|
         - if team_summary.published?
           - c.indicator(label: 'Delivery') do
-            = render StatusIndicatorComponent.new(status: team_summary.delivery_status,
+            = render Common::StatusIndicatorComponent.new(status: team_summary.delivery_status,
                                                   label: team_summary.delivery_status_text)
           - c.indicator(label: 'OKRs') do
-            = render StatusIndicatorComponent.new(status: team_summary.okr_status,
+            = render Common::StatusIndicatorComponent.new(status: team_summary.okr_status,
                                                   label: team_summary.okr_status_text)
 
           - c.indicator do

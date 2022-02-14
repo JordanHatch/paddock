@@ -9,7 +9,7 @@
     .team-header__actions
       = link_to 'View sprint update', update_path(sprint, team), class: 'button button--inverted-primary'
 
-  = render ModalWindowComponent.new do |c|
+  = render Common::ModalWindowComponent.new do |c|
     - c.header { 'Danger zone' }
 
     .update-content-block

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserNameComponent < BaseComponent
+class Common::UserNameComponent < BaseComponent
   option :user
 
   private

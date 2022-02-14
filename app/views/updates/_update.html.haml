@@ -1,4 +1,4 @@
-= render IndicatorListComponent.new(style: :inline) do |c|
+= render Common::IndicatorListComponent.new(style: :inline) do |c|
   - c.indicator(label: 'Delivery status') do |c|
     - c.status status: sprint_update.delivery_status,
                label: sprint_update.delivery_status_text,

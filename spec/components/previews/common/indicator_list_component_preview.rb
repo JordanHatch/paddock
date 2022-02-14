@@ -1,10 +1,10 @@
 # @label Indicator list
-class IndicatorListComponentPreview < ViewComponent::Preview
+class Common::IndicatorListComponentPreview < ViewComponent::Preview
   # @label Default stacked
   # ----------------
   #
   def default
-    render IndicatorListComponent.new do |c|
+    render Common::IndicatorListComponent.new do |c|
       c.indicator label: 'Delivery status' do |i|
         i.status status: :green, label: 'Green'
       end
@@ -23,7 +23,7 @@ class IndicatorListComponentPreview < ViewComponent::Preview
   # ----------------
   #
   def inline
-    render IndicatorListComponent.new(style: :inline) do |c|
+    render Common::IndicatorListComponent.new(style: :inline) do |c|
       c.indicator label: 'Delivery status' do |i|
         i.status status: :green, label: 'Green'
       end
@@ -42,7 +42,7 @@ class IndicatorListComponentPreview < ViewComponent::Preview
   # ----------------
   #
   def inline_mini
-    render IndicatorListComponent.new(style: :inline_mini) do |c|
+    render Common::IndicatorListComponent.new(style: :inline_mini) do |c|
       c.indicator label: 'Delivery' do |i|
         i.status status: :green, label: 'Green'
       end

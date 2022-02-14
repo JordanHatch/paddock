@@ -1,5 +1,5 @@
 # @label Status indicator
-class StatusIndicatorComponentPreview < ViewComponent::Preview
+class Common::StatusIndicatorComponentPreview < ViewComponent::Preview
   # @label Default
   # ----------------
   #
@@ -7,6 +7,6 @@ class StatusIndicatorComponentPreview < ViewComponent::Preview
   # @param position select [before, after]
   # @param label
   def default(status: :green, label: 'Green', position: nil)
-    render StatusIndicatorComponent.new(status: status, label: label, position: position)
+    render Common::StatusIndicatorComponent.new(status: status, label: label, position: position)
   end
 end

@@ -1,3 +1,4 @@
+@use 'common';
 @use 'quarters';
 @use 'sprints';
 
@@ -15,13 +16,11 @@
 @use 'form_actions';
 @use 'form_input';
 @use 'icon';
-@use 'indicator_list';
 @use 'info_box';
 @use 'issue';
 @use 'managed_resource_list';
 @use 'markdown_block';
 @use 'markdown_input';
-@use 'modal_window';
 @use 'multiple_select_box';
 @use 'radio_button';
 @use 'section_header';
@@ -29,12 +28,10 @@
 @use 'select_box';
 @use 'sprint_navigation';
 @use 'sprint_timeline';
-@use 'status_indicator';
 @use 'team_header';
 @use 'teams_list';
 @use 'text_area_input';
 @use 'text_input';
 @use 'turbo_frame';
 @use 'update_content_block';
-@use 'user_name';
 @use 'version_history';

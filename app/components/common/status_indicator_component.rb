@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class StatusIndicatorComponent < BaseComponent
+class Common::StatusIndicatorComponent < BaseComponent
   option :status
   option :label
   option :position, optional: true
 
   def status_class
-    "status-indicator--#{status}" if status.present?
+    "common__status-indicator--#{status}" if status.present?
   end
 
   def position

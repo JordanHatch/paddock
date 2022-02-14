@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe StatusIndicatorComponent, type: :component do
+RSpec.describe Common::StatusIndicatorComponent, type: :component do
   before(:each) do
     render_inline(described_class.new(status: status, label: label, position: position))
   end
@@ -10,16 +10,16 @@ RSpec.describe StatusIndicatorComponent, type: :component do
   let(:position) { nil }
 
   it 'renders the status' do
-    expect(rendered_component).to have_css('.status-indicator', text: label)
-    expect(rendered_component).to have_css('.status-indicator.status-indicator--green')
-    expect(rendered_component).to have_css('.status-indicator .status-indicator__circle')
+    expect(rendered_component).to have_css('.common__status-indicator', text: label)
+    expect(rendered_component).to have_css('.common__status-indicator.common__status-indicator--green')
+    expect(rendered_component).to have_css('.common__status-indicator .common__status-indicator__circle')
   end
 
   context 'when label is nil' do
     let(:label) { nil }
 
     it 'renders an mdash' do
-      expect(rendered_component).to have_css('.status-indicator', text: '—')
+      expect(rendered_component).to have_css('.common__status-indicator', text: '—')
     end
   end
 
@@ -28,7 +28,7 @@ RSpec.describe StatusIndicatorComponent, type: :component do
       let(:position) { :before }
 
       it 'renders the circle before the label' do
-        expect(rendered_component).to match(/<div class='status-indicator__circle'><\/div>\nGreen/)
+        expect(rendered_component).to match(/<div class='common__status-indicator__circle'><\/div>\nGreen/)
       end
     end
 
@@ -36,7 +36,7 @@ RSpec.describe StatusIndicatorComponent, type: :component do
       let(:position) { :after }
 
       it 'renders the circle after the label' do
-        expect(rendered_component).to match(/Green\n<div class='status-indicator__circle'><\/div>/)
+        expect(rendered_component).to match(/Green\n<div class='common__status-indicator__circle'><\/div>/)
       end
     end
 
@@ -44,7 +44,7 @@ RSpec.describe StatusIndicatorComponent, type: :component do
       let(:position) { nil }
 
       it 'renders the circle after the label' do
-        expect(rendered_component).to match(/Green\n<div class='status-indicator__circle'><\/div>/)
+        expect(rendered_component).to match(/Green\n<div class='common__status-indicator__circle'><\/div>/)
       end
     end
   end
