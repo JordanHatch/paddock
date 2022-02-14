@@ -11,5 +11,6 @@ if ENV['EXCEPTION_NOTIFIER_ACTIVE'].present?
       email_format: :html,
       sections: %w{request backtrace},
     },
-    error_grouping: true
+    error_grouping: true,
+    ignore_exceptions: ['ActionController::UnknownHttpMethod'] + ExceptionNotifier.ignored_exceptions
 end
