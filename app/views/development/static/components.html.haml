@@ -25,69 +25,40 @@
     .update-content-block
       %h2.update-content-block__title Status indicators
       .update-content-block__content
-        .status-indicator.status-indicator--red
-          .status-indicator__circle
-          Red
-        .status-indicator.status-indicator--amber
-          .status-indicator__circle
-          Amber
-        .status-indicator.status-indicator--green
-          .status-indicator__circle
-          Green
+        = render Common::StatusIndicatorComponent.new(status: :red, label: 'Red')
+        = render Common::StatusIndicatorComponent.new(status: :amber, label: 'Amber')
+        = render Common::StatusIndicatorComponent.new(status: :green, label: 'Green')
+
+        = render Common::StatusIndicatorComponent.new(status: :red, label: 'Red', position: :before)
+        = render Common::StatusIndicatorComponent.new(status: :amber, label: 'Amber', position: :before)
+        = render Common::StatusIndicatorComponent.new(status: :green, label: 'Green', position: :before)
 
     .update-content-block
       %h2.update-content-block__title Indicator lists
       .update-content-block__content
-        .indicator-list
-          .indicator-list__indicator
-            .indicator-list__label
-              Label
-            .indicator-list__value
-              Value
-          .indicator-list__indicator
-            .indicator-list__label
-              Label
-            .indicator-list__value
-              Value
-          .indicator-list__indicator
-            .indicator-list__label
-              Label
-            .indicator-list__value
-              Value
+        = render Common::IndicatorListComponent.new do |c|
+          - c.indicator label: 'Label' do
+            Value
+          - c.indicator label: 'Label' do
+            Value
+          - c.indicator label: 'Label' do
+            Value
 
-        .indicator-list.indicator-list--inline
-          .indicator-list__indicator
-            .indicator-list__label
-              Label
-            .indicator-list__value
-              Value
-          .indicator-list__indicator
-            .indicator-list__label
-              Label
-            .indicator-list__value
-              Value
-          .indicator-list__indicator
-            .indicator-list__label
-              Label
-            .indicator-list__value
-              Value
+        = render Common::IndicatorListComponent.new(style: :inline) do |c|
+          - c.indicator label: 'Label' do
+            Value
+          - c.indicator label: 'Label' do
+            Value
+          - c.indicator label: 'Label' do
+            Value
 
-        .indicator-list.indicator-list--inline-mini
-          .indicator-list__indicator
-            .indicator-list__label
-              Label
-            .indicator-list__value
-              Value
-          .indicator-list__indicator
-            .indicator-list__label
-              Label
-            .indicator-list__value
-              Value
-          .indicator-list__indicator
-            .indicator-list__label
-              Label
-            .indicator-list__value
-              Value
+        = render Common::IndicatorListComponent.new(style: :inline_mini) do |c|
+          - c.indicator label: 'Label' do
+            Value
+          - c.indicator label: 'Label' do
+            Value
+          - c.indicator label: 'Label' do
+            Value
 
     .update-content-block
       %h2.update-content-block__title Team header
