@@ -57,6 +57,8 @@ Once complete, start the app in development:
 bin/dev
 ```
 
+In development, you can preview each view component using [Lookbook](https://github.com/allmarkedup/lookbook). Visit `http://localhost:5000/lookbook`.
+
 ## Running the tests
 
 You'll need Chrome (or Chromium) installed to run the feature specs which require JavaScript.

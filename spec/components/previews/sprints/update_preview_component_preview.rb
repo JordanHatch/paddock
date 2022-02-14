@@ -1,5 +1,6 @@
+# @label Update preview
 class Sprints::UpdatePreviewComponentPreview < ViewComponent::Preview
-  # Default
+  # @label Default
   # ----------------
   #
   def default

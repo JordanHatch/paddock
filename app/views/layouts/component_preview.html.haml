@@ -3,5 +3,6 @@
   %head
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
-  %body{ style: "padding: 2rem;" }
-    = yield
+  %body{ style: "background-color: #{params[:lookbook][:display][:bg_color]}" }
+    %div{ style: "padding: 2rem; max-width: #{(params[:lookbook][:display][:max_width] || '100%')}" }
+      = yield

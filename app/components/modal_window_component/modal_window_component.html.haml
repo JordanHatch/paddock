@@ -1,5 +1,6 @@
 = turbo_frame_tag 'modal', class: 'turbo-frame turbo-frame--modal',
                            autoscroll: true,
+                           src: ('' if force_open),
                            data: { controller: 'modal-window',
                             action: 'keyup@document->modal-window#keyup' } do
   .modal-window

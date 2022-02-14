@@ -11,7 +11,7 @@ class StatusIndicatorComponent < BaseComponent
 
   def position
     if super.present?
-      super
+      super.to_sym
     else
       :after
     end

@@ -1,7 +1,8 @@
+# @label Indicator
 class IndicatorComponentPreview < ViewComponent::Preview
   # @!group Indicators
 
-  # Indicator with label and status
+  # @label Indicator with label and status
   # ----------------
   #
   # @param label
@@ -11,13 +12,12 @@ class IndicatorComponentPreview < ViewComponent::Preview
     end
   end
 
-  # Indicator with no label
+  # @label Indicator with no label
   # ----------------
   #
-  # @param label
   def with_no_label
-    render(IndicatorComponent.new(label: nil)) do |c|
-      "Label text"
+    render(IndicatorComponent.new(label: nil)) do |_c|
+      'Label text'
     end
   end
 

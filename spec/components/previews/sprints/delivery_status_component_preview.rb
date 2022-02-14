@@ -1,5 +1,6 @@
+# @label Delivery status
 class Sprints::DeliveryStatusComponentPreview < ViewComponent::Preview
-  # Indicator with label and status
+  # @label Default
   # ----------------
   #
   def default

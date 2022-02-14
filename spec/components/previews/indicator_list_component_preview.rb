@@ -1,5 +1,6 @@
+# @label Indicator list
 class IndicatorListComponentPreview < ViewComponent::Preview
-  # Default indicator list
+  # @label Default stacked
   # ----------------
   #
   def default
@@ -18,7 +19,7 @@ class IndicatorListComponentPreview < ViewComponent::Preview
     end
   end
 
-  # Inline
+  # @label Inline
   # ----------------
   #
   def inline
@@ -37,7 +38,7 @@ class IndicatorListComponentPreview < ViewComponent::Preview
     end
   end
 
-  # Inline Mini
+  # @label Inline mini
   # ----------------
   #
   def inline_mini
