@@ -1,7 +1,9 @@
 %header.section-header
   %h1.section-header__title Quarters
   .section-header__actions
-    = link_to 'Add a new quarter', new_manage_quarter_path, class: 'button button--primary'
+    = render(Common::ButtonComponent.new(tag: :a,
+                                         href: new_manage_quarter_path,
+                                         scheme: :primary)) { 'Add a new quarter' }
 
 %ul.managed-resource-list
   - quarters.each do |quarter|
@@ -19,5 +21,8 @@
           - if quarter.editable?
             %li Open for changes
       .managed-resource-list__actions
-        = link_to 'Edit', edit_manage_quarter_path(quarter),
-                          class: 'button button--inverted-primary button--sm'
+        = render(Common::ButtonComponent.new(tag: :a,
+                                             href: edit_manage_quarter_path(quarter),
+                                             scheme: :primary,
+                                             style: :inverted,
+                                             size: :sm)) { 'Edit' }

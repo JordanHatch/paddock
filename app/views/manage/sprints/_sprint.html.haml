@@ -6,4 +6,7 @@
       to
       = sprint.end_on.strftime('%b %e %Y')
   .sprint-actions
-    = link_to 'Edit', edit_manage_sprint_path(sprint)
+    = render(Common::ButtonComponent.new(tag: :a,
+                                         href: edit_manage_sprint_path(current_sprint),
+                                         scheme: :primary,
+                                         style: :inverted)) { 'Edit' }

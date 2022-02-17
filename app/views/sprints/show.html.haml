@@ -3,7 +3,12 @@
     = render Sprints::DeliveryStatusComponent.new(sprint: sprint)
   .sprints-summary__actions
     - if Features.enabled?(:export_uploads, signed_in_user)
-      = link_to sprint_exports_path(sprint), class: 'button button--sm button--inverted-primary', data: { turbo_frame: 'modal' } do
+      = render(Common::ButtonComponent.new(tag: :a,
+                                           href: sprint_exports_path(sprint),
+                                           scheme: :primary,
+                                           style: :inverted,
+                                           size: :sm,
+                                           data: { turbo_frame: 'modal' })) do
         .sprints-summary__action-icon
         Download
 
@@ -13,4 +18,5 @@
       %h2.sprints-update-list__group-name= group.name
       = render Sprints::UpdatePreviewComponent.with_collection(summaries)
 
-= button_to 'Download as PDF', export_sprint_path(sprint, (params.key?(:debug) ? { debug: true } : nil )), class: 'button', form: { data: { turbo: 'false' } }
+= form_tag export_sprint_path(sprint, (params.key?(:debug) ? { debug: true } : nil )), method: :post, data: { turbo: 'false' } do
+  = render(Common::ButtonComponent.new) { 'Download as PDF' }

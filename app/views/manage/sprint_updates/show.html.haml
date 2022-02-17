@@ -7,7 +7,10 @@
         = team.name
       .sprint-name= sprint.name
     .team-header__actions
-      = link_to 'View sprint update', update_path(sprint, team), class: 'button button--inverted-primary'
+      = render(Common::ButtonComponent.new(tag: :a,
+                                           href: update_path(sprint, team),
+                                           scheme: :primary,
+                                           style: :inverted)) { 'View sprint update' }
 
   = render Common::ModalWindowComponent.new do |c|
     - c.header { 'Danger zone' }
@@ -19,10 +22,9 @@
           %p You can unpublish this sprint update.
           %p This will return the sprint update to a draft so that it can be edited again.
           %p If you've already exported a PDF for the sprint, export a fresh copy after any changes have been made.
-          %p= button_to 'Unpublish',
-                unpublish_manage_sprint_update_path(sprint, team),
-                class: 'button button--danger',
-                form: { data: { controller: 'turbo-form-redirect' } }
+          = form_tag unpublish_manage_sprint_update_path(sprint, team), method: :post,
+                                                                        data: { controller: 'turbo-form-redirect' } do
+            = render(Common::ButtonComponent.new(scheme: :danger)) { 'Unpublish' }
         - else
           .errors
             %ul.errors__list

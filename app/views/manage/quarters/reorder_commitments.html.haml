@@ -5,11 +5,15 @@
         %h1.section-header__title Key commitments this quarter
       .section-header__actions.turbo-frame__container
         .turbo-frame__loading
-        = button_tag 'Save order',
-                     class: 'button button--primary button--sm',
-                     data: { sortable_commitments_list_target: 'submit',
-                             turbo_frame: '_self' }
-        = link_to 'Cancel', quarter_path(quarter), class: 'button button--sm button--inverted-primary'
+        = render(Common::ButtonComponent.new(scheme: :primary,
+                                             size: :sm,
+                                             data: { sortable_commitments_list_target: 'submit',
+                                               turbo_frame: '_self' })) { 'Save order' }
+        = render(Common::ButtonComponent.new(tag: :a,
+                                             href: quarter_path(quarter),
+                                             scheme: :primary,
+                                             size: :sm,
+                                             style: :inverted)) { 'Cancel' }
     .turbo-frame__container{ data: { controller: 'sortable-commitments-list' } }
       .turbo-frame__loading
       %ul.commitments-list.commitments-list--sortable{ data: { sortable_commitments_list_target: 'list' } }

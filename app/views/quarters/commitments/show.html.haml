@@ -49,4 +49,7 @@
 - if quarter.editable?
   .update-content-block
     .update-content-block__content
-      = link_to 'Edit this page', edit_quarter_commitment_path(commitment.quarter, commitment), class: 'button'
+      = render(Common::ButtonComponent.new(tag: :a,
+                                           href: edit_quarter_commitment_path(commitment.quarter, commitment),
+                                           scheme: :primary)) do
+        Edit this page

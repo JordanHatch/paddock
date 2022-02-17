@@ -3,10 +3,15 @@
     Export the sprint report
 
   = turbo_frame_tag 'exported-sprint-reports' do
-    %p= button_to 'Generate a new report', request_sprint_export_path, method: :post, class: 'button button--primary', data: { turbo_frame: 'exported-sprint-reports' }
+    = form_tag request_sprint_export_path(sprint), method: :post do
+      = render(Common::ButtonComponent.new(scheme: :primary,
+                                           data: { turbo_frame: 'exported-sprint-reports' })) { 'Generate a new report' }
 
     %ul
       - sprint.exported_reports.each do |report|
         = render(Sprints::ExportedReportComponent.new(report: report))
 
-    %p= button_to 'Refresh', sprint_exports_path(sprint), method: :get, class: 'button button--primary', data: { controller: 'background-refresh', turbo_frame: 'exported-sprint-reports' }
+    = form_tag sprint_exports_path(sprint), method: :get do
+      = render(Common::ButtonComponent.new(scheme: :primary,
+                                           data: { controller: 'background-refresh',
+                                             turbo_frame: 'exported-sprint-reports' })) { 'Refresh' }

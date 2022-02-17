@@ -5,12 +5,10 @@
         = invitation_user_initials(token.email)
     .user-email
       = token.email
-    = button_to 'Sign me in',
-        redeem_invitation_path(token.token),
-        method: 'post',
-        class: 'button button--primary',
-        data: { redeem_invitation_target: 'button',
-          action: 'redeem-invitation#showLoadingMessage',
-        }
+    = form_tag redeem_invitation_path(token.token), method: :post do
+      = render(Common::ButtonComponent.new(scheme: :primary,
+                                           data: { redeem_invitation_target: 'button',
+                                             action: 'redeem-invitation#showLoadingMessage',
+                                           })) { 'Sign me in' }
   .loading{'data-redeem-invitation-target'=>'loading'}
     %p{'data-redeem-invitation-target'=>'loadingMessage'}

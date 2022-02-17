@@ -15,7 +15,9 @@
                       type: filter.type,
                       control_data_action: 'change->filterable-list#update' }
           .filterable-list__actions
-            = submit_tag 'Apply filters', name: nil, class: 'button button--primary filterable-list__apply-action', data: { filterable_list_target: 'button' }
+            = render(Common::ButtonComponent.new(scheme: :primary,
+                                                 classes: 'filterable-list__apply-action',
+                                                 data: { filterable_list_target: 'button' })) { 'Apply filters' }
             = link_to 'Reset filters', sprint_issues_path(sprint), class: 'filterable-list__reset-filters-action'
 
       .filterable-list__results.turbo-frame__container

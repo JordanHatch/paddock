@@ -9,7 +9,10 @@
           .group-details
             %h3= group.name
             .actions
-              = link_to 'Add a new team', new_manage_team_path(team, group: group.id), class: 'button button--success button--sm'
+              = render(Common::ButtonComponent.new(tag: :a,
+                                                   href: new_manage_team_path(team, group: group.id),
+                                                   scheme: :success,
+                                                   size: :sm)) { 'Add a new team' }
           %ul.teams
             - group.teams.each do |team|
               %li.team
@@ -24,4 +27,8 @@
                       to
                       = team.end_on.strftime('%-d %b %Y')
                 .actions
-                  = link_to 'Edit', edit_manage_team_path(team), class: 'button button--sm button--inverted-primary'
+                  = render(Common::ButtonComponent.new(tag: :a,
+                                                       href: edit_manage_team_path(team),
+                                                       scheme: :primary,
+                                                       style: :inverted,
+                                                       size: :sm)) { 'Edit' }

@@ -53,10 +53,5 @@
   .sprint-actions {
     flex: 1;
     text-align: right;
-
-    a {
-      @extend .button;
-      @extend .button--inverted-primary;
-    }
   }
 }

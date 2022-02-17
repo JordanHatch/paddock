@@ -9,7 +9,10 @@
   .exported-report__file
     - if report.file.present?
       .exported-report__action
-        = link_to rails_storage_proxy_path(report.file, disposition: 'attachment'), class: 'button button--inverted-primary' do
+        = render(Common::ButtonComponent.new(tag: :a,
+                                             href: rails_storage_proxy_path(report.file, disposition: 'attachment'),
+                                             scheme: :primary,
+                                             style: :inverted)) do
           %span.exported-report__button-label Download
           %span.exported-report__download-icon
     - else

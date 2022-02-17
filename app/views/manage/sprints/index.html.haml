@@ -2,7 +2,9 @@
   %header.with-actions
     %h1 Sprints
     .actions
-      = link_to 'Add a new sprint', new_manage_sprint_path
+      = render(Common::ButtonComponent.new(tag: :a,
+                                           href: new_manage_sprint_path,
+                                           scheme: :primary)) { 'Add a new sprint' }
 
   .sprints-list
     .current-sprint
@@ -16,7 +18,10 @@
               to
               = current_sprint.end_on.strftime('%b %e %Y')
           .sprint-actions
-            = link_to 'Edit', edit_manage_sprint_path(current_sprint)
+            = render(Common::ButtonComponent.new(tag: :a,
+                                                 href: edit_manage_sprint_path(current_sprint),
+                                                 scheme: :primary,
+                                                 style: :inverted)) { 'Edit' }
 
     %ul.all-sprints
       - sprints.each do |sprint|

@@ -8,7 +8,7 @@
     = f.input :editable, as: :radio_buttons, required: true
 
   .form-actions
-    = f.button :submit, 'Save'
+    = render(Common::ButtonComponent.new(scheme: :primary)) { 'Save' }
     .form-actions__cancel
       or
       = link_to 'cancel', manage_quarters_path

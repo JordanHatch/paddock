@@ -6,21 +6,20 @@
       %h2.update-content-block__title Buttons
       .update-content-block__content
         %p
-          .button.button--primary Primary button
-          .button.button--success Success button
-          .button.button--warning Warning button
-          .button.button--danger Danger button
+          = render(Common::ButtonComponent.new(scheme: :primary)) { 'Primary button' }
+          = render(Common::ButtonComponent.new(scheme: :success)) { 'Success button' }
+          = render(Common::ButtonComponent.new(scheme: :warning)) { 'Warning button' }
+          = render(Common::ButtonComponent.new(scheme: :danger)) { 'Danger button' }
         %p
-          .button.button--inverted-primary Inverted primary
-          .button.button--inverted-success Inverted success
-          .button.button--inverted-warning Inverted warning
-          .button.button--inverted-danger Inverted danger
+          = render(Common::ButtonComponent.new(scheme: :primary, style: :inverted)) { 'Inverted primary' }
+          = render(Common::ButtonComponent.new(scheme: :success, style: :inverted)) { 'Inverted success' }
+          = render(Common::ButtonComponent.new(scheme: :warning, style: :inverted)) { 'Inverted warning' }
+          = render(Common::ButtonComponent.new(scheme: :danger, style: :inverted)) { 'Inverted danger' }
         %p
-          .button.button--primary Link
-          %button.button.button--primary Button
-          %input.button.button-primary{ type: 'submit', value: 'Input' }
+          = render(Common::ButtonComponent.new(tag: :a, href: '#')) { 'Link' }
+          = render(Common::ButtonComponent.new(tag: :button)) { 'Button' }
         %p
-          .button.button--primary.button--sm Small button
+          = render(Common::ButtonComponent.new(size: :sm)) { 'Small button' }
 
     .update-content-block
       %h2.update-content-block__title Status indicators

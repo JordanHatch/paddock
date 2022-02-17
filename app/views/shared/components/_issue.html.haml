@@ -19,6 +19,16 @@
   - if local_assigns[:link_to_update].present? or issue.identifier?
     .issue__section.issue__section--actions
       - if local_assigns[:link_to_update].present?
-        = link_to 'View team update', update_path(issue.sprint, issue.team), class: 'button button--sm button--inverted-primary', data: { turbo_frame: '_top' }
+        = render(Common::ButtonComponent.new(tag: :a,
+                                             href: update_path(issue.sprint, issue.team),
+                                             scheme: :primary,
+                                             style: :inverted,
+                                             size: :sm,
+                                             data: { turbo_frame: '_top' })) { 'View team update' }
       - if issue.identifier?
-        = link_to 'View in DevOps', azure_devops_link(issue.identifier), class: 'button button--sm button--inverted-primary'
+        = render(Common::ButtonComponent.new(tag: :a,
+                                             href: azure_devops_link(issue.identifier),
+                                             scheme: :primary,
+                                             style: :inverted,
+                                             size: :sm,
+                                             data: { turbo_frame: '_top' })) { 'View in DevOps' }

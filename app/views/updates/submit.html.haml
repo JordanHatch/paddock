@@ -13,7 +13,8 @@
         %p Once you've submitted the update, you won't be able to make further changes to it.
 
         .actions
-          = button_to 'Submit update', submit_update_path(service.sprint, service.team), class: 'button', data: { method: 'post' }
+          = form_tag submit_update_path(service.sprint, service.team), method: :post do
+            = render(Common::ButtonComponent.new(scheme: :primary, type: :submit)) { 'Submit update' }
       - else
         .info-box.invalid-submit-message
           .info-box__icon

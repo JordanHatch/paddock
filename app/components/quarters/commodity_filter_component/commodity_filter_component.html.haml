@@ -10,7 +10,7 @@
         include_blank: 'All commodities',
         class: 'quarters-commodity-filter__control select-box select-box--sm',
         data: { action: 'change->filterable-list#update' }
-    = submit_tag 'Filter',
-        name: nil,
-        class: 'quarters-commodity-filter__button button button--primary button--sm',
-        data: { filterable_list_target: 'button' }
+    = render(Common::ButtonComponent.new(scheme: :primary,
+                                         size: :sm,
+                                         classes: 'quarters-commodity-filter__button',
+                                         data: { filterable_list_target: 'button' })) { 'Filter' }

@@ -54,4 +54,7 @@
 
 .update-content-block
   .update-content-block__content
-    = link_to 'View edit history', history_update_path(sprint, team), class: 'button button--inverted-primary'
+    = render(Common::ButtonComponent.new(tag: :a,
+                                         href: history_update_path(sprint, team),
+                                         scheme: :primary,
+                                         style: :inverted)) { 'View edit history' }

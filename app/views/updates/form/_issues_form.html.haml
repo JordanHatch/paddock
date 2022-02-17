@@ -6,8 +6,9 @@
 
   .issues{ data: { controller: 'update-issues', nested_form_wrapper_selector_value: '.nested-form-wrapper' }}
     .action
-      %button.button.button--success{ type: 'button', data: { action: 'update-issues#add' } }
-        Add issue
+      = render(Common::ButtonComponent.new(type: :button,
+                                           scheme: :success,
+                                           data: { action: 'update-issues#add' })) { 'Add issue' }
 
     %ol
       %template{ data: { update_issues_target: 'template' } }

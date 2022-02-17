@@ -8,11 +8,6 @@
 
     .actions {
       text-align: right;
-
-      a {
-        @extend .button;
-        @extend .button--primary;
-      }
     }
   }
 

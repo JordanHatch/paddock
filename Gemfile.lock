@@ -469,6 +469,7 @@ DEPENDENCIES
   doorkeeper
   dotenv-rails
   dry-initializer
+  dry-types
   dry-validation
   enumerize
   exception_notification

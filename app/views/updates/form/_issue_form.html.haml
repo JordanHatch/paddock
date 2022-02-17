@@ -19,6 +19,7 @@
     = f.input :treatment, as: :string, required: false, input_html: { class: 'text-input text-input--full-width' }
     = f.input :help, as: :string, required: false, input_html: { class: 'text-input text-input--full-width' }
     = f.input :identifier, as: :string, required: false, input_html: { size: 8, class: 'text-input' }
-    %button.button.button--danger{ type: 'button', data: { action: 'update-issues#remove' } }
-      Delete issue
+    = render(Common::ButtonComponent.new(type: :button,
+                                         scheme: :danger,
+                                         data: { action: 'update-issues#remove' })) { 'Delete issue' }
     = f.input :_destroy, as: :hidden

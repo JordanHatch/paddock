@@ -2,5 +2,7 @@
   %h3 This update is currently in draft
   %p When you've finished making changes, you can submit the update.
   .actions
-    = link_to 'Make changes', edit_update_path(sprint, team), class: 'button'
-    = link_to 'Finalise and submit', submit_update_path(sprint, team), class: 'button'
+    = render(Common::ButtonComponent.new(tag: :a, href: edit_update_path(sprint, team))) do
+      Make changes
+    = render(Common::ButtonComponent.new(tag: :a, href: submit_update_path(sprint, team))) do
+      Finalise and submit

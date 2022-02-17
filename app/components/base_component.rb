@@ -1,6 +1,10 @@
 class BaseComponent < ViewComponent::Base
   extend Dry::Initializer
 
+  module Types
+    include Dry.Types()
+  end
+
   # A fix for using the .with_collection feature of view_component
   # whilst using dry-initializers
   #

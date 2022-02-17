@@ -11,4 +11,5 @@
         = hidden_field_tag 'form', flow.current_form_id
 
         .form-actions
-          = f.button :submit, (flow.last_form? ? 'Save and finish' : 'Save and next')
+          = render(Common::ButtonComponent.new(scheme: :primary)) do
+            = flow.last_form? ? 'Save and finish' : 'Save and next'
