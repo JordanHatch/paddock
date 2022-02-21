@@ -1,7 +1,7 @@
 .view.view--manage-sprints
-  %header.with-actions
-    %h1 Sprints
-    .actions
+  %header.section-header
+    %h1.section-header__title Sprints
+    .section-header__actions
       = render(Common::ButtonComponent.new(tag: :a,
                                            href: new_manage_sprint_path,
                                            scheme: :primary)) { 'Add a new sprint' }

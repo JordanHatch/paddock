@@ -1,8 +1,6 @@
 @use 'helpers';
 
 .view--manage-sprints {
-  @extend .manage--common;
-
   .sprints-list {
     display: flex;
     gap: 1rem;

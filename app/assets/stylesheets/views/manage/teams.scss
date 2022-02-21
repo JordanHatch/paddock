@@ -1,12 +1,6 @@
 @use 'helpers';
 
 .view--manage-teams {
-  @extend .manage--common;
-
-  .teams-list {
-
-  }
-
   li.group {
     display: flex;
     padding: .5rem 1rem;
