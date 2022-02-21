@@ -40,22 +40,10 @@
   }
 }
 
-.sprint-navigation__icon {
-  @include helpers.fa-solid;
-}
-
 .sprint-navigation__button--disabled {
   &, &:hover, &:active {
     background: rgba(255,255,255,0.4);
   }
-}
-
-.sprint-navigation__button--previous .sprint-navigation__icon {
-  @include helpers.fa-icon(helpers.$fa-var-chevron-left);
-}
-
-.sprint-navigation__button--next .sprint-navigation__icon {
-  @include helpers.fa-icon(helpers.$fa-var-chevron-right);
 }
 
 .sprint-navigation__hidden-label {

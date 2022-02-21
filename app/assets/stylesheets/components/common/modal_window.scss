@@ -62,9 +62,7 @@ turbo-frame.turbo-frame--modal[busy][src] .loading {
   color: helpers.colour('black');
 }
 
-.common__modal-window__close-icon {
-  @include helpers.fa-solid;
-  @include helpers.fa-icon(helpers.$fa-var-times);
+.common__modal-window__close-icon .icon {
   font-size: 1.5rem;
 }
 .common__modal-window__close-label {

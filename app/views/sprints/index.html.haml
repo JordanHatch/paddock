@@ -1,5 +1,6 @@
 .view.view--sprints-index
   .info-box.no-sprints-message
     .info-box__icon
+      = render Common::IconComponent.new(icon: :wrench, size: :xl)
     %h2 No sprints have been set up yet
     %p A user with access to manage Paddock needs to create a sprint first.

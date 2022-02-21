@@ -1,0 +1,143 @@
+@use 'variables';
+
+.icon {
+  font-size: 1rem;
+}
+
+@mixin fontawesome-icon($style, $char) {
+  &::before {
+    font-weight: $style;
+    content: $char;
+  }
+}
+
+@mixin svg-icon-size($size) {
+  font-size: $size;
+  width: $size;
+  height: $size;
+  background-size: $size;
+}
+
+@mixin svg-icon($image) {
+  background-image: url($image);
+}
+
+.icon--fontawesome {
+  display: inline-block;
+  font: normal normal normal variables.$fa-font-stack;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &::before {
+    font-family: variables.$fa-font-stack;
+  }
+
+  &.icon--sm {
+    font-size: 1rem;
+  }
+
+  &.icon--md {
+    font-size: 2.5rem;
+  }
+
+  &.icon--lg {
+    font-size: 7.5rem;
+  }
+
+  &.icon--xl {
+    font-size: 10rem;
+  }
+}
+
+.icon--svg {
+  display: inline-block;
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  &.icon--sm {
+    @include svg-icon-size(1.6rem);
+  }
+
+  &.icon--md {
+    @include svg-icon-size(2.5rem);
+  }
+
+  &.icon--lg {
+    @include svg-icon-size(7.5rem);
+  }
+
+  &.icon--xl {
+    @include svg-icon-size(10rem);
+  }
+}
+
+.icon--chevron-down {
+  @include fontawesome-icon(900, '\f078');
+}
+.icon--chevron-left {
+  @include fontawesome-icon(900, '\f053');
+}
+.icon--chevron-right {
+  @include fontawesome-icon(900, '\f054');
+}
+.icon--circle-exclamation {
+  @include fontawesome-icon(900, '\f06a');
+}
+.icon--close {
+  @include fontawesome-icon(900, '\f00d');
+}
+.icon--download {
+  @include fontawesome-icon(900, '\f019');
+}
+.icon--invalid {
+  @include fontawesome-icon(900, '\f06a');
+}
+.icon--not-started {
+  @include fontawesome-icon(900, '\f111');
+}
+.icon--star {
+  @include fontawesome-icon(900, '\f005');
+}
+.icon--valid {
+  @include fontawesome-icon(900, '\f058');
+}
+.icon--wrench {
+  @include fontawesome-icon(900, '\f058');
+}
+
+.icon--commitment {
+  @include svg-icon('icons/commitment.svg');
+}
+.icon--warning {
+  @include svg-icon('icons/warning.svg');
+}
+.icon--future {
+  @include svg-icon('icons/future.svg');
+}
+
+.icon--commodities-eggs {
+  @include svg-icon('commodities/eggs.svg');
+}
+.icon--commodities-meat {
+  @include svg-icon('commodities/meat.svg');
+}
+.icon--commodities-fish {
+  @include svg-icon('commodities/fish.svg');
+}
+.icon--commodities-dairy {
+  @include svg-icon('commodities/dairy.svg');
+}
+.icon--commodities-horticulture {
+  @include svg-icon('commodities/horticulture.svg');
+}
+.icon--commodities-grain {
+  @include svg-icon('commodities/grain.svg');
+}
+.icon--commodities-honey {
+  @include svg-icon('commodities/honey.svg');
+}
+.icon--commodities-lae {
+  @include svg-icon('commodities/lae.svg');
+}

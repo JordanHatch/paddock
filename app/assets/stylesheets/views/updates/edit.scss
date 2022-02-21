@@ -54,11 +54,14 @@
           min-width: 3rem;
           text-align: right;
           display: block;
+        }
 
-          i {
-            @include helpers.fa-solid;
-            @include helpers.fa-icon(helpers.$fa-var-chevron-down);
-          }
+        .issue-icon--open {
+          display: block;
+        }
+
+        .issue-icon--closed {
+          display: none;
         }
       }
 
@@ -73,23 +76,20 @@
 
         h2 {
           border-radius: .25rem;
+        }
 
-          .toggle i {
-            @include helpers.fa-icon(helpers.$fa-var-chevron-right);
-          }
+        .issue-icon--open {
+          display: none;
+        }
+
+        .issue-icon--closed {
+          display: block;
         }
       }
     }
 
     .action {
       margin-bottom: 2rem;
-    }
-  }
-
-  .invalid-submit-message {
-    .info-box__icon {
-      @include helpers.fa-solid;
-      @include helpers.fa-icon(helpers.$fa-var-exclamation-circle);
     }
   }
 }

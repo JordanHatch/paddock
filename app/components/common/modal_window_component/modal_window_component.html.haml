@@ -13,6 +13,7 @@
                          target: '_top',
                          data: { action: 'click->modal-window#close' } do
             .common__modal-window__close-icon
+              = render Common::IconComponent.new(icon: :close)
             .common__modal-window__close-label Close
         - if header.present?
           .common__modal-window__header

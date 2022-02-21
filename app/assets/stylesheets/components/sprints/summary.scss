@@ -18,7 +18,5 @@
 }
 
 .sprints-summary__action-icon {
-  @include helpers.fa-solid;
-  @include helpers.fa-icon(helpers.$fa-var-download);
   padding-right: .25em;
 }

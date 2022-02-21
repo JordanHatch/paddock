@@ -5,6 +5,6 @@
 - else
   .info-box.no-sprints-message
     .info-box__icon
-      .icon.icon--xl.icon--commitment
+      = render Common::IconComponent.new(icon: :commitment, size: :xl)
     .info-box__message Paddock doesn't have the detail on commitments for this quarter
 

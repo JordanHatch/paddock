@@ -1,11 +1,8 @@
 @use 'helpers';
+@use 'variables';
 
 @use "@fontsource/public-sans/scss/mixins" as PublicSans;
 @use "@fontsource/fira-code/scss/mixins" as FiraCode;
-
-$fa-font-path: '';
-@import '@fortawesome/fontawesome-free/scss/regular';
-@import '@fortawesome/fontawesome-free/scss/solid';
 
 $publicSansName: 'Public Sans';
 $firaCodeName: 'Fira Code';
@@ -49,6 +46,23 @@ $firaCodeName: 'Fira Code';
   $woffPath: "fira-code-latin-400-normal.woff",
   $woff2Path: "fira-code-latin-400-normal.woff2"
 );
+
+@font-face {
+  font-family: variables.$fa-font-stack;
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("fa-regular-400.eot");
+  src: url("fa-regular-400.eot") format("embedded-opentype"), url("fa-regular-400.woff2") format("woff2"), url("fa-regular-400.woff") format("woff"), url("fa-regular-400.ttf") format("truetype"), url("fa-regular-400.svg") format("svg"); }
+
+@font-face {
+  font-family: variables.$fa-font-stack;
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("fa-solid-900.eot");
+  src: url("fa-solid-900.eot") format("embedded-opentype"), url("fa-solid-900.woff2") format("woff2"), url("fa-solid-900.woff") format("woff"), url("fa-solid-900.ttf") format("truetype"), url("fa-solid-900.svg") format("svg"); }
+
 
 h1, h2, h3, h4 {
   font-weight: bold;

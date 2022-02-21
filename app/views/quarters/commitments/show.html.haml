@@ -33,7 +33,7 @@
         - commitment.commodities.each do |label|
           %li.commodities-list__item
             .commodities-list__icon
-              .icon.icon--sm{ class: "icon--commodities-#{label}" }
+              = render Common::IconComponent.new(icon: "commodities_#{label}", size: :sm)
             .commodities-list__label= t(label, scope: %w[commitments commodities])
 
 - if commitment.teams.any?

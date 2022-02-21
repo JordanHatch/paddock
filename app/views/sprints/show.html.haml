@@ -9,7 +9,7 @@
                                            style: :inverted,
                                            size: :sm,
                                            data: { turbo_frame: 'modal' })) do
-        .sprints-summary__action-icon
+        = render Common::IconComponent.new(icon: :download, size: :sm)
         Download
 
 .sprints-update-list

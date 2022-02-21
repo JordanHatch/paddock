@@ -19,7 +19,7 @@
                       class: ("commitments-list__box" + (commitment.key_commitment? ? " commitments-list__box--key-commitment" : "")) do
               - if commitment.key_commitment?
                 .commitments-list__number{ title: "Key commitment #{commitment.number}" }
-                  .commitments-list__key-commitment-icon
+                  = render Common::IconComponent.new(icon: :star, size: :sm)
                   .commitments-list__key-commitment-label
                     Key Commitment
                   = commitment.number

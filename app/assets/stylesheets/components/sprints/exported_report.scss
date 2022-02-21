@@ -36,11 +36,6 @@
   width: 100%;
 }
 
-.exported-report__download-icon {
-  @include helpers.fa-solid;
-  @include helpers.fa-icon(helpers.$fa-var-cloud-download-alt);
-}
-
 .exported-report__button-label {
   position: absolute;
   top: -9999px;

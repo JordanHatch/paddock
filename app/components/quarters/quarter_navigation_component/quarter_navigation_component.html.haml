@@ -7,19 +7,19 @@
     = link_to previous_quarter_link,
         class: 'sprint-navigation__button sprint-navigation__button--previous',
         title: 'Previous quarter' do
-      .sprint-navigation__icon
+      = render Common::IconComponent.new(icon: :chevron_left)
       .sprint-navigation__hidden-label
         Previous quarter
   - else
     .sprint-navigation__button.sprint-navigation__button--previous.sprint-navigation__button--disabled
-      .sprint-navigation__icon
+      = render Common::IconComponent.new(icon: :chevron_left)
   - if link_to_next_quarter?
     = link_to next_quarter_link,
         class: 'sprint-navigation__button sprint-navigation__button--next',
         title: 'Next quarter' do
-      .sprint-navigation__icon
+      = render Common::IconComponent.new(icon: :chevron_right)
       .sprint-navigation__hidden-label
         Next quarter
   - else
     .sprint-navigation__button.sprint-navigation__button--next.sprint-navigation__button--disabled
-      .sprint-navigation__icon
+      = render Common::IconComponent.new(icon: :chevron_right)

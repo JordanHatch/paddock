@@ -18,4 +18,5 @@
       - else
         .info-box.invalid-submit-message
           .info-box__icon
+            = render Common::IconComponent.new(icon: :circle_exclamation, size: :lg)
           You need to complete all steps before submitting the update.

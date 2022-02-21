@@ -40,27 +40,18 @@
 }
 
 .flow-navigation-item__icon {
-  @include helpers.fa-solid;
-
   display: inline;
 }
 
-.flow-navigation-item__icon.flow-navigation-item__icon--valid {
-  @include helpers.fa-icon(helpers.$fa-var-check-circle);
-
+.flow-navigation-item__icon--valid {
   color: helpers.colour('green', '800');
 }
 
-.flow-navigation-item__icon.flow-navigation-item__icon--invalid {
-  @include helpers.fa-icon(helpers.$fa-var-exclamation-circle);
-
+.flow-navigation-item__icon--invalid {
   color: helpers.colour('orange', '600');
 }
 
-.flow-navigation-item__icon.flow-navigation-item__icon--not-started {
-  @include helpers.fa-regular;
-  @include helpers.fa-icon(helpers.$fa-var-circle);
-
+.flow-navigation-item__icon--not-started {
   color: #ddd;
 }
 

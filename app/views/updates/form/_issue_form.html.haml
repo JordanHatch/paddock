@@ -9,7 +9,10 @@
       - else
         Issue
     .toggle{ data: { update_single_issue_target: 'toggle' } }
-      %i
+      .issue-icon--closed
+        = render Common::IconComponent.new(icon: :chevron_right, size: :sm)
+      .issue-icon--open
+        = render Common::IconComponent.new(icon: :chevron_down, size: :sm)
   .content{ data: { update_single_issue_target: 'content' } }
     = f.input :description, as: :string,
                             required: true,

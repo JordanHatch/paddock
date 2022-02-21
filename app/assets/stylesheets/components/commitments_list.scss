@@ -48,8 +48,6 @@
 }
 
 .commitments-list__key-commitment-icon {
-  @include helpers.fa-solid;
-  @include helpers.fa-icon(helpers.$fa-var-star);
   padding-right: .2em;
 }
 

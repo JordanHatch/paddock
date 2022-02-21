@@ -14,7 +14,7 @@
                                              scheme: :primary,
                                              style: :inverted)) do
           %span.exported-report__button-label Download
-          %span.exported-report__download-icon
+          = render Common::IconComponent.new(icon: :download, size: :sm)
     - else
       .exported-report__status
         %span.exported-report__processing-label Processing

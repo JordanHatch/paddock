@@ -7,19 +7,19 @@
     = link_to previous_sprint_link,
         class: 'sprint-navigation__button sprint-navigation__button--previous',
         title: 'Previous sprint' do
-      .sprint-navigation__icon
+      = render Common::IconComponent.new(icon: :chevron_left)
       .sprint-navigation__hidden-label
         Previous sprint
   - else
     .sprint-navigation__button.sprint-navigation__button--previous.sprint-navigation__button--disabled
-      .sprint-navigation__icon
+      = render Common::IconComponent.new(icon: :chevron_left)
   - if link_to_next_sprint?
     = link_to next_sprint_link,
         class: 'sprint-navigation__button sprint-navigation__button--next',
         title: 'Next sprint' do
-      .sprint-navigation__icon
+      = render Common::IconComponent.new(icon: :chevron_right)
       .sprint-navigation__hidden-label
         Next sprint
   - else
     .sprint-navigation__button.sprint-navigation__button--next.sprint-navigation__button--disabled
-      .sprint-navigation__icon
+      = render Common::IconComponent.new(icon: :chevron_right)
