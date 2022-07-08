@@ -213,7 +213,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    good_job (2.15.1)
+    good_job (2.9.6)
       activejob (>= 5.2.0)
       activerecord (>= 5.2.0)
       concurrent-ruby (>= 1.0.2)
@@ -477,7 +477,7 @@ DEPENDENCIES
   faker
   foreman
   friendly_id (~> 5.4.0)
-  good_job
+  good_job (~> 2.9.6)
   haml
   i18n-debug
   jbuilder (~> 2.7)
