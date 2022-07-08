@@ -36,7 +36,7 @@ RUN RAILS_ENV=production SECRET_KEY_BASE=example_secret_key_for_assets bundle ex
 HEALTHCHECK CMD curl --silent --fail localhost:$PORT || exit 1
 
 RUN wget -q -O entrypoint.zip \
-    https://releases.hashicorp.com/waypoint-entrypoint/0.4.2/waypoint-entrypoint_0.4.2_linux_386.zip && \
+    https://releases.hashicorp.com/waypoint-entrypoint/0.9.0/waypoint-entrypoint_0.9.0_linux_386.zip && \
     unzip entrypoint.zip && \
     mv waypoint-entrypoint /
 
