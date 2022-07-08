@@ -1,6 +1,10 @@
 class Quarters::RootController < Quarters::BaseController
   def index
-    redirect_to quarter_path(quarters.first) if quarters.any?
+    if current_quarter.present?
+      redirect_to quarter_path(current_quarter)
+    elsif quarters.any?
+      redirect_to quarter_path(quarters.first)
+    end
   end
 
   def show; end
@@ -8,6 +12,10 @@ class Quarters::RootController < Quarters::BaseController
   private
 
   helper_method :quarters, :key_commitments, :sprints
+
+  def current_quarter
+    Quarter.current
+  end
 
   def quarters
     @quarters ||= Quarter.all
