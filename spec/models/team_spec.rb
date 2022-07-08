@@ -42,21 +42,22 @@ RSpec.describe Team do
       end
 
       before(:each) { create_teams_with_historical_end_date }
+      let(:team_start_date) { sprint_end_date - 20.weeks }
 
       it 'returns teams where end_on is later than the sprint end date' do
-        expected = create_list(:team, 2, end_on: sprint_end_date + 2.weeks)
+        expected = create_list(:team, 2, start_on: team_start_date, end_on: sprint_end_date + 2.weeks)
 
         expect(results).to contain_exactly(*expected)
       end
 
       it 'returns teams where end_on is equal to the sprint end date' do
-        expected = create_list(:team, 2, end_on: sprint_end_date)
+        expected = create_list(:team, 2, start_on: team_start_date, end_on: sprint_end_date)
 
         expect(results).to contain_exactly(*expected)
       end
 
       it 'returns teams where end_on is empty' do
-        expected = create_list(:team, 2, end_on: nil)
+        expected = create_list(:team, 2, start_on: team_start_date, end_on: nil)
 
         expect(results).to contain_exactly(*expected)
       end
