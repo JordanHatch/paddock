@@ -9,6 +9,12 @@ class Quarter < ApplicationRecord
   scope :previous_quarters, ->(quarter) { where('start_on < ?', quarter.start_on).order('start_on DESC') }
   scope :next_quarters, ->(quarter) { where('start_on > ?', quarter.start_on).order('start_on ASC') }
 
+  class << self
+    def current
+      where('start_on <= ? AND end_on >= ?', Date.today, Date.today).first
+    end
+  end
+
   def current?
     start_on <= Date.today && end_on >= Date.today
   end
